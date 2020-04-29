@@ -4,7 +4,15 @@
 <div class="container">
     <div class="col-md-12">
         <div class="company-profile">
-            <img src="{{asset('cover/work.jpg')}}" style="width:100%;">  
+
+            @if(empty(Auth::user()->company->cover_photo))  
+            <img src="{{asset('cover/work.jpg')}}" style="width:100%;"> 
+            
+            @else
+            <img src="{{asset('uploads/coverphoto')}}/{{Auth::user()->company->cover_photo}}" style="width: 100%;">
+                    
+            @endif
+
             <div class="company-desc">
                 <div class="row justify-content-center">
                 <img src="{{asset('profile_pic/logo.jpg')}}" style="width:20%;">

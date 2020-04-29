@@ -22,10 +22,19 @@ Route::get('/','JobController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show');
-Route::get('/company/{id}/{company}','CompanyController@index')->name('company.index');
 
-Route::get('user/profile','UserController@index');
+
+Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show');
+
+//company
+Route::get('/company/{id}/{company}','CompanyController@index')->name('company.index');
+Route::get('company/create','CompanyController@create')->name('company.view');
+Route::post('company/create','CompanyController@store')->name('company.store');
+Route::post('company/coverphoto','CompanyController@coverPhoto')->name('cover.photo');
+
+
+//candidate
+Route::get('user/profile','UserController@index')->name('user.profile');
 Route::post('user/profile/create','UserController@store')->name('profile.create');
 Route::post('user/coverletter','UserController@coverletter')->name('cover.letter');
 Route::post('user/resume','UserController@resume')->name('resume');
