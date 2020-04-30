@@ -1,4 +1,4 @@
-<p align="center"><img src="{{asset('cover/work.jpg')}}" width="400"></p>
+<p align="center"><img src="\public\profile_pic\oph.jpeg" width="400"></p>
 
 ## Status
 
