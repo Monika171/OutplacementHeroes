@@ -5,30 +5,23 @@
     <div class="row">
 
         <div class="col-md-3">
-            @if(empty(Auth::user()->profile->profile_pic))
-            <img src="{{asset('profile_pic/man.jpg')}}" style="width: 100%;">
+            @if(empty(Auth::user()->company->logo))
+
+                    <img src="{{asset('profile_pic/company.jpg')}}"style="width: 100%;">
+
             @else
-            <img src="{{asset('uploads/profile_pic')}}/{{Auth::user()->profile->profile_pic}}" width="100" style="width: 100%;">
-
+                <img src="{{asset('uploads/logo')}}/{{Auth::user()->company->logo}}" style="width: 100%;">
             @endif
-
-            <br>
-            <br>
-            <form action="{{route('profile_pic')}}" method="POST" enctype="multipart/form-data">@csrf
-
-                <div class="card">
-                    <div class="card-header">Update logo</div>
-                    <div class="card-body">
-                        <input type="file" class="form-control" name="profile_pic">
-                        <br>
-                        <button class="btn btn-dark float-right" type="submit">Update</button>
-                    
-                        @if($errors->has('profile_pic'))
-                            <div class="error" style="color: red;">{{$errors->first('profile_pic')}}</div>
-                        @endif
-                    </div>
+        <br><br>
+        <form action="{{route('company.logo')}}" method="POST" enctype="multipart/form-data">@csrf
+            <div class="card">
+                <div class="card-header">Update logo</div>
+                <div class="card-body">
+                    <input type="file" class="form-control" name="company_logo"><br>
+                    <button class="btn btn-dark float-right" type="submit">Update</button>
                 </div>
-            </form>
+            </div>
+        </form>
     
 
 

@@ -13,19 +13,27 @@
                     
             @endif
 
-            <div class="company-desc">
-                <div class="row justify-content-center">
-                <img src="{{asset('profile_pic/logo.jpg')}}" style="width:20%;">
-                </div>
+        <div class="company-desc">
+            @if(empty($company->logo))
+                
+                <img width="100" src="{{asset('profile_pic/company.jpg')}}">
+                
+            @else
+                <img width="100" src="{{asset('uploads/logo')}}/{{$company->logo}}">
+             
+                
+            @endif
                 <p>{{$company->description}}</p>
                 <h1>{{$company->cname}}</h1>
-                <p>Slogan-{{$company->slogan}}&nbsp;
-                Address-{{$company->address}}&nbsp;
+                <p>Slogan-{{$company->slogan}}&nbsp;</p>
+                <p>Address-{{$company->address}}&nbsp;
                 Phone-{{$company->phone}}&nbsp;
-                Website-{{$company->website}}</p>
-            </div>
-    
+                Website-<a href="{{$company->website}}">{{$company->website}}</a></p>
+              
+
         </div>
+    
+        
 
         <table class="table">
             <thead>

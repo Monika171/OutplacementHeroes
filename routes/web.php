@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
+
+//jobs
 Route::get('/','JobController@index');
+Route::get('/jobs/create','JobController@create')->name('job.create');
 
 Auth::routes();
 
@@ -31,7 +34,7 @@ Route::get('/company/{id}/{company}','CompanyController@index')->name('company.i
 Route::get('company/create','CompanyController@create')->name('company.view');
 Route::post('company/create','CompanyController@store')->name('company.store');
 Route::post('company/coverphoto','CompanyController@coverPhoto')->name('cover.photo');
-
+Route::post('company/logo','CompanyController@companyLogo')->name('company.logo');
 
 //candidate
 Route::get('user/profile','UserController@index')->name('user.profile');
