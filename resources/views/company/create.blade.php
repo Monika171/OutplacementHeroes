@@ -7,7 +7,7 @@
         <div class="col-md-3">
             @if(empty(Auth::user()->company->logo))
 
-                    <img src="{{asset('profile_pic/company.jpg')}}"style="width: 100%;">
+                    <img src="{{asset('profile_pic/logo.jpg')}}"style="width: 100%;">
 
             @else
                 <img src="{{asset('uploads/logo')}}/{{Auth::user()->company->logo}}" style="width: 100%;">

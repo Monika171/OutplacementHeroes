@@ -22,6 +22,12 @@ class CompanyController extends Controller
     	return view('company.index',compact('company'));
     }
 
+    public function company(){
+        $companies = Company::latest()->paginate(20);
+        return view('company.company',compact('companies'));
+      }
+      
+
     public function create(){
     	return view('company.create');
     }

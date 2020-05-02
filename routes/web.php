@@ -48,7 +48,8 @@ Route::post('user/profile_pic','UserController@profile_pic')->name('profile_pic'
 Route::view('employer/register','auth.employer-register')->name('employer.register');
 Route::post('employer/register','EmployerRegisterController@employerRegister')->name('emp.register');
 
-
+//company
+Route::get('/companies','CompanyController@company')->name('company');
 
 //Auth::routes();
 
