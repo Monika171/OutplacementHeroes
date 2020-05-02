@@ -10,7 +10,20 @@
     <title>{{ config('app.name', 'OutplacementHeroes') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script defer src="{{ asset('js/app.js') }}"></script>
+
+    <!--modified here-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        $( function() {
+          $( "#datepicker" ).datepicker();
+        } );
+    </script>
+
+
+    <!--modified here-->
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -24,6 +37,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
+    <!--modified here-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!--modified here-->
 
 </head>
 <body>
@@ -81,15 +97,26 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                                    @if(Auth::user()->user_type='employer')
-                                    <a class="dropdown-item" href="{{ route('company.view') }}">
-                                     {{ __('Company') }}
+                                   
+                                @if(Auth::user()->user_type=='employer')
+                                <a class="dropdown-item" href="{{ route('company.view') }}"
+                                       >
+                                        {{ __('Company') }}
                                     </a>
-                                    @else
-                                    <a class="dropdown-item" href="{{ route('user.profile') }}">
+                               
+
+                                @elseif(Auth::user()->user_type=='seeker')
+
+
+                                    <a class="dropdown-item" href="{{route('user.profile')}}"
+                                       >
                                         {{ __('Profile') }}
                                     </a>
-                                    @endif
+
+                                    @else
+
+                                    
+                                 @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

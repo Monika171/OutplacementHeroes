@@ -9,7 +9,7 @@ use App\Profile;
 use App\Company;
 use App\Job;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 

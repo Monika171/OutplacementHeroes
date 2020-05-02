@@ -22,7 +22,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','JobController@index');
 Route::get('/jobs/create','JobController@create')->name('job.create');
 
-Auth::routes();
+//Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -48,3 +49,7 @@ Route::view('employer/register','auth.employer-register')->name('employer.regist
 Route::post('employer/register','EmployerRegisterController@employerRegister')->name('emp.register');
 
 
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
