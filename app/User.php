@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Profile;
 use App\Company;
 use App\Job;
+use App\Role;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -49,6 +50,9 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
+    public function roles(){
+        return $this->belongsToMany(Role::class);
+    }
 
 
 }

@@ -51,6 +51,9 @@ Route::post('employer/register','EmployerRegisterController@employerRegister')->
 //company
 Route::get('/companies','CompanyController@company')->name('company');
 
+//admin
+Route::get('/dashboard','DashboardController@index')->middleware('admin');
+
 //Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');

@@ -26,7 +26,22 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    { 
+        
+        if(auth::user()->user_type=='employer'){
+        return redirect()->to('/company/create');
+        }
+
+        $adminRole = Auth::user()->roles()->pluck('name');
+            if($adminRole->contains('admin')){
+                return redirect('/dashboard');
+            }
+
+  
+    
+    
+    //$jobs  = Auth::user()->favorites;
+    //return view('home',compact('jobs'));
+       
     }
 }
