@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Company;
 use App\Job;
+use App\User;
+use Auth;
 
 
 
@@ -32,7 +34,16 @@ class CompanyController extends Controller
     	return view('company.create');
     }
 
-    public function store(){
+    public function store(Request $request){
+        $this->validate($request,[
+            'address'=>'required',
+            'phone'=>['required', 'numeric', 'regex:/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[0-9]\d{9}$/'],
+            'website'=>'required',
+            'description'=>'required',
+            'job_dept'=>'required',
+
+        ]);
+
         $user_id = auth()->user()->id;
         
         Company::where('user_id',$user_id)->update([
@@ -42,6 +53,11 @@ class CompanyController extends Controller
             'slogan'=>request('slogan'),
             'description'=>request('description')
         ]);
+
+        User::where('id',$user_id)->update([
+            'job_dept' => request('job_dept'),
+        ]);
+      
         return redirect()->back()->with('message','Company Sucessfully Updated!');
 
 }

@@ -67,6 +67,84 @@
                                       
                     </div>
 
+                    <div class="form-group">
+                        <label for="job_dept">Previous Job Department</label>
+                        <input class="form-control" name="job_dept" list="job_dept">
+                            <datalist id="job_dept">
+                                <option value="Accounting">
+                                <option value="Application Programming">
+                                <option value="Analytics">
+                                <option value="Airline">
+                                <option value="Bank">
+                                <option value="BPO">
+                                <option value="Business Intelligence">
+                                <option value="Content Writing">
+                                <option value="Consultant">
+                                <option value="Corporate Planning">
+                                <option value="Client Server">
+                                <option value="DBA">
+                                <option value="Engineering">
+                                <option value="Ecommerce">
+                                <option value="ERP">
+                                <option value="Export Import">
+                                <option value="EDP">
+                                <option value="Film">
+                                <option value="Graphic Designer">
+                                <option value="HR">
+                                <option value="Hotel">
+                                <option value="IT">
+                                <option value="Interior Design">
+                                <option value="Logistics">
+                                <option value="Legal">
+                                <option value="Marketing">
+                                <option value="Merchandiser">
+                                <option value="Mainframe">
+                                <option value="Middleware">
+                                <option value="Maintenance">
+                                <option value="Network administrator">
+                                <option value="Packaging">
+                                <option value="Pharma">
+                                <option value="Sales">
+                                <option value="Shipping">
+                                <option value="Secretary">
+                                <option value="Security">
+                                <option value="System Programming">
+                                <option value="Software Services">
+                                <option value="Site Engineering">
+                                <option value="Telecom Software">
+                                <option value="Telecom/ISP">
+                                <option value="Testing">
+                                <option value="Teacher">
+                                <option value="VLSI">
+                            </datalist>
+                            @if($errors->has('job_dept'))
+                            <div class="error" style="color: red;">{{$errors->first('job_dept')}}</div>
+                           @endif
+                        
+                    </div>
+
+                    <!--   
+                            <input name="days" list="days">
+                                <datalist id="days">
+                                <option value="Sunday">
+                                <option value="Monday">
+                                <option value="Tuesday">
+                                <option value="Wednesday">
+                                <option value="Thursday">
+                                <option value="Friday">
+                                <option value="Saturday"> 
+                                </datalist>
+
+                                <input list="job_dept">
+
+                                <datalist id="job_dept">
+                                <option value="Internet Explorer">
+                                <option value="Firefox">
+                                <option value="Chrome">
+                                <option value="Opera">
+                                <option value="Safari">
+                                </datalist>
+                    -->
 
                     <div class="form-group">
                         <label for="">Experience Details</label>
@@ -95,14 +173,15 @@
             <div class="card">
                 <div class="card-header">About me</div>
                 <div class="card-body">
-                <p>Name:{{Auth::user()->name}}</p>
-                <p>Email:{{Auth::user()->email}}</p>
-                <p>Address:{{Auth::user()->profile->address}}</p>
-                <p>Phone:{{Auth::user()->profile->phone_number}}</p>
-                <p>Gender:{{Auth::user()->profile->gender}}</p>
-                <p>Experience:{{Auth::user()->profile->experience}}</p>
-                <p>Bio:{{Auth::user()->profile->bio}}</p>
-                <p>Member since:&nbsp;{{date('F d Y',strtotime(Auth::user()->created_at))}}</p>
+                <p><strong>Name:</strong> &nbsp; &nbsp; {{Auth::user()->name}}</p>
+                <p><strong>Email:</strong> &nbsp; &nbsp; {{Auth::user()->email}}</p>
+                <p><strong>Address:</strong> &nbsp; &nbsp; {{Auth::user()->profile->address}}</p>
+                <p><strong>Phone:</strong> &nbsp; &nbsp; {{Auth::user()->profile->phone_number}}</p>
+                <p><strong>Gender:</strong> &nbsp; &nbsp; {{Auth::user()->profile->gender}}</p>
+                <p><strong>Previous Job Department:</strong><br>{{Auth::user()->job_dept}}</p>
+                <p><strong>Experience:</strong> &nbsp; &nbsp; {{Auth::user()->profile->experience}}</p>
+                <p><strong>Bio:</strong> &nbsp; &nbsp; {{Auth::user()->profile->bio}}</p>
+                <p><strong>Member since:</strong> &nbsp; &nbsp; {{date('F d Y',strtotime(Auth::user()->created_at))}}</p>
 
                 @if(!empty(Auth::user()->profile->cover_letter))
                     <p><a href="{{Storage::url(Auth::user()->profile->cover_letter)}}">Cover letter</a></p>

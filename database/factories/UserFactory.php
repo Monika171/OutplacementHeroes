@@ -23,6 +23,7 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'user_type'=>'seeker',
         'email_verified_at' => now(),
+        'job_dept' => $faker->jobTitle,
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
     ];
@@ -44,7 +45,7 @@ $factory->define(App\Company::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(App\Job::class, function (Faker $faker) {
+/*$factory->define(App\Job::class, function (Faker $faker) {
     return [
         'user_id' =>App\User::all()->random()->id,
         'company_id'=>App\Company::all()->random()->id,
@@ -64,5 +65,5 @@ $factory->define(App\Job::class, function (Faker $faker) {
 
 
     ];
-});
+});*/
 

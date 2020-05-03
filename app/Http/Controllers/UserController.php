@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Profile;
+use App\User;
+use Auth;
 
 
 class UserController extends Controller
@@ -19,10 +21,13 @@ class UserController extends Controller
 
     public function store(Request $request){
 
+
+
           $this->validate($request,[
 
                 'address'=>'required',
                 'bio'=>'required',
+                'job_dept'=>'required',
                 //'phone_number'=>'required|numeric|digits_between:10,10',
                 'phone_number'=>['required', 'numeric', 'regex:/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[0-9]\d{9}$/'],
 
@@ -37,6 +42,10 @@ class UserController extends Controller
                 'bio'=>request('bio'),
                 'phone_number'=>request('phone_number')
              ]);
+        User::where('id',$user_id)->update([
+              'job_dept' => request('job_dept'),
+          ]);
+        
              return redirect()->back()->with('message','Profile Sucessfully Updated!');
 
             }
@@ -47,10 +56,20 @@ class UserController extends Controller
                     'cover_letter'=>'required|mimes:pdf,doc,docx|max:20000'
                 ]);
                 $user_id = auth()->user()->id;
+                
                 $cover = $request->file('cover_letter')->store('public/files');
                     Profile::where('user_id',$user_id)->update([
                       'cover_letter'=>$cover
                     ]);
+
+                    /*$cover = $request->file('cover_letter')->storeAs('OPH'.time(), $request->user()->id)->store('public/files');
+
+                    Profile::where('user_id',$user_id)->update([
+                      'cover_letter'=>$cover
+                    ]);*/
+                
+                                 
+                      
                 return redirect()->back()->with('message','Cover letter Sucessfully Updated!');
         
               
@@ -80,7 +99,7 @@ class UserController extends Controller
         if($request->hasfile('profile_pic')){
             $file = $request->file('profile_pic');
             $ext =  $file->getClientOriginalExtension();
-            $filename = time().'.'.$ext;
+            $filename = 'OPH-'.time().'.'.$ext;
             $file->move('uploads/profile_pic/',$filename);
             Profile::where('user_id',$user_id)->update([
               'profile_pic'=>$filename
