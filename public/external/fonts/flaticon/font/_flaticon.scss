@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 16/11/2018 06:22
+    Creation date: 03/12/2018 06:50
     */
 
     @font-face {
@@ -36,20 +36,12 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-worker:before { content: "\f100"; }
-.flaticon-restaurant:before { content: "\f101"; }
-.flaticon-wrench:before { content: "\f102"; }
-.flaticon-telecommunications:before { content: "\f103"; }
-.flaticon-stethoscope:before { content: "\f104"; }
-.flaticon-computer-graphic:before { content: "\f105"; }
-.flaticon-trolley:before { content: "\f106"; }
-.flaticon-calculator:before { content: "\f107"; }
+    .flaticon-resume:before { content: "\f100"; }
+.flaticon-employee:before { content: "\f101"; }
+.flaticon-collaboration:before { content: "\f102"; }
+.flaticon-promotions:before { content: "\f103"; }
     
-    $font-Flaticon-worker: "\f100";
-    $font-Flaticon-restaurant: "\f101";
-    $font-Flaticon-wrench: "\f102";
-    $font-Flaticon-telecommunications: "\f103";
-    $font-Flaticon-stethoscope: "\f104";
-    $font-Flaticon-computer-graphic: "\f105";
-    $font-Flaticon-trolley: "\f106";
-    $font-Flaticon-calculator: "\f107";
+    $font-Flaticon-resume: "\f100";
+    $font-Flaticon-employee: "\f101";
+    $font-Flaticon-collaboration: "\f102";
+    $font-Flaticon-promotions: "\f103";

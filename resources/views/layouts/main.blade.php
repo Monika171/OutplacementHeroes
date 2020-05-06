@@ -9,8 +9,6 @@
 <body>
 	@include('../partials.nav')
 
-<br><br>
-<br><br><br>
 @yield('content')
 
 	@include('../partials.footer')

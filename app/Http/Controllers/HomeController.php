@@ -32,6 +32,11 @@ class HomeController extends Controller
         return redirect()->to('/company/create');
         }
 
+         
+        if(auth::user()->user_type=='seeker'){
+            return redirect()->to('/user/profile');
+            }
+
         $adminRole = Auth::user()->roles()->pluck('name');
             if($adminRole->contains('admin')){
                 return redirect('/dashboard');

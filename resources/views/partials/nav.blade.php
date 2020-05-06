@@ -1,80 +1,100 @@
-<div class="site-wrap">
+<!--<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm ftco_navbar ftco-navbar-light" id="ftco-navbar">-->
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  <div class="container">
+    <a href="/"><img src="{{asset('external/images/oph.png')}}" alt="" width="200" style="opacity: 0.9;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="oi oi-menu"></span> Menu
+    </button>
 
-    <div class="site-mobile-menu">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div> <!-- .site-mobile-menu -->
-    
-    
-    <div class="site-navbar-wrap js-site-navbar bg-white">
-      
-      <div class="container">
-        <div class="site-navbar bg-light">
-          <div class="py-1">
-            <div class="row align-items-center">
-              <div class="col-2">
-                <h2 class="mb-0 site-logo"><a href="/">Outplacement<strong class="font-weight-bold">Heros</strong> </a></h2>
-              </div>
-              <div class="col-10">
-                <nav class="site-navigation text-right" role="navigation">
-                  <div class="container">
-                    <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
-
-                    <ul class="site-menu js-clone-nav d-none d-lg-block">
-                       @if(!Auth::check())
-                      <li><a href="/register">For Job Seeker</a></li>
-                      <li>
-                        <a href="{{route('employer.register')}}">For Employer</a>
-                        
-                      </li>
-                      @else
-                      <li><a href="/home">Dashboard</li>
-                      @endif
-                        <!--insert here-->
-                      <li><a href="{{route('company')}}">Companies</a></li>
-                        
-
-                      <li>
-      @if(!Auth::check())
-
-          <button type="button" class="btn btn-primary text-white py-3 px-4 rounded" data-toggle="modal" data-target="#exampleModal">
-        Login
-        </button>
-        @else
- <a  href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-      </a>
- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        @guest
+        @if (Route::has('register'))
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">{{ __('Job Seeker Register') }}</a>
+            </li>
         @endif
 
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('employer.register') }}">{{ __('Employer Register') }}</a>
+        </li>
+
+        <li class="nav-item"><a href="{{route('company')}}" class="nav-link">Companies</a></li>
+
+<li class="nav-item">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+Login
+</button>
+        </li>
+    @else
+        <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                
+                                                   
+                @if(Auth::user()->user_type=='employer')
+                {{Auth::user()->company->cname}}
+                
+            
+                @elseif(Auth::user()->user_type=='seeker')
+                    {{Auth::user()->name}}
+                    @else
+                    {{Auth::user()->name}}
+                @endif
+
+                
+                
+                
+                <span class="caret"></span>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+               
+            @if(Auth::user()->user_type=='employer')
+            <a class="dropdown-item" href="{{ route('company.view') }}"
+                   >
+                    {{ __('Company') }}
+                </a>
+           
+
+            @elseif(Auth::user()->user_type=='seeker')
 
 
+                <a class="dropdown-item" href="{{route('user.profile')}}"
+                   >
+                    {{ __('Profile') }}
+                </a>
+
+                @else
 
 
+                <a class="dropdown-item" href="/dashboard"
+                   >
+                    {{ __('Dashboard') }}
+                </a>
 
-                      </li>
-                    </ul>
-                  </div>
-                </nav>
-              </div>
+                
+
+                
+             @endif
+
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             </div>
-          </div>
-        </div>
-      </div>
+        </li>
+    @endguest
+
+      </ul>
     </div>
-  
-  
-
-  <!--modal-->
-
+  </div>
+</nav>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\Job;
 use App\Company;
 use Auth;
+use App\User;
+use App\Category;
+use App\Post;
 
+//get and show blog, used old controller name (irrelevant name sorry!)
 class JobController extends Controller
 {
     
@@ -19,11 +23,16 @@ class JobController extends Controller
     
     public function index(){
 
-        $jobs = Job::latest()->limit(10)->get();
-        $companies = Company::get()->random(12);
+         $posts = Post::where('status',1)->latest()->take(4)->get();
+         return view('welcome',compact('posts'));
+
+         
+        //Dogs::latest()->take(5)->get();
+        //$jobs = Job::latest()->limit(10)->get();
+        //$companies = Company::get()->random(12);
         //$companies = Company::latest()->limit(12)->get();
        
-        return view('welcome',compact('jobs', 'companies'));
+        //return view('welcome',compact('jobs', 'companies'));
         
 
         /*
@@ -39,18 +48,19 @@ class JobController extends Controller
     	return view('welcome',compact('jobs','companies','categories'));*/
     }
 
+    /*
     public function show($id,Job $job){
 
         return view('jobs.show',compact('job'));
     }
 
-    /*public function company(){
+    public function company(){
     	return view('company.index');
-    }*/
+    }
 
     public function  create(){
         return view('jobs.create');
-    }
+    } */
 
 
 

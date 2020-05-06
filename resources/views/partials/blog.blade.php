@@ -1,40 +1,39 @@
-<div class="site-section block-15">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 mx-auto text-center mb-5 section-heading">
-          <h2>Recent Blog</h2>
+<section class="ftco-section bg-light">
+  <div class="container">
+      <div class="row justify-content-center mb-5 pb-3">
+        <div class="col-md-7 heading-section text-center ftco-animate">
+          <span class="subheading"><a href="{{route('post.show_All')}}">Our Blog</a></span>
+         
+          <h2><span>Recent</span> Blogs</h2>
+          <span><a href="{{route('post.show_All')}}">
+            Click here to read all blogs!
+          </a></span>
         </div>
       </div>
+    <div class="row d-flex">
 
+      
+      @foreach($posts as $post)
+        <div class="col-md-3 d-flex ftco-animate">
+          <div class="blog-entry align-self-stretch">
+            <a href="{{route('post.show',[$post->id,$post->slug])}}"  class="block-20">
+              <img src="{{asset('storage/'.$post->image)}}" alt="" class="img-fluid">
+            </a>
 
-      <div class="nonloop-block-15 owl-carousel">
-        
-
-    
-          @foreach($posts as $post)
-          <div class="media-with-text">
-            <div class="img-border-sm mb-4">
-              <a href="{{route('post.show',[$post->id,$post->slug])}}" class="image-play">
-                <img src="{{asset('storage/'.$post->image)}}" alt="" class="img-fluid">
-              
-            </div>
-            <h2 class="heading mb-0 h5"><a href="#">{{$post->title}}</a></h2>
-            <span class="mb-3 d-block post-date"></a>{{$post->created_at->diffForHumans()}} &bullet; By <a href="#">Admin</a></span>
+            <div class="text mt-3">
+              <div class="meta mb-2">
+                <div>{{$post->created_at->diffForHumans()}} &bullet; By <a href="#">Admin</a></div>
+             
+              </div>
+              <h3 class="heading"><a href="{{route('post.show',[$post->id,$post->slug])}}">{{$post->title}}</a></h3>
             <p>{{str_limit($post->content,50)}}</p>
+            </div>
           </div>
-          @endforeach
-        
-          
-        
-       
-        
-        
-      </div>
-
-      <div class="row">
-        
-      </div>
+        </div>
+        @endforeach
+      
+      
     </div>
+    {{--{{$posts->links()}}--}}
   </div>
-  
-
+</section>

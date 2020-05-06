@@ -18,9 +18,11 @@ use Illuminate\Support\Facades\Route;
 });*/
 
 
+Route::view('demo','demo');
+
 //jobs
 Route::get('/','JobController@index');
-Route::get('/jobs/create','JobController@create')->name('job.create');
+//Route::get('/jobs/create','JobController@create')->name('job.create');
 
 //Auth::routes();
 Auth::routes(['verify' => true]);
@@ -28,7 +30,7 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show');
+//Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show');
 
 //company
 Route::get('/company/{id}/{company}','CompanyController@index')->name('company.index');
@@ -53,6 +55,17 @@ Route::get('/companies','CompanyController@company')->name('company');
 
 //admin
 Route::get('/dashboard','DashboardController@index')->middleware('admin');
+Route::get('/dashboard/create','DashboardController@create')->middleware('admin');
+Route::post('/dashboard/create','DashboardController@store')->name('post.store')->middleware('admin');
+Route::post('/dashboard/destroy','DashboardController@destroy')->name('post.delete')->middleware('admin');
+Route::get('/dashboard/{id}/edit','DashboardController@edit')->name('post.edit')->middleware('admin');
+Route::post('/dashboard/{id}/update','DashboardController@update')->name('post.update')->middleware('admin');
+Route::get('/dashboard/trash','DashboardController@trash')->middleware('admin');
+Route::get('/dashboard/{id}/trash','DashboardController@restore')->name('post.restore')->middleware('admin');
+Route::get('/dashboard/{id}/toggle','DashboardController@toggle')->name('post.toggle')->middleware('admin');
+Route::get('/posts/{id}/{slug}','DashboardController@show')->name('post.show');
+Route::get('/show_All','DashboardController@show_All')->name('post.show_All');
+
 
 //Auth::routes();
 

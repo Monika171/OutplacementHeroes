@@ -83,12 +83,15 @@
                                     
                                                                        
                                     @if(Auth::user()->user_type=='employer')
-                                        {{Auth::user()->company->cname}}
-                                                                  
-                                    @else
-                                         {{Auth::user()->name}}
+                                    {{Auth::user()->company->cname}}
                                     
+                                
+                                    @elseif(Auth::user()->user_type=='seeker')
+                                        {{Auth::user()->name}}
+                                        @else
+                                        {{Auth::user()->name}}
                                     @endif
+
                                     
                                     
                                     
