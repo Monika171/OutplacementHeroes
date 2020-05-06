@@ -9,16 +9,19 @@ Laravel database>factories were heavily used for fake data creation and use. One
 _Thanks_
 
 ## Initial tasks:
--home page [which also displays **features]
-(AssignedTo:Priti; Only 'navbar' for now)
-
--when candidate uploads CV and selects relevant field, a notification should be sent to employers (of relevant field, who looks into CV later)
+-HIRING EMPLOYERS & JOBSEEKERS (sending notification carrying JD link, if latter is eligible)
+(AssignedTo: Monika)
 
 -VOLUNTEERS: seeker seeks assist, volunteer suggests (assists).
+(AssignedTo:Priti)
+
+-SEPARATING EMPLOYERS: who shares data of fired employees.
+(AssignedTo:Ritika)
+
 
 Other pages (and more to be added later):
 -dashboard 
--profile/CV upload page for separating employer (def: details of people who got fired)
+-profile/CV upload page for separating employer (def: has details of people who got fired)
 -search consolidated profile for hiring employers (candidates search)
 
 "registration & login system, candidate profile including Resume& displaying the same, display job seeker resume, employer can view applicants, company listing, notice period.. etc."
