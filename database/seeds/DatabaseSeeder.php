@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'user_type'=>'admin',
             'email'=>'outplacementheroes@gmail.com',
             'email_verified_at'=>NOW(),
-            'job_dept'=>NULL,
+            'job_dept'=>"DBA",
             'password'=>bcrypt('2020hired')
             
         ]);
