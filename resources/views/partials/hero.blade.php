@@ -21,7 +21,7 @@
                   <div class="card bg-warning text-center p-3">
                     <blockquote class="blockquote mb-0">
                       <h2 class="font-weight-bold text-black-50">***This site is under construction***</h2><br>
-                      <h4 class="font-weight-bold text-black-50">Please WhatsApp on +91-7838883008 for any query!</h4><br>
+                      <h4 class="font-weight-bold text-black-50">Please WhatsApp on +91-7838883008 for any query.</h4><br>
                       <h4 class="font-weight-bold text-black-50">THANK YOU FOR VISITING!</h4>
                     </blockquote>
                   </div>
