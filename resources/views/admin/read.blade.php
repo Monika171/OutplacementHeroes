@@ -28,7 +28,7 @@
             
             <div class="p-4 mb-8 bg-white">
               <!-- icon-book mr-3-->
-              <h5 class="h5 text-black mb-3">Create By:Admin &nbsp;created on:{{date('d-m-Y',strtotime($post->created_at))}}</h5>
+              <h5 class="h5 text-black mb-3">Posted By:Admin &nbsp;<small>created on:{{date('d-m-Y',strtotime($post->created_at))}}</small></h5>
               <p> {{$post->content}}.</p>
            
               
