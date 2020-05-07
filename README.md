@@ -9,14 +9,14 @@ Laravel database>factories were heavily used for fake data creation and use. One
 _Thanks_
 
 ## Initial tasks:
--HIRING EMPLOYERS & JOBSEEKERS (sending notification carrying JD link, if latter is eligible)
-(AssignedTo: Monika)
+-HIRING EMPLOYERS & JOBSEEKERS (sending notification carrying JD link, if latter is eligible).
+~~[AssignedTo: Monika]
 
 -VOLUNTEERS: seeker seeks assist, volunteer suggests (assists).
-(AssignedTo:Priti)
+~~[AssignedTo: Priti]
 
 -SEPARATING EMPLOYERS: who shares data of fired employees.
-(AssignedTo:Ritika)
+~~[AssignedTo: Ritika]
 
 
 Other pages (and more to be added later):
