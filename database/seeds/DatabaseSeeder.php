@@ -42,8 +42,10 @@ class DatabaseSeeder extends Seeder
             'name'=>'admin',
             'user_type'=>'admin',
             'email'=>'outplacementheroes@gmail.com',
-            'password'=>bcrypt('2020hired'),
-            'email_verified_at'=>NOW()
+            'email_verified_at'=>NOW(),
+            'job_dept'=>NULL,
+            'password'=>bcrypt('2020hired')
+            
         ]);
 
         $admin->roles()->attach($adminRole);
