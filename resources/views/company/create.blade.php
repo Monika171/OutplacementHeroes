@@ -32,6 +32,9 @@
                 <div class="card-body">
                     <input type="file" class="form-control" name="company_logo"><br>
                     <button class="btn btn-dark float-right" type="submit">Update</button>
+                    @if($errors->has('company_logo'))
+                    <div class="error" style="color: red;">{{$errors->first('company_logo')}}</div>
+                    @endif
                 </div>
             </div>
         </form>
@@ -93,7 +96,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Description</label>
-                        <textarea name="description" class="form-control"> {{Auth::user()->company->description}}</textarea>
+                        <textarea name="description" class="form-control" rows="6" cols="80" style="width:100"> {{Auth::user()->company->description}}</textarea>
                         @if($errors->has('description'))
                         <div class="error" style="color: red;">{{$errors->first('description')}}</div>
                     @endif
@@ -101,7 +104,7 @@
                     
                     </div>
                                  
-                    <div class="form-group">
+                    {{--<div class="form-group">
                         <label for="job_dept">Select Recruitment Category </label>
                         <input class="form-control" name="job_dept" list="job_dept">
                             <datalist id="job_dept">
@@ -155,7 +158,7 @@
                             <div class="error" style="color: red;">{{$errors->first('job_dept')}}</div>
                            @endif
                         
-                    </div>
+                    </div>--}}
 
                     <div class="form-group">
                         <button class="btn btn-dark" type="submit">Edit & Update</button>
@@ -173,7 +176,7 @@
 
                     <p><strong>Phone:</strong> &nbsp; &nbsp; {{Auth::user()->company->phone}}</p>
 
-                    <p><strong>Currently Recruiting for:</strong> &nbsp; &nbsp; </strong><br> {{Auth::user()->job_dept}} Job Position</p>
+                    {{--<p><strong>Currently Recruiting for:</strong> &nbsp; &nbsp; </strong><br> {{Auth::user()->job_dept}} Job Position</p>--}}
 
                     <p><strong>Website:</strong> &nbsp; &nbsp; <a href="{{Auth::user()->company->website}}"> {{Auth::user()->company->website}}</a></p>
                     <p><strong>Company page:</strong> &nbsp; &nbsp;<a href="company/{{Auth::user()->company->slug}}">View</a></p>
@@ -192,6 +195,9 @@
                     <div class="card-body">
                         <input type="file" class="form-control" name="cover_photo"><br>
                         <button class="btn btn-dark float-right" type="submit">Update</button>
+                        @if($errors->has('cover_photo'))
+                        <div class="error" style="color: red;">{{$errors->first('cover_photo')}}</div>
+                        @endif
                     </div>
                 </div>
             </form>

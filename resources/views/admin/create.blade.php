@@ -39,7 +39,7 @@
 						</div>
 						<div class="form-group">
 							<label>Content</label>
-							<textarea id="editors" name="content" class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}">{{ old('content') }}</textarea>
+							<textarea id="editors" name="content" rows="6" cols="80" style="width:100" class="form-control{{ $errors->has('content') ? ' is-invalid' : '' }}">{{ old('content') }}</textarea>
 							 @if ($errors->has('content'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('content') }}</strong>

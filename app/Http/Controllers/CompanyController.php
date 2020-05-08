@@ -40,9 +40,7 @@ class CompanyController extends Controller
             'phone'=>['required', 'numeric', 'regex:/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[0-9]\d{9}$/'],
             'website'=>'required',
             'description'=>'required',
-            'job_dept'=>'required',
-
-        ]);
+             ]);
 
         $user_id = auth()->user()->id;
         
@@ -54,15 +52,19 @@ class CompanyController extends Controller
             'description'=>request('description')
         ]);
 
-        User::where('id',$user_id)->update([
+        /*User::where('id',$user_id)->update([
             'job_dept' => request('job_dept'),
-        ]);
+        ]);*/
       
         return redirect()->back()->with('message','Company Sucessfully Updated!');
 
 }
 
         public function coverPhoto(Request $request){
+            $this->validate($request,[
+                'cover_photo'=>'required|mimes:png,jpeg,jpg|max:20000'
+            ]);
+
             $user_id = auth()->user()->id;
             if($request->hasfile('cover_photo')){
 
@@ -80,6 +82,10 @@ class CompanyController extends Controller
 
 
         public function companyLogo(Request $request){
+            $this->validate($request,[
+                'company_logo'=>'required|mimes:png,jpeg,jpg|max:20000'
+            ]);
+
             $user_id = auth()->user()->id;
             if($request->hasfile('company_logo')){
     

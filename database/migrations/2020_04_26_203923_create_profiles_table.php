@@ -20,6 +20,7 @@ class CreateProfilesTable extends Migration
             $table->string('phone_number')->nullable();
             $table->string('gender');
             $table->string('dob');
+            $table->string('job_dept');
             $table->string('experience');
             $table->string('bio');
             $table->string('cover_letter');

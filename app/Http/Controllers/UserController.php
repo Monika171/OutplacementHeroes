@@ -26,10 +26,11 @@ class UserController extends Controller
           $this->validate($request,[
 
                 'address'=>'required',
-                'bio'=>'required',
-                'job_dept'=>'required',
-                //'phone_number'=>'required|numeric|digits_between:10,10',
                 'phone_number'=>['required', 'numeric', 'regex:/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[0-9]\d{9}$/'],
+                'job_dept'=>'required',
+                'bio'=>'required',
+               //'phone_number'=>'required|numeric|digits_between:10,10',
+                
 
             ]);
 
@@ -38,13 +39,16 @@ class UserController extends Controller
         Profile::where('user_id',$user_id)->update([
                          
                 'address'=>request('address'),
+                'phone_number'=>request('phone_number'),
+                'job_dept'=>request('job_dept'),
                 'experience'=>request('experience'),
-                'bio'=>request('bio'),
-                'phone_number'=>request('phone_number')
+                'bio'=>request('bio')
+                
              ]);
-        User::where('id',$user_id)->update([
+
+        /*User::where('id',$user_id)->update([
               'job_dept' => request('job_dept'),
-          ]);
+          ]);*/
         
              return redirect()->back()->with('message','Profile Sucessfully Updated!');
 

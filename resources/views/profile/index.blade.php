@@ -80,9 +80,15 @@
                                       
                     </div>
 
+                    {{--<select class="form-control" name="type">
+                        <option value="fulltime"{{$job->type=='fulltime'?'selected':''}}>fulltime</option>
+                        <option value="partime"{{$job->type=='partime'?'selected':''}}>partime</option>
+                        <option value="casual"{{$job->type=='casual'?'selected':''}}>casual</option>
+                    </select>--}}
+
                     <div class="form-group">
                         <label for="job_dept">Previous Job Department</label>
-                        <input class="form-control" name="job_dept" list="job_dept">
+                        <input class="form-control" value="{{Auth::user()->profile->job_dept}}" name="job_dept" list="job_dept">
                             <datalist id="job_dept">
                                 <option value="Accounting">
                                 <option value="Application Programming">
@@ -136,40 +142,19 @@
                         
                     </div>
 
-                    <!--   
-                            <input name="days" list="days">
-                                <datalist id="days">
-                                <option value="Sunday">
-                                <option value="Monday">
-                                <option value="Tuesday">
-                                <option value="Wednesday">
-                                <option value="Thursday">
-                                <option value="Friday">
-                                <option value="Saturday"> 
-                                </datalist>
-
-                                <input list="job_dept">
-
-                                <datalist id="job_dept">
-                                <option value="Internet Explorer">
-                                <option value="Firefox">
-                                <option value="Chrome">
-                                <option value="Opera">
-                                <option value="Safari">
-                                </datalist>
-                    -->
 
                     <div class="form-group">
-                        <label for="">Experience Details</label>
-                        <textarea name="experience" class="form-control"> {{Auth::user()->profile->experience}} </textarea>
-                        @if($errors->has('experience'))
-                            <div class="error" style="color: red;">{{$errors->first('experience')}}</div>
-                        @endif
-                    </div>
+                        <label for="experience">Experience Details: </label>
+                        <select name="experience" class="form-control">
+                             @for ($i = 0; $i <= 50; $i++)
+                            <option value="{{ $i }}" {{Auth::user()->profile->experience==$i?'selected':''}}>{{ $i }} &nbsp; year(s)</option>
+                            @endfor
+                        </select>
+                        </div>
 
                     <div class="form-group">
                         <label for="">Bio</label>
-                        <textarea name="bio" class="form-control">{{Auth::user()->profile->bio}}</textarea>
+                        <textarea name="bio" class="form-control" rows="6" cols="80" style="width:100">{{Auth::user()->profile->bio}}</textarea>
                         @if($errors->has('bio'))
                         <div class="error" style="color: red;">{{$errors->first('bio')}}</div>
                         @endif
@@ -191,8 +176,8 @@
                 <p><strong>Address:</strong> &nbsp; &nbsp; {{Auth::user()->profile->address}}</p>
                 <p><strong>Phone:</strong> &nbsp; &nbsp; {{Auth::user()->profile->phone_number}}</p>
                 <p><strong>Gender:</strong> &nbsp; &nbsp; {{Auth::user()->profile->gender}}</p>
-                <p><strong>Previous Job Department:</strong><br>{{Auth::user()->job_dept}}</p>
-                <p><strong>Experience:</strong> &nbsp; &nbsp; {{Auth::user()->profile->experience}}</p>
+                <p><strong>Previous Job Department:</strong><br>{{Auth::user()->profile->job_dept}}</p>
+                <p><strong>Experience:</strong> &nbsp; &nbsp; {{Auth::user()->profile->experience}} &nbsp; year(s)</p>
                 <p><strong>Bio:</strong> &nbsp; &nbsp; {{Auth::user()->profile->bio}}</p>
                 <p><strong>Member since:</strong> &nbsp; &nbsp; {{date('F d Y',strtotime(Auth::user()->created_at))}}</p>
 
@@ -251,3 +236,62 @@
     </div>
 </div>
 @endsection
+
+
+                    <!--   
+                            <input name="days" list="days">
+                                <datalist id="days">
+                                <option value="Sunday">
+                                <option value="Monday">
+                                <option value="Tuesday">
+                                <option value="Wednesday">
+                                <option value="Thursday">
+                                <option value="Friday">
+                                <option value="Saturday"> 
+                                </datalist>
+
+                                <input list="job_dept">
+
+                                <datalist id="job_dept">
+                                <option value="Internet Explorer">
+                                <option value="Firefox">
+                                <option value="Chrome">
+                                <option value="Opera">
+                                <option value="Safari">
+                                </datalist>
+
+                                <input list="cars" value="BMW" class="form-control" name="caBrands" style="width:300px;">
+                                    <datalist id="cars">
+                                    <option value="BMW">
+                                    <option value="Toyota">
+                                    <option value="Mitsubishi">
+                                -->
+
+                                
+
+                    {{--<div class="form-group">
+                        <label for="">Experience Details</label>
+                        <textarea name="experience" class="form-control"> {{Auth::user()->profile->experience}} </textarea>
+                        @if($errors->has('experience'))
+                            <div class="error" style="color: red;">{{$errors->first('experience')}}</div>
+                        @endif
+                    </div>--}}
+                   
+
+                    {{--<div class="form-group">
+                        <label for="job_dept">Previous Job Department</label>
+                        <input class="form-control" value="{{Auth::user()->profile->job_dept}}" name="job_dept" list="job_dept">
+                            <datalist id="job_dept">
+                                
+                    <div class="form-group">
+                    <label for="type">Type:</label>
+                    <select class="form-control" name="type">
+                        <option value="fulltime"{{$job->type=='fulltime'?'selected':''}}>fulltime</option>
+                        <option value="partime"{{$job->type=='partime'?'selected':''}}>partime</option>
+                        <option value="casual"{{$job->type=='casual'?'selected':''}}>casual</option>
+                    </select>
+                    </div>--}}
+                   
+                    {{--@for ($i = 0; $i < 10; $i++)
+                    The current value is {{ $i }}
+                    @endfor--}}
