@@ -1,11 +1,5 @@
 <p align="center"><img src="https://github.com/Monika171/OutplacementHeroes/blob/master/public/profile_pic/oph.jpeg" width="400"></p>
 
-
-## Wooohoo
-
-Now you can Check our project at https://morning-sea-84238.herokuapp.com/
-
-
 ## Status
 
 Note:
@@ -22,7 +16,7 @@ _Thanks_
 ~~[AssignedTo: Priti]
 
 -SEPARATING EMPLOYERS: who shares data of fired employees.
-~~[AssignedTo: Ritika]
+~~[To be assigned]
 
 
 Other pages (and more to be added later):
