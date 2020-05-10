@@ -11,12 +11,12 @@
         @guest
         @if (Route::has('register'))
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">{{ __('Job Seeker Register') }}</a>
+                <a class="nav-link" href="{{ route('register') }}">{{ __('Job Seeker Sign Up') }}</a>
             </li>
         @endif
 
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('employer.register') }}">{{ __('Employer Register') }}</a>
+            <a class="nav-link" href="{{ route('employer.register') }}">{{ __('Employer Sign Up') }}</a>
         </li>
 
         <li class="nav-item"><a href="{{route('company')}}" class="nav-link">Companies</a></li>
