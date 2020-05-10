@@ -11,14 +11,10 @@
   <body>
     
     @include('partials.nav')  
-    <!-- END nav -->
-    
+    <!-- END nav -->  
     @include('partials.hero') 
-
     @include('partials.category')
-
     @include('partials.blog')
- 
     @include('partials.footer')	
 		
     
