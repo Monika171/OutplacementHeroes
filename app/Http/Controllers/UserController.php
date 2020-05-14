@@ -11,8 +11,12 @@ use Auth;
 class UserController extends Controller
 {
   public function __construct(){
+   
     $this->middleware(['seeker','verified']);
-}  
+   //$this->middleware(['seeker','verified'], ['only' => ['index','store','coverletter','resume','profile_pic']]);
+   //$this->middleware(['employer','verified'], ['only' => ['show_profile']]);
+
+    }  
   
   
   public function index(){
@@ -25,11 +29,14 @@ class UserController extends Controller
 
           $this->validate($request,[
 
+                'location'=>'required',
                 'address'=>'required',
                 'phone_number'=>['required', 'numeric', 'regex:/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[0-9]\d{9}$/'],
                 'job_dept'=>'required',
-                'bio'=>'required',
-               //'phone_number'=>'required|numeric|digits_between:10,10',
+                'company'=>'required',
+                'designation'=>'required',
+                'p_location'=>'required',
+                //'phone_number'=>'required|numeric|digits_between:10,10',
                 
 
             ]);
@@ -37,11 +44,15 @@ class UserController extends Controller
         $user_id = auth()->user()->id;
    		
         Profile::where('user_id',$user_id)->update([
-                         
+                'location'=>request('location'),        
                 'address'=>request('address'),
                 'phone_number'=>request('phone_number'),
                 'job_dept'=>request('job_dept'),
                 'experience'=>request('experience'),
+                'company'=>request('company'),
+                'designation'=>request('designation'),
+                'p_location'=>request('p_location'),
+                'salary'=>request('salary'),
                 'bio'=>request('bio')
                 
              ]);
@@ -114,5 +125,21 @@ class UserController extends Controller
    }
 
 
+
+   public function show_profile($id){
+
+    $user = User::findOrFail($id);
+    return view('listseeker.show', compact('user'));
+    //return view('welcome',compact('jobs', 'companies'));
+
+  }
+  
+   /*public function show_profile(){
+
+    $seekers = Profile::get();
+
+    return view('listseeker.index', compact('seekers'));
+
+   }*/
 
 }

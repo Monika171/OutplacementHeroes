@@ -8,88 +8,94 @@
 
     <div class="collapse navbar-collapse" id="ftco-nav">
       <ul class="navbar-nav ml-auto">
-        @guest
-        @if (Route::has('register'))
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">{{ __('Job Seeker Sign Up') }}</a>
-            </li>
-        @endif
-
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('employer.register') }}">{{ __('Employer Sign Up') }}</a>
-        </li>
-
         <li class="nav-item"><a href="{{route('company')}}" class="nav-link">Companies</a></li>
+        @guest
+            @if (Route::has('register'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Job Seeker Sign Up') }}</a>
+                </li>
+            @endif
 
-<li class="nav-item">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-Login
-</button>
-        </li>
-    @else
-        <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                
-                                                   
-                @if(Auth::user()->user_type=='employer')
-                {{Auth::user()->company->cname}}
-                
-            
-                @elseif(Auth::user()->user_type=='seeker')
-                    {{Auth::user()->name}}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('employer.register') }}">{{ __('Employer Sign Up') }}</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('volunteer.register') }}">{{ __('Volunteer Sign Up') }}</a>
+            </li>
+
+            <li class="nav-item">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                Login
+                </button>
+            </li>
+        @else
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    
+                                                    
+                    @if(Auth::user()->user_type=='employer')
+                        {{Auth::user()->company->cname}}
+                        
+                    
+                    @elseif(Auth::user()->user_type=='seeker')
+                            {{Auth::user()->name}}
+
+                    @elseif(Auth::user()->user_type=='volunteer')
+                            {{Auth::user()->name}}
+
                     @else
-                    {{Auth::user()->name}}
-                @endif
-
-                
-                
-                
-                <span class="caret"></span>
-            </a>
-
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-               
-            @if(Auth::user()->user_type=='employer')
-            <a class="dropdown-item" href="{{ route('company.view') }}"
-                   >
-                    {{ __('Company') }}
-                </a>
-           
-
-            @elseif(Auth::user()->user_type=='seeker')
-
-
-                <a class="dropdown-item" href="{{route('user.profile')}}"
-                   >
-                    {{ __('Profile') }}
+                            {{Auth::user()->name}}
+                    @endif
+        
+                    <span class="caret"></span>
                 </a>
 
-                @else
-
-
-                <a class="dropdown-item" href="/dashboard"
-                   >
-                    {{ __('Dashboard') }}
-                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                 
+                    @if(Auth::user()->user_type=='employer')
+                        <a class="dropdown-item" href="{{route('company.index',[Auth::user()->company->id,Auth::user()->company->slug])}}"
+                        >
+                            {{ __('My Company') }}
+                        </a>
+                    
+                          
+                    @elseif(Auth::user()->user_type=='seeker')
 
-                
-             @endif
+                        <a class="dropdown-item" href="{{route('user.show',[Auth::user()->id])}}"
+                        >
+                            {{ __('Profile') }}
+                        </a>
 
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
+                        @elseif(Auth::user()->user_type=='volunteer')
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </div>
-        </li>
-    @endguest
+                        <a class="dropdown-item" href="{{route('volunteer.profile')}}"
+                        >
+                            {{ __('Profile') }}
+                        </a>
+
+                        @else
+
+                        <a class="dropdown-item" href="/dashboard"
+                        >
+                            {{ __('Dashboard') }}
+                        </a>
+                        
+                    @endif
+
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                </div>
+            </li>
+        @endguest
 
       </ul>
     </div>

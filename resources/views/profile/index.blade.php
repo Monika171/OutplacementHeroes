@@ -62,7 +62,19 @@
                 <div class="card-header">Update Profile</div>
                 <form action="{{route('profile.create')}}" method="POST">@csrf
 
+
+                <!--location needs dropdown list to choose from-->
                 <div class="card-body">
+                    <div class="form-group">
+                        <label for="">Current Location</label>
+                        <input type="text" class="form-control" name="location" value="{{Auth::user()->profile->location}}">
+                        @if($errors->has('location'))
+                        <div class="error" style="color: red;">{{$errors->first('location')}}</div>
+                        @endif
+                    </div>
+
+
+                
                     <div class="form-group">
                         <label for="">Address</label>
                         <input type="text" class="form-control" name="address" value="{{Auth::user()->profile->address}}">
@@ -150,34 +162,92 @@
                             <option value="{{ $i }}" {{Auth::user()->profile->experience==$i?'selected':''}}>{{ $i }} &nbsp; year(s)</option>
                             @endfor
                         </select>
+
+                        @if($errors->has('experience'))
+                        <div class="error" style="color: red;">{{$errors->first('experience')}}</div>
+                        @endif
+
+                        </div>
+
+
+                        
+                            <div class="form-group">
+                            <label for="">Recent Company Name</label>
+                            <input type="text" class="form-control" name="company" value="{{Auth::user()->profile->company}}">
+                            @if($errors->has('company'))
+                            <div class="error" style="color: red;">{{$errors->first('company')}}</div>
+                            @endif
+                            </div>
+
+                       
+                            <div class="form-group">
+                            <label for="">Designation in the last company</label>
+                            <input type="text" class="form-control" name="designation" value="{{Auth::user()->profile->designation}}">
+                            @if($errors->has('designation'))
+                            <div class="error" style="color: red;">{{$errors->first('designation')}}</div>
+                            @endif
+                        </div>
+
+                        <!--Needs dropdown list of states-->
+                        
+                            <div class="form-group">
+                            <label for="">Preferred Location</label>
+                            <input type="text" class="form-control" name="p_location" value="{{Auth::user()->profile->p_location}}">
+                            @if($errors->has('p_location'))
+                            <div class="error" style="color: red;">{{$errors->first('p_location')}}</div>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type">Salary Expected (per month in INR):</label>
+                            <select class="form-control" name="salary">
+                                <option value="5000-10000">5000-10000</option>
+                                <option value="10001-15000">10001-15000</option>
+                                <option value="15001-20000">15001-20000</option>
+                                <option value="20001-30000">20001-30000</option>
+                                <option value="30001-40000">30001-40000</option>
+                                <option value="40001-50000">40001-50000</option>
+                                <option value="50001-60000">50001-60000</option>
+                                <option value="60001-70000">60001-70000</option>
+                                <option value="70001-80000">70001-80000</option>
+                                <option value="80001-90000">80001-90000</option>
+                                <option value="90001-100000">90001-100000</option>
+                               <option value="100000 plus">100000 plus</option>
+                            </select>
                         </div>
 
                     <div class="form-group">
                         <label for="">Bio</label>
                         <textarea name="bio" class="form-control" rows="6" cols="80" style="width:100">{{Auth::user()->profile->bio}}</textarea>
-                        @if($errors->has('bio'))
-                        <div class="error" style="color: red;">{{$errors->first('bio')}}</div>
-                        @endif
                     </div>
 
                     <div class="form-group">
                         <button class="btn btn-success" type="submit">Edit & Update</button>
                     </div>
                 </div>
-            </div>
+        
+            </form>
+
         </div>
-    </form>
+</div>
+
+
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">About me</div>
                 <div class="card-body">
                 <p><strong>Name:</strong> &nbsp; &nbsp; {{Auth::user()->name}}</p>
                 <p><strong>Email:</strong> &nbsp; &nbsp; {{Auth::user()->email}}</p>
+                <p><strong>Current Location:</strong> &nbsp; &nbsp; {{Auth::user()->profile->location}}</p>
                 <p><strong>Address:</strong> &nbsp; &nbsp; {{Auth::user()->profile->address}}</p>
                 <p><strong>Phone:</strong> &nbsp; &nbsp; {{Auth::user()->profile->phone_number}}</p>
                 <p><strong>Gender:</strong> &nbsp; &nbsp; {{Auth::user()->profile->gender}}</p>
                 <p><strong>Previous Job Department:</strong><br>{{Auth::user()->profile->job_dept}}</p>
                 <p><strong>Experience:</strong> &nbsp; &nbsp; {{Auth::user()->profile->experience}} &nbsp; year(s)</p>
+                <p><strong>Previous Company:</strong><br>{{Auth::user()->profile->company}}</p>
+                <p><strong>Previous Designation:</strong><br>{{Auth::user()->profile->designation}}</p>
+                <p><strong>Preferred Location:</strong><br>{{Auth::user()->profile->p_location}}</p>
+                <p><strong>Salary Expected:</strong><br>{{Auth::user()->profile->salary}}</p>
                 <p><strong>Bio:</strong> &nbsp; &nbsp; {{Auth::user()->profile->bio}}</p>
                 <p><strong>Member since:</strong> &nbsp; &nbsp; {{date('F d Y',strtotime(Auth::user()->created_at))}}</p>
 
@@ -231,10 +301,12 @@
             </form>
 
 
-
+        </div></div>
         </div>
-    </div>
-</div>
+
+        <br>
+        <br>
+ 
 @endsection
 
 

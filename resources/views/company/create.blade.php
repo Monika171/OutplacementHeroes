@@ -104,10 +104,10 @@
                     
                     </div>
                                  
-                    {{--<div class="form-group">
-                        <label for="job_dept">Select Recruitment Category </label>
-                        <input class="form-control" name="job_dept" list="job_dept">
-                            <datalist id="job_dept">
+                    <div class="form-group">
+                        <label for="industry">Industry </label>
+                        <input class="form-control"  value="{{Auth::user()->company->industry}}" name="industry" list="industry">
+                            <datalist id="industry">
                                 <option value="Accounting">
                                 <option value="Application Programming">
                                 <option value="Analytics">
@@ -154,11 +154,11 @@
                                 <option value="Teacher">
                                 <option value="VLSI">
                             </datalist>
-                            @if($errors->has('job_dept'))
-                            <div class="error" style="color: red;">{{$errors->first('job_dept')}}</div>
+                            @if($errors->has('industry'))
+                            <div class="error" style="color: red;">{{$errors->first('industry')}}</div>
                            @endif
                         
-                    </div>--}}
+                    </div>
 
                     <div class="form-group">
                         <button class="btn btn-dark" type="submit">Edit & Update</button>
@@ -171,16 +171,18 @@
             <div class="card">
                 <div class="card-header">About Company</div>
                 <div class="card-body">
-                    <p><strong>Name:</strong> &nbsp; &nbsp;{{Auth::user()->company->cname}}</p>
+                    <p><strong>Company Name:</strong> &nbsp; &nbsp;{{Auth::user()->company->cname}}</p>
                     <p><strong>Address:</strong> &nbsp; &nbsp; {{Auth::user()->company->address}}</p>
-
+                    <p><strong>Email:</strong> &nbsp; &nbsp; {{Auth::user()->email}}</p>
+                    <p><strong>Authority Name:</strong> &nbsp; &nbsp; {{Auth::user()->name}}</p>
                     <p><strong>Phone:</strong> &nbsp; &nbsp; {{Auth::user()->company->phone}}</p>
 
                     {{--<p><strong>Currently Recruiting for:</strong> &nbsp; &nbsp; </strong><br> {{Auth::user()->job_dept}} Job Position</p>--}}
-
+                    <p><strong>Our slogan:</strong> &nbsp; &nbsp; {{Auth::user()->company->website}}</p>
+                    <p><strong>Description:</strong> &nbsp; &nbsp; {{Auth::user()->company->description}}</p>
+                    <p><strong>Industry:</strong><br>{{Auth::user()->company->industry}}</p>
                     <p><strong>Website:</strong> &nbsp; &nbsp; <a href="{{Auth::user()->company->website}}"> {{Auth::user()->company->website}}</a></p>
                     <p><strong>Company page:</strong> &nbsp; &nbsp;<a href="company/{{Auth::user()->company->slug}}">View</a></p>
-                    <p><strong>Our slogan:</strong> &nbsp; &nbsp; {{Auth::user()->company->website}}</p>
                    
 
                     

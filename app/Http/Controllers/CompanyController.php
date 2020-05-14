@@ -14,13 +14,12 @@ class CompanyController extends Controller
 {
 
     public function __construct(){
-        //$this->middleware('employer',['except'=>array('index','company')]);
         $this->middleware(['employer','verified'],['except'=>array('index','company')]);
     }
 
 
     public function index($id, Company $company){
-    	$jobs = Job::where('user_id',$id)->get();
+    	//$jobs = Job::where('user_id',$id)->get();
     	return view('company.index',compact('company'));
     }
 
@@ -40,7 +39,8 @@ class CompanyController extends Controller
             'phone'=>['required', 'numeric', 'regex:/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[0-9]\d{9}$/'],
             'website'=>'required',
             'description'=>'required',
-             ]);
+            'industry'=>'required',
+            ]);
 
         $user_id = auth()->user()->id;
         
@@ -49,7 +49,8 @@ class CompanyController extends Controller
             'phone'=>request('phone'),
             'website'=>request('website'),
             'slogan'=>request('slogan'),
-            'description'=>request('description')
+            'description'=>request('description'),
+            'industry'=>request('industry'),
         ]);
 
         /*User::where('id',$user_id)->update([

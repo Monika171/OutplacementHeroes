@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Job;
 use App\User;
+use App\Company;
 
 class HomeController extends Controller
 {
@@ -29,13 +30,31 @@ class HomeController extends Controller
     { 
         
         if(auth::user()->user_type=='employer'){
-        return redirect()->to('/company/create');
+            $id = auth()->user()->company->id;
+            $company = auth()->user()->company->slug;
+            
+            return redirect()->to('/company/'.$id.'/'.$company);
+            
+            //return redirect()->to('/company/create');
+            //redirect("/user/{$user->id}/profile");
         }
 
          
         if(auth::user()->user_type=='seeker'){
-            return redirect()->to('/user/profile');
+            $id = auth()->user()->id;
+            
+            return redirect()->to('/user/'.$id);
+
+
+            //return redirect()->to('/user/profile');
             }
+
+            if(auth::user()->user_type=='volunteer'){
+                $id = auth()->user()->id;
+                return redirect()->to('/volunteer/profile');
+                //return redirect()->to('/volunteer/'.$id);
+    
+                }
 
         $adminRole = Auth::user()->roles()->pluck('name');
             if($adminRole->contains('admin')){

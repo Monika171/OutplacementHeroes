@@ -27,7 +27,7 @@
                     <div class="col-md-4 p-4 mb-8 bg-white">
                             <article class="col-md-4 course-block course-block-lessons">
                                 @if(empty($company->logo))
-                                <img width="100" src="{{asset('profile_pic/logo.jpg')}}"class="card-img-top">
+                                <img width="100" src="{{asset('profile_pic/logo.jpg')}}" class="card-img-top">
 
                                 @else
                                 <img width="100" src="{{asset('uploads/logo')}}/{{$company->logo}}"class="card-img-top">
@@ -38,6 +38,8 @@
                                 <h5 class="card-title text-center">{{$company->cname}}</h5>
                         
                                 <center><a href="{{route('company.index',[$company->id,$company->slug])}}" class="btn btn-primary btn-sm">View Company</a></center>
+                            
+                               
                             </div>
                             </article>
                     </div>

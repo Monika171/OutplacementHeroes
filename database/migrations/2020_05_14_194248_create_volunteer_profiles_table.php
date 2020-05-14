@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompaniesTable extends Migration
+class CreateVolunteerProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,11 @@ class CreateCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('volunteer_profiles', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->string('cname');
-            $table->string('slug');
-            $table->string('address');
             $table->string('phone');
-            $table->string('website');
-            $table->string('logo');
-            $table->string('cover_photo');
-            $table->string('slogan');
-            $table->string('description');
+            $table->string('location');
             $table->string('industry');
             $table->timestamps();
         });
@@ -37,6 +30,6 @@ class CreateCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('volunteer_profiles');
     }
 }

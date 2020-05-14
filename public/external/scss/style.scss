@@ -702,6 +702,26 @@ h1, h2, h3, h4, h5,
 			}
 		}
 	}
+
+	.third-half{
+		width: 100%;
+		padding: 30px 15px;
+		@include media-breakpoint-up(md){
+			padding: 5% 13% 5% 5%;
+			width: 50%;
+		}
+		&.img{
+			display: block;
+			@include media-breakpoint-down(sm){
+				height: 300px;
+			}
+		}
+	}
+
+
+
+
+
 }
 
 //SERVICES
@@ -1835,3 +1855,5 @@ textarea.form-control {
     stroke-dashoffset: -136px;
   }
 }
+
+

@@ -7,7 +7,7 @@
             <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
                 <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                     <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Sign Up</span></p>
-                    <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hiring Employer </h1>
+                    <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Volunteer </h1>
                 </div>
             </div>
       </div>
@@ -25,25 +25,25 @@
 
           <div class="col-md-12 col-lg-8 mb-5">
           
-            <form method="POST" action="{{ route('emp.register') }}" class="p-5 bg-white">
+            <form method="POST" action="{{ route('vol.register') }}" class="p-5 bg-white">
                 @csrf
 
-                <input type="hidden" value="employer" name="user_type">
+                <input type="hidden" value="volunteer" name="user_type">
+           
                 <div class="form-group row">
             
-                    <div class="col-md-12">Company name</div>
+                    <div class="col-md-12">Name</div>
 
                     <div class="col-md-12">
-                        <input id="name" type="text" placeholder="Company name" class="form-control{{ $errors->has('cname') ? ' is-invalid' : '' }}" name="cname" value="{{ old('cname') }}" required autofocus>
+                        <input id="name" type="text" placeholder="Please enter your name here" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
-                        @if ($errors->has('cname'))
+                        @if ($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('cname') }}</strong>
+                                <strong>{{ $errors->first('name') }}</strong>
                             </span>
                         @endif
                     </div>
                 </div>
-
 
                 <div class="form-group row">
             
@@ -60,20 +60,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
-            
-                    <div class="col-md-12">Authority Name</div>
-
-                    <div class="col-md-12">
-                        <input id="name" type="text" placeholder="Please enter your name here" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                        @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
+          
 
 
                 <div class="form-group row">
@@ -103,7 +90,7 @@
 
       <div class="row form-group">
         <div class="col-md-12">
-          <input type="submit" value="Register as Employer" class="btn btn-primary  py-2 px-5">
+          <input type="submit" value="Register as Volunteer" class="btn btn-primary  py-2 px-5">
         </div>
       </div>
 

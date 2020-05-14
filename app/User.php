@@ -9,6 +9,7 @@ use App\Profile;
 use App\Company;
 use App\Job;
 use App\Role;
+use App\VolunteerProfile;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -54,5 +55,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Role::class);
     }
 
+
+    public function vprofile(){
+        return $this->hasOne(VolunteerProfile::class);
+    }
 
 }
