@@ -2,7 +2,7 @@
 
 
 ## Initial tasks:
--HIRING EMPLOYERS & JOBSEEKERS (sending notification carrying JD link, if latter is eligible).
+-HIRING EMPLOYERS & JOBSEEKERS (sending notification carrying JD link, if latter is eligible etc).
 ~~[AssignedTo: Monika]
 
 -VOLUNTEERS: seeker seeks assist, volunteer suggests (assists).
