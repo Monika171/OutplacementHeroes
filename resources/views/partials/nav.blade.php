@@ -1,13 +1,21 @@
 <!--<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm ftco_navbar ftco-navbar-light" id="ftco-navbar">-->
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container">
+
     <a href="/"><img src="{{asset('external/images/oph.png')}}" alt="" width="200" style="opacity: 0.9;"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="oi oi-menu"></span> Menu
     </button>
 
     <div class="collapse navbar-collapse" id="ftco-nav">
+        
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{session('error')}}
+    </div>
+    @endif
       <ul class="navbar-nav ml-auto">
+
         <li class="nav-item"><a href="{{route('company')}}" class="nav-link">Companies</a></li>
         @guest
             @if (Route::has('register'))
@@ -99,6 +107,7 @@
 
       </ul>
     </div>
+
   </div>
 </nav>
 

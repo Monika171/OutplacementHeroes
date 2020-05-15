@@ -14,6 +14,26 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        Role::truncate();
+
+        $adminRole = Role::create(['name'=>'admin']);
+        Role::create(['name'=>'seeker']);
+        Role::create(['name'=>'employer']); 
+        Role::create(['name'=>'volunteer']);
+        Role::create(['name'=>'semployer']);
+
+        $admin = User::create([
+            'name'=>'admin',
+            'user_type'=>'admin',
+            'email'=>'outplacementheroes@gmail.com',
+            'email_verified_at'=>NOW(),
+            'password'=>bcrypt('2020hired')
+            
+        ]);
+
+        $admin->roles()->attach($adminRole);
+
         //Category::truncate();
         // $this->call(UserSeeder::class);
         ////factory('App\User',20)->create();
@@ -34,21 +54,6 @@ class DatabaseSeeder extends Seeder
         foreach($categories as $category){
             Category::create(['name'=>$category]);
         }*/
-
-        Role::truncate();
-        $adminRole = Role::create(['name'=>'admin']);
-
-        $admin = User::create([
-            'name'=>'admin',
-            'user_type'=>'admin',
-            'email'=>'outplacementheroes@gmail.com',
-            'email_verified_at'=>NOW(),
-            'password'=>bcrypt('2020hired')
-            
-        ]);
-
-        $admin->roles()->attach($adminRole);
-
 
 
     }

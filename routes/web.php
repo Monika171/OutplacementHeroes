@@ -48,7 +48,6 @@ Route::post('user/coverletter','UserController@coverletter')->name('cover.letter
 Route::post('user/resume','UserController@resume')->name('resume');
 Route::post('user/profile_pic','UserController@profile_pic')->name('profile_pic');
 Route::get('/user/{id}','UserController@show_profile')->name('user.show');
-//Route::get('/user/{id}', ['uses' => UserController@show_profile, 'middleware' => 'OnlyEmployerAndOwner']);
 
 //employer
 Route::view('employer/register','auth.employer-register')->name('employer.register');
@@ -72,8 +71,10 @@ Route::get('/show_All','DashboardController@show_All')->name('post.show_All');
 
 
 //display all seekers
+
 Route::get('/seekers','SeekerController@index')->name('seeker.index');
 Route::get('/seeker/{id}','SeekerController@show_profile')->name('seeker.show');
+
 
 //volunteer
 Route::view('volunteer/register','auth.volunteer-register')->name('volunteer.register');

@@ -129,6 +129,12 @@ class UserController extends Controller
    public function show_profile($id){
 
     $user = User::findOrFail($id);
+
+    //Check for correct user
+    if(auth()->user()->id !== $user->id){
+      return redirect('/')->with('error','Unauthorised Page');
+    }
+
     return view('listseeker.show', compact('user'));
     //return view('welcome',compact('jobs', 'companies'));
 

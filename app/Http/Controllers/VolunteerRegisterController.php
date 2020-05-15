@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\VolunteerProfile;
+use App\Role;
 use Hash;
 
 class VolunteerRegisterController extends Controller
@@ -18,6 +19,8 @@ class VolunteerRegisterController extends Controller
             'email'=>'required|string|email|max:255|unique:users',
             'password'=>'required|string|min:8|confirmed'
         ]);
+
+        $volunteerRole = Role::where('name', 'volunteer')->first();
 
     	 $user =  User::create([
             'email' => request('email'),
@@ -31,7 +34,7 @@ class VolunteerRegisterController extends Controller
 
         ]);
 
-
+        $user->roles()->attach($volunteerRole->id);
         $user->sendEmailVerificationNotification();
 
        

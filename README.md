@@ -1,6 +1,13 @@
 <p align="center"><img src="https://github.com/Monika171/OutplacementHeroes/blob/master/public/profile_pic/oph.jpeg" width="400"></p>
 
 
+
+## IMPORTANT!!!
+
+after cloning (or updating), do go for:
+php artisan migrate:fresh
+php artisan db:seed
+
 ## Initial tasks:
 -HIRING EMPLOYERS & JOBSEEKERS (sending notification carrying JD link, if latter is eligible etc).
 ~~[AssignedTo: Monika]

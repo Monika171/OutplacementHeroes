@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Profile;
+use App\Role;
 
 class RegisterController extends Controller
 {
@@ -66,6 +67,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $seekerRole = Role::where('name', 'seeker')->first();
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -80,6 +83,8 @@ class RegisterController extends Controller
             'dob'=>request('dob')
 
         ]);
+
+        $user->roles()->attach($seekerRole->id);
         return $user;
 
     }

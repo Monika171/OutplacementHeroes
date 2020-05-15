@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\Role;
 use App\Company;
 use Hash;
 
@@ -19,6 +20,8 @@ class EmployerRegisterController extends Controller
             'password'=>'required|string|min:8|confirmed'
         ]);
 
+        $employerRole = Role::where('name', 'employer')->first();
+
     	 $user =  User::create([
             'email' => request('email'),
             'name' => request('name'),
@@ -31,6 +34,10 @@ class EmployerRegisterController extends Controller
                 'slug'=>str_slug(request('cname'))
 
             ]);
+
+        $user->roles()->attach($employerRole->id);
+        //$user->roles()->attach($employerRole);
+        //$user->attachRole($employerRole);
         $user->sendEmailVerificationNotification();
 
        

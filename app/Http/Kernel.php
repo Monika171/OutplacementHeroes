@@ -42,6 +42,12 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        'listseekers' => [
+            \App\Http\Middleware\Employer::class,
+            \App\Http\Middleware\Volunteer::class,
+        ],
+
     ];
 
     /**
@@ -62,11 +68,14 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'employer'=>'\App\Http\Middleware\Employer',
-        'seeker'=>'\App\Http\Middleware\Seeker',
-        'volunteer'=>'\App\Http\Middleware\Volunteer',
+        //'employer'=>'\App\Http\Middleware\Employer',
+        //'seeker'=>'\App\Http\Middleware\Seeker',
+        //'volunteer'=>'\App\Http\Middleware\Volunteer',
         'admin'=>'\App\Http\Middleware\Admin',
-        'profile.permit' => \App\Http\Middleware\OnlyEmployerAndOwner::class,
+        'employer'=>\App\Http\Middleware\Employer::class,
+        'seeker'=>\App\Http\Middleware\Seeker::class,
+        'volunteer'=>\App\Http\Middleware\Volunteer::class,
+        
 
     ];
 }
