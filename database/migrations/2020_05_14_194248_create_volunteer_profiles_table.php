@@ -16,9 +16,9 @@ class CreateVolunteerProfilesTable extends Migration
         Schema::create('volunteer_profiles', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->string('phone');
-            $table->string('location');
-            $table->string('industry');
+            $table->string('phone')->nullable();
+            $table->string('location')->nullable();
+            $table->string('industry')->nullable();
             $table->timestamps();
         });
     }
