@@ -60,8 +60,18 @@
         <h4 class="mb-3 mt-4">Experience:</h4>
         <p>{{$user->profile->experience}}</p>
 
-        <h4 class="mb-3 mt-4">Previous Job Department:</h4>
-        <p>{{$user->profile->job_dept}}</p>
+        <h4 class="mb-3 mt-4">Previous Company:</h4>
+        <p>{{$user->profile->company}}</p>
+
+        <h4 class="mb-3 mt-4">Previous Designation:</h4>
+        <p>{{$user->profile->designation}}</p>
+
+        <h4 class="mb-3 mt-4">Preferred Location:</h4>
+        <p>{{$user->profile->p_location}}</p>
+
+        <h4 class="mb-3 mt-4">Salary Expected:</h4>
+        <p>{{$user->profile->salary}}</p>
+
  
         <!--
         <div class="tag-widget post-tag-container mb-5 mt-5">
