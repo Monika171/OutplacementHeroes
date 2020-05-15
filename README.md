@@ -5,8 +5,8 @@
 ## IMPORTANT!!!
 
 after cloning (or updating), do go for:
-php artisan migrate:fresh
-php artisan db:seed
+"php artisan migrate:fresh" and 
+"php artisan db:seed"
 
 ## Initial tasks:
 -HIRING EMPLOYERS & JOBSEEKERS (sending notification carrying JD link, if latter is eligible etc).
