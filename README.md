@@ -4,9 +4,13 @@
 
 ## IMPORTANT!!!
 
-after cloning (or updating), do go for:
-"php artisan migrate:fresh" and 
-"php artisan db:seed"
+After cloning (or updating) modify .env file with your own database values& mailtrap values. Because a user can't proceed without email verification. Also do go for:
+
+"php artisan migrate:fresh" and
+"php artisan db:seed" and
+"php artisan storage:link"
+
+
 
 ## Initial tasks:
 -HIRING EMPLOYERS & JOBSEEKERS (sending notification carrying JD link, if latter is eligible etc).
