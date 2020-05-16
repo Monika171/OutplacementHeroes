@@ -52,6 +52,36 @@ class VolunteerController extends Controller
 
           }
 
+          public function show($id){
+            $user = User::findOrFail($id);
+
+            //Check for correct user
+            if(auth()->user()->id !== $user->id){
+              return redirect('/')->with('error','Unauthorised Page');
+            }
+        
+            return view('volunteer.show', compact('user'));
+            //return view('welcome',compact('jobs', 'companies'));
+    
+       }
+
+          public function listseekers(){
+
+            $seekers = Profile::get();
+        
+            return view('volunteer.dashboard', compact('seekers'));
+        
+           }
+        
+        
+           public function show_profile($id){
+        
+                $user = User::findOrFail($id);
+                return view('volunteer.seekerprofile', compact('user'));
+                //return view('welcome',compact('jobs', 'companies'));
+        
+           }
+
 
 
 }

@@ -71,10 +71,10 @@ Route::get('/show_All','DashboardController@show_All')->name('post.show_All');
 
 
 //display all seekers
-
-Route::get('/seekers','SeekerController@index')->name('seeker.index');
-Route::get('/seeker/{id}','SeekerController@show_profile')->name('seeker.show');
-
+//Route::group(['middleware' => 'check_role:employer' ], function() {
+    Route::get('/seekers','SeekerController@index')->name('seeker.index');
+    Route::get('/seeker/{id}','SeekerController@show_profile')->name('seeker.show');
+//});
 
 //volunteer
 Route::view('volunteer/register','auth.volunteer-register')->name('volunteer.register');
@@ -82,7 +82,10 @@ Route::post('volunteer/register','VolunteerRegisterController@volunteerRegister'
 
 Route::get('volunteer/profile','VolunteerController@index')->name('volunteer.profile');
 Route::post('user/volunteer/create','VolunteerController@store')->name('volunteer.store');
+Route::get('volunteer/{id}','VolunteerController@show')->name('volunteer.show');
 
+Route::get('/vseekers','VolunteerController@listseekers')->name('vseeker.index');
+Route::get('/vseeker/{id}','VolunteerController@show_profile')->name('vseeker.show');
 
 
 //Auth::routes();

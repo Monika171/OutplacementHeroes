@@ -75,6 +75,7 @@ class Kernel extends HttpKernel
         'employer'=>\App\Http\Middleware\Employer::class,
         'seeker'=>\App\Http\Middleware\Seeker::class,
         'volunteer'=>\App\Http\Middleware\Volunteer::class,
+        'check_role' => \App\Http\Middleware\CheckRole::class,
         
 
     ];

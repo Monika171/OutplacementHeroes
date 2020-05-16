@@ -51,7 +51,7 @@ class HomeController extends Controller
 
             if(auth::user()->user_type=='volunteer'){
                 $id = auth()->user()->id;
-                return redirect()->to('/volunteer/profile');
+                return redirect()->to('/vseekers');
                 //return redirect()->to('/volunteer/'.$id);
     
                 }

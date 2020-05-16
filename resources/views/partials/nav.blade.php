@@ -78,9 +78,14 @@
 
                         @elseif(Auth::user()->user_type=='volunteer')
 
-                        <a class="dropdown-item" href="{{route('volunteer.profile')}}"
+                        <a class="dropdown-item" href="{{route('volunteer.show',[Auth::user()->id])}}"
                         >
                             {{ __('Profile') }}
+                        </a>
+
+                        <a class="dropdown-item" href="{{route('vseeker.index')}}"
+                        >
+                            {{ __('Dashboard') }}
                         </a>
 
                         @else
