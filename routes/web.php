@@ -71,10 +71,10 @@ Route::get('/show_All','DashboardController@show_All')->name('post.show_All');
 
 
 //display all seekers
-//Route::group(['middleware' => 'check_role:employer' ], function() {
+Route::group(['middleware' => 'check_role:admin,employer' ], function() {
     Route::get('/seekers','SeekerController@index')->name('seeker.index');
     Route::get('/seeker/{id}','SeekerController@show_profile')->name('seeker.show');
-//});
+});
 
 //volunteer
 Route::view('volunteer/register','auth.volunteer-register')->name('volunteer.register');

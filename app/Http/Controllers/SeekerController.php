@@ -10,10 +10,10 @@ use Auth;
 class SeekerController extends Controller
 {
 
-    public function __construct(){
+    /*public function __construct(){
        $this->middleware(['employer','verified']);
         //$this->middleware('listseekers');
-    }
+    }*/
 
 
     
