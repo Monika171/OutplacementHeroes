@@ -1,4 +1,9 @@
 @extends('layouts.main')
+
+@section('select2css')
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css" rel="stylesheet" />
+
+@endsection
 @section('content')
 
 <div class="hero-wrap" style="height: 410px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
@@ -91,6 +96,16 @@
                         @endif
                                       
                     </div>
+
+                    <!--<div class="form-group">
+                        <label for="">Pillbox</label>
+                        <select class="js-example-basic-single" name="state">
+                            <option value="AL">Alabama</option>
+                            <option value="WY">Wyom</option>
+                            <option value="WY">W</option>
+                            <option value="WY">Wyoming</option>
+                          </select>                                      
+                    </div>-->
 
                     {{--<select class="form-control" name="type">
                         <option value="fulltime"{{$job->type=='fulltime'?'selected':''}}>fulltime</option>
@@ -229,6 +244,90 @@
             </form>
 
         </div>
+
+        <div class="card mb-0">
+            <div class="card-header">
+                <a class="card-title">
+                   <h5 class="d-inline-block h5 text-success font-weight-bold mb-0">Skills</h5>
+                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editskills{{$user->id}}">
+                    Edit
+                    </button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addskills{{$user->id}}">
+                        Add Skills
+                       </button>
+                </a>
+            </div>
+            <div class="card-body">
+              @foreach($user->skills as $skill)
+               <button type="button" class="btn btn-sm btn-info mt-1">{{$skill->skill}}</button>
+              @endforeach
+
+            </div>
+
+            <!-- Edit Skills Modal -->
+            <div class="modal fade" id="editskills{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                <form action="/profile/skills/edit" method="post">@csrf
+                 <div class="modal-dialog modal-lg" role="document">
+                   <div class="modal-content">
+                         <div class="modal-header">
+                           <h5 class="modal-title" id="exampleModalLabel">Edit Skills</h5>
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                           </button>
+                         </div>
+                         <div class="modal-body editskillsbody">
+                          <select class="form-control selectedskills" multiple="multiple" placeholder="Select State" name="skills[]">
+                             <option></option>
+                             @foreach($skills as $skill)
+                               <option value="{{$skill->id}}">{{$skill->skill}}</option>
+                             @endforeach
+                         </select>
+               
+                           </div>
+                           <div class="modal-footer">
+                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                             <button type="submit" class="btn btn-primary">Save changes</button>
+                           </div>
+                       </div>
+                   </div>
+                   </form>	
+                   </div>
+
+            <!-- Add Skills Modal -->
+            <div id="addskills{{$user->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                <form action="/profile/skills/store" method="post">@csrf
+                 <div class="modal-dialog modal-lg" role="document">
+                   <div class="modal-content">
+                         <div class="modal-header">
+                           <h5 class="modal-title" id="exampleModalLabel">Add Skills</h5>
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                           </button>
+                         </div>
+                         <div id="myModalABCD" class="modal-body addskillsbody">
+                         
+                           <div class="form-group col-xs-12">
+                                                                 
+                               <select class="form-control select2" multiple="multiple" placeholder="Select Skill" name="skills[]">
+                                 <option></option>
+                                 @foreach($skills as $skill)
+                                   <option value="{{$skill->id}}">{{$skill->skill}}</option>
+                                 @endforeach
+                               </select>
+                           </div>
+               
+                           </div>
+                           <div class="modal-footer">
+                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                             <button type="submit" class="btn btn-primary">Save changes</button>
+                           </div>
+                       </div>
+                   </div>
+                   </form>	
+                   </div>
+        </div>
 </div>
 
 
@@ -309,8 +408,29 @@
  
 @endsection
 
+@section('jsplugins')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
+ 
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $('.select2').css('width','100%');
+        $('.select2').select2({
+          //width: 'resolve', 
+          placeholder: "Please select Skills",
+          allowClear: true,
+
+        });
+
+        $('.selectedskills').select2().val({{ json_encode($user->skills()->allRelatedIds()) }}).trigger('change');
+    });
+    </script>
+@endsection
 
                     <!--   
+                        
                             <input name="days" list="days">
                                 <datalist id="days">
                                 <option value="Sunday">

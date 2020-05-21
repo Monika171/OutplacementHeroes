@@ -10,6 +10,7 @@ use App\Company;
 use App\Job;
 use App\Role;
 use App\VolunteerProfile;
+use App\Skill;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -58,6 +59,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function vprofile(){
         return $this->hasOne(VolunteerProfile::class);
+    }
+
+    function skills() {
+        return $this->belongsToMany('App\Skill')->withTimeStamps();
     }
 
 }

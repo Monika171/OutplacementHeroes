@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Profile;
 use App\User;
+use App\Skill;
 use Auth;
 
 
@@ -13,6 +14,7 @@ class UserController extends Controller
   public function __construct(){
    
     $this->middleware(['seeker','verified']);
+    
    //$this->middleware(['seeker','verified'], ['only' => ['index','store','coverletter','resume','profile_pic']]);
    //$this->middleware(['employer','verified'], ['only' => ['show_profile']]);
 
@@ -20,7 +22,23 @@ class UserController extends Controller
   
   
   public function index(){
-    	return view('profile.index');
+      //return view('profile.index');
+      
+
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        $skills = Skill::orderBy('skill', 'asc')->get();     
+        $profile = Profile::where('user_id', $user->id)->first();
+        $s= json_encode($user->skills()->allRelatedIds());
+        //dd($s);
+        //return $s;
+        /*$educations = Education::where('user_id', $user->id)
+                    ->orderBy('created_at', 'desc')
+                    ->get();
+        $works = Work::where('user_id', $user->id)
+                    ->orderBy('created_at', 'desc')
+                    ->get(); */
+        return view('profile.index', compact('user', 'profile', 'skills','s')); 
     }
 
     public function store(Request $request){

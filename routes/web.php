@@ -49,6 +49,10 @@ Route::post('user/resume','UserController@resume')->name('resume');
 Route::post('user/profile_pic','UserController@profile_pic')->name('profile_pic');
 Route::get('/user/{id}','UserController@show_profile')->name('user.show');
 
+// Skill Controller
+
+Route::post('/profile/skills/store', 'SkillController@storeSkill');
+Route::post('/profile/skills/edit', 'SkillController@editSkill');
 //employer
 Route::view('employer/register','auth.employer-register')->name('employer.register');
 Route::post('employer/register','EmployerRegisterController@employerRegister')->name('emp.register');
