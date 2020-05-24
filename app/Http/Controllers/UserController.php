@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\Profile;
 use App\User;
 use App\Skill;
+use App\Country;
+use App\State;
+use App\City;
+use App\Designation;
+use App\Industry;
 use Auth;
 
 
@@ -23,68 +28,109 @@ class UserController extends Controller
   
   public function index(){
       //return view('profile.index');
-      
-
+    
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
         $skills = Skill::orderBy('skill', 'asc')->get();     
         $profile = Profile::where('user_id', $user->id)->first();
-        $s= json_encode($user->skills()->allRelatedIds());
-        //dd($s);
-        //return $s;
+        $countries = Country::all()->pluck('name','id');
+        
+        if($profile->state){
+        $s = State::where('name', $profile->state)->first();
+        $s_id = $s->id;}
+        else {
+          $s_id = "";
+        }
+
+        if($profile->city){
+        $c = City::where('name', $profile->city)->first();
+        $c_id = $c->id;}
+        else {
+          $c_id = "";
+        }
+
+        $preferred_location = City::where('country_id','101')->pluck('name');
+        $recent_designation = Designation::all()->pluck('designation');
+
+        //dd($recent_designation);
         /*$educations = Education::where('user_id', $user->id)
                     ->orderBy('created_at', 'desc')
                     ->get();
         $works = Work::where('user_id', $user->id)
                     ->orderBy('created_at', 'desc')
                     ->get(); */
-        return view('profile.index', compact('user', 'profile', 'skills','s')); 
+        return view('profile.index', compact('user', 'profile', 'skills','countries','preferred_location','s_id','c_id','recent_designation')); 
     }
 
     public function store(Request $request){
+      $this->validate($request,[
 
-
-
-          $this->validate($request,[
-
-                'location'=>'required',
-                'address'=>'required',
-                'phone_number'=>['required', 'numeric', 'regex:/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[0-9]\d{9}$/'],
-                'job_dept'=>'required',
-                'company'=>'required',
-                'designation'=>'required',
-                'p_location'=>'required',
-                //'phone_number'=>'required|numeric|digits_between:10,10',
+        'phone_number'=>['required', 'numeric', 'regex:/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[0-9]\d{9}$/'],
+        'address_line1'=>'required',
+        'country'=>'required',
+        'state'=>'required',
+        'city'=>'required',
+        'pincode'=>'required|numeric|digits_between:6,6',
+        'experience_years'=>'required',
+        'recent_company' => 'sometimes',   
+        'start_date' => 'required_with:recent_company',
+        'industry' => 'required_with:recent_company',
+        'currently_working_here' => 'required_without_all:fresher,end_date',
+        'salary_in_thousands'=>'numeric|digits_between:4,5|nullable', 
+         //'recent_designation' => 'required_with:recent_company',           
                 
+                //'phone_number'=>'required|numeric|digits_between:10,10',
+        ]);
+        
+        $fresher = request('fresher');
+        $ed = request('end_date');
+        $cw = request('currently_working_here');
 
-            ]);
+        if($ed){
+          // dd($end_date);
+          $end_date = $ed;
+        }
+        else{
+          $end_date = $cw;
+        }
 
         $user_id = auth()->user()->id;
+
+        $country = Country::where('id',request('country'))->first();
+        $state = State::where('id',request('state'))->first();
+        $city = City::where('id',request('city'))->first();
    		
         Profile::where('user_id',$user_id)->update([
-                'location'=>request('location'),        
-                'address'=>request('address'),
                 'phone_number'=>request('phone_number'),
-                'job_dept'=>request('job_dept'),
-                'experience'=>request('experience'),
-                'company'=>request('company'),
-                'designation'=>request('designation'),
-                'p_location'=>request('p_location'),
-                'salary'=>request('salary'),
-                'bio'=>request('bio')
+                'address_line1'=>request('address_line1'),        
+                'address_line2'=>request('address_line2'),
+                'country'=>$country->name,
+                'state'=>$state->name,
+                'city'=>$city->name,
+                'pincode'=>request('pincode'),
+                'experience_years'=>request('experience_years'),
+                'experience_months'=>request('experience_months'),
+                'recent_company'=>request('recent_company'),
+                'recent_designation'=>request('recent_designation'),
+                'start_date'=>request('start_date'),
+                'end_date'=>$end_date,
+                'function'=>request('function'),
+                'industry'=>request('industry'),
+                'preferred_location'=>request('preferred_location'),
+                'salary_in_lakhs'=>request('salary_in_lakhs'),
+                'salary_in_thousands'=>request('salary_in_thousands'),
+                'expected_ctc'=>request('expected_ctc')
+                
                 
              ]);
-
-        /*User::where('id',$user_id)->update([
-              'job_dept' => request('job_dept'),
-          ]);*/
         
              return redirect()->back()->with('message','Profile Sucessfully Updated!');
+         
 
             }
 
 
-            public function coverletter(Request $request){
+            /*public function coverletter(Request $request){
                 $this->validate($request,[
                     'cover_letter'=>'required|mimes:pdf,doc,docx|max:20000'
                 ]);
@@ -94,19 +140,11 @@ class UserController extends Controller
                     Profile::where('user_id',$user_id)->update([
                       'cover_letter'=>$cover
                     ]);
-
-                    /*$cover = $request->file('cover_letter')->storeAs('OPH'.time(), $request->user()->id)->store('public/files');
-
-                    Profile::where('user_id',$user_id)->update([
-                      'cover_letter'=>$cover
-                    ]);*/
-                
-                                 
-                      
+    
                 return redirect()->back()->with('message','Cover letter Sucessfully Updated!');
         
               
-           }
+           }*/
 
            public function resume(Request $request){
             $this->validate($request,[
@@ -142,6 +180,25 @@ class UserController extends Controller
  
    }
 
+   public function getStates($id)
+	{
+		$states = State::where('country_id',$id)->pluck('name','id',);
+		
+		//$states = State::where('country_id',$id)->pluck('name','id')->orderBy('name','asc')->get();
+		return json_encode($states);
+		
+		
+	}
+	
+		public function getCities($id)
+	{
+		$cities = City::where('state_id',$id)->pluck('name','id');
+		return json_encode($cities);
+		
+		
+	}
+
+
 
 
    public function show_profile($id){
@@ -157,13 +214,6 @@ class UserController extends Controller
     //return view('welcome',compact('jobs', 'companies'));
 
   }
-  
-   /*public function show_profile(){
 
-    $seekers = Profile::get();
-
-    return view('listseeker.index', compact('seekers'));
-
-   }*/
 
 }

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class VolunteerProfile extends Model
 {
     protected $fillable = [
-        'user_id', 'phone','location','industry'
+        'user_id', 'phone','location','industry',
     ];
 
 

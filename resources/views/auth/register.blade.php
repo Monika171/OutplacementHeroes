@@ -66,11 +66,11 @@
                     <div class="col-md-12">Date of Birth</div>
 
                     <div class="col-md-12">
-                        <input type="text" id="datepicker" placeholder="date of birth" class="form-control @error('dob') is-invalid @enderror" name="dob" value="{{ old('dob') }}" required>
+                        <input type="text" id="date_dob" placeholder="date of birth" class="form-control datepicker @error('dob') is-invalid @enderror" name="dob" value="{{ old('dob') }}" required>
 
-                        @if ($errors->has('dob"'))
+                        @if ($errors->has('dob'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('dob"') }}</strong>
+                                <strong>{{ $errors->first('dob') }}</strong>
                             </span>
                         @endif
                     </div>

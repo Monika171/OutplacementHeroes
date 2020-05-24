@@ -48,6 +48,8 @@ Route::post('user/coverletter','UserController@coverletter')->name('cover.letter
 Route::post('user/resume','UserController@resume')->name('resume');
 Route::post('user/profile_pic','UserController@profile_pic')->name('profile_pic');
 Route::get('/user/{id}','UserController@show_profile')->name('user.show');
+Route::get('/getStates/{id}', 'UserController@getStates');
+Route::get('/getCities/{id}', 'UserController@getCities');
 
 // Skill Controller
 

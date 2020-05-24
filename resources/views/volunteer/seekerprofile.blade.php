@@ -41,36 +41,56 @@
                           
                         </div>
                         {{--<h3 class="heading">{{$user->name}}</h3>--}}
-                        <h3 class="heading">Gender:</strong> &nbsp; &nbsp; {{$user->profile->gender}}</h3>
-                        <h3 class="heading">Email:</strong> &nbsp; &nbsp; {{$user->email}}</h3>
-                        <h3 class="heading">Phone:</strong> &nbsp; &nbsp; {{$user->profile->phone_number}}</h3>
-                        <h3 class="heading">Address:</strong> &nbsp; &nbsp; {{$user->profile->address}}</h3>
+                        <h3 class="heading">Gender:&nbsp; &nbsp; {{$user->profile->gender}}</h3>
+                        <h3 class="heading">Date of Birth: &nbsp; &nbsp; {{$user->profile->dob}}</h3>
+                        <h3 class="heading">Email:&nbsp; &nbsp; {{$user->email}}</h3>
+                        <h3 class="heading">Phone:&nbsp; &nbsp; {{$user->profile->phone_number}}</h3>
+                        <h3 class="heading">Address:</strong> &nbsp; &nbsp; {{$user->profile->address_line1}}</h3>
+                        <h3 class="heading">{{$user->profile->address_line2}}</h3>
+                        <h3 class="heading">{{$user->profile->city_id}},&nbsp; &nbsp;{{$user->profile->state_id}}</h3>
+                        <h3 class="heading">Pincode:&nbsp; &nbsp; {{$user->profile->pincode}}</h3>
                       
                     </div>
                     </div>
                   
             </div>
 
-        <div class="col-md-8 ftco-animate">
-        <h2 class="mb-3">{{$user->name}}</h2>
-        <p>{{$user->profile->bio}}</p>
-        <h4 class="mb-3 mt-5">Previous Job Department:</h4>
-        <p>{{$user->profile->job_dept}}</p>
 
-        <h4 class="mb-3 mt-4">Experience:</h4>
-        <p>{{$user->profile->experience}}</p>
-
-        <h4 class="mb-3 mt-4">Previous Company:</h4>
-        <p>{{$user->profile->company}}</p>
-
-        <h4 class="mb-3 mt-4">Previous Designation:</h4>
-        <p>{{$user->profile->designation}}</p>
-
-        <h4 class="mb-3 mt-4">Preferred Location:</h4>
-        <p>{{$user->profile->p_location}}</p>
-
-        <h4 class="mb-3 mt-4">Salary Expected (per month in INR):</h4>
-        <p>{{$user->profile->salary}}</p>
+            <div class="col-md-8 ftco-animate">
+              <h2 class="mb-3">{{$user->name}}</h2>
+              
+              <h4 class="mb-3 mt-5">Experience:<h4>
+              <p>{{$user->profile->experience_years}}&nbsp; year(s)
+                &nbsp; &nbsp; {{$user->profile->experience_months}} &nbsp; months(s)</p>
+      
+              <h4 class="mb-3 mt-4">Current/Previous Company:</h4>
+              <p>{{$user->profile->recent_company}}</p>
+      
+              <h4 class="mb-3 mt-4">Current/Previous Designation:</h4>
+              <p>{{$user->profile->recent_designation}}</p>
+      
+              <h4 class="mb-3 mt-4">Start Date:</h4>
+              <p>{{$user->profile->start_date}}</p>
+              
+              <h4 class="mb-3 mt-5"> End Date:</h4>
+              <p>{{$user->profile->end_date}}</p>
+      
+              <h4 class="mb-3 mt-4">Current Function:</h4>
+              <p>{{$user->profile->function}}</p>
+      
+              <h4 class="mb-3 mt-4">Current Industry:</h4>
+              <p>{{$user->profile->industry}}</p>
+      
+              <h4 class="mb-3 mt-4">Current CTC:</h4>
+              <p>{{$user->profile->salary_in_lakhs}}&nbsp;Lakh(s)
+                &nbsp;&nbsp;{{$user->profile->salary_in_thousands}}&nbsp; Thousand(s)</p>
+      
+              <h4 class="mb-3 mt-4">Expected CTC:</h4>
+              <p>{{$user->profile->expected_ctc}}&nbsp;Lakh(s)</p>
+      
+              <h4 class="mb-3 mt-4">Preferred Location:</h4>
+              <p>{{$user->profile->preferred_location}}</p>
+      
 
  
         <!--

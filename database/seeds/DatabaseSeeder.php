@@ -5,7 +5,6 @@ use App\User;
 use App\Profile;
 use App\Company;
 use App\VolunteerProfile;
-//use Hash;
 use App\Role;
 //use App\Category;
 

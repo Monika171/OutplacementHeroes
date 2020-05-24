@@ -8,12 +8,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="ftco-nav">
-        
-    @if(session('error'))
-    <div class="alert alert-danger">
-        {{session('error')}}
-    </div>
-    @endif
+        {{--@include('inc.messages')--}} 
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item"><a href="{{route('company')}}" class="nav-link">Companies</a></li>

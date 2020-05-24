@@ -22,7 +22,7 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-3">
+        <div class="col-md-3 px-4">
             @if(empty(Auth::user()->profile->profile_pic))
             <img src="{{asset('profile_pic/man.jpg')}}" width="100" style="width: 100%;">
             @else
@@ -39,7 +39,7 @@
                     <div class="card-body">
                         <input type="file" class="form-control" name="profile_pic">
                         <br>
-                        <button class="btn btn-success float-right" type="submit">Update</button>
+                        <button class="btn btn-info btn-sm float-right" type="submit">Update</button>
                     
                         @if($errors->has('profile_pic'))
                             <div class="error" style="color: red;">{{$errors->first('profile_pic')}}</div>
@@ -48,13 +48,67 @@
                 </div>
             </form>
     
+            
+            <br>
+            <form action="{{route('resume')}}" method="POST" enctype="multipart/form-data">@csrf
+            <div class="card">
+                <div class="card-header">Update Resume</div>
+                <div class="card-body">
+                    <input type="file" class="form-control" name="resume">
+                    <br>
+                    <button class="btn btn-info btn-sm float-right" type="submit">Update</button>
+                
+                @if($errors->has('resume'))
+                    <div class="error" style="color: red;">{{$errors->first('resume')}}</div>
+                @endif
+                
+                </div>
+            </div>
+            </form>
 
+            <br>
+            <br>
 
-
-        
+            <div class="card">
+                <div class="card-header">About me(preview)</div>
+                <div class="card-body">
+                @if(!empty(Auth::user()->profile->resume))
+                    <p><a href="{{Storage::url(Auth::user()->profile->resume)}}">Resume</a></p>
+                @else
+                    <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 18px;">Please upload resume</p>
+                @endif
+               
+                <p><strong>Member since:</strong> &nbsp; &nbsp; {{date('F d Y',strtotime(Auth::user()->created_at))}}</p>
+                <p><strong>Name:</strong> &nbsp; &nbsp; {{Auth::user()->name}}</p>
+                <p><strong>Gender:</strong> &nbsp; &nbsp; {{Auth::user()->profile->gender}}</p>
+                <p><strong>Date of Birth:</strong> &nbsp; &nbsp; {{Auth::user()->profile->dob}}</p>
+                <p><strong>Email:</strong> &nbsp; &nbsp; {{Auth::user()->email}}</p>
+                <p><strong>Phone:</strong> &nbsp; &nbsp; {{Auth::user()->profile->phone_number}}</p>
+                <p><strong>Address:</strong> &nbsp; &nbsp; {{Auth::user()->profile->address_line1}},
+                {{Auth::user()->profile->address_line2}},
+                {{Auth::user()->profile->city}},&nbsp; &nbsp;{{Auth::user()->profile->state}},
+                &nbsp;&nbsp;{{Auth::user()->profile->country}}</p>
+                <p>Pincode:&nbsp; &nbsp; {{Auth::user()->profile->pincode}}</p>
+                <p><strong>Experience:</strong> &nbsp; &nbsp;<br>
+                    {{Auth::user()->profile->experience_years}}year(s)
+                    &nbsp;{{Auth::user()->profile->experience_months}}months(s)</p>
+                <p><strong>Current/Previous Company:</strong><br>{{Auth::user()->profile->recent_company}}</p>
+                <p><strong>Current/Previous Designation:</strong><br>{{Auth::user()->profile->recent_designation}}</p>
+                <p><strong>Start Date:</strong><br>{{Auth::user()->profile->start_date}}<strong>,
+                    &nbsp; &nbsp; <br>End Date:</strong><br>{{Auth::user()->profile->end_date}}</p>
+                {{--<p><strong>Function:</strong><br>{{Auth::user()->profile->function}}</p>--}}
+                <p><strong>Industry:</strong><br>{{Auth::user()->profile->industry}}</p>              
+                <p><strong>Current CTC:</strong><br>{{Auth::user()->profile->salary_in_lakhs}}&nbsp;Lakh(s) 
+                    &nbsp;{{Auth::user()->profile->salary_in_thousands}}Thousand(s)</p>
+                <p><strong>Expected CTC:</strong><br>{{Auth::user()->profile->expected_ctc}}&nbsp;</p>
+                <p><strong>Preferred Location:</strong><br>{{Auth::user()->profile->preferred_location}}</p>
+                </div>
+            </div>
+            <br>
+ 
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-9 px-4">
 
             @if(Session::has('message'))
             <div class="alert alert-success">
@@ -64,59 +118,228 @@
             @endif
             
             <div class="card">
-                <div class="card-header">Update Profile</div>
-                <form action="{{route('profile.create')}}" method="POST">@csrf
-
-
-                <!--location needs dropdown list to choose from-->
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="">Current Location</label>
-                        <input type="text" class="form-control" name="location" value="{{Auth::user()->profile->location}}">
-                        @if($errors->has('location'))
-                        <div class="error" style="color: red;">{{$errors->first('location')}}</div>
-                        @endif
-                    </div>
-
-
+                <div class="card-header d-inline-block h5 text-dark font-weight-bold mb-0">Primary Information</div>
                 
-                    <div class="form-group">
-                        <label for="">Address</label>
-                        <input type="text" class="form-control" name="address" value="{{Auth::user()->profile->address}}">
-                        @if($errors->has('address'))
-                         <div class="error" style="color: red;">{{$errors->first('address')}}</div>
-                        @endif
-                    </div>
-
+                <form  id="frmParameter" action="{{route('profile.create')}}" method="POST">@csrf
+                    <div class="card-body">
                     <div class="form-group">
                         <label for="">Phone number</label>
-                        <input type="text" class="form-control" name="phone_number" value="{{Auth::user()->profile->phone_number}}">
+                        <input type="text" class="form-control" name="phone_number" value="{{Auth::user()->profile->phone_number?Auth::user()->profile->phone_number:old("phone_number")}}">
                         @if($errors->has('phone_number'))
                             <div class="error" style="color: red;">{{$errors->first('phone_number')}}</div>
                         @endif
                                       
                     </div>
 
-                    <!--<div class="form-group">
-                        <label for="">Pillbox</label>
-                        <select class="js-example-basic-single" name="state">
-                            <option value="AL">Alabama</option>
-                            <option value="WY">Wyom</option>
-                            <option value="WY">W</option>
-                            <option value="WY">Wyoming</option>
-                          </select>                                      
-                    </div>-->
-
-                    {{--<select class="form-control" name="type">
-                        <option value="fulltime"{{$job->type=='fulltime'?'selected':''}}>fulltime</option>
-                        <option value="partime"{{$job->type=='partime'?'selected':''}}>partime</option>
-                        <option value="casual"{{$job->type=='casual'?'selected':''}}>casual</option>
-                    </select>--}}
+                    <div class="form-group">
+                        <label for="">Address Line 1</label>
+                        <input type="text" class="form-control" name="address_line1" value="{{Auth::user()->profile->address_line1?Auth::user()->profile->address_line1:old("address_line1")}}">
+                        @if($errors->has('address_line1'))
+                         <div class="error" style="color: red;">{{$errors->first('address_line1')}}</div>
+                        @endif
+                    </div>
 
                     <div class="form-group">
-                        <label for="job_dept">Previous Job Department</label>
-                        <input class="form-control" value="{{Auth::user()->profile->job_dept}}" name="job_dept" list="job_dept">
-                            <datalist id="job_dept">
+                        <label for="">Address Line 2</label>
+                        <input type="text" class="form-control" name="address_line2" value="{{Auth::user()->profile->address_line2?Auth::user()->profile->address_line2:old("address_line2")}}">
+                        @if($errors->has('address_line2'))
+                         <div class="error" style="color: red;">{{$errors->first('address_line2')}}</div>
+                        @endif
+                    </div>
+
+                    <div class="row">
+                    <div class="col-md-4">
+                    <div class="form-group">
+
+                        <label for="country">Select your country</label>
+                        
+                        <select name="country" id="country" class="form-control">
+                            <option value="">Select Country</option>
+                            @foreach($countries as $key => $value)
+                            <option value="{{$key}}" {{Auth::user()->profile->country==$value?'selected':''}}>{{$value}}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('country'))
+                        <div class="error" style="color: red;">{{$errors->first('country')}}</div>
+                        @endif
+                                                
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                        
+                                                    
+                    <div class="form-group">
+
+                          <label for="state">Select your state</label>
+                        
+                        <select name="state" id="state" class="form-control">
+                            <option value="{{Auth::user()->profile->state?$s_id:''}}">{{Auth::user()->profile->state?Auth::user()->profile->state:'Select state'}}</option>
+                        
+                        </select>
+							
+                        @if($errors->has('state'))
+                        <div class="error" style="color: red;">{{$errors->first('state')}}</div>
+                        @endif
+                                                
+                    </div>
+                </div>
+                <div class="col-md-4">
+                        
+                    <div class="form-group">
+
+                        <label for="city">Select your city</label>
+                        
+                        <select name="city" id="city" class="form-control">
+                            <option value="{{Auth::user()->profile->city?$c_id:''}}">{{Auth::user()->profile->city?Auth::user()->profile->city:'Select city'}}</option>
+                        
+                        </select>
+                        @if($errors->has('city'))
+                        <div class="error" style="color: red;">{{$errors->first('city')}}</div>
+                        @endif
+                                                
+                    </div>
+
+                </div>
+                    </div>
+                        
+
+                    <div class="form-group">
+                        <label for="pincode">{{ __('Pincode') }}</label>
+                        
+                            <input type="text" class="form-control @error('pincode') is-invalid @enderror" name="pincode"  value="{{Auth::user()->profile->pincode?Auth::user()->profile->pincode:old("pincode")}}">
+                            @error('pincode')
+                            <span class="invalid-feedback" role="alert">
+                            <strong>Please enter valid 6 digit pincode</strong>
+                            </span>
+                            @enderror
+                        
+                    </div>
+                    
+                    <label for="experience">Overall Experience</label>
+                    <div class="row">
+                    <div class="col-md-6">
+                    <div class="form-group">
+                        
+                        <select name="experience_years" class="form-control">
+                             @for ($i = 0; $i <= 50; $i++)
+                            <option value="{{ $i }}" {{Auth::user()->profile->experience_years==$i?'selected':''}}>{{ $i }} &nbsp; year(s)</option>
+                            @endfor
+                        </select>
+                        @if($errors->has('experience_years'))
+                        <div class="error" style="color: red;">{{$errors->first('experience_years')}}</div>
+                        @endif
+
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    <div class="form-group">
+                        <select name="experience_months" class="form-control">
+                            <option value="">Select</option>
+                             @for ($i = 1; $i <= 11; $i++)
+                            <option value="{{ $i }}" {{Auth::user()->profile->experience_months==$i?'selected':''}}>{{ $i }} &nbsp; month(s)</option>
+                            @endfor
+                        </select>
+                        @if($errors->has('experience_months'))
+                        <div class="error" style="color: red;">{{$errors->first('experience_months')}}</div>
+                        @endif
+
+                    </div>
+                    </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="form-group">
+                    <h6 style="color:rgb(42, 57, 195); font-weight: bold;">
+                        <input type="checkbox" style= "transform: scale(1.7);"  class="checkdisplay" name="fresher" value="fresher" />
+                        &nbsp;&nbsp; Fresher <span style="color: rgb(236, 32, 32); font-weight: bold;"> [Please check this box if you are a fresher] </span>
+                        </h6>
+                        @if($errors->has('fresher'))
+                         <div class="error" style="color: red;">{{$errors->first('fresher')}}</div>
+                        @endif
+                        </div>
+
+                        <div id="todisplay">
+                    <div class="form-group">
+
+                        <label for="">Company Name (Recent/Current)</label>
+                        <input type="text" class="form-control" name="recent_company" value="{{Auth::user()->profile->recent_company?Auth::user()->profile->recent_company:old("recent_company")}}">
+                        @if($errors->has('recent_company'))
+                        <div class="error" style="color: red;">{{$errors->first('recent_company')}}</div>
+                        @endif
+                    </div>
+
+                    {{--<div class="form-group">
+                        <label for="">Designation (Current/Previous)</label>
+                        <input type="text" class="form-control" name="recent_designation" value="{{Auth::user()->profile->recent_designation?Auth::user()->profile->recent_designation:old("recent_designation")}}">
+                        @if($errors->has('recent_designation'))
+                        <div class="error" style="color: red;">{{$errors->first('recent_designation')}}</div>
+                        @endif
+                    </div>--}}
+
+
+                    <div class="form-group">
+
+                        <label for="recent_designation">Designation (Current/Previous)</label>
+                        
+                        <input class="form-control" value="{{Auth::user()->profile->recent_designation?Auth::user()->profile->recent_designation:old("recent_designation")}}" name="recent_designation" list="recent_designation">
+                            <datalist id="recent_designation">
+                                @foreach($recent_designation as $rd)
+                                <option value="{{$rd}}">
+                                @endforeach
+                            </datalist>
+                        @if($errors->has('recent_designation'))
+                        <div class="error" style="color: red;">{{$errors->first('recent_designation')}}</div>
+                        @endif
+                
+                    </div>
+
+                    <div class="row">
+                    <div class="col-md-6">
+                    <div class="form-group">
+            
+                        <label for="">Start Date</label>
+    
+                        
+                            <input type="text" id="date_sd" class="form-control datepicker" name="start_date" value="{{Auth::user()->profile->start_date?Auth::user()->profile->start_date:old("start_date")}}">
+    
+                            @if($errors->has('start_date'))
+                            <div class="error" style="color: red;">{{$errors->first('start_date')}}</div>
+                           @endif
+                        
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+
+                    <div class="form-group">
+            
+                        <label for="">End Date</label>
+                    
+                        <input type="text" id="date_ed" class="form-control datepicker" name="end_date" value="{{Auth::user()->profile->end_date?Auth::user()->profile->end_date:old("end_date")}}">
+    
+                            
+                        <h6 style="color:rgb(42, 57, 195); font-weight: bold;">
+                        <input type="checkbox"  style= "transform: scale(1.7);" name="currently_working_here" value="Currently working here" />
+                        &nbsp;&nbsp; Currently working here
+                        </h6>
+                        
+                        @if($errors->has('end_date'))
+                        <div class="error" style="color: red;">{{$errors->first('end_date')}}</div>
+                       
+                        @elseif($errors->has('currently_working_here'))
+                        <div class="error" style="color: red;">{{$errors->first('currently_working_here')}}</div>
+                       @endif
+                        
+                    </div>
+
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry">Industry (Recent/Current)</label>
+                        <input class="form-control" value="{{Auth::user()->profile->industry?Auth::user()->profile->industry:old("industry")}}"  name="industry" list="industry">
+                            <datalist id="industry">
                                 <option value="Accounting">
                                 <option value="Application Programming">
                                 <option value="Analytics">
@@ -152,7 +375,6 @@
                                 <option value="Pharma">
                                 <option value="Sales">
                                 <option value="Shipping">
-                                <option value="Secretary">
                                 <option value="Security">
                                 <option value="System Programming">
                                 <option value="Software Services">
@@ -163,103 +385,104 @@
                                 <option value="Teacher">
                                 <option value="VLSI">
                             </datalist>
-                            @if($errors->has('job_dept'))
-                            <div class="error" style="color: red;">{{$errors->first('job_dept')}}</div>
+                            @if($errors->has('industry'))
+                            <div class="error" style="color: red;">{{$errors->first('industry')}}</div>
                            @endif
                         
                     </div>
 
-
-                    <div class="form-group">
-                        <label for="experience">Experience Details: </label>
-                        <select name="experience" class="form-control">
-                             @for ($i = 0; $i <= 50; $i++)
-                            <option value="{{ $i }}" {{Auth::user()->profile->experience==$i?'selected':''}}>{{ $i }} &nbsp; year(s)</option>
-                            @endfor
-                        </select>
-
-                        @if($errors->has('experience'))
-                        <div class="error" style="color: red;">{{$errors->first('experience')}}</div>
-                        @endif
-
-                        </div>
-
-
-                        
-                            <div class="form-group">
-                            <label for="">Recent Company Name</label>
-                            <input type="text" class="form-control" name="company" value="{{Auth::user()->profile->company}}">
-                            @if($errors->has('company'))
-                            <div class="error" style="color: red;">{{$errors->first('company')}}</div>
-                            @endif
-                            </div>
-
-                       
-                            <div class="form-group">
-                            <label for="">Designation in the last company</label>
-                            <input type="text" class="form-control" name="designation" value="{{Auth::user()->profile->designation}}">
-                            @if($errors->has('designation'))
-                            <div class="error" style="color: red;">{{$errors->first('designation')}}</div>
-                            @endif
-                        </div>
-
-                        <!--Needs dropdown list of states-->
-                        
-                            <div class="form-group">
-                            <label for="">Preferred Location</label>
-                            <input type="text" class="form-control" name="p_location" value="{{Auth::user()->profile->p_location}}">
-                            @if($errors->has('p_location'))
-                            <div class="error" style="color: red;">{{$errors->first('p_location')}}</div>
-                            @endif
-                        </div>
-
+                    <label for="salary_in_lakhs">Current/Recent CTC (in INR):</label>
+                    <div class="row">
+                        <div class="col-md-6">
                         <div class="form-group">
-                            <label for="type">Salary Expected (per month in INR):</label>
-                            <select class="form-control" name="salary">
-                                <option value="5000-10000">5000-10000</option>
-                                <option value="10001-15000">10001-15000</option>
-                                <option value="15001-20000">15001-20000</option>
-                                <option value="20001-30000">20001-30000</option>
-                                <option value="30001-40000">30001-40000</option>
-                                <option value="40001-50000">40001-50000</option>
-                                <option value="50001-60000">50001-60000</option>
-                                <option value="60001-70000">60001-70000</option>
-                                <option value="70001-80000">70001-80000</option>
-                                <option value="80001-90000">80001-90000</option>
-                                <option value="90001-100000">90001-100000</option>
-                               <option value="100000 plus">100000 plus</option>
-                            </select>
+                            
+                            <p style="color:rgb(42, 57, 195);">Salary (in Lakhs)</p>
+                            <select name="salary_in_lakhs" class="form-control">
+                                @for ($i = 0; $i <= 99; $i++)
+                               <option value="{{ $i }}" {{Auth::user()->profile->salary_in_lakhs==$i?'selected':''}}>{{ $i }} &nbsp; Lakh(s)</option>
+                               @endfor
+                           </select>
+                           @if($errors->has('salary_in_lakhs'))
+                           <div class="error" style="color: red;">{{$errors->first('salary_in_lakhs')}}</div>
+                           @endif
                         </div>
 
+                    </div>
+                    <div class="col-md-6">
+                        
                     <div class="form-group">
-                        <label for="">Bio</label>
-                        <textarea name="bio" class="form-control" rows="6" cols="80" style="width:100">{{Auth::user()->profile->bio}}</textarea>
+                        <p style="color:rgb(42, 57, 195);">Salary (in Thousands)</p>
+                        <input type="text" class="form-control" name="salary_in_thousands" value="{{Auth::user()->profile->salary_in_thousands?Auth::user()->profile->salary_in_thousands:old("salary_in_thousands")}}">
+                        @if($errors->has('salary_in_thousands'))
+                        <div class="error" style="color: red;">{{$errors->first('salary_in_thousands')}}</div>
+                        @endif
+                    </div>
+                    </div>
+                    </div>
+                        
+                </div>
+                    <hr>
+                    <div class="form-group">
+                        <label for="expected_ctc">Expected CTC:</label>
+                        <input type="text" class="form-control" name="expected_ctc" value="{{Auth::user()->profile->expected_ctc?Auth::user()->profile->expected_ctc:old("expected_ctc")}}">
+                        @if($errors->has('expected_ctc'))
+                        <div class="error" style="color: red;">{{$errors->first('expected_ctc')}}</div>
+                        @endif
                     </div>
 
+                    
+                    
+                        {{--Needs dropdown list of states
+                        
+                        <div class="form-group">
+                            <label for="">Preferred Location</label>
+                            <input type="text" class="form-control" name="preferred_location" value="{{Auth::user()->profile->preferred_location}}">
+                            @if($errors->has('preferred_location'))
+                            <div class="error" style="color: red;">{{$errors->first('preferred_location')}}</div>
+                            @endif
+                        </div>--}}
+
+                        <div class="form-group">
+
+							<label for="preferred_location">Preferred location</label>
+							
+							<input class="form-control" value="{{Auth::user()->profile->preferred_location?Auth::user()->profile->preferred_location:old("preferred_location")}}" name="preferred_location" list="preferred_location">
+                                <datalist id="preferred_location">
+                                    @foreach($preferred_location as $pl)
+                                    <option value="{{$pl}}">
+                                    @endforeach
+                                </datalist>
+                            @if($errors->has('preferred_location'))
+                            <div class="error" style="color: red;">{{$errors->first('preferred_location')}}</div>
+                            @endif
+					
+						</div>
+
+
                     <div class="form-group">
-                        <button class="btn btn-success" type="submit">Edit & Update</button>
+                        <button class="btn btn-info" type="submit">Edit & Update</button>
                     </div>
                 </div>
         
             </form>
 
         </div>
-
+        <br>
         <div class="card mb-0">
             <div class="card-header">
                 <a class="card-title">
-                   <h5 class="d-inline-block h5 text-success font-weight-bold mb-0">Skills</h5>
-                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#editskills{{$user->id}}">
-                    Edit
+                   <h5 class="d-inline-block h5 text-dark font-weight-bold mb-0">Skills <span style="color: red; font-weight: bold;"><small> [maximum 5] </small></span></h5>
+                   <button type="button" class="btn btn-default float-right py-0 px-1" data-toggle="modal" data-target="#editskills{{$user->id}}">
+                    <i class="far fa-edit text-success"></i> <span class="text-success h6">Edit</span>
                     </button>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addskills{{$user->id}}">
-                        Add Skills
+                    <button type="button" class="btn btn-outline-primary float-right  py-0 mr-1 px-1" data-toggle="modal" data-target="#addskills{{$user->id}}">
+                        <i class="far fa-edit text-primary"></i> <span class="text-primary h6">Add New</span>
                        </button>
                 </a>
             </div>
             <div class="card-body">
               @foreach($user->skills as $skill)
-               <button type="button" class="btn btn-sm btn-info mt-1">{{$skill->skill}}</button>
+               <button type="button" class="btn btn-sm btn-warning mt-1"><b>{{$skill->skill}}</b></button>
               @endforeach
 
             </div>
@@ -330,77 +553,7 @@
         </div>
 </div>
 
-
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">About me</div>
-                <div class="card-body">
-                <p><strong>Name:</strong> &nbsp; &nbsp; {{Auth::user()->name}}</p>
-                <p><strong>Email:</strong> &nbsp; &nbsp; {{Auth::user()->email}}</p>
-                <p><strong>Current Location:</strong> &nbsp; &nbsp; {{Auth::user()->profile->location}}</p>
-                <p><strong>Address:</strong> &nbsp; &nbsp; {{Auth::user()->profile->address}}</p>
-                <p><strong>Phone:</strong> &nbsp; &nbsp; {{Auth::user()->profile->phone_number}}</p>
-                <p><strong>Gender:</strong> &nbsp; &nbsp; {{Auth::user()->profile->gender}}</p>
-                <p><strong>Previous Job Department:</strong><br>{{Auth::user()->profile->job_dept}}</p>
-                <p><strong>Experience:</strong> &nbsp; &nbsp; {{Auth::user()->profile->experience}} &nbsp; year(s)</p>
-                <p><strong>Previous Company:</strong><br>{{Auth::user()->profile->company}}</p>
-                <p><strong>Previous Designation:</strong><br>{{Auth::user()->profile->designation}}</p>
-                <p><strong>Preferred Location:</strong><br>{{Auth::user()->profile->p_location}}</p>
-                <p><strong>Salary Expected:</strong><br>{{Auth::user()->profile->salary}}</p>
-                <p><strong>Bio:</strong> &nbsp; &nbsp; {{Auth::user()->profile->bio}}</p>
-                <p><strong>Member since:</strong> &nbsp; &nbsp; {{date('F d Y',strtotime(Auth::user()->created_at))}}</p>
-
-                @if(!empty(Auth::user()->profile->cover_letter))
-                    <p><a href="{{Storage::url(Auth::user()->profile->cover_letter)}}">Cover letter</a></p>
-                @else
-                    <p>Please upload cover letter</p>
-                @endif
-
-
-                @if(!empty(Auth::user()->profile->resume))
-                    <p><a href="{{Storage::url(Auth::user()->profile->resume)}}">Resume</a></p>
-                @else
-                    <p>Please upload resume</p>
-                @endif
-
-                </div>
-            </div>
-            <br>
-            <form action="{{route('cover.letter')}}" method="POST" enctype="multipart/form-data">@csrf
-            <div class="card">
-                <div class="card-header">Update coverletter</div>
-                <div class="card-body">
-                    <input type="file" class="form-control" name="cover_letter">
-                    <br>
-                    <button class="btn btn-success float-right" type="submit">Update</button>
-                @if($errors->has('cover_letter'))
-                    <div class="error" style="color: red;">{{$errors->first('cover_letter')}}</div>
-                @endif
-                
-                
-                </div>
-            </div>
-            </form>
-
-            <br>
-            <form action="{{route('resume')}}" method="POST" enctype="multipart/form-data">@csrf
-            <div class="card">
-                <div class="card-header">Update Resume</div>
-                <div class="card-body">
-                    <input type="file" class="form-control" name="resume">
-                    <br>
-                    <button class="btn btn-success float-right" type="submit">Update</button>
-                
-                @if($errors->has('resume'))
-                    <div class="error" style="color: red;">{{$errors->first('resume')}}</div>
-                @endif
-                
-                </div>
-            </div>
-            </form>
-
-
-        </div></div>
+</div>
         </div>
 
         <br>
@@ -416,7 +569,83 @@
 
     $(document).ready(function(){
 
+        //console.log({{Auth::user()->profile->state}});
+            $('select[name="country"]').on('change', function(){
+ 
+                var country_id = $(this).val();
+                if(country_id){
+                    //console.log(country_id);
+                    $.ajax({
+                        
+                        url: '/getStates/'+country_id,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data){
+                            console.log(data);
+                            
+                            $('select[name="state"]').empty();
+                            $.each(data, function(key, value){
+                                
+                                $('select[name="state"]').append('<option value="'+key+'">'+value+'</option>');
+                            });
+                            
+                        }
+                        
+                    });
+
+                }
+                
+                else{
+                    
+                    $('select[name="state"]').empty();
+                }
+                
+            });
+                
+                $('select[name="state"]').on('change', function(){
+                
+                var state_id = $(this).val();
+                if(state_id){
+                    //console.log(country_id);
+                    $.ajax({
+                        
+                        url: '/getCities/'+state_id,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data){
+                            console.log(data);
+                            
+                            $('select[name="city"]').empty();
+                            $.each(data, function(key, value){
+                                
+                                $('select[name="city"]').append('<option value="'+key+'">'+value+'</option>');
+                            });
+                            
+                        }
+                        
+                    });
+
+                }
+                
+                else{
+                    
+                    $('select[name="city"]').empty();
+                }
+                
+                //console.log('LISTENING')
+                
+            });
+            
+            $("input[name='fresher']").on("click",function(){
+            //console.log('clicked');
+          if ($(this).hasClass("checkdisplay") && this.checked) // or $(this).is(":checked")
+            $("#todisplay").fadeOut('slow');
+        else
+            $("#todisplay").fadeIn('slow');
+      });
+
         $('.select2').css('width','100%');
+        $('.selectedskills').css('width','100%');
         $('.select2').select2({
           //width: 'resolve', 
           placeholder: "Please select Skills",
@@ -482,8 +711,44 @@
                         <option value="partime"{{$job->type=='partime'?'selected':''}}>partime</option>
                         <option value="casual"{{$job->type=='casual'?'selected':''}}>casual</option>
                     </select>
-                    </div>--}}
+                    </div>
+                    
+                                            <div class="form-group">
+                            <label for="salary_in_thousands">in Thousand(s):</label>
+                            <select class="form-control" name="salary">
+                                <option value="5000-10000">5000-10000</option>
+                                <option value="10001-15000">10001-15000</option>
+                                <option value="15001-20000">15001-20000</option>
+                                <option value="20001-30000">20001-30000</option>
+                                <option value="30001-40000">30001-40000</option>
+                                <option value="40001-50000">40001-50000</option>
+                                <option value="50001-60000">50001-60000</option>
+                                <option value="60001-70000">60001-70000</option>
+                                <option value="70001-80000">70001-80000</option>
+                                <option value="80001-90000">80001-90000</option>
+                                <option value="90001-100000">90001-100000</option>
+                               <option value="100000 plus">100000 plus</option>
+                            </select>
+                        </div>--}}
                    
                     {{--@for ($i = 0; $i < 10; $i++)
                     The current value is {{ $i }}
                     @endfor--}}
+
+                    
+
+                    <!--<div class="form-group">
+                        <label for="">Pillbox</label>
+                        <select class="js-example-basic-single" name="state">
+                            <option value="AL">Alabama</option>
+                            <option value="WY">Wyom</option>
+                            <option value="WY">W</option>
+                            <option value="WY">Wyoming</option>
+                          </select>                                      
+                    </div>-->
+
+                    {{--<select class="form-control" name="type">
+                        <option value="fulltime"{{$job->type=='fulltime'?'selected':''}}>fulltime</option>
+                        <option value="partime"{{$job->type=='partime'?'selected':''}}>partime</option>
+                        <option value="casual"{{$job->type=='casual'?'selected':''}}>casual</option>
+                    </select>--}}

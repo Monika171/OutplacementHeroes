@@ -52,10 +52,10 @@
                                 
                                     <div class="job-post-item-body d-block d-md-flex">
                                         <div class="mr-3"><p>{{$seeker->user->email}}<br>
-                                        {{$seeker->job_dept}}<br>
-                                        {{$seeker->experience}}<br>
-                                        <div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$seeker->experience}}</a>
-                                        <span class="icon-my_location"></span> <span>{{$seeker->address}}</span></div>
+                                        {{$seeker->industry}}<br>
+                                        {{$seeker->experience_years}}{{$seeker->experience_years}}<br>
+                                        {{--<div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$seeker->experience}}</a>--}}
+                                        <span class="icon-my_location"></span> <span>{{$seeker->state}}</span></div>
                                         </div>
                                     </div>
                                 

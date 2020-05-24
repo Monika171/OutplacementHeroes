@@ -115,9 +115,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <script>
     $( function() {
-      $( "#datepicker" ).datepicker();
+      $( '.datepicker' ).datepicker({
+      dateFormat: 'dd-mm-yy',
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "-70:+0"
+      
+});
     } );
 </script>
 
 
 <!--modified here-->
+
+<!--$(function(){$('.dateTxt').datepicker(); });-->

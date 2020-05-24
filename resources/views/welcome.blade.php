@@ -10,7 +10,9 @@
   </head>
   <body>
     
-    @include('partials.nav')  
+    @include('partials.nav')
+    @include('inc.messages') 
+    
     <!-- END nav -->  
     @include('partials.hero') 
     @include('partials.category')
