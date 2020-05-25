@@ -5,6 +5,10 @@ use Illuminate\Http\Request;
 use App\Company;
 use App\Job;
 use App\User;
+use App\Country;
+use App\State;
+use App\City;
+use App\Designation;
 use App\Industry;
 use Auth;
 
@@ -32,28 +36,70 @@ class CompanyController extends Controller
       
 
     public function create(){
+
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        $company = Company::where('user_id', $user->id)->first();
+        $countries = Country::all()->pluck('name','id');
+        
+        if($company->state){
+        $s = State::where('name', $company->state)->first();
+        $s_id = $s->id;}
+        else {
+          $s_id = "";
+        }
+
+        if($company->city){
+        $c = City::where('name', $company->city)->first();
+        $c_id = $c->id;}
+        else {
+          $c_id = "";
+        }
+
+        $authority_designation = Designation::all()->pluck('designation');
         $industry = Industry::all()->pluck('industry');
-    	return view('company.create',compact('industry'));
+
+        return view('company.create',compact('user', 'company', 'countries','s_id','c_id','authority_designation','industry'));
+        
+
     }
 
     public function store(Request $request){
         $this->validate($request,[
-            'address'=>'required',
             'phone'=>['required', 'numeric', 'regex:/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[0-9]\d{9}$/'],
-            'website'=>'required',
+            'address_line1'=>'required',
+            'country'=>'required',
+            'state'=>'required',
+            'city'=>'required',
+            'pincode'=>'required|numeric|digits_between:6,6',
+            //'industry'=>'required',
             'description'=>'required',
-            'industry'=>'required',
+            //'authority_designation' => 'required', 
             ]);
 
         $user_id = auth()->user()->id;
+
+        $country = Country::where('id',request('country'))->first();
+        $state = State::where('id',request('state'))->first();
+        $city = City::where('id',request('city'))->first();
         
         Company::where('user_id',$user_id)->update([
-            'address'=>request('address'),
             'phone'=>request('phone'),
+            'address_line1'=>request('address_line1'),        
+            'address_line2'=>request('address_line2'),
+            'country'=>$country->name,
+            'state'=>$state->name,
+            'city'=>$city->name,
+            'pincode'=>request('pincode'),
+            'industry'=>request('industry'),
             'website'=>request('website'),
+            'linkedin'=>request('linkedin'),
+            'twitter'=>request('twitter'),
+            'facebook'=>request('facebook'),
             'slogan'=>request('slogan'),
             'description'=>request('description'),
-            'industry'=>request('industry'),
+            'authority_designation'=>request('authority_designation'),
+            
         ]);
 
         /*User::where('id',$user_id)->update([

@@ -17,12 +17,12 @@ class CreateStatesTable extends Migration
             $table->id();
             $table->string('name', 255);
             $table->mediumInteger('country_id');
-            $table->char('country_code', 2);
-            $table->string('fips_code', 255);
-            $table->string('iso2', 255);
+            $table->char('country_code', 2)->nullable();
+            $table->string('fips_code', 255)->nullable();
+            $table->string('iso2', 255)->nullable();
             $table->timestamps();
-            $table->tinyInteger('flag');
-            $table->string('wikiDataId', 255);
+            $table->tinyInteger('flag')->nullable();
+            $table->string('wikiDataId', 255)->nullable();
             
         });
     }

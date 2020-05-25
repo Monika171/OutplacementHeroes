@@ -17,14 +17,14 @@ class CreateCitiesTable extends Migration
             $table->id();
             $table->string('name', 255);
             $table->mediumInteger('state_id');
-            $table->string('state_code', 255);
+            $table->string('state_code', 255)->nullable();
             $table->mediumInteger('country_id');
-            $table->char('country_code', 2);
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 11, 8);
+            $table->char('country_code', 2)->nullable();
+            $table->decimal('latitude', 10, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
             $table->timestamps();
-            $table->tinyInteger('flag');
-            $table->string('wikiDataId', 255);
+            $table->tinyInteger('flag')->nullable();
+            $table->string('wikiDataId', 255)->nullable();
         });
     }
 

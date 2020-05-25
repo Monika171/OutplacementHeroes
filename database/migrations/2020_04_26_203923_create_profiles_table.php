@@ -37,6 +37,8 @@ class CreateProfilesTable extends Migration
             $table->string('salary_in_lakhs')->nullable();
             $table->integer('salary_in_thousands')->nullable();
             $table->string('expected_ctc')->nullable();
+            $table->string('notice_period')->nullable();
+            $table->mediumText('preferences')->nullable();
             $table->string('resume')->nullable();
             $table->string('profile_pic')->nullable();
             $table->timestamps();

@@ -1,4 +1,15 @@
 @extends('layouts.main')
+
+@section('select2css')
+<style>
+.form-group.required .control-label:after {
+    content:"*";
+    color:red;
+  }
+</style>
+@endsection
+
+
 @section('content')
 
 <div class="hero-wrap" style="height: 410px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
@@ -7,7 +18,7 @@
           <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
               <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                   <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                 <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Edit Company Information</h1>
+                 <h1 style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Edit Company Information</h1>
               </div>
           </div>
     </div>
@@ -17,7 +28,7 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-3">
+        <div class="col-md-3  pr-4">
             @if(empty(Auth::user()->company->logo))
 
                     <img src="{{asset('profile_pic/logo.jpg')}}"style="width: 100%;">
@@ -28,7 +39,7 @@
         <br><br>
         <form action="{{route('company.logo')}}" method="POST" enctype="multipart/form-data">@csrf
             <div class="card">
-                <div class="card-header">Update logo</div>
+                <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">Update logo</div>
                 <div class="card-body">
                     <input type="file" class="form-control" name="company_logo"><br>
                     <button class="btn btn-dark  btn-sm float-right" type="submit">Update</button>
@@ -42,7 +53,7 @@
         <br>
         <form action="{{route('cover.photo')}}" method="POST" enctype="multipart/form-data">@csrf
             <div class="card">
-                <div class="card-header">Update cover photo</div>
+                <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">Update Company Banner Image</div>
                 <div class="card-body">
                     <input type="file" class="form-control" name="cover_photo"><br>
                     <button class="btn btn-dark  btn-sm float-right" type="submit">Update</button>
@@ -52,10 +63,41 @@
                 </div>
             </div>
         </form>
+        <br>
+        <div class="card">
+            <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">About Company (preview)</div>
+            <div class="card-body">
+                @if(empty(Auth::user()->company->cover_photo))
+                 <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 18px;">Please upload company banner image</p>
+                @endif
+
+                <p><strong>Member since:</strong> &nbsp; &nbsp; {{date('F d Y',strtotime(Auth::user()->created_at))}}</p>
+                <p><strong>Company Name:</strong> &nbsp; &nbsp;{{Auth::user()->company->cname}}</p>
+                <p><strong>Email:</strong> &nbsp; &nbsp; {{Auth::user()->email}}</p>
+                <p><strong>Phone:</strong> &nbsp; &nbsp; {{Auth::user()->company->phone}}</p>
+                <p><strong>Address:</strong> &nbsp; &nbsp; {{Auth::user()->company->address_line1}},
+                    {{Auth::user()->company->address_line2}}<br>
+                    {{Auth::user()->company->city}},&nbsp; &nbsp;{{Auth::user()->company->state}},
+                    {{Auth::user()->company->country}}, &nbsp;
+                    Pincode:&nbsp; {{Auth::user()->company->pincode}}</p>
+                <p><strong>Industry:</strong><br>{{Auth::user()->company->industry}}</p>
+                <p><strong>Our slogan:</strong> &nbsp; &nbsp; {{Auth::user()->company->slogan}}</p>
+                <p><strong>Description:</strong> &nbsp; &nbsp; {{Auth::user()->company->description}}</p>
+                <p><strong>Website:</strong> &nbsp; &nbsp; <a href="{{Auth::user()->company->website}}"> {{Auth::user()->company->website}}</a></p>
+                <p><strong>LinkedIn:</strong> &nbsp; &nbsp; <a href="{{Auth::user()->company->linkedin}}"> {{Auth::user()->company->linkedin}}</a></p>
+                <p><strong>Facebook:</strong> &nbsp; &nbsp; <a href="{{Auth::user()->company->facebook}}"> {{Auth::user()->company->facebook}}</a></p>
+                <p><strong>Twitter:</strong> &nbsp; &nbsp; <a href="{{Auth::user()->company->twitter}}"> {{Auth::user()->company->twitter}}</a></p>
+                <p><strong>Company page:</strong> &nbsp; &nbsp;<a href="company/{{Auth::user()->company->slug}}">View</a></p>
+
+                
+         
+
+            </div>
+        </div>
 
         </div>
 
-    <div class="col-md-5">
+    <div class="col-md-9 pl-4">
 
         @if(Session::has('message'))
         <div class="alert alert-success">
@@ -65,55 +107,122 @@
         @endif
             
         <div class="card">
-            <div class="card-header">Update Company Information</div>
+            <div class="card-header d-inline-block h5 text-dark font-weight-bold mb-0">Update Company Information</div>
             <form action="{{route('company.store')}}" method="POST">@csrf
-
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="">Address</label>
-                        <input type="text" class="form-control" name="address" value="{{Auth::user()->company->address?Auth::user()->company->address:old("address")}}">
-                        @if($errors->has('address'))
-                        <div class="error" style="color: red;">{{$errors->first('address')}}</div>
+                    <p><strong>Authority Name:</strong> &nbsp; &nbsp; {{Auth::user()->name}}</p>
+                    
+                <div class="form-group">
+
+                    <label for="authority_designation"><strong>Authority Designation:</strong></label>
+                    
+                    <input class="form-control" value="{{Auth::user()->company->authority_designation?Auth::user()->company->authority_designation:old("authority_designation")}}" name="authority_designation" list="authority_designation">
+                        <datalist id="authority_designation">
+                            @foreach($authority_designation as $ad)
+                            <option value="{{$ad}}">
+                            @endforeach
+                        </datalist>
+                    @if($errors->has('authority_designation'))
+                    <div class="error" style="color: red;">{{$errors->first('authority_designation')}}</div>
                     @endif
-                   
-                   
-                    </div>
-                    <div class="form-group">
-                        <label for="">Phone</label>
-                        <input type="text" class="form-control" name="phone"  value="{{Auth::user()->company->phone?Auth::user()->company->phone:old("phone")}}" >
-                    
-                        @if($errors->has('phone'))
-                        <div class="error" style="color: red;">{{$errors->first('phone')}}</div>
+            
+                </div>
+
+                <div class="form-group required">
+                    <label for="" class="control-label">Phone</label>
+                    <input type="text" class="form-control" name="phone"  value="{{Auth::user()->company->phone?Auth::user()->company->phone:old("phone")}}" >
+                
+                    @if($errors->has('phone'))
+                    <div class="error" style="color: red;">{{$errors->first('phone')}}</div>
+                @endif
+                
+                
+                </div>
+
+                <div class="form-group required">
+                    <label for="" class="control-label">Address Line 1</label>
+                    <input type="text" class="form-control" name="address_line1" value="{{Auth::user()->company->address_line1?Auth::user()->company->address_line1:old("address_line1")}}">
+                    @if($errors->has('address_line1'))
+                     <div class="error" style="color: red;">{{$errors->first('address_line1')}}</div>
                     @endif
-                    
-                    
-                    </div>
-                    <div class="form-group">
-                        <label for="">Website</label>
-                        <input type="text" class="form-control" name="website"  value="{{Auth::user()->company->website?Auth::user()->company->website:old("website")}}">
-                    
-                        @if($errors->has('website'))
-                        <div class="error" style="color: red;">{{$errors->first('website')}}</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Address Line 2</label>
+                    <input type="text" class="form-control" name="address_line2" value="{{Auth::user()->company->address_line2?Auth::user()->company->address_line2:old("address_line2")}}">
+                    @if($errors->has('address_line2'))
+                     <div class="error" style="color: red;">{{$errors->first('address_line2')}}</div>
                     @endif
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+
+                    <div class="form-group required">
+
+                        <label for="country" class="control-label">Select your country</label>
+                        
+                        <select name="country" id="country" class="form-control">
+                            <option value="">Select Country</option>
+                            @foreach($countries as $key => $value)
+                            <option value="{{$key}}" {{Auth::user()->company->country==$value?'selected':''}}>{{$value}}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('country'))
+                        <div class="error" style="color: red;">{{$errors->first('country')}}</div>
+                        @endif
+                                                
                     </div>
-                    <div class="form-group">
-                        <label for="">Slogan</label>
-                        <input type="text" class="form-control" name="slogan"  value="{{Auth::user()->company->slogan?Auth::user()->company->slogan:old("slogan")}}">
-                        @if($errors->has('slogan'))
-                        <div class="error" style="color: red;">{{$errors->first('slogan')}}</div>
-                    @endif
-                    
+
                     </div>
-                    <div class="form-group">
-                        <label for="">Description</label>
-                        <textarea name="description" class="form-control" rows="6" cols="80" style="width:100"> {{Auth::user()->company->description?Auth::user()->company->description:old("description")}}</textarea>
-                        @if($errors->has('description'))
-                        <div class="error" style="color: red;">{{$errors->first('description')}}</div>
-                    @endif
-                    
-                    
+                    <div class="col-md-4">
+                             
+                    <div class="form-group required">
+
+                          <label for="state" class="control-label">Select your state</label>
+                        
+                        <select name="state" id="state" class="form-control">
+                            <option value="{{Auth::user()->company->state?$s_id:''}}">{{Auth::user()->company->state?Auth::user()->company->state:'Select state'}}</option>
+                        
+                        </select>
+							
+                        @if($errors->has('state'))
+                        <div class="error" style="color: red;">{{$errors->first('state')}}</div>
+                        @endif
+                                                
                     </div>
-                                 
+
+                </div>
+                <div class="col-md-4">
+                        
+                    <div class="form-group required">
+
+                        <label for="city" class="control-label">Select your city</label>
+                        
+                        <select name="city" id="city" class="form-control">
+                            <option value="{{Auth::user()->company->city?$c_id:''}}">{{Auth::user()->company->city?Auth::user()->company->city:'Select city'}}</option>
+                        
+                        </select>
+                        @if($errors->has('city'))
+                        <div class="error" style="color: red;">{{$errors->first('city')}}</div>
+                        @endif
+                                                
+                    </div>
+                </div>
+                </div>
+
+                    <div class="form-group required">
+                        <label for="pincode" class="control-label">{{ __('Pincode') }}</label>
+                        
+                            <input type="text" class="form-control @error('pincode') is-invalid @enderror" name="pincode"  value="{{Auth::user()->company->pincode?Auth::user()->company->pincode:old("pincode")}}">
+                            @error('pincode')
+                            <span class="invalid-feedback" role="alert">
+                            <strong>Please enter valid 6 digit pincode</strong>
+                            </span>
+                            @enderror
+                        
+                    </div>
+
                     <div class="form-group">
                         <label for="industry">Industry </label>
                         <input class="form-control"  value="{{Auth::user()->company->industry?Auth::user()->company->industry:old("industry")}}" name="industry" list="industry">
@@ -129,44 +238,164 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="">Website</label>
+                        <input type="text" class="form-control" name="website"  value="{{Auth::user()->company->website?Auth::user()->company->website:old("website")}}">
+                    
+                        @if($errors->has('website'))
+                        <div class="error" style="color: red;">{{$errors->first('website')}}</div>
+                    @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">LinkedIn</label>
+                        <input type="text" class="form-control" name="linkedin"  value="{{Auth::user()->company->linkedin?Auth::user()->company->linkedin:old("linkedin")}}">
+                    
+                        @if($errors->has('linkedin'))
+                        <div class="error" style="color: red;">{{$errors->first('linkedin')}}</div>
+                    @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Facebook</label>
+                        <input type="text" class="form-control" name="facebook"  value="{{Auth::user()->company->facebook?Auth::user()->company->facebook:old("facebook")}}">
+                    
+                        @if($errors->has('facebook'))
+                        <div class="error" style="color: red;">{{$errors->first('facebook')}}</div>
+                    @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Twitter</label>
+                        <input type="text" class="form-control" name="twitter"  value="{{Auth::user()->company->twitter?Auth::user()->company->twitter:old("twitter")}}">
+                    
+                        @if($errors->has('twitter'))
+                        <div class="error" style="color: red;">{{$errors->first('twitter')}}</div>
+                    @endif
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="">Slogan</label>
+                        <input type="text" class="form-control" name="slogan"  value="{{Auth::user()->company->slogan?Auth::user()->company->slogan:old("slogan")}}">
+                        @if($errors->has('slogan'))
+                        <div class="error" style="color: red;">{{$errors->first('slogan')}}</div>
+                    @endif
+                    
+                    </div>
+                    <div class="form-group required">
+                        <label for="" class="control-label">Description</label>
+                        <textarea name="description" class="form-control" rows="6" cols="70" style="width:100"> {{Auth::user()->company->description?Auth::user()->company->description:old("description")}}</textarea>
+                        @if($errors->has('description'))
+                        <div class="error" style="color: red;">{{$errors->first('description')}}</div>
+                    @endif
+                    
+                    
+                    </div>
+                                 
+
+
+                    <div class="form-group">
                         <button class="btn btn-dark" type="submit">Edit & Update</button>
                     </div>
                 </div>
             </form>
         </div>
-    </div>
-
-    
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">About Company(preview)</div>
-                <div class="card-body">
-                    <p><strong>Company Name:</strong> &nbsp; &nbsp;{{Auth::user()->company->cname}}</p>
-                    <p><strong>Address:</strong> &nbsp; &nbsp; {{Auth::user()->company->address}}</p>
-                    <p><strong>Email:</strong> &nbsp; &nbsp; {{Auth::user()->email}}</p>
-                    <p><strong>Authority Name:</strong> &nbsp; &nbsp; {{Auth::user()->name}}</p>
-                    <p><strong>Phone:</strong> &nbsp; &nbsp; {{Auth::user()->company->phone}}</p>
-
-                    {{--<p><strong>Currently Recruiting for:</strong> &nbsp; &nbsp; </strong><br> {{Auth::user()->job_dept}} Job Position</p>--}}
-                    <p><strong>Our slogan:</strong> &nbsp; &nbsp; {{Auth::user()->company->website}}</p>
-                    <p><strong>Description:</strong> &nbsp; &nbsp; {{Auth::user()->company->description}}</p>
-                    <p><strong>Industry:</strong><br>{{Auth::user()->company->industry}}</p>
-                    <p><strong>Website:</strong> &nbsp; &nbsp; <a href="{{Auth::user()->company->website}}"> {{Auth::user()->company->website}}</a></p>
-                    <p><strong>Company page:</strong> &nbsp; &nbsp;<a href="company/{{Auth::user()->company->slug}}">View</a></p>
-                   
-
-                    
-             
-
+<br>
+        <div class="card">
+            <div class="card-header d-inline-block text-info font-weight-bold font-size: 12px; mb-0">Company Authority Details:</div>     
+                <div class="card-body">                      
+                <p><strong>Authority Name:</strong> &nbsp; &nbsp; {{Auth::user()->name}}</p>
+                <p><strong>Authority Designation:</strong><br>{{Auth::user()->company->authority_designation}}</p>
                 </div>
             </div>
-
-
-
         </div>
+
+
+
+    </div>
+   
     </div>
 </div>
 
 <br>
 <br>
+@endsection
+
+@section('jsplugins')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+            $('select[name="country"]').on('change', function(){
+ 
+                var country_id = $(this).val();
+                if(country_id){
+                    //console.log(country_id);
+                    $.ajax({
+                        
+                        url: '/getStates/'+country_id,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data){
+                            console.log(data);
+                            
+                            $('select[name="state"]').empty();
+                            $.each(data, function(key, value){
+                                
+                                $('select[name="state"]').append('<option value="'+key+'">'+value+'</option>');
+                            });
+                            
+                        }
+                        
+                    });
+
+                }
+                
+                else{
+                    
+                    $('select[name="state"]').empty();
+                }
+                
+            });
+                
+                $('select[name="state"]').on('change', function(){
+                
+                var state_id = $(this).val();
+                if(state_id){
+                    //console.log(country_id);
+                    $.ajax({
+                        
+                        url: '/getCities/'+state_id,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data){
+                            console.log(data);
+                            
+                            $('select[name="city"]').empty();
+                            $.each(data, function(key, value){
+                                
+                                $('select[name="city"]').append('<option value="'+key+'">'+value+'</option>');
+                            });
+                            
+                        }
+                        
+                    });
+
+                }
+                
+                else{
+                    
+                    $('select[name="city"]').empty();
+                }
+                
+                //console.log('LISTENING')
+                
+            });
+            
+
+    });
+    </script>
 @endsection

@@ -8,7 +8,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="ftco-nav">
-        {{--@include('inc.messages')--}} 
+        {{--@include('inc.messages')--}}
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item"><a href="{{route('company')}}" class="nav-link">Companies</a></li>
@@ -23,9 +23,9 @@
                 <a class="nav-link" href="{{ route('employer.register') }}">{{ __('Employer Sign Up') }}</a>
             </li>
 
-            {{--<li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ route('volunteer.register') }}">{{ __('Volunteer Sign Up') }}</a>
-            </li>--}}
+            </li>
 
             <li class="nav-item">
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">

@@ -7,7 +7,7 @@
         <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
             <div class="col-md-9 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                 <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="{{route('company')}}">Companies <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Candidate Name: {{$user->name}}</h1>
+                <h1 style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Candidate Name: {{$user->name}}</h1>
             </div>
             <div class="col-md-3 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
                @if(Auth::check()&&Auth::user()->id==$user->id)
@@ -36,15 +36,16 @@
                         @endif
                       
                         <div class="text mt-3">
-                          <div class="meta mb-2">
-                            <div>Member since: &nbsp; &nbsp; {{date('F d Y',strtotime($user->created_at))}}</div> 
                           
-                        </div>
                         {{--<h3 class="heading">{{$user->name}}</h3>--}}
                         @if(!empty($user->profile->resume))
-                          <p><a href="{{Storage::url($user->profile->resume)}}">Download Candidate Resume</a></p>
+                            <p style="font-weight: bold; font-size: 18px;"><a href="{{Storage::url($user->profile->resume)}}">View Candidate Resume</a></p>
                           @elseif(Auth::check()&&Auth::user()->id==$user->id)
-                              <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 18px;">Please upload resume</p>
+                              <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 18px;">Please upload your resume</p>
+                        @endif
+
+                        @if(empty($user->profile->profile_pic)&&Auth::check()&&Auth::user()->id==$user->id)
+                              <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 18px;">Please upload your profile picture</p>
                         @endif
 
                         <h3 class="heading"><strong>Gender:</strong>&nbsp; &nbsp; {{$user->profile->gender}}</h3>
@@ -56,6 +57,10 @@
                         {{$user->profile->address_line2}},
                         {{$user->profile->city}},&nbsp;{{$user->profile->state}},
                         Pincode:&nbsp; {{$user->profile->pincode}}</h5></p>
+                        <div class="meta mb-2">
+                          <div>Member since: &nbsp; &nbsp; {{date('F d Y',strtotime($user->created_at))}}</div> 
+                        
+                      </div>
 
                         <div class="card mr-4">
                           <div class="card-header">
@@ -65,7 +70,7 @@
                           </div>
                           <div class="card-body">
                             @foreach($user->skills as $skill)
-                             <button type="button" class="btn btn-sm btn-warning mt-1"><b>{{$skill->skill}}</b></button>
+                             <button type="button" class="btn btn-sm btn-info mt-1">{{$skill->skill}}</button>
                             @endforeach
               
                           </div>
@@ -77,8 +82,8 @@
             </div>
 
         <div class="col-md-8 px-4 ftco-animate">
-        <h2 class="mb-3">Name:&nbsp; &nbsp;{{$user->name}}</h2>
-        <hr>
+        {{--<h2 class="mb-3">Name:&nbsp; &nbsp;{{$user->name}}</h2>
+        <hr>--}}
         
         <h5 class="mb-2 mt-2">Overall Experience:</h5>
         <p>{{$user->profile->experience_years}}&nbsp; year(s)
@@ -121,6 +126,10 @@
 
         <h5 class="mb-2 mt-2">Preferred Location:</h5>
         <p>{{$user->profile->preferred_location}}</p>
+
+        <h5 class="mb-2 mt-2">Notice Period:</h5>
+        <p>{{$user->profile->notice_period}}</p>
+
 
  
         <!--

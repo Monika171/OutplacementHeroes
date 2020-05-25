@@ -75,9 +75,10 @@ class UserController extends Controller
         'experience_years'=>'required',
         'recent_company' => 'sometimes',   
         'start_date' => 'required_with:recent_company',
-        'industry' => 'required_with:recent_company',
+        //'industry' => 'required_with:recent_company',
         'currently_working_here' => 'required_without_all:fresher,end_date',
-        'salary_in_thousands'=>'numeric|digits_between:4,5|nullable', 
+        'salary_in_thousands'=>'numeric|digits_between:4,5|nullable',
+        'notice_period'=>'required',
          //'recent_designation' => 'required_with:recent_company',           
                 
                 //'phone_number'=>'required|numeric|digits_between:10,10',
@@ -120,8 +121,8 @@ class UserController extends Controller
                 'preferred_location'=>request('preferred_location'),
                 'salary_in_lakhs'=>request('salary_in_lakhs'),
                 'salary_in_thousands'=>request('salary_in_thousands'),
-                'expected_ctc'=>request('expected_ctc')
-                
+                'expected_ctc'=>request('expected_ctc'),
+                'notice_period'=>request('notice_period'),
                 
              ]);
         
@@ -149,7 +150,7 @@ class UserController extends Controller
 
            public function resume(Request $request){
             $this->validate($request,[
-                'resume'=>'required|mimes:pdf,doc,docx|max:20000'
+                'resume'=>'required|mimes:pdf|max:20000'
             ]);
               $user_id = auth()->user()->id;
               $resume = $request->file('resume')->store('public/files');
@@ -180,27 +181,6 @@ class UserController extends Controller
         }
  
    }
-
-   public function getStates($id)
-	{
-		$states = State::where('country_id',$id)->pluck('name','id',);
-		
-		//$states = State::where('country_id',$id)->pluck('name','id')->orderBy('name','asc')->get();
-		return json_encode($states);
-		
-		
-	}
-	
-		public function getCities($id)
-	{
-		$cities = City::where('state_id',$id)->pluck('name','id');
-		return json_encode($cities);
-		
-		
-	}
-
-
-
 
    public function show_profile($id){
 

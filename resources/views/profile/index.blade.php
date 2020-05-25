@@ -2,7 +2,12 @@
 
 @section('select2css')
    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css" rel="stylesheet" />
-
+   <style>
+    .form-group.required .control-label:after {
+        content:"*";
+        color:red;
+      }
+    </style>
 @endsection
 @section('content')
 
@@ -12,7 +17,7 @@
           <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
               <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                   <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                 <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Edit Profile Information</h1>
+                 <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Edit Profile Information</h1>
               </div>
           </div>
     </div>
@@ -35,7 +40,7 @@
             <form action="{{route('profile_pic')}}" method="POST" enctype="multipart/form-data">@csrf
 
                 <div class="card">
-                    <div class="card-header">Update profile picture</div>
+                    <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">Update profile picture</div>
                     <div class="card-body">
                         <input type="file" class="form-control" name="profile_pic">
                         <br>
@@ -52,10 +57,11 @@
             <br>
             <form action="{{route('resume')}}" method="POST" enctype="multipart/form-data">@csrf
             <div class="card">
-                <div class="card-header">Update Resume</div>
+                <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">Update Resume</div>
                 <div class="card-body">
                     <input type="file" class="form-control" name="resume">
                     <br>
+                    <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 12px;">*[FILE-FORMAT: ONLY PDF]</p>
                     <button class="btn btn-info btn-sm float-right" type="submit">Update</button>
                 
                 @if($errors->has('resume'))
@@ -65,17 +71,18 @@
                 </div>
             </div>
             </form>
-
             <br>
-            <br>
-
             <div class="card">
-                <div class="card-header">About me(preview)</div>
+                <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">About me (preview)</div>
                 <div class="card-body">
                 @if(!empty(Auth::user()->profile->resume))
-                    <p><a href="{{Storage::url(Auth::user()->profile->resume)}}">Resume</a></p>
+                    <p><a href="{{Storage::url(Auth::user()->profile->resume)}}">View Resume</a></p>
                 @else
-                    <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 18px;">Please upload resume</p>
+                    <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 18px;">Please upload your resume</p>
+                @endif
+
+                @if(empty(Auth::user()->profile->profile_pic))
+                    <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 18px;">Please upload your profile picture</p>
                 @endif
                
                 <p><strong>Member since:</strong> &nbsp; &nbsp; {{date('F d Y',strtotime(Auth::user()->created_at))}}</p>
@@ -85,24 +92,25 @@
                 <p><strong>Email:</strong> &nbsp; &nbsp; {{Auth::user()->email}}</p>
                 <p><strong>Phone:</strong> &nbsp; &nbsp; {{Auth::user()->profile->phone_number}}</p>
                 <p><strong>Address:</strong> &nbsp; &nbsp; {{Auth::user()->profile->address_line1}},
-                {{Auth::user()->profile->address_line2}},
-                {{Auth::user()->profile->city}},&nbsp; &nbsp;{{Auth::user()->profile->state}},
-                &nbsp;&nbsp;{{Auth::user()->profile->country}}</p>
+                {{Auth::user()->profile->address_line2}}<br>
+                {{Auth::user()->profile->city}},&nbsp;{{Auth::user()->profile->state}},
+                {{Auth::user()->profile->country}}</p>
                 <p>Pincode:&nbsp; &nbsp; {{Auth::user()->profile->pincode}}</p>
                 <p><strong>Experience:</strong> &nbsp; &nbsp;<br>
                     {{Auth::user()->profile->experience_years}}year(s)
                     &nbsp;{{Auth::user()->profile->experience_months}}months(s)</p>
-                <p><strong>Current/Previous Company:</strong><br>{{Auth::user()->profile->recent_company}}</p>
-                <p><strong>Current/Previous Designation:</strong><br>{{Auth::user()->profile->recent_designation}}</p>
+                <p><strong>Company (Recent/Current):</strong><br>{{Auth::user()->profile->recent_company}}</p>
+                <p><strong>Designation (Recent/Current):</strong><br>{{Auth::user()->profile->recent_designation}}</p>
                 <p><strong>Start Date:</strong><br>{{Auth::user()->profile->start_date}}<strong>,
                     &nbsp; &nbsp; <br>End Date:</strong><br>{{Auth::user()->profile->end_date}}</p>
                 {{--<p><strong>Function:</strong><br>{{Auth::user()->profile->function}}</p>--}}
-                <p><strong>Industry:</strong><br>{{Auth::user()->profile->industry}}</p>              
-                <p><strong>Current CTC:</strong><br>{{Auth::user()->profile->salary_in_lakhs}}&nbsp;Lakh(s) 
+                <p><strong>Industry (Recent/Current):</strong><br>{{Auth::user()->profile->industry}}</p>              
+                <p><strong>Recent/Current CTC (in INR):</strong><br>{{Auth::user()->profile->salary_in_lakhs}}&nbsp;Lakh(s) 
                     &nbsp;{{Auth::user()->profile->salary_in_thousands}}Thousand(s)</p>
                 <p><strong>Expected CTC:</strong><br>{{Auth::user()->profile->expected_ctc}}&nbsp;</p>
                 <p><strong>Preferred Location:</strong><br>{{Auth::user()->profile->preferred_location}}</p>
-                </div>
+                <p><strong>Notice Period:</strong><br>{{Auth::user()->profile->notice_period}}</p>
+            </div>
             </div>
             <br>
  
@@ -122,8 +130,8 @@
                 
                 <form  id="frmParameter" action="{{route('profile.create')}}" method="POST">@csrf
                     <div class="card-body">
-                    <div class="form-group">
-                        <label for="">Phone number</label>
+                    <div class="form-group required">
+                        <label for=""  class="control-label">Phone number</label>
                         <input type="text" class="form-control" name="phone_number" value="{{Auth::user()->profile->phone_number?Auth::user()->profile->phone_number:old("phone_number")}}">
                         @if($errors->has('phone_number'))
                             <div class="error" style="color: red;">{{$errors->first('phone_number')}}</div>
@@ -131,8 +139,8 @@
                                       
                     </div>
 
-                    <div class="form-group">
-                        <label for="">Address Line 1</label>
+                    <div class="form-group required">
+                        <label for="" class="control-label">Address Line 1</label>
                         <input type="text" class="form-control" name="address_line1" value="{{Auth::user()->profile->address_line1?Auth::user()->profile->address_line1:old("address_line1")}}">
                         @if($errors->has('address_line1'))
                          <div class="error" style="color: red;">{{$errors->first('address_line1')}}</div>
@@ -149,9 +157,9 @@
 
                     <div class="row">
                     <div class="col-md-4">
-                    <div class="form-group">
+                    <div class="form-group required">
 
-                        <label for="country">Select your country</label>
+                        <label for="country" class="control-label">Select your country</label>
                         
                         <select name="country" id="country" class="form-control">
                             <option value="">Select Country</option>
@@ -168,9 +176,9 @@
                     <div class="col-md-4">
                         
                                                     
-                    <div class="form-group">
+                    <div class="form-group required">
 
-                          <label for="state">Select your state</label>
+                          <label for="state" class="control-label">Select your state</label>
                         
                         <select name="state" id="state" class="form-control">
                             <option value="{{Auth::user()->profile->state?$s_id:''}}">{{Auth::user()->profile->state?Auth::user()->profile->state:'Select state'}}</option>
@@ -185,9 +193,9 @@
                 </div>
                 <div class="col-md-4">
                         
-                    <div class="form-group">
+                    <div class="form-group required">
 
-                        <label for="city">Select your city</label>
+                        <label for="city" class="control-label">Select your city</label>
                         
                         <select name="city" id="city" class="form-control">
                             <option value="{{Auth::user()->profile->city?$c_id:''}}">{{Auth::user()->profile->city?Auth::user()->profile->city:'Select city'}}</option>
@@ -203,8 +211,8 @@
                     </div>
                         
 
-                    <div class="form-group">
-                        <label for="pincode">{{ __('Pincode') }}</label>
+                    <div class="form-group required">
+                        <label for="pincode" class="control-label">{{ __('Pincode') }}</label>
                         
                             <input type="text" class="form-control @error('pincode') is-invalid @enderror" name="pincode"  value="{{Auth::user()->profile->pincode?Auth::user()->profile->pincode:old("pincode")}}">
                             @error('pincode')
@@ -215,7 +223,7 @@
                         
                     </div>
                     
-                    <label for="experience">Overall Experience</label>
+                    <label for="experience">Overall Experience<span style="color:red">*</span></label>
                     <div class="row">
                     <div class="col-md-6">
                     <div class="form-group">
@@ -423,7 +431,23 @@
                             <div class="error" style="color: red;">{{$errors->first('preferred_location')}}</div>
                             @endif
 					
-						</div>
+                        </div>
+                        
+                        <div class="form-group required">
+                            <label for="notice_period" class="control-label">Notice Period</label>
+                            <select class="form-control" name="notice_period">
+                                <option value="" {{Auth::user()->profile->notice_period==''?'selected':''}}>Select</option>
+                                <option value="Immediately" {{Auth::user()->profile->notice_period=='Immediately'?'selected':''}}>Immediately</option>
+                                <option value="15 Days or less" {{Auth::user()->profile->notice_period=='15 Days or less'?'selected':''}}>15 Days or less</option>
+                                <option value="1 Month" {{Auth::user()->profile->notice_period=='1 Month'?'selected':''}}>1 Month</option>
+                                <option value="2 Months" {{Auth::user()->profile->notice_period=='2 Months'?'selected':''}}>2 Months</option>
+                                <option value="3 Months" {{Auth::user()->profile->notice_period=='3 Months'?'selected':''}}>3 Months</option>
+                                <option value="More than 3 Months" {{Auth::user()->profile->notice_period=='More than 3 Months'?'selected':''}}>More than 3 Months</option>
+                            </select>
+                            @if($errors->has('notice_period'))
+                            <div class="error" style="color: red;">{{$errors->first('notice_period')}}</div>
+                            @endif
+                        </div>
 
 
                     <div class="form-group">
@@ -438,7 +462,7 @@
         <div class="card mb-0">
             <div class="card-header">
                 <a class="card-title">
-                   <h5 class="d-inline-block h5 text-dark font-weight-bold mb-0">Skills <span style="color: red; font-weight: bold;"><small> [maximum 5] </small></span></h5>
+                   <h5 class="d-inline-block h5 text-dark font-weight-bold mb-0">Skills <span style="color: red; font-weight: bold;"><small> [Top 5 key skills] </small></span></h5>
                    <button type="button" class="btn btn-default float-right py-0 px-1" data-toggle="modal" data-target="#editskills{{$user->id}}">
                     <i class="far fa-edit text-success"></i> <span class="text-success h6">Edit</span>
                     </button>

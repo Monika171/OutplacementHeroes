@@ -1,13 +1,13 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="hero-wrap" style="height: 410px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
+<div class="hero-wrap" style="height: 280px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
   <!--<div class="overlay"></div>-->
   <div class="container">
-        <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
+        <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 280px" data-scrollax-parent="true">
             <div class="col-md-9 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                 <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="{{route('company')}}">Companies <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{$company->cname}}</h1>
+                <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{$company->cname}}</h1>
             </div>
             <div class="col-md-3 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
                @if(Auth::check()&&Auth::user()->id==$company->user_id)
@@ -20,68 +20,97 @@
         </div>
   </div>
 </div>
-
-<br>
-
-<br>
-
-
-   <div class="album text-muted">
-     <div class="container">
-       <div class="row" id="app">
-          <div class="title" style="margin-top: 20px;">
-                <h2></h2> 
-          </div>
-
-          @if(empty($company->cover_photo))
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-md-12 mb-5 ftco-animate">
+            @if(empty($company->cover_photo))
           <img src="{{asset('cover/work.jpg')}}" style="width:100%;">
-
           @else
           <img src="{{asset('uploads/coverphoto')}}/{{$company->cover_photo}}" style="width: 100%;">
-
-
           @endif
 
-          <div class="col-lg-12">
-            
-            
-            <div class="p-4 mb-8 bg-white">
-              
-              <div class="company-desc">		
-                  @if(empty($company->logo))
 
+          </div>
+        </div>
+     
+
+        <div class="row">
+          
+            <div class="col-md-4  px-4 sidebar ftco-animate">
+                
+                <div class="blog-entry align-self-stretch">
+				          @if(empty($company->logo))
                   <img width="100" src="{{asset('profile_pic/logo.jpg')}}">
-
                   @else
                   <img width="100" src="{{asset('uploads/logo')}}/{{$company->logo}}">
-
-
                   @endif
+                      
+                        <div class="text mt-3">
+                          <div class="meta mb-2">
+                            <div>Member since:</strong> &nbsp; &nbsp; {{date('F d Y',strtotime($company->user->created_at))}}</div> 
+                          
+						            	</div>
 
-                  {{--<h1>{{$company->cname}}</h1>--}}
-                  <p><small>Slogan-{{$company->slogan}}</small></p>
-                  <p>{{$company->description}}</p>
-                  <p>Address-{{$company->address}}&nbsp; Phone-{{$company->phone}}&nbsp; Website-{{$company->website}}</p>
 
-              </div>
-
+                        <h3 class="heading"><strong>Our slogan:</strong>&nbsp; &nbsp; {{$company->slogan}}</h3>
+                        <h3 class="heading"><strong>LinkedIn:</strong>&nbsp; &nbsp; <a href="{{$company->linkedin}}"> {{$company->linkedin}}</a></h3>
+                        <h3 class="heading"><strong>Facebook:</strong>&nbsp; &nbsp;<a href="{{$company->facebook}}"> {{$company->facebook}}</a></h3>
+                        <h3 class="heading"><strong>Twitter:</strong>&nbsp; &nbsp; <a href="{{$company->twitter}}"> {{$company->twitter}}</a></h3>
+                         
+                        @if(empty($company->logo)&&Auth::check()&&Auth::user()->id==$company->user_id)
+                        <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 18px;">Please upload company logo</p>
+                        @endif
+                      @if(empty($company->cover_photo)&&Auth::check()&&Auth::user()->id==$company->user_id)
+                            <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 18px;">Please upload company banner image</p>
+                      @endif
+                      
+                    </div>
+                    </div>
+                  
             </div>
 
-        
-              
-        </div>
-          
-         
-          
+            <div class="col-md-8 px-4 ftco-animate">
             
-      </div>
+                    <h5 class="mb-2 mt-2">Description:</h5>
+                    <p>{{$company->description}}</p>
 
-          
-          
-       
+                    <h5 class="mb-2 mt-2">Address:</h5>
+                    <p>{{$company->address_line1}},
+                                {{$company->address_line2}}<br>
+                                {{$company->city}},&nbsp; &nbsp;{{$company->state}},
+                                &nbsp;&nbsp;{{$company->country}}, &nbsp;
+                                Pincode:&nbsp; {{$company->pincode}}</p>
+                    
+                    <div class="row">
+                      <div class="col-md-6 ftco-animate">
 
+                        <h5 class="mb-2 mt-2">Email:</h5>
+                        <p> {{$company->user->email}}</p>
 
+                      </div>
+                      <div class="col-md-6 ftco-animate">
 
+                        <h5 class="mb-2 mt-2">Phone:</h5>
+                        <p>{{$company->phone}}</p>
+
+                      </div>
+                    </div>
+
+                    <h5 class="mb-2 mt-2">Website:</h5>
+                    <p><a href="{{$company->website}}"> {{$company->website}}</a></p>
+
+                  <!--<div class="tag-widget post-tag-container mb-5 mt-5">
+                    <div class="tagcloud">
+                      <a href="#" class="tag-cloud-link">Life</a>
+                      <a href="#" class="tag-cloud-link">Sport</a>
+                      <a href="#" class="tag-cloud-link">Tech</a>
+                      <a href="#" class="tag-cloud-link">Travel</a>
+                    </div>
+                  </div>-->
+            </div>
+        </div>
     </div>
-  </div>
-@endsection
+</section>
+

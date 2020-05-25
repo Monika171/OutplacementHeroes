@@ -31,8 +31,8 @@ class EmployerRegisterController extends Controller
         Company::create([
                 'user_id' => $user->id,
                 'cname' => request('cname'),
-                'slug'=>str_slug(request('cname'))
-
+                'slug'=>str_slug(request('cname')),
+                'authority_designation' => request('authority_designation'),
             ]);
 
         $user->roles()->attach($employerRole->id);
