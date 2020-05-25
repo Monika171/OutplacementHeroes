@@ -51,6 +51,7 @@ class UserController extends Controller
 
         $preferred_location = City::where('country_id','101')->pluck('name');
         $recent_designation = Designation::all()->pluck('designation');
+        $industry = Industry::all()->pluck('industry');
 
         //dd($recent_designation);
         /*$educations = Education::where('user_id', $user->id)
@@ -59,7 +60,7 @@ class UserController extends Controller
         $works = Work::where('user_id', $user->id)
                     ->orderBy('created_at', 'desc')
                     ->get(); */
-        return view('profile.index', compact('user', 'profile', 'skills','countries','preferred_location','s_id','c_id','recent_designation')); 
+        return view('profile.index', compact('user', 'profile', 'skills','countries','preferred_location','s_id','c_id','recent_designation','industry')); 
     }
 
     public function store(Request $request){

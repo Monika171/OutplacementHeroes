@@ -281,7 +281,7 @@
 
                     <div class="form-group">
 
-                        <label for="recent_designation">Designation (Current/Previous)</label>
+                        <label for="recent_designation">Designation (Recent/Current)</label>
                         
                         <input class="form-control" value="{{Auth::user()->profile->recent_designation?Auth::user()->profile->recent_designation:old("recent_designation")}}" name="recent_designation" list="recent_designation">
                             <datalist id="recent_designation">
@@ -336,54 +336,21 @@
                     </div>
                     </div>
 
+                    {{--   
+                        <input class="form-control" value="{{Auth::user()->profile->recent_designation?Auth::user()->profile->recent_designation:old("recent_designation")}}" name="recent_designation" list="recent_designation">
+                            <datalist id="recent_designation">
+                                @foreach($recent_designation as $rd)
+                                <option value="{{$rd}}">
+                                @endforeach
+                            </datalist>--}}
+
                     <div class="form-group">
                         <label for="industry">Industry (Recent/Current)</label>
                         <input class="form-control" value="{{Auth::user()->profile->industry?Auth::user()->profile->industry:old("industry")}}"  name="industry" list="industry">
                             <datalist id="industry">
-                                <option value="Accounting">
-                                <option value="Application Programming">
-                                <option value="Analytics">
-                                <option value="Airline">
-                                <option value="Bank">
-                                <option value="BPO">
-                                <option value="Business Intelligence">
-                                <option value="Content Writing">
-                                <option value="Consultant">
-                                <option value="Corporate Planning">
-                                <option value="Client Server">
-                                <option value="DBA">
-                                <option value="Engineering">
-                                <option value="Ecommerce">
-                                <option value="ERP">
-                                <option value="Export Import">
-                                <option value="EDP">
-                                <option value="Film">
-                                <option value="Graphic Designer">
-                                <option value="HR">
-                                <option value="Hotel">
-                                <option value="IT">
-                                <option value="Interior Design">
-                                <option value="Logistics">
-                                <option value="Legal">
-                                <option value="Marketing">
-                                <option value="Merchandiser">
-                                <option value="Mainframe">
-                                <option value="Middleware">
-                                <option value="Maintenance">
-                                <option value="Network administrator">
-                                <option value="Packaging">
-                                <option value="Pharma">
-                                <option value="Sales">
-                                <option value="Shipping">
-                                <option value="Security">
-                                <option value="System Programming">
-                                <option value="Software Services">
-                                <option value="Site Engineering">
-                                <option value="Telecom Software">
-                                <option value="Telecom/ISP">
-                                <option value="Testing">
-                                <option value="Teacher">
-                                <option value="VLSI">
+                                @foreach($industry as $ind)
+                                <option value="{{$ind}}">
+                                @endforeach
                             </datalist>
                             @if($errors->has('industry'))
                             <div class="error" style="color: red;">{{$errors->first('industry')}}</div>
@@ -391,7 +358,7 @@
                         
                     </div>
 
-                    <label for="salary_in_lakhs">Current/Recent CTC (in INR):</label>
+                    <label for="salary_in_lakhs">Recent/Current CTC (in INR):</label>
                     <div class="row">
                         <div class="col-md-6">
                         <div class="form-group">

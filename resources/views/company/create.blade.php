@@ -31,37 +31,47 @@
                 <div class="card-header">Update logo</div>
                 <div class="card-body">
                     <input type="file" class="form-control" name="company_logo"><br>
-                    <button class="btn btn-dark float-right" type="submit">Update</button>
+                    <button class="btn btn-dark  btn-sm float-right" type="submit">Update</button>
                     @if($errors->has('company_logo'))
                     <div class="error" style="color: red;">{{$errors->first('company_logo')}}</div>
                     @endif
                 </div>
             </div>
         </form>
-    
 
+        <br>
+        <form action="{{route('cover.photo')}}" method="POST" enctype="multipart/form-data">@csrf
+            <div class="card">
+                <div class="card-header">Update cover photo</div>
+                <div class="card-body">
+                    <input type="file" class="form-control" name="cover_photo"><br>
+                    <button class="btn btn-dark  btn-sm float-right" type="submit">Update</button>
+                    @if($errors->has('cover_photo'))
+                    <div class="error" style="color: red;">{{$errors->first('cover_photo')}}</div>
+                    @endif
+                </div>
+            </div>
+        </form>
 
-
-        
         </div>
 
-        <div class="col-md-5">
+    <div class="col-md-5">
 
-            @if(Session::has('message'))
-            <div class="alert alert-success">
-                {{Session::get('message')}}
-            </div>
+        @if(Session::has('message'))
+        <div class="alert alert-success">
+            {{Session::get('message')}}
+        </div>
+        
+        @endif
             
-            @endif
-            
-            <div class="card">
-                <div class="card-header">Update Company Information</div>
-                <form action="{{route('company.store')}}" method="POST">@csrf
+        <div class="card">
+            <div class="card-header">Update Company Information</div>
+            <form action="{{route('company.store')}}" method="POST">@csrf
 
                 <div class="card-body">
                     <div class="form-group">
                         <label for="">Address</label>
-                        <input type="text" class="form-control" name="address" value="{{Auth::user()->company->address}}">
+                        <input type="text" class="form-control" name="address" value="{{Auth::user()->company->address?Auth::user()->company->address:old("address")}}">
                         @if($errors->has('address'))
                         <div class="error" style="color: red;">{{$errors->first('address')}}</div>
                     @endif
@@ -70,7 +80,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Phone</label>
-                        <input type="text" class="form-control" name="phone"  value="{{Auth::user()->company->phone}}" >
+                        <input type="text" class="form-control" name="phone"  value="{{Auth::user()->company->phone?Auth::user()->company->phone:old("phone")}}" >
                     
                         @if($errors->has('phone'))
                         <div class="error" style="color: red;">{{$errors->first('phone')}}</div>
@@ -80,7 +90,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Website</label>
-                        <input type="text" class="form-control" name="website"  value="{{Auth::user()->company->website}}">
+                        <input type="text" class="form-control" name="website"  value="{{Auth::user()->company->website?Auth::user()->company->website:old("website")}}">
                     
                         @if($errors->has('website'))
                         <div class="error" style="color: red;">{{$errors->first('website')}}</div>
@@ -88,7 +98,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Slogan</label>
-                        <input type="text" class="form-control" name="slogan"  value="{{Auth::user()->company->slogan}}">
+                        <input type="text" class="form-control" name="slogan"  value="{{Auth::user()->company->slogan?Auth::user()->company->slogan:old("slogan")}}">
                         @if($errors->has('slogan'))
                         <div class="error" style="color: red;">{{$errors->first('slogan')}}</div>
                     @endif
@@ -96,7 +106,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Description</label>
-                        <textarea name="description" class="form-control" rows="6" cols="80" style="width:100"> {{Auth::user()->company->description}}</textarea>
+                        <textarea name="description" class="form-control" rows="6" cols="80" style="width:100"> {{Auth::user()->company->description?Auth::user()->company->description:old("description")}}</textarea>
                         @if($errors->has('description'))
                         <div class="error" style="color: red;">{{$errors->first('description')}}</div>
                     @endif
@@ -106,53 +116,11 @@
                                  
                     <div class="form-group">
                         <label for="industry">Industry </label>
-                        <input class="form-control"  value="{{Auth::user()->company->industry}}" name="industry" list="industry">
+                        <input class="form-control"  value="{{Auth::user()->company->industry?Auth::user()->company->industry:old("industry")}}" name="industry" list="industry">
                             <datalist id="industry">
-                                <option value="Accounting">
-                                <option value="Application Programming">
-                                <option value="Analytics">
-                                <option value="Airline">
-                                <option value="Bank">
-                                <option value="BPO">
-                                <option value="Business Intelligence">
-                                <option value="Content Writing">
-                                <option value="Consultant">
-                                <option value="Corporate Planning">
-                                <option value="Client Server">
-                                <option value="DBA">
-                                <option value="Engineering">
-                                <option value="Ecommerce">
-                                <option value="ERP">
-                                <option value="Export Import">
-                                <option value="EDP">
-                                <option value="Film">
-                                <option value="Graphic Designer">
-                                <option value="HR">
-                                <option value="Hotel">
-                                <option value="IT">
-                                <option value="Interior Design">
-                                <option value="Logistics">
-                                <option value="Legal">
-                                <option value="Marketing">
-                                <option value="Merchandiser">
-                                <option value="Mainframe">
-                                <option value="Middleware">
-                                <option value="Maintenance">
-                                <option value="Network administrator">
-                                <option value="Packaging">
-                                <option value="Pharma">
-                                <option value="Sales">
-                                <option value="Shipping">
-                                <option value="Secretary">
-                                <option value="Security">
-                                <option value="System Programming">
-                                <option value="Software Services">
-                                <option value="Site Engineering">
-                                <option value="Telecom Software">
-                                <option value="Telecom/ISP">
-                                <option value="Testing">
-                                <option value="Teacher">
-                                <option value="VLSI">
+                                @foreach($industry as $ind)
+                                <option value="{{$ind}}">
+                                @endforeach
                             </datalist>
                             @if($errors->has('industry'))
                             <div class="error" style="color: red;">{{$errors->first('industry')}}</div>
@@ -164,12 +132,14 @@
                         <button class="btn btn-dark" type="submit">Edit & Update</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
+
+    
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header">About Company</div>
+                <div class="card-header">About Company(preview)</div>
                 <div class="card-body">
                     <p><strong>Company Name:</strong> &nbsp; &nbsp;{{Auth::user()->company->cname}}</p>
                     <p><strong>Address:</strong> &nbsp; &nbsp; {{Auth::user()->company->address}}</p>
@@ -190,22 +160,13 @@
 
                 </div>
             </div>
-            <br>
-            <form action="{{route('cover.photo')}}" method="POST" enctype="multipart/form-data">@csrf
-                <div class="card">
-                    <div class="card-header">Update cover photo</div>
-                    <div class="card-body">
-                        <input type="file" class="form-control" name="cover_photo"><br>
-                        <button class="btn btn-dark float-right" type="submit">Update</button>
-                        @if($errors->has('cover_photo'))
-                        <div class="error" style="color: red;">{{$errors->first('cover_photo')}}</div>
-                        @endif
-                    </div>
-                </div>
-            </form>
+
 
 
         </div>
     </div>
 </div>
+
+<br>
+<br>
 @endsection

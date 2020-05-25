@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Company;
 use App\Job;
 use App\User;
+use App\Industry;
 use Auth;
 
 
@@ -19,6 +20,7 @@ class CompanyController extends Controller
 
 
     public function index($id, Company $company){
+
     	//$jobs = Job::where('user_id',$id)->get();
     	return view('company.index',compact('company'));
     }
@@ -30,7 +32,8 @@ class CompanyController extends Controller
       
 
     public function create(){
-    	return view('company.create');
+        $industry = Industry::all()->pluck('industry');
+    	return view('company.create',compact('industry'));
     }
 
     public function store(Request $request){
