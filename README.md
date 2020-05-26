@@ -4,16 +4,19 @@
 
 ## IMPORTANT!!!
 
-After cloning (or updating) modify .env file with your own database values& mailtrap values. Because a user can't proceed without email verification. Go for:
+1) After cloning (or updating) modify .env file with your own database values& mailtrap values. Because a user can't proceed without email verification.
+
+2) Go for:
 
 "php artisan migrate:fresh" and
 "php artisan db:seed" and
 "php artisan storage:link"
 
-Also, import 'countries.sql', 'states.sql', 'cities.sql', 'designations', 'industries.sql', 'skills.sql'.
-(either you will find these inside import1 directory here, if not I will email)
+3) Also, import 'countries.sql', 'states.sql', 'cities.sql', 'designations.sql', 'industries.sql', 'skills.sql' at your database and don't forget to delete the previous existing tables with same name which got created after 'php artisan migrate' in first step!
 
-NOTE: 'cities.sql' is comparatively big file. May not get imported easily without doing some extra one or two steps.eg:
+(I will email these .sql files)
+
+NOTE: 'cities.sql' is comparatively a big file. May not get imported easily without doing some extra one or two steps.. i.e:
 -----------------
 1) At
 xampp control panel-> config -> mysql -> my.ini -> (open and set)
@@ -21,9 +24,7 @@ myisam_sort_buffer_size = 100M
 2)
 copy cities.sql to "C:\xampp\mysql\bin", then in terminal-
 C:\xampp\mysql\bin>mysql -u proot -p oph < cities.sql
--------------------
-Screenshot of same inside import1>notes
--------------------
+
 
 ## Initial tasks:
 -HIRING EMPLOYERS, JOBSEEKERS, ADMIN (sending notification carrying JD link, if latter is eligible etc).
