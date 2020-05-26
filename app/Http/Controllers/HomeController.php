@@ -7,6 +7,8 @@ use Auth;
 use App\Job;
 use App\User;
 use App\Company;
+use App\VolunteerProfile;
+use App\Profile;
 
 class HomeController extends Controller
 {

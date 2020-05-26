@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 
 use App\User;
 use App\VolunteerProfile;
 use App\Role;
-use Hash;
+//use Hash;
 
 class VolunteerRegisterController extends Controller
 {
@@ -17,7 +17,9 @@ class VolunteerRegisterController extends Controller
         $this->validate($request,[
             'name' => 'required|string|max:255',
             'email'=>'required|string|email|max:255|unique:users',
-            'password'=>'required|string|min:8|confirmed'
+            'password'=>'required|string|min:8|confirmed',
+            'dob'=>'required',
+            'gender'=>'required'
         ]);
 
         $volunteerRole = Role::where('name', 'volunteer')->first();
@@ -31,6 +33,8 @@ class VolunteerRegisterController extends Controller
       
         VolunteerProfile::create([
             'user_id' => $user->id,
+            'gender' => request('gender'),
+            'dob'=>request('dob')
 
         ]);
 

@@ -9,6 +9,8 @@
                 <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="{{route('company')}}">Companies <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
                 <h1 style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Candidate Name: {{$user->name}}</h1>
             </div>
+            <div class="col-md-3 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
+            </div>
         </div>
   </div>
 </div>
@@ -17,7 +19,7 @@
       <div class="container">
         <div class="row">
           
-            <div class="col-md-4 sidebar ftco-animate">
+            <div class="col-md-4  px-4 sidebar ftco-animate">
                 
                     <div class="blog-entry align-self-stretch">
                          @if(empty($user->profile->profile_pic))
@@ -28,61 +30,108 @@
                         @endif
                       
                         <div class="text mt-3">
-                          <div class="meta mb-2">
-                            <div>Member since: &nbsp; &nbsp; {{date('F d Y',strtotime($user->created_at))}}</div> 
                           
-                        </div>
                         {{--<h3 class="heading">{{$user->name}}</h3>--}}
-                        <h3 class="heading">Gender:&nbsp; &nbsp; {{$user->profile->gender}}</h3>
-                        <h3 class="heading">Date of Birth: &nbsp; &nbsp; {{$user->profile->dob}}</h3>
-                        <h3 class="heading">Email:&nbsp; &nbsp; {{$user->email}}</h3>
-                        <h3 class="heading">Phone:&nbsp; &nbsp; {{$user->profile->phone_number}}</h3>
-                        <h3 class="heading">Address:</strong> &nbsp; &nbsp; {{$user->profile->address_line1}}</h3>
-                        <h3 class="heading">{{$user->profile->address_line2}}</h3>
-                        <h3 class="heading">{{$user->profile->city_id}},&nbsp; &nbsp;{{$user->profile->state_id}}</h3>
-                        <h3 class="heading">Pincode:&nbsp; &nbsp; {{$user->profile->pincode}}</h3>
+                        @if(!empty($user->profile->resume))
+                            <p style="font-weight: bold; font-size: 18px;"><a href="{{Storage::url($user->profile->resume)}}">View Candidate Resume</a></p>
+                        @endif
+
+                        <h3 class="heading"><strong>Gender:</strong>&nbsp; &nbsp; {{$user->profile->gender}}</h3>
+                        <h3 class="heading"><strong>Date of Birth:</strong> &nbsp; &nbsp; {{$user->profile->dob}}</h3>
+                        <h3 class="heading"><strong>Email:</strong>&nbsp; &nbsp; {{$user->email}}</h3>
+                        <h3 class="heading"><strong>Phone:</strong>&nbsp; &nbsp; {{$user->profile->phone_number}}</h3>
+                        <h3 class="heading"><strong>Address:</strong></strong> &nbsp; &nbsp;</h3>
+                        <p><h5 class="heading">{{$user->profile->address_line1}}
+                        {{$user->profile->address_line2}},
+                        {{$user->profile->city}},&nbsp;{{$user->profile->state}},
+                        Pincode:&nbsp; {{$user->profile->pincode}}</h5></p>
+                        <div class="meta mb-2">
+                          <div>Member since: &nbsp; &nbsp; {{date('F d Y',strtotime($user->created_at))}}</div> 
+                        
+                      </div>
+
+                        <div class="card mr-4">
+                          <div class="card-header">
+                              <a class="card-title">
+                                 <h5 class="d-inline-block h5 text-dark font-weight-bold mb-0">Skills</h5>
+                              </a>
+                          </div>
+                          <div class="card-body">
+                            @foreach($user->skills as $skill)
+                             <button type="button" class="btn btn-sm btn-info mt-1">{{$skill->skill}}</button>
+                            @endforeach
+              
+                          </div>
+                        </div>
                       
                     </div>
                     </div>
                   
             </div>
 
+        <div class="col-md-8 px-4 ftco-animate">
+        {{--<h2 class="mb-3">Name:&nbsp; &nbsp;{{$user->name}}</h2>
+        <hr>--}}
+        
+        <h5 class="mb-2 mt-2">Overall Experience:</h5>
+        <p>{{$user->profile->experience_years}}&nbsp; year(s)
+          &nbsp; &nbsp; {{$user->profile->experience_months}} &nbsp; months(s)</p>
 
-            <div class="col-md-8 ftco-animate">
-              <h2 class="mb-3">{{$user->name}}</h2>
-              
-              <h4 class="mb-3 mt-5">Experience:<h4>
-              <p>{{$user->profile->experience_years}}&nbsp; year(s)
-                &nbsp; &nbsp; {{$user->profile->experience_months}} &nbsp; months(s)</p>
-      
-              <h4 class="mb-3 mt-4">Current/Previous Company:</h4>
-              <p>{{$user->profile->recent_company}}</p>
-      
-              <h4 class="mb-3 mt-4">Current/Previous Designation:</h4>
-              <p>{{$user->profile->recent_designation}}</p>
-      
-              <h4 class="mb-3 mt-4">Start Date:</h4>
-              <p>{{$user->profile->start_date}}</p>
-              
-              <h4 class="mb-3 mt-5"> End Date:</h4>
-              <p>{{$user->profile->end_date}}</p>
-      
-              <h4 class="mb-3 mt-4">Current Function:</h4>
-              <p>{{$user->profile->function}}</p>
-      
-              <h4 class="mb-3 mt-4">Current Industry:</h4>
-              <p>{{$user->profile->industry}}</p>
-      
-              <h4 class="mb-3 mt-4">Current CTC:</h4>
-              <p>{{$user->profile->salary_in_lakhs}}&nbsp;Lakh(s)
-                &nbsp;&nbsp;{{$user->profile->salary_in_thousands}}&nbsp; Thousand(s)</p>
-      
-              <h4 class="mb-3 mt-4">Expected CTC:</h4>
-              <p>{{$user->profile->expected_ctc}}&nbsp;Lakh(s)</p>
-      
-              <h4 class="mb-3 mt-4">Preferred Location:</h4>
-              <p>{{$user->profile->preferred_location}}</p>
-      
+        @if(!empty($user->profile->recent_company))
+        <h5 class="mb-2 mt-2">Company (Recent/Current):</h5>
+        <p>{{$user->profile->recent_company}}</p>
+        @endif
+
+        @if(!empty($user->profile->recent_designation))
+        <h5 class="mb-2 mt-2">Designation (Recent/Current):</h5>
+        <p>{{$user->profile->recent_designation}}</p>
+        @endif
+
+        @if(!empty($user->profile->start_date))
+        <div class="row">
+        <div class="col-md-6">
+
+        <h5 class="mb-2 mt-2">Start Date:</h5>
+        <p>{{$user->profile->start_date}}</p>
+
+        </div>
+        <div class="col-md-6">
+        
+        <h5 class="mb-2 mt-2"> End Date:</h5>
+        <p>{{$user->profile->end_date}}</p>
+
+        </div>
+        </div>
+        @endif
+
+        {{--<h5 class="mb-2 mt-2">Current Function:</h5>
+        <p>{{$user->profile->function}}</p>--}}
+        
+        @if(!empty($user->profile->industry))
+        <h5 class="mb-2 mt-2">Industry (Recent/Current):</h5>
+        <p>{{$user->profile->industry}}</p>
+        @endif
+
+        @if(!empty($user->profile->salary_in_lakhs)&&!empty($user->profile->salary_in_thousands))
+        <h5 class="mb-2 mt-2">Recent/Current CTC (in INR):</h5>
+        <p>{{$user->profile->salary_in_lakhs}}&nbsp;Lakh(s)
+          &nbsp;&nbsp;{{$user->profile->salary_in_thousands}}&nbsp; Thousand(s)</p>
+        @endif
+
+        <hr>
+        @if(!empty($user->profile->expected_ctc))
+        <h5 class="mb-2 mt-2">Expected CTC:</h5>
+        <p>{{$user->profile->expected_ctc}}&nbsp;Lakh(s)</p>
+        @endif
+
+        @if(!empty($user->profile->preferred_location))
+        <h5 class="mb-2 mt-2">Preferred Location:</h5>
+        <p>{{$user->profile->preferred_location}}</p>
+        @endif
+
+        <h5 class="mb-2 mt-2">Notice Period:</h5>
+        <p>{{$user->profile->notice_period}}</p>
+
 
  
         <!--

@@ -87,14 +87,23 @@
         
         <h5 class="mb-2 mt-2">Overall Experience:</h5>
         <p>{{$user->profile->experience_years}}&nbsp; year(s)
-          &nbsp; &nbsp; {{$user->profile->experience_months}} &nbsp; months(s)</p>
+          &nbsp; &nbsp;
+          @if(!empty($user->profile->experience_months)) 
+          {{$user->profile->experience_months}} &nbsp; months(s)
+        @endif
+        </p>
 
+        @if(!empty($user->profile->recent_company))
         <h5 class="mb-2 mt-2">Company (Recent/Current):</h5>
         <p>{{$user->profile->recent_company}}</p>
+        @endif
 
+        @if(!empty($user->profile->recent_designation))
         <h5 class="mb-2 mt-2">Designation (Recent/Current):</h5>
         <p>{{$user->profile->recent_designation}}</p>
+        @endif
 
+        @if(!empty($user->profile->start_date))
         <div class="row">
         <div class="col-md-6">
 
@@ -109,26 +118,38 @@
 
         </div>
         </div>
+        @endif
 
         {{--<h5 class="mb-2 mt-2">Current Function:</h5>
         <p>{{$user->profile->function}}</p>--}}
-
+        
+        @if(!empty($user->profile->industry))
         <h5 class="mb-2 mt-2">Industry (Recent/Current):</h5>
         <p>{{$user->profile->industry}}</p>
+        @endif
 
         <h5 class="mb-2 mt-2">Recent/Current CTC (in INR):</h5>
-        <p>{{$user->profile->salary_in_lakhs}}&nbsp;Lakh(s)
-          &nbsp;&nbsp;{{$user->profile->salary_in_thousands}}&nbsp; Thousand(s)</p>
+        <p>{{$user->profile->salary_in_lakhs}}&nbsp;Lakh(s)&nbsp;&nbsp;
+          @if(!empty($user->profile->salary_in_thousands))        
+          {{$user->profile->salary_in_thousands}}&nbsp; Thousand(s)
+        @endif
+        </p>
+          
 
         <hr>
+        @if(!empty($user->profile->expected_ctc))
         <h5 class="mb-2 mt-2">Expected CTC:</h5>
         <p>{{$user->profile->expected_ctc}}&nbsp;Lakh(s)</p>
+        @endif
 
+        @if(!empty($user->profile->preferred_location))
         <h5 class="mb-2 mt-2">Preferred Location:</h5>
         <p>{{$user->profile->preferred_location}}</p>
+        @endif
 
         <h5 class="mb-2 mt-2">Notice Period:</h5>
         <p>{{$user->profile->notice_period}}</p>
+
 
 
  

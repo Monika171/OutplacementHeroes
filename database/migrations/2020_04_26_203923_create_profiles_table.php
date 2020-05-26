@@ -25,7 +25,7 @@ class CreateProfilesTable extends Migration
             $table->string('state')->nullable();
             $table->string('city')->nullable();
             $table->integer('pincode')->nullable();
-            $table->integer('experience_years')->nullable();
+            $table->integer('experience_years')->default(0);
             $table->integer('experience_months')->nullable();
             $table->string('recent_company')->nullable();
             $table->string('recent_designation')->nullable();
@@ -34,7 +34,7 @@ class CreateProfilesTable extends Migration
             $table->string('function')->nullable();
             $table->string('industry')->nullable();
             $table->string('preferred_location')->nullable();
-            $table->string('salary_in_lakhs')->nullable();
+            $table->integer('salary_in_lakhs')->default(0);
             $table->integer('salary_in_thousands')->nullable();
             $table->string('expected_ctc')->nullable();
             $table->string('notice_period')->nullable();

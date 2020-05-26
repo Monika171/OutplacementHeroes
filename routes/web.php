@@ -94,6 +94,8 @@ Route::post('volunteer/register','VolunteerRegisterController@volunteerRegister'
 
 Route::get('volunteer/profile','VolunteerController@index')->name('volunteer.profile');
 Route::post('user/volunteer/create','VolunteerController@store')->name('volunteer.store');
+Route::post('volunteer/profile_pic','VolunteerController@vprofile_pic')->name('vprofile_pic');
+Route::post('volunteer/profile_pic/delete','VolunteerController@delete_vpic')->name('vpic.delete');
 Route::get('volunteer/{id}','VolunteerController@show')->name('volunteer.show');
 
 Route::get('/vseekers','VolunteerController@listseekers')->name('vseeker.index');

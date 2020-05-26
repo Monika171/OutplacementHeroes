@@ -60,7 +60,21 @@
                     </div>
                 </div>
 
-          
+
+                <div class="form-group row">
+            
+                    <div class="col-md-12">Date of Birth</div>
+
+                    <div class="col-md-12">
+                        <input type="text" id="date_dob" placeholder="date of birth" class="form-control datepicker @error('dob') is-invalid @enderror" name="dob" value="{{ old('dob') }}" required>
+
+                        @if ($errors->has('dob'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('dob') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>          
 
 
                 <div class="form-group row">
@@ -85,7 +99,21 @@
                     </div>
                 </div>
 
+                <div class="form-group row">
+            
+                    <div class="col-md-12">Gender</div>
 
+                    <div class="col-md-12">
+                        <input type="radio" name="gender" value="male" required="">Male
+                        <input type="radio" name="gender" value="female">Female
+
+                        @if ($errors->has('gender'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('gender') }}</strong>
+                        </span>
+                        @endif
+                    </div>
+                </div>
 
 
       <div class="row form-group">

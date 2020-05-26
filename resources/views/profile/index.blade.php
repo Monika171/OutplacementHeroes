@@ -153,7 +153,7 @@
                 <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">About me (preview)</div>
                 <div class="card-body">
                 @if(!empty(Auth::user()->profile->resume))
-                    <p><a href="{{Storage::url(Auth::user()->profile->resume)}}">View Resume</a></p>
+                    <p style="font-weight: bold; font-size: 18px;"><a href="{{Storage::url(Auth::user()->profile->resume)}}">View Resume</a></p>
                 @else
                     <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 18px;">Please upload your resume</p>
                 @endif
@@ -300,12 +300,14 @@
                         
                     </div>
                     
-                    <label for="experience">Overall Experience<span style="color:red">*</span></label>
+                    <br>
+                    <p class="mb-0"> <label for="experience">Overall Experience<span style="color:red">*</span></label> &nbsp; &nbsp;
+                    <span style="color:red">If no value is selected. 0 year(s) will be set by default.</span></p>
                     <div class="row">
                     <div class="col-md-6">
                     <div class="form-group">
-                        
-                        <select name="experience_years" class="form-control">
+                        <span class="my-0" style="color:rgb(42, 57, 195);">Years</span> 
+                        <select name="experience_years" class="form-control">                         
                              @for ($i = 0; $i <= 50; $i++)
                             <option value="{{ $i }}" {{Auth::user()->profile->experience_years==$i?'selected':''}}>{{ $i }} &nbsp; year(s)</option>
                             @endfor
@@ -319,6 +321,7 @@
                     <div class="col-md-6">
 
                     <div class="form-group">
+                        <span class="my-0" style="color:rgb(42, 57, 195);">Months</span> 
                         <select name="experience_months" class="form-control">
                             <option value="">Select</option>
                              @for ($i = 1; $i <= 11; $i++)
@@ -443,12 +446,14 @@
                         
                     </div>
 
-                    <label for="salary_in_lakhs">Recent/Current CTC (in INR):</label>
+                    <br>
+                    <p class="mb-0"> <label for="salary_in_lakhs">Recent/Current CTC (in INR):</label> &nbsp; &nbsp;
+                    <span style="color:red">If no value is selected. 0 Lakh(s) will be set by default.</span></p>
                     <div class="row">
                         <div class="col-md-6">
                         <div class="form-group">
                             
-                            <p style="color:rgb(42, 57, 195);">Salary (in Lakhs)</p>
+                            <span class="my-0" style="color:rgb(42, 57, 195);">Salary (in Lakhs)</span>                            
                             <select name="salary_in_lakhs" class="form-control">
                                 @for ($i = 0; $i <= 99; $i++)
                                <option value="{{ $i }}" {{Auth::user()->profile->salary_in_lakhs==$i?'selected':''}}>{{ $i }} &nbsp; Lakh(s)</option>
@@ -463,7 +468,7 @@
                     <div class="col-md-6">
                         
                     <div class="form-group">
-                        <p style="color:rgb(42, 57, 195);">Salary (in Thousands)</p>
+                        <span class="my-0" style="color:rgb(42, 57, 195);">Salary (in Thousands)</span>
                         <input type="text" class="form-control" name="salary_in_thousands" value="{{Auth::user()->profile->salary_in_thousands?Auth::user()->profile->salary_in_thousands:old("salary_in_thousands")}}">
                         @if($errors->has('salary_in_thousands'))
                         <div class="error" style="color: red;">{{$errors->first('salary_in_thousands')}}</div>

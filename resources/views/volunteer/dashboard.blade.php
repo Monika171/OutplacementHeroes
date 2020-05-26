@@ -47,14 +47,13 @@
                             <div class="col-8 col-md-7">
                                 <div class="mb-2 mb-md-0 mr-5">
                                     <div class="job-post-item-header d-flex align-items-center">
-                                    <h4 class="mr-3 text-black">{{$seeker->user->name}}</h4>
+                                    <h4 class="mr-3 text-black">Name: {{$seeker->user->name}}</h4>
                                     </div>
                                 
                                     <div class="job-post-item-body d-block d-md-flex">
-                                        <div class="mr-3"><p>{{$seeker->user->email}}<br>
-                                        {{$seeker->industry}}<br>
-                                        {{$seeker->experience_years}}{{$seeker->experience_years}}<br>
-                                        {{--<div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$seeker->experience}}</a>--}}
+                                        <div class="mr-3"><p>Email: {{$seeker->user->email}}<br>
+                                        <div class="mr-3"><span class="icon-layers"></span>Total Experience:{{$seeker->experience_years}}year(s)</a>
+                                            <br>Notice Period{{$seeker->notice_period}}<br>
                                         <span class="icon-my_location"></span> <span>{{$seeker->state}}</span></div>
                                         </div>
                                     </div>
