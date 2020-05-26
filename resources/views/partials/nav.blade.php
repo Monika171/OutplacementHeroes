@@ -9,6 +9,11 @@
 
     <div class="collapse navbar-collapse" id="ftco-nav">
         {{--@include('inc.messages')--}}
+        @if(session('error'))
+        <div class="alert alert-danger">
+            {{session('error')}}
+        </div>
+        @endif
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item"><a href="{{route('company')}}" class="nav-link">Companies</a></li>
@@ -28,9 +33,10 @@
             </li>
 
             <li class="nav-item">
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ophLogin">
                 Login
                 </button>
+                <!--exampleModal-->
             </li>
         @else
             <li class="nav-item dropdown">
@@ -112,7 +118,7 @@
 </nav>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ophLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -177,9 +183,6 @@
                                 @endif
                             </div>
                         </div>
-
-
-
 
       </div>
       <div class="modal-footer">

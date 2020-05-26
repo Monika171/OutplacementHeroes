@@ -37,40 +37,117 @@
 
             <br>
             <br>
-            <form action="{{route('profile_pic')}}" method="POST" enctype="multipart/form-data">@csrf
+            
 
                 <div class="card">
                     <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">Update profile picture</div>
                     <div class="card-body">
+                        <form action="{{route('profile_pic')}}" method="POST" enctype="multipart/form-data">@csrf
                         <input type="file" class="form-control" name="profile_pic">
                         <br>
-                        <button class="btn btn-info btn-sm float-right" type="submit">Update</button>
+                        <button class="btn btn-info btn-sm float-left" type="submit">Update</button>
                     
                         @if($errors->has('profile_pic'))
                             <div class="error" style="color: red;">{{$errors->first('profile_pic')}}</div>
                         @endif
+                        </form>
+
+                        <!-- Button trigger modal -->
+                        @if(!empty(Auth::user()->profile->profile_pic))
+                        <button type="button" class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#pic{{Auth::user()->profile->id}}">
+                            Remove
+                        </button>
+                        @endif
+                        
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="pic{{Auth::user()->profile->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Delete Profile Picture</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                Your profile picture will be removed. Are you sure?
+                                </div>
+                                <div class="modal-footer">
+                                <form action="{{route('spic.delete')}}" method="POST">@csrf
+                                    <input type="hidden" name="id" value="{{Auth::user()->profile->id}}">
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <!-- End Button trigger modal -->
+
+
+
                     </div>
                 </div>
-            </form>
+            
     
             
             <br>
-            <form action="{{route('resume')}}" method="POST" enctype="multipart/form-data">@csrf
+           
             <div class="card">
                 <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">Update Resume</div>
                 <div class="card-body">
-                    <input type="file" class="form-control" name="resume">
-                    <br>
-                    <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 12px;">*[FILE-FORMAT: ONLY PDF]</p>
-                    <button class="btn btn-info btn-sm float-right" type="submit">Update</button>
+                    <form action="{{route('resume')}}" method="POST" enctype="multipart/form-data">@csrf
+                        <input type="file" class="form-control" name="resume">
+                        <br>
+                        <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 12px;">*[FILE-FORMAT: ONLY PDF]</p>
+                        <button class="btn btn-info btn-sm float-left" type="submit">Update</button>
                 
-                @if($errors->has('resume'))
+                     @if($errors->has('resume'))
                     <div class="error" style="color: red;">{{$errors->first('resume')}}</div>
+                     @endif
+                     </form>
+
+                <!-- Button trigger modal -->
+               @if(!empty(Auth::user()->profile->resume))
+                <button type="button" class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#res{{Auth::user()->profile->id}}">
+                    Remove
+                </button>
                 @endif
+                
+                
+                <!-- Modal -->
+                <div class="modal fade" id="res{{Auth::user()->profile->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Resume</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        Your resume will be removed. Are you sure?
+                        </div>
+                        <div class="modal-footer">
+                        <form action="{{route('resume.delete')}}" method="POST">@csrf
+                            <input type="hidden" name="id" value="{{Auth::user()->profile->id}}">
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- End Button trigger modal -->
                 
                 </div>
             </div>
-            </form>
+            
             <br>
             <div class="card">
                 <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">About me (preview)</div>

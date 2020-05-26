@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use App\Profile;
 use App\User;
 use App\Skill;
@@ -81,7 +82,7 @@ class UserController extends Controller
         'notice_period'=>'required',
          //'recent_designation' => 'required_with:recent_company',           
                 
-                //'phone_number'=>'required|numeric|digits_between:10,10',
+          //'phone_number'=>'required|numeric|digits_between:10,10',
         ]);
         
         $fresher = request('fresher');
@@ -132,22 +133,6 @@ class UserController extends Controller
             }
 
 
-            /*public function coverletter(Request $request){
-                $this->validate($request,[
-                    'cover_letter'=>'required|mimes:pdf,doc,docx|max:20000'
-                ]);
-                $user_id = auth()->user()->id;
-                
-                $cover = $request->file('cover_letter')->store('public/files');
-                    Profile::where('user_id',$user_id)->update([
-                      'cover_letter'=>$cover
-                    ]);
-    
-                return redirect()->back()->with('message','Cover letter Sucessfully Updated!');
-        
-              
-           }*/
-
            public function resume(Request $request){
             $this->validate($request,[
                 'resume'=>'required|mimes:pdf|max:20000'
@@ -182,6 +167,41 @@ class UserController extends Controller
  
    }
 
+   public function delete_spic(Request $request){
+    $id = request('id');
+    $p = Profile::findOrFail($id);
+    $filename = $p->profile_pic;
+  
+    //dd($filename);
+  
+    Profile::where('id',$id)->update([
+      'profile_pic'=>null
+    ]);
+  
+    //$file->move('uploads/profile_pic/',$filename);
+    File::delete('uploads/profile_pic/'.$filename);
+  
+    return redirect()->back()->with('message','Profile picture deleted successfully!');
+
+}
+
+public function delete_resume(Request $request){
+
+            $id = request('id');
+            $p = Profile::findOrFail($id);
+            $filename = $p->resume;
+
+            //dd($filename);
+
+            Profile::where('id',$id)->update([
+              'resume'=>null
+            ]);
+            
+            \Storage::delete($filename);
+            return redirect()->back()->with('message','Resume deleted successfully!');
+
+}
+
    public function show_profile($id){
 
     $user = User::findOrFail($id);
@@ -196,5 +216,21 @@ class UserController extends Controller
 
   }
 
+  
+            /*public function coverletter(Request $request){
+                $this->validate($request,[
+                    'cover_letter'=>'required|mimes:pdf,doc,docx|max:20000'
+                ]);
+                $user_id = auth()->user()->id;
+                
+                $cover = $request->file('cover_letter')->store('public/files');
+                    Profile::where('user_id',$user_id)->update([
+                      'cover_letter'=>$cover
+                    ]);
+    
+                return redirect()->back()->with('message','Cover letter Sucessfully Updated!');
+        
+              
+           }*/
 
 }

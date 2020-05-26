@@ -30,39 +30,112 @@
 
         <div class="col-md-3  pr-4">
             @if(empty(Auth::user()->company->logo))
-
                     <img src="{{asset('profile_pic/logo.jpg')}}"style="width: 100%;">
-
             @else
                 <img src="{{asset('uploads/logo')}}/{{Auth::user()->company->logo}}" style="width: 100%;">
             @endif
         <br><br>
-        <form action="{{route('company.logo')}}" method="POST" enctype="multipart/form-data">@csrf
+        
             <div class="card">
                 <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">Update logo</div>
                 <div class="card-body">
+                    <form action="{{route('company.logo')}}" method="POST" enctype="multipart/form-data">@csrf
                     <input type="file" class="form-control" name="company_logo"><br>
-                    <button class="btn btn-dark  btn-sm float-right" type="submit">Update</button>
+                    <button class="btn btn-dark  btn-sm float-left" type="submit">Update</button>
                     @if($errors->has('company_logo'))
                     <div class="error" style="color: red;">{{$errors->first('company_logo')}}</div>
                     @endif
+                </form>
+
+                 <!-- Button trigger modal -->
+                 @if(!empty(Auth::user()->company->logo))
+                 <button type="button" class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#logo{{Auth::user()->company->id}}">
+                     Remove
+                 </button>
+                 @endif
+                 
+                 
+                 <!-- Modal -->
+                 <div class="modal fade" id="logo{{Auth::user()->company->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                     <div class="modal-dialog">
+                     <div class="modal-content">
+                         <div class="modal-header">
+                         <h5 class="modal-title" id="exampleModalLabel">Delete Logo</h5>
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                         </button>
+                         </div>
+                         <div class="modal-body">
+                         Your company logo will be removed. Are you sure?
+                         </div>
+                         <div class="modal-footer">
+                         <form action="{{route('elogo.delete')}}" method="POST">@csrf
+                             <input type="hidden" name="id" value="{{Auth::user()->company->id}}">
+                             <button class="btn btn-danger" type="submit">Delete</button>
+                         
+                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                         </form>
+                         </div>
+                     </div>
+                     </div>
+                 </div>
+
+                 <!-- End Button trigger modal -->
                 </div>
             </div>
-        </form>
+        
 
         <br>
-        <form action="{{route('cover.photo')}}" method="POST" enctype="multipart/form-data">@csrf
+        
             <div class="card">
                 <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">Update Company Banner Image</div>
                 <div class="card-body">
+                    <form action="{{route('cover.photo')}}" method="POST" enctype="multipart/form-data">@csrf
                     <input type="file" class="form-control" name="cover_photo"><br>
-                    <button class="btn btn-dark  btn-sm float-right" type="submit">Update</button>
+                    <button class="btn btn-dark  btn-sm float-left" type="submit">Update</button>
                     @if($errors->has('cover_photo'))
                     <div class="error" style="color: red;">{{$errors->first('cover_photo')}}</div>
                     @endif
+                    </form>
+
+                     <!-- Button trigger modal -->
+                     @if(!empty(Auth::user()->company->cover_photo))
+                     <button type="button" class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#cover{{Auth::user()->company->id}}">
+                         Remove
+                     </button>
+                     @endif
+                   
+                     
+                     
+                     <!-- Modal -->
+                     <div class="modal fade" id="cover{{Auth::user()->company->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                         <div class="modal-dialog">
+                         <div class="modal-content">
+                             <div class="modal-header">
+                             <h5 class="modal-title" id="exampleModalLabel">Delete Banner Image</h5>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
+                             </div>
+                             <div class="modal-body">
+                             Your company banner image will be removed. Are you sure?
+                             </div>
+                             <div class="modal-footer">
+                             <form action="{{route('ecover.delete')}}" method="POST">@csrf
+                                 <input type="hidden" name="id" value="{{Auth::user()->company->id}}">
+                                 <button class="btn btn-danger" type="submit">Delete</button>
+                             
+                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                             </form>
+                             </div>
+                         </div>
+                         </div>
+                     </div>
+
+                     <!-- End Button trigger modal -->
                 </div>
             </div>
-        </form>
+        
         <br>
         <div class="card">
             <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">About Company (preview)</div>

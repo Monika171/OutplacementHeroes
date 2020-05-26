@@ -38,15 +38,19 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/company/{id}/{company}','CompanyController@index')->name('company.index');
 Route::get('company/create','CompanyController@create')->name('company.view');
 Route::post('company/create','CompanyController@store')->name('company.store');
-Route::post('company/coverphoto','CompanyController@coverPhoto')->name('cover.photo');
 Route::post('company/logo','CompanyController@companyLogo')->name('company.logo');
+Route::post('company/coverphoto','CompanyController@coverPhoto')->name('cover.photo');
+Route::post('user/logo/delete','CompanyController@delete_elogo')->name('elogo.delete');
+Route::post('user/coverphoto/delete','CompanyController@delete_ecover')->name('ecover.delete');
 
 //candidate (just one blade.php file. I know I know I have to add more pages like profile! ..later)
 Route::get('user/profile','UserController@index')->name('user.profile');
 Route::post('user/profile/create','UserController@store')->name('profile.create');
-Route::post('user/coverletter','UserController@coverletter')->name('cover.letter');
+//Route::post('user/coverletter','UserController@coverletter')->name('cover.letter');
 Route::post('user/resume','UserController@resume')->name('resume');
 Route::post('user/profile_pic','UserController@profile_pic')->name('profile_pic');
+Route::post('user/profile_pic/delete','UserController@delete_spic')->name('spic.delete');
+Route::post('user/resume/delete','UserController@delete_resume')->name('resume.delete');
 Route::get('/user/{id}','UserController@show_profile')->name('user.show');
 
 // location controller

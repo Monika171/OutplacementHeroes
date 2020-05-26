@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use App\Company;
 use App\Job;
 use App\User;
@@ -149,6 +150,44 @@ class CompanyController extends Controller
             }
             return redirect()->back()->with('message','Company logo Sucessfully Updated!');
     
+        }
+
+
+        public function delete_ecover(Request $request){
+            $id = request('id');
+            $c = Company::findOrFail($id);
+            $filename = $c->cover_photo;
+          
+            //dd($filename);
+          
+            Company::where('id',$id)->update([
+              'cover_photo'=>null
+            ]);
+          
+            //$file->move('uploads/profile_pic/',$filename);
+            File::delete('uploads/coverphoto/'.$filename);
+          
+            return redirect()->back()->with('message','Cover_Photo deleted successfully!');
+        
+        }
+
+        
+        public function delete_elogo(Request $request){
+            $id = request('id');
+            $l = Company::findOrFail($id);
+            $filename = $l->logo;
+          
+            //dd($filename);
+          
+            Company::where('id',$id)->update([
+              'logo'=>null
+            ]);
+          
+            //$file->move('uploads/profile_pic/',$filename);
+            File::delete('uploads/logo/'.$filename);
+          
+            return redirect()->back()->with('message','Logo deleted successfully!');
+        
         }
 
 }
