@@ -11,7 +11,7 @@ After cloning (or updating) modify .env file with your own database values& mail
 "php artisan storage:link"
 
 Also, import 'countries.sql', 'states.sql', 'cities.sql', 'designations', 'industries.sql', 'skills.sql'.
-(you will find these inside import1 directory)
+(either you will find these inside import1 directory here, if not I will email)
 
 NOTE: 'cities.sql' is comparatively big file. May not get imported easily without doing some extra one or two steps.eg:
 -----------------
