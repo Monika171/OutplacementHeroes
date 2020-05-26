@@ -19,7 +19,7 @@
 NOTE: 'cities.sql' is comparatively a big file. May not get imported easily without doing some extra one or two steps.. i.e:
 -----------------
 1) At
-xampp control panel-> config -> mysql -> my.ini -> (open and set)
+xampp control panel-> (mysql)config -> my.ini -> (open and set)
 myisam_sort_buffer_size = 100M
 2)
 copy cities.sql to "C:\xampp\mysql\bin", then in terminal-
