@@ -19,6 +19,15 @@
                   <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
                  <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Edit Profile Information</h1>
               </div>
+              <div class="col-md-4 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
+                @if(Auth::check()&&Auth::user()->id==$user->id)
+                   {{--<a href="{{route('company.view')}}"><button class="btn btn-danger btn-lg">Edit</button></a>--}}
+ 
+                   <a class="btn btn-warning btn-lg" href="{{route('user.history')}}" role="button"><u><strong>Continue</strong></u> &nbsp;&nbsp;<i class="ion-ios-arrow-forward"></i>
+                     <br><small>Education & Work History</small></a>
+ 
+                @endif
+             </div>
           </div>
     </div>
 </div>
@@ -557,7 +566,7 @@
             </div>
             <div class="card-body">
               @foreach($user->skills as $skill)
-               <button type="button" class="btn btn-sm btn-warning mt-1"><strong>{{$skill->skill}}</strong></button>
+               <button type="button" class="btn btn-sm btn-secondary mt-1">{{$skill->skill}}</button>
               @endforeach
 
             </div>
@@ -626,6 +635,21 @@
                    </form>	
                    </div>
         </div>
+
+        
+        <div class="mt-5">
+            <!--<div class="col-md-3 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">-->
+                <div>
+                @if(Auth::check()&&Auth::user()->id==$user->id)
+                   {{--<a href="{{route('company.view')}}"><button class="btn btn-danger btn-lg">Edit</button></a>--}}
+ 
+                   <a class="btn btn-warning btn-lg float-right" href="{{route('user.history')}}" role="button"><u><strong>Continue<strong></u> &nbsp;&nbsp;<i class="ion-ios-arrow-forward"></i>
+                     <br><small>Education & Work History</small></a>
+ 
+                @endif
+             </div>
+
+            </div>
 </div>
 
 </div>

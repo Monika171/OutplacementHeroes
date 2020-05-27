@@ -10,7 +10,13 @@
 <body>
 	@include('../partials.nav')
 
+<main>
 	@yield('content')
+	<div class="loading">
+		<i class="fas fa-spinner fa-pulse fa-3x fa-fw"></i><br/>
+		<span>Loading</span>
+	</div>
+</main>
 
 	 @include('../partials.footer')
 

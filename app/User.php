@@ -11,6 +11,8 @@ use App\Job;
 use App\Role;
 use App\VolunteerProfile;
 use App\Skill;
+use App\Education;
+use App\Work;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -63,6 +65,14 @@ class User extends Authenticatable implements MustVerifyEmail
 
     function skills() {
         return $this->belongsToMany('App\Skill')->withTimeStamps();
+    }
+
+    function educations() {
+        return $this->hasMany('App\Education');
+    }
+
+    function works() {
+        return $this->hasMany('App\Work');
     }
 
 }

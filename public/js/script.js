@@ -49,11 +49,15 @@ $(document).ready(function(){
 
    // Add new Educational background
    $(document).on('click', '#addNewEducation', function(event){ 
-    event.preventDefault();
-   	var course = $(this).parent().siblings().find('#addCourse');
-   	var school = $(this).parent().siblings().find('#addSchool');
-   	var year = $(this).parent().siblings().find('#addSchoolYear');
-   	var achievement = $(this).parent().siblings().find('#addAchievement');
+	event.preventDefault();
+	//console.log('i was here');
+	/*var qualification = $(this).parent().siblings().find('#addQualification');
+	var course = $(this).parent().siblings().find('#addCourse');
+	var specialization = $(this).parent().siblings().find('#addSpecialization');
+	var institute = $(this).parent().siblings().find('#addInstitute');
+	var c_type = $(this).parent().siblings().find('#addCourseType');
+   	var p_year = $(this).parent().siblings().find('#addPassingYear');
+
     $('.loading').show();
 	    $.ajax({ 
 	        type: 'post',
@@ -62,29 +66,38 @@ $(document).ready(function(){
 	          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	        },
 	        data: {
-	          course:course.val(),
-	          school:school.val(),
-	          year:year.val(),
-	          achievement:achievement.val()
-	        },success: function(data) {     
-	        	course.val("");
-	        	school.val("");
-	        	year.val("");
-	        	achievement.val("");
+				qualification:qualification.val(),
+			  course:course.val(),
+			  specialization:specialization.val(),
+	          institute:institute.val(),
+	          c_type:c_type.val(),
+	          p_year:p_year.val(),
+	        },success: function(data) { 
+				//console.log('socus');
+				qualification.val("");    
+				course.val("");
+				specialization.val("");
+				institute.val("");
+				c_type.val("");
+	        	p_year.val("");
 	            $('#educationBackgroundBody').load(' #educationBackgroundBody > div');
 	            toastr.success(' ', 'Education Background Added', {timeOut: 3000, positionClass: 'toast-top-center'});
 	            $('.loading').hide();
 	        }
-	    });
+	    });*/
 	});
 
    // Edit Educational Background
    $(document).on('click', '.editEducation', function(){ 
-   	id = $(this).data('id');
-   	var course = $(this).parent().siblings().find('#editCourse').val();
-   	var school = $(this).parent().siblings().find('#editSchool').val();
-   	var year = $(this).parent().siblings().find('#editSchoolYear').val();
-   	var achievement = $(this).parent().siblings().find('#editAchievement').val();
+	   id = $(this).data('id');
+	  
+		var qualification = $(this).parent().siblings().find('#editQualification').val();
+		var course = $(this).parent().siblings().find('#editCourse').val();
+		var specialization = $(this).parent().siblings().find('#editSpecialization').val();
+		var institute = $(this).parent().siblings().find('#editInstitute').val();
+		var c_type = $(this).parent().siblings().find('#editCourseType').val();
+		var p_year = $(this).parent().siblings().find('#editPassingYear').val();
+   	
     $('.loading').show();
    		 $.ajax({ 
 	        type: 'post',
@@ -93,11 +106,14 @@ $(document).ready(function(){
 	          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	        },
 	        data: {
-	       	  id: id,
-	          course:course,
-	          school:school,
-	          year:year,
-	          achievement:achievement
+	  
+					id: id,
+					qualification:qualification,
+					course:course,
+					specialization:specialization,
+					institute:institute,
+					c_type:c_type,
+					p_year:p_year
 	        },success: function(data) {    
 	            $('#educationBackgroundBody').load(' #educationBackgroundBody > div');
 	            toastr.success(' ', 'Education Background Updated', {timeOut: 3000, positionClass: 'toast-top-center'});
@@ -110,7 +126,9 @@ $(document).ready(function(){
 
    // Delete Educational Background
    $(document).on('click', '.deleteEducation', function(){ 
-   	id = $(this).data('id');
+	
+	   id = $(this).data('id');
+	   
     $('.loading').show();
    		$.ajax({ 
 	        type: 'post',
@@ -128,7 +146,7 @@ $(document).ready(function(){
 	    });
   }); 	
 
-	// Add new Educational background
+	// Add Work Background
    $(document).on('click', '.addNewWorkButton', function(){ 
    	var position = $(this).parent().siblings().find('#addPosition');
    	var company = $(this).parent().siblings().find('#addCompany');

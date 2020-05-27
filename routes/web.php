@@ -33,8 +33,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show');
 
+//employer register
+Route::view('employer/register','auth.employer-register')->name('employer.register');
+Route::post('employer/register','EmployerRegisterController@employerRegister')->name('emp.register');
 
-//company
+//HIRING EMPLOYER from a COMPANY
 Route::get('/company/{id}/{company}','CompanyController@index')->name('company.index');
 Route::get('company/create','CompanyController@create')->name('company.view');
 Route::post('company/create','CompanyController@store')->name('company.store');
@@ -43,7 +46,10 @@ Route::post('company/coverphoto','CompanyController@coverPhoto')->name('cover.ph
 Route::post('user/logo/delete','CompanyController@delete_elogo')->name('elogo.delete');
 Route::post('user/coverphoto/delete','CompanyController@delete_ecover')->name('ecover.delete');
 
-//candidate (just one blade.php file. I know I know I have to add more pages like profile! ..later)
+//See all companies
+Route::get('/companies','CompanyController@company')->name('company');
+
+//SEEKER
 Route::get('user/profile','UserController@index')->name('user.profile');
 Route::post('user/profile/create','UserController@store')->name('profile.create');
 //Route::post('user/coverletter','UserController@coverletter')->name('cover.letter');
@@ -52,21 +58,26 @@ Route::post('user/profile_pic','UserController@profile_pic')->name('profile_pic'
 Route::post('user/profile_pic/delete','UserController@delete_spic')->name('spic.delete');
 Route::post('user/resume/delete','UserController@delete_resume')->name('resume.delete');
 Route::get('/user/{id}','UserController@show_profile')->name('user.show');
+//user work,education history
+Route::get('user/profile/history','UserController@history')->name('user.history');
 
-// location controller
+// Education Controller
+Route::post('/profile/education/store', 'EducationController@storeEducation');
+Route::post('/profile/education/update', 'EducationController@updateEducation');
+Route::post('/profile/education/delete', 'EducationController@deleteEducation');
+
+// Work Controller
+Route::post('/profile/work/store', 'WorkController@storeWork');
+Route::post('/profile/work/update', 'WorkController@updateWork');
+Route::post('/profile/work/delete', 'WorkController@deleteWork');
+
+//LOCATION controller
 Route::get('/getStates/{id}', 'LocationController@getStates');
 Route::get('/getCities/{id}', 'LocationController@getCities');
 
-// Skill Controller
-
+//SKILL Controller
 Route::post('/profile/skills/store', 'SkillController@storeSkill');
 Route::post('/profile/skills/edit', 'SkillController@editSkill');
-//employer
-Route::view('employer/register','auth.employer-register')->name('employer.register');
-Route::post('employer/register','EmployerRegisterController@employerRegister')->name('emp.register');
-
-//See all companies
-Route::get('/companies','CompanyController@company')->name('company');
 
 //admin (Only can post something now! Will add more)
 Route::get('/dashboard','DashboardController@index')->middleware('admin');
@@ -88,7 +99,7 @@ Route::group(['middleware' => 'check_role:admin,employer' ], function() {
     Route::get('/seeker/{id}','SeekerController@show_profile')->name('seeker.show');
 });
 
-//volunteer
+//VOLUNTEER
 Route::view('volunteer/register','auth.volunteer-register')->name('volunteer.register');
 Route::post('volunteer/register','VolunteerRegisterController@volunteerRegister')->name('vol.register');
 
@@ -105,3 +116,5 @@ Route::get('/vseeker/{id}','VolunteerController@show_profile')->name('vseeker.sh
 //Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
+
+
