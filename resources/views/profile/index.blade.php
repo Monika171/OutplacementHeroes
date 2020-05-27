@@ -661,7 +661,7 @@
 @endsection
 
 @section('jsplugins')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
  
 <script type="text/javascript">
