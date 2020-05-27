@@ -208,7 +208,7 @@
                 <form  id="frmParameter" action="{{route('profile.create')}}" method="POST">@csrf
                     <div class="card-body">
                     <div class="form-group required">
-                        <label for=""  class="control-label">Phone number</label>
+                        <label for=""  class="control-label h6">Phone number</label>
                         <input type="text" class="form-control" name="phone_number" value="{{Auth::user()->profile->phone_number?Auth::user()->profile->phone_number:old("phone_number")}}">
                         @if($errors->has('phone_number'))
                             <div class="error" style="color: red;">{{$errors->first('phone_number')}}</div>
@@ -217,7 +217,7 @@
                     </div>
 
                     <div class="form-group required">
-                        <label for="" class="control-label">Address Line 1</label>
+                        <label for="" class="control-label h6">Address Line 1</label>
                         <input type="text" class="form-control" name="address_line1" value="{{Auth::user()->profile->address_line1?Auth::user()->profile->address_line1:old("address_line1")}}">
                         @if($errors->has('address_line1'))
                          <div class="error" style="color: red;">{{$errors->first('address_line1')}}</div>
@@ -225,7 +225,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">Address Line 2</label>
+                        <label for="" class="h6">Address Line 2</label>
                         <input type="text" class="form-control" name="address_line2" value="{{Auth::user()->profile->address_line2?Auth::user()->profile->address_line2:old("address_line2")}}">
                         @if($errors->has('address_line2'))
                          <div class="error" style="color: red;">{{$errors->first('address_line2')}}</div>
@@ -236,7 +236,7 @@
                     <div class="col-md-4">
                     <div class="form-group required">
 
-                        <label for="country" class="control-label">Select your country</label>
+                        <label for="country" class="control-label h6">Select your country</label>
                         
                         <select name="country" id="country" class="form-control">
                             <option value="">Select Country</option>
@@ -255,7 +255,7 @@
                                                     
                     <div class="form-group required">
 
-                          <label for="state" class="control-label">Select your state</label>
+                          <label for="state" class="control-label h6">Select your state</label>
                         
                         <select name="state" id="state" class="form-control">
                             <option value="{{Auth::user()->profile->state?$s_id:''}}">{{Auth::user()->profile->state?Auth::user()->profile->state:'Select state'}}</option>
@@ -272,7 +272,7 @@
                         
                     <div class="form-group required">
 
-                        <label for="city" class="control-label">Select your city</label>
+                        <label for="city" class="control-label h6">Select your city</label>
                         
                         <select name="city" id="city" class="form-control">
                             <option value="{{Auth::user()->profile->city?$c_id:''}}">{{Auth::user()->profile->city?Auth::user()->profile->city:'Select city'}}</option>
@@ -289,7 +289,7 @@
                         
 
                     <div class="form-group required">
-                        <label for="pincode" class="control-label">{{ __('Pincode') }}</label>
+                        <label for="pincode" class="control-label h6">{{ __('Pincode') }}</label>
                         
                             <input type="text" class="form-control @error('pincode') is-invalid @enderror" name="pincode"  value="{{Auth::user()->profile->pincode?Auth::user()->profile->pincode:old("pincode")}}">
                             @error('pincode')
@@ -301,7 +301,7 @@
                     </div>
                     
                     <br>
-                    <p class="mb-0"> <label for="experience">Overall Experience<span style="color:red">*</span></label> &nbsp; &nbsp;
+                    <p class="mb-0"> <label for="experience" class="h6">Overall Experience<span style="color:red">*</span></label> &nbsp; &nbsp;
                     <span style="color:red">If no value is selected. 0 year(s) will be set by default.</span></p>
                     <div class="row">
                     <div class="col-md-6">
@@ -349,9 +349,11 @@
                         </div>
 
                         <div id="todisplay">
-                    <div class="form-group">
+                        <h5><u><strong>Most Recent/Current Employment Details: </strong></u></h5>
+                        <br>
+                        <div class="form-group">
 
-                        <label for="">Company Name (Recent/Current)</label>
+                        <label for="" class="h6">Company Name (Recent/Current)</label>
                         <input type="text" class="form-control" name="recent_company" value="{{Auth::user()->profile->recent_company?Auth::user()->profile->recent_company:old("recent_company")}}">
                         @if($errors->has('recent_company'))
                         <div class="error" style="color: red;">{{$errors->first('recent_company')}}</div>
@@ -369,7 +371,7 @@
 
                     <div class="form-group">
 
-                        <label for="recent_designation">Designation (Recent/Current)</label>
+                        <label for="recent_designation" class="h6">Designation (Recent/Current)</label>
                         
                         <input class="form-control" value="{{Auth::user()->profile->recent_designation?Auth::user()->profile->recent_designation:old("recent_designation")}}" name="recent_designation" list="recent_designation">
                             <datalist id="recent_designation">
@@ -387,7 +389,7 @@
                     <div class="col-md-6">
                     <div class="form-group">
             
-                        <label for="">Start Date</label>
+                        <label for="" class="h6">Start Date</label>
     
                         
                             <input type="text" id="date_sd" class="form-control datepicker" name="start_date" value="{{Auth::user()->profile->start_date?Auth::user()->profile->start_date:old("start_date")}}">
@@ -402,7 +404,7 @@
 
                     <div class="form-group">
             
-                        <label for="">End Date</label>
+                        <label for="" class="h6">End Date</label>
                     
                         <input type="text" id="date_ed" class="form-control datepicker" name="end_date" value="{{Auth::user()->profile->end_date?Auth::user()->profile->end_date:old("end_date")}}">
     
@@ -433,7 +435,7 @@
                             </datalist>--}}
 
                     <div class="form-group">
-                        <label for="industry">Industry (Recent/Current)</label>
+                        <label for="industry" class="h6">Industry (Recent/Current)</label>
                         <input class="form-control" value="{{Auth::user()->profile->industry?Auth::user()->profile->industry:old("industry")}}"  name="industry" list="industry">
                             <datalist id="industry">
                                 @foreach($industry as $ind)
@@ -447,7 +449,7 @@
                     </div>
 
                     <br>
-                    <p class="mb-0"> <label for="salary_in_lakhs">Recent/Current CTC (in INR):</label> &nbsp; &nbsp;
+                    <p class="mb-0"> <label for="salary_in_lakhs" class="h6">Recent/Current CTC (in INR):</label> &nbsp; &nbsp;
                     <span style="color:red">If no value is selected. 0 Lakh(s) will be set by default.</span></p>
                     <div class="row">
                         <div class="col-md-6">
@@ -480,7 +482,7 @@
                 </div>
                     <hr>
                     <div class="form-group">
-                        <label for="expected_ctc">Expected CTC:</label>
+                        <label for="expected_ctc" class="h6">Expected CTC:</label>
                         <input type="text" class="form-control" name="expected_ctc" value="{{Auth::user()->profile->expected_ctc?Auth::user()->profile->expected_ctc:old("expected_ctc")}}">
                         @if($errors->has('expected_ctc'))
                         <div class="error" style="color: red;">{{$errors->first('expected_ctc')}}</div>
@@ -501,7 +503,7 @@
 
                         <div class="form-group">
 
-							<label for="preferred_location">Preferred location</label>
+							<label for="preferred_location" class="h6">Preferred location</label>
 							
 							<input class="form-control" value="{{Auth::user()->profile->preferred_location?Auth::user()->profile->preferred_location:old("preferred_location")}}" name="preferred_location" list="preferred_location">
                                 <datalist id="preferred_location">
@@ -516,7 +518,7 @@
                         </div>
                         
                         <div class="form-group required">
-                            <label for="notice_period" class="control-label">Notice Period</label>
+                            <label for="notice_period" class="control-label h6">Notice Period</label>
                             <select class="form-control" name="notice_period">
                                 <option value="" {{Auth::user()->profile->notice_period==''?'selected':''}}>Select</option>
                                 <option value="Immediately" {{Auth::user()->profile->notice_period=='Immediately'?'selected':''}}>Immediately</option>
@@ -555,7 +557,7 @@
             </div>
             <div class="card-body">
               @foreach($user->skills as $skill)
-               <button type="button" class="btn btn-sm btn-warning mt-1"><b>{{$skill->skill}}</b></button>
+               <button type="button" class="btn btn-sm btn-warning mt-1"><strong>{{$skill->skill}}</strong></button>
               @endforeach
 
             </div>

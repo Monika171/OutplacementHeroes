@@ -134,7 +134,7 @@
 
 
                     <div class="form-group required">
-                        <label for=""  class="control-label">Phone number</label>
+                        <label for=""  class="control-label h6">Phone number</label>
                         <input type="text" class="form-control" name="phone" value="{{Auth::user()->vprofile->phone?Auth::user()->vprofile->phone:old("phone")}}">
                         @if($errors->has('phone'))
                             <div class="error" style="color: red;">{{$errors->first('phone')}}</div>
@@ -143,7 +143,7 @@
                     </div>
 
                     <div class="form-group required">
-                        <label for="" class="control-label">Address Line 1</label>
+                        <label for="" class="control-label h6">Address Line 1</label>
                         <input type="text" class="form-control" name="address_line1" value="{{Auth::user()->vprofile->address_line1?Auth::user()->vprofile->address_line1:old("address_line1")}}">
                         @if($errors->has('address_line1'))
                          <div class="error" style="color: red;">{{$errors->first('address_line1')}}</div>
@@ -151,7 +151,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">Address Line 2</label>
+                        <label for="" class="h6">Address Line 2</label>
                         <input type="text" class="form-control" name="address_line2" value="{{Auth::user()->vprofile->address_line2?Auth::user()->vprofile->address_line2:old("address_line2")}}">
                         @if($errors->has('address_line2'))
                          <div class="error" style="color: red;">{{$errors->first('address_line2')}}</div>
@@ -162,7 +162,7 @@
                     <div class="col-md-4">
                     <div class="form-group required">
 
-                        <label for="country" class="control-label">Select your country</label>
+                        <label for="country" class="control-label h6">Select your country</label>
                         
                         <select name="country" id="country" class="form-control">
                             <option value="">Select Country</option>
@@ -181,7 +181,7 @@
                                                     
                     <div class="form-group required">
 
-                          <label for="state" class="control-label">Select your state</label>
+                          <label for="state" class="control-label h6">Select your state</label>
                         
                         <select name="state" id="state" class="form-control">
                             <option value="{{Auth::user()->vprofile->state?$s_id:''}}">{{Auth::user()->vprofile->state?Auth::user()->vprofile->state:'Select state'}}</option>
@@ -198,7 +198,7 @@
                         
                     <div class="form-group required">
 
-                        <label for="city" class="control-label">Select your city</label>
+                        <label for="city" class="control-label h6">Select your city</label>
                         
                         <select name="city" id="city" class="form-control">
                             <option value="{{Auth::user()->vprofile->city?$c_id:''}}">{{Auth::user()->vprofile->city?Auth::user()->vprofile->city:'Select city'}}</option>
@@ -215,7 +215,7 @@
                         
 
                     <div class="form-group required">
-                        <label for="pincode" class="control-label">{{ __('Pincode') }}</label>
+                        <label for="pincode" class="control-label h6">{{ __('Pincode') }}</label>
                         
                             <input type="text" class="form-control @error('pincode') is-invalid @enderror" name="pincode"  value="{{Auth::user()->vprofile->pincode?Auth::user()->vprofile->pincode:old("pincode")}}">
                             @error('pincode')
@@ -227,7 +227,7 @@
                     </div>
 
                     <div class="form-group required">
-                        <label for=""  class="control-label">Qualification</label>
+                        <label for=""  class="control-label h6">Qualification</label>
                         <input type="text" class="form-control" name="qualification" value="{{Auth::user()->vprofile->qualification?Auth::user()->vprofile->qualification:old("qualification")}}">
                         @if($errors->has('qualification'))
                             <div class="error" style="color: red;">{{$errors->first('qualification')}}</div>
@@ -251,7 +251,7 @@
 
                     <div class="form-group">
 
-                        <label for="designation">Designation</label>
+                        <label for="designation" class="h6">Designation</label>
                         
                         <input class="form-control" value="{{Auth::user()->vprofile->designation?Auth::user()->vprofile->designation:old("designation")}}" name="designation" list="designation">
                             <datalist id="designation">
@@ -268,7 +268,7 @@
 
 
                     <div class="form-group">
-                        <label for="industry">Industry</label>
+                        <label for="industry" class="h6">Industry</label>
                         <input class="form-control" value="{{Auth::user()->vprofile->industry?Auth::user()->vprofile->industry:old("industry")}}"  name="industry" list="industry">
                             <datalist id="industry">
                                 @foreach($industry as $ind)

@@ -183,6 +183,10 @@
             <div class="card-header d-inline-block h5 text-dark font-weight-bold mb-0">Update Company Information</div>
             <form action="{{route('company.store')}}" method="POST">@csrf
                 <div class="card-body">
+
+                    <div class="row">
+                    <div class="col-md-7">
+
                     <p><strong>Authority Name:</strong> &nbsp; &nbsp; {{Auth::user()->name}}</p>
                     
                 <div class="form-group">
@@ -201,8 +205,11 @@
             
                 </div>
 
+                    </div></div>
+                <hr>
+
                 <div class="form-group required">
-                    <label for="" class="control-label">Company Phone number:</label>
+                    <label for="" class="control-label h6">Company Phone number:</label>
                     <input type="text" class="form-control" name="phone"  value="{{Auth::user()->company->phone?Auth::user()->company->phone:old("phone")}}" >
                 
                     @if($errors->has('phone'))
@@ -213,7 +220,7 @@
                 </div>
 
                 <div class="form-group required">
-                    <label for="" class="control-label">Company Address Line 1</label>
+                    <label for="" class="control-label h6">Company Address Line 1</label>
                     <input type="text" class="form-control" name="address_line1" value="{{Auth::user()->company->address_line1?Auth::user()->company->address_line1:old("address_line1")}}">
                     @if($errors->has('address_line1'))
                      <div class="error" style="color: red;">{{$errors->first('address_line1')}}</div>
@@ -221,7 +228,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="">Address Line 2</label>
+                    <label for="" class="h6">Address Line 2</label>
                     <input type="text" class="form-control" name="address_line2" value="{{Auth::user()->company->address_line2?Auth::user()->company->address_line2:old("address_line2")}}">
                     @if($errors->has('address_line2'))
                      <div class="error" style="color: red;">{{$errors->first('address_line2')}}</div>
@@ -233,7 +240,7 @@
 
                     <div class="form-group required">
 
-                        <label for="country" class="control-label">Country</label>
+                        <label for="country" class="control-label h6">Country</label>
                         
                         <select name="country" id="country" class="form-control">
                             <option value="">Select Country</option>
@@ -252,7 +259,7 @@
                              
                     <div class="form-group required">
 
-                          <label for="state" class="control-label">State</label>
+                          <label for="state" class="control-label h6">State</label>
                         
                         <select name="state" id="state" class="form-control">
                             <option value="{{Auth::user()->company->state?$s_id:''}}">{{Auth::user()->company->state?Auth::user()->company->state:'Select state'}}</option>
@@ -270,7 +277,7 @@
                         
                     <div class="form-group required">
 
-                        <label for="city" class="control-label">City</label>
+                        <label for="city" class="control-label h6">City</label>
                         
                         <select name="city" id="city" class="form-control">
                             <option value="{{Auth::user()->company->city?$c_id:''}}">{{Auth::user()->company->city?Auth::user()->company->city:'Select city'}}</option>
@@ -285,7 +292,7 @@
                 </div>
 
                     <div class="form-group required">
-                        <label for="pincode" class="control-label">{{ __('Pincode') }}</label>
+                        <label for="pincode" class="control-label h6">{{ __('Pincode') }}</label>
                         
                             <input type="text" class="form-control @error('pincode') is-invalid @enderror" name="pincode"  value="{{Auth::user()->company->pincode?Auth::user()->company->pincode:old("pincode")}}">
                             @error('pincode')
@@ -297,7 +304,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="industry">Industry </label>
+                        <label for="industry" class="h6">Industry </label>
                         <input class="form-control"  value="{{Auth::user()->company->industry?Auth::user()->company->industry:old("industry")}}" name="industry" list="industry">
                             <datalist id="industry">
                                 @foreach($industry as $ind)
@@ -311,7 +318,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">Company Website</label>
+                        <label for="" class="h6">Company Website</label>
                         <input type="text" class="form-control" name="website"  value="{{Auth::user()->company->website?Auth::user()->company->website:old("website")}}">
                     
                         @if($errors->has('website'))
@@ -320,7 +327,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">LinkedIn</label>
+                        <label for="" class="h6">LinkedIn</label>
                         <input type="text" class="form-control" name="linkedin"  value="{{Auth::user()->company->linkedin?Auth::user()->company->linkedin:old("linkedin")}}">
                     
                         @if($errors->has('linkedin'))
@@ -329,7 +336,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">Facebook</label>
+                        <label for="" class="h6">Facebook</label>
                         <input type="text" class="form-control" name="facebook"  value="{{Auth::user()->company->facebook?Auth::user()->company->facebook:old("facebook")}}">
                     
                         @if($errors->has('facebook'))
@@ -338,7 +345,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">Twitter</label>
+                        <label for="" class="h6">Twitter</label>
                         <input type="text" class="form-control" name="twitter"  value="{{Auth::user()->company->twitter?Auth::user()->company->twitter:old("twitter")}}">
                     
                         @if($errors->has('twitter'))
@@ -349,7 +356,7 @@
 
 
                     <div class="form-group">
-                        <label for="">Company Slogan</label>
+                        <label for="" class="h6">Company Slogan</label>
                         <input type="text" class="form-control" name="slogan"  value="{{Auth::user()->company->slogan?Auth::user()->company->slogan:old("slogan")}}">
                         @if($errors->has('slogan'))
                         <div class="error" style="color: red;">{{$errors->first('slogan')}}</div>
@@ -357,7 +364,7 @@
                     
                     </div>
                     <div class="form-group required">
-                        <label for="" class="control-label">Company Description</label>
+                        <label for="" class="control-label h6">Company Description</label>
                         <textarea name="description" class="form-control" rows="6" cols="70" style="width:100"> {{Auth::user()->company->description?Auth::user()->company->description:old("description")}}</textarea>
                         @if($errors->has('description'))
                         <div class="error" style="color: red;">{{$errors->first('description')}}</div>
@@ -376,7 +383,7 @@
         </div>
 <br>
         <div class="card">
-            <div class="card-header d-inline-block text-info font-weight-bold font-size: 12px; mb-0">Company Authority Details:</div>     
+            <div class="card-header d-inline-block text-info font-weight-bold font-size: 12px; mb-0">Company Authority Details (preview):</div>     
                 <div class="card-body">                      
                 <p><strong>Authority Name:</strong> &nbsp; &nbsp; {{Auth::user()->name}}</p>
                 <p><strong>Authority Designation:</strong><br>{{Auth::user()->company->authority_designation}}</p>

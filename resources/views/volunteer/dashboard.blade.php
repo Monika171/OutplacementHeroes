@@ -52,8 +52,9 @@
                                 
                                     <div class="job-post-item-body d-block d-md-flex">
                                         <div class="mr-3"><p>Email: {{$seeker->user->email}}<br>
-                                        <div class="mr-3"><span class="icon-layers"></span>Total Experience:{{$seeker->experience_years}}year(s)</a>
-                                            <br>Notice Period{{$seeker->notice_period}}<br>
+                                        <div class="mr-3"><span class="icon-layers"></span>
+                                            Total Experience:&nbsp;&nbsp;{{$seeker->experience_years}}year(s)</a>
+                                            <br>Notice Period:&nbsp;&nbsp;{{$seeker->notice_period}}<br>
                                         <span class="icon-my_location"></span> <span>{{$seeker->state}}</span></div>
                                         </div>
                                     </div>
