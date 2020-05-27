@@ -13,6 +13,7 @@
 "php artisan storage:link"
 
 3) Also, import 'countries.sql', 'states.sql', 'cities.sql', 'designations.sql', 'industries.sql', 'skills.sql' at your database and don't forget to delete the previous existing tables with same name which got created after 'php artisan migrate' in first step!
+Well sql query does the same but just in case..
 
 (I will email these .sql files)
 
