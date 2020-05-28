@@ -51,7 +51,7 @@ $(document).ready(function(){
    $(document).on('click', '#addNewEducation', function(event){ 
 	event.preventDefault();
 	//console.log('i was here');
-	/*var qualification = $(this).parent().siblings().find('#addQualification');
+	var qualification = $(this).parent().siblings().find('#addQualification');
 	var course = $(this).parent().siblings().find('#addCourse');
 	var specialization = $(this).parent().siblings().find('#addSpecialization');
 	var institute = $(this).parent().siblings().find('#addInstitute');
@@ -84,7 +84,7 @@ $(document).ready(function(){
 	            toastr.success(' ', 'Education Background Added', {timeOut: 3000, positionClass: 'toast-top-center'});
 	            $('.loading').hide();
 	        }
-	    });*/
+	    });
 	});
 
    // Edit Educational Background

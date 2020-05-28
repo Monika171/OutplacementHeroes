@@ -7,7 +7,7 @@
 
 
 @section('content')
-
+<main>
 <div class="hero-wrap" style="height: 410px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
     <!--<div class="overlay"></div>-->
     <div class="container">
@@ -347,4 +347,11 @@
         </div>
     </div>
 </div>
+
+	<div class="loading">
+		<i class="fas fa-spinner fa-pulse fa-3x fa-fw"></i><br/>
+		<span>Loading</span>
+	</div>
+</main>
+
 @endsection
