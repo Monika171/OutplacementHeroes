@@ -108,7 +108,7 @@
                 {{Auth::user()->vprofile->city}},&nbsp;{{Auth::user()->vprofile->state}},
                 {{Auth::user()->vprofile->country}}</p>
                 <p>Pincode:&nbsp; &nbsp; {{Auth::user()->vprofile->pincode}}</p>
-                {{--<p><strong>Qualification:</strong><br>{{Auth::user()->vprofile->qualification}}</p>--}}              
+                <p><strong>Qualification:</strong><br>{{Auth::user()->vprofile->qualification}}</p>            
                 <p><strong>Industry:</strong><br>{{Auth::user()->vprofile->industry}}</p>              
                 <p><strong>Designation:</strong><br>{{Auth::user()->vprofile->designation}}</p>
             </div>
@@ -226,26 +226,31 @@
                         
                     </div>
 
-                    <div class="form-group required">
+                    {{--<div class="form-group required">
                         <label for=""  class="control-label h6">Qualification</label>
                         <input type="text" class="form-control" name="qualification" value="{{Auth::user()->vprofile->qualification?Auth::user()->vprofile->qualification:old("qualification")}}">
                         @if($errors->has('qualification'))
                             <div class="error" style="color: red;">{{$errors->first('qualification')}}</div>
                         @endif
                                       
-                    </div>
+                    </div>--}}
 
-                    {{--<div class="form-group required">
-                        <label for="qualification" class="control-label">qualification</label>
+                    <div class="form-group required">
+                        <label for="qualification" class="control-label">Highest Qualification</label>
                         <select class="form-control" name="qualification">
                             <option value="" {{Auth::user()->vprofile->qualification==''?'selected':''}}>Select</option>
-                            <option value="10th" {{Auth::user()->vprofile->notice_period=='10th'?'selected':''}}>10th</option>
+                            <option value="Doctorate/PhD" {{Auth::user()->vprofile->qualification=='Doctorate/PhD'?'selected':''}}>Doctorate/PhD</option>
+                            <option value="Masters/Post-Graduation" {{Auth::user()->vprofile->qualification=='Masters/Post-Graduation'?'selected':''}}>Masters/Post-Graduation</option>
+                            <option value="Graduation/Diploma" {{Auth::user()->vprofile->qualification=='Graduation/Diploma'?'selected':''}}>Graduation/Diploma</option>
+                            <option value="12th" {{Auth::user()->vprofile->qualification=='12th'?'selected':''}}>12th</option>
+                            <option value="10th" {{Auth::user()->vprofile->qualification=='10th'?'selected':''}}>10th</option>
+                            <option value="Below 10th" {{Auth::user()->vprofile->qualification=='Below 10th'?'selected':''}}>Below 10th</option>
                            
                         </select>
                         @if($errors->has('qualification'))
                         <div class="error" style="color: red;">{{$errors->first('qualification')}}</div>
                         @endif
-                    </div>--}}
+                    </div>
                     
                    
 
