@@ -209,6 +209,8 @@ class UserController extends Controller
                         $user = User::find($user_id);
                         $profile = Profile::where('user_id', $user->id)->first();
 
+                        $designation = Designation::all()->pluck('designation');
+                        $industry = Industry::all()->pluck('industry');
                         //dd($profile);
                         //$skills = Skill::orderBy('skill', 'asc')->get();     
                         
@@ -218,7 +220,7 @@ class UserController extends Controller
                         $works = Work::where('user_id', $user->id)
                                     ->orderBy('created_at', 'desc')
                                     ->get(); 
-                        return view('profile.history', compact('user', 'profile', 'educations', 'works')); 
+                        return view('profile.history', compact('user', 'profile','designation', 'industry', 'educations', 'works')); 
                     
                           
                       }

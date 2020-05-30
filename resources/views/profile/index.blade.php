@@ -398,10 +398,10 @@
                     <div class="col-md-6">
                     <div class="form-group">
             
-                        <label for="" class="h6">Start Date</label>
+                        <label for="" class="h6">Started Working From:</label>
     
                         
-                            <input type="text" id="date_sd" class="form-control datepicker" name="start_date" value="{{Auth::user()->profile->start_date?Auth::user()->profile->start_date:old("start_date")}}">
+                            <input type="text" id="date_sd" class="form-control datepicker-YM" name="start_date" value="{{Auth::user()->profile->start_date?Auth::user()->profile->start_date:old("start_date")}}">
     
                             @if($errors->has('start_date'))
                             <div class="error" style="color: red;">{{$errors->first('start_date')}}</div>
@@ -413,11 +413,11 @@
 
                     <div class="form-group">
             
-                        <label for="" class="h6">End Date</label>
+                        <label for="" class="h6">Worked Till:</label>
                     
-                        <input type="text" id="date_ed" class="form-control datepicker" name="end_date" value="{{Auth::user()->profile->end_date?Auth::user()->profile->end_date:old("end_date")}}">
+                        <input type="text" id="date_ed" class="form-control datepicker-YM" name="end_date" value="{{Auth::user()->profile->end_date?Auth::user()->profile->end_date:old("end_date")}}">
     
-                            
+                         <br>   
                         <h6 style="color:rgb(42, 57, 195); font-weight: bold;">
                         <input type="checkbox"  style= "transform: scale(1.7);" name="currently_working_here" value="Currently working here" />
                         &nbsp;&nbsp; Currently working here

@@ -12,14 +12,6 @@ class EducationController extends Controller
 {
     public function storeEducation(Request $request) {
 
-    	$this->validate($request, [
-            'qualification' => 'required',
-            'course' => 'required',
-            'specialization' => 'required',
-            'institute' => 'required',
-            'c_type' => 'required',
-            'p_year' => 'required'
-        ]);
 
         $new_education = new Education();
         $new_education->qualification = $request->qualification;
@@ -27,6 +19,8 @@ class EducationController extends Controller
         $new_education->specialization = $request->specialization;
         $new_education->institute = $request->institute;
         $new_education->c_type = $request->c_type;
+        $new_education->performance_scale = $request->cmbParameter2;
+        $new_education->performance = $request->mytext;
     	$new_education->p_year = $request->p_year;    	
     	$new_education->user_id = auth()->user()->id; 
         $new_education->save();
@@ -36,6 +30,8 @@ class EducationController extends Controller
             $table->string('specialization')->nullable()->change();
             $table->string('institute')->nullable()->change();
             $table->string('c_type')->nullable()->change();
+             $table->string('performance_scale')->nullable();
+            $table->string('performance')->nullable();
             $table->string('p_year')->nullable()->change();
             $table->integer('user_id'); */
     }
@@ -48,6 +44,8 @@ class EducationController extends Controller
         $education->specialization = $request->specialization;
         $education->institute = $request->institute;
         $education->c_type = $request->c_type;
+        $education->performance_scale = $request->cmbParameter2;
+        $education->performance = $request->mytext;
     	$education->p_year = $request->p_year;
     	$education->save();
     }

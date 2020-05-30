@@ -20,6 +20,8 @@ class CreateEducationTable extends Migration
             $table->string('specialization')->nullable();
             $table->string('institute')->nullable();
             $table->string('c_type')->nullable();
+            $table->string('performance_scale')->nullable();
+            $table->decimal('performance', 8, 2)->nullable();
             $table->string('p_year')->nullable();
             $table->integer('user_id');
             $table->timestamps();

@@ -99,7 +99,7 @@ Route::group(['middleware' => 'check_role:admin,employer' ], function() {
     Route::get('/seeker/{id}','SeekerController@show_profile')->name('seeker.show');
 });
 
-//VOLUNTEER
+//Mentor Support VOLUNTEER
 Route::view('volunteer/register','auth.volunteer-register')->name('volunteer.register');
 Route::post('volunteer/register','VolunteerRegisterController@volunteerRegister')->name('vol.register');
 
@@ -111,6 +111,21 @@ Route::get('volunteer/{id}','VolunteerController@show')->name('volunteer.show');
 
 Route::get('/vseekers','VolunteerController@listseekers')->name('vseeker.index');
 Route::get('/vseeker/{id}','VolunteerController@show_profile')->name('vseeker.show');
+
+
+//Job Search Support VOLUNTEER
+
+/*Route::view('jvolunteer/register','auth.jvolunteer-register')->name('jvolunteer.register');
+Route::post('jvolunteer/register','JvolunteerRegisterController@jvolunteerRegister')->name('jvol.register');
+
+Route::get('jvolunteer/profile','JvolunteerController@index')->name('jvolunteer.profile');
+Route::post('user/jvolunteer/create','JvolunteerController@store')->name('jvolunteer.store');
+Route::post('jvolunteer/profile_pic','JvolunteerController@vprofile_pic')->name('jvprofile_pic');
+Route::post('jvolunteer/profile_pic/delete','JvolunteerController@delete_vpic')->name('jvpic.delete');
+Route::get('jvolunteer/{id}','JvolunteerController@show')->name('jvolunteer.show');
+
+Route::get('/jvseekers','JvolunteerController@listseekers')->name('jvseeker.index');
+Route::get('/jvseeker/{id}','JvolunteerController@show_profile')->name('jvseeker.show');*/
 
 
 //Auth::routes();
