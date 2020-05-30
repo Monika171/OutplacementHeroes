@@ -2,11 +2,24 @@
 
 @section('select2css')
    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css" rel="stylesheet" />
+   
+   <link href="{{ asset('css/select2-bootstrap.min.css') }}" rel="stylesheet">
+   <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" rel="stylesheet" />-->
    <style>
     .form-group.required .control-label:after {
         content:"*";
         color:red;
       }
+
+      .select2-selection__rendered {
+        line-height: 47px !important;
+        }
+        .select2-container .select2-selection--single {
+            height: 51px !important;
+        }
+        .select2-selection__arrow {
+            height: 50px !important;
+        }
     </style>
 @endsection
 @section('content')
@@ -20,7 +33,7 @@
                  <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Edit Profile Information</h1>
               </div>
               <div class="col-md-4 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
-                @if(Auth::check()&&Auth::user()->id==$user->id)
+                @if(!empty(Auth::user()->profile->phone_number))
                    {{--<a href="{{route('company.view')}}"><button class="btn btn-danger btn-lg">Edit</button></a>--}}
  
                    <a class="btn btn-warning btn-lg" href="{{route('user.history')}}" role="button"><u><strong>Continue</strong></u> &nbsp;&nbsp;<i class="ion-ios-arrow-forward"></i>
@@ -381,13 +394,21 @@
                     <div class="form-group">
 
                         <label for="recent_designation" class="h6">Designation (Recent/Current)</label>
+
+
+                          <select class="form-control select1" name="recent_designation">
+                            <option></option>
+                            @foreach($recent_designation as $rd)
+                              <option value="{{$rd}}" {{Auth::user()->profile->recent_designation==$rd?'selected':''}}>{{$rd}}</option>
+                            @endforeach
+                          </select>
                         
-                        <input class="form-control" value="{{Auth::user()->profile->recent_designation?Auth::user()->profile->recent_designation:old("recent_designation")}}" name="recent_designation" list="recent_designation">
+                       {{-- <input class="form-control" value="{{Auth::user()->profile->recent_designation?Auth::user()->profile->recent_designation:old("recent_designation")}}" name="recent_designation" list="recent_designation">
                             <datalist id="recent_designation">
                                 @foreach($recent_designation as $rd)
                                 <option value="{{$rd}}">
                                 @endforeach
-                            </datalist>
+                            </datalist>--}}
                         @if($errors->has('recent_designation'))
                         <div class="error" style="color: red;">{{$errors->first('recent_designation')}}</div>
                         @endif
@@ -445,12 +466,20 @@
 
                     <div class="form-group">
                         <label for="industry" class="h6">Industry (Recent/Current)</label>
-                        <input class="form-control" value="{{Auth::user()->profile->industry?Auth::user()->profile->industry:old("industry")}}"  name="industry" list="industry">
+                        
+                        <select class="form-control select1" name="industry">
+                            <option></option>
+                            @foreach($industry as $ind)
+                              <option value="{{$ind}}" {{Auth::user()->profile->industry==$ind?'selected':''}} >{{$ind}}</option>
+                            @endforeach
+                          </select>
+                        
+                        {{--<input class="form-control" value="{{Auth::user()->profile->industry?Auth::user()->profile->industry:old("industry")}}"  name="industry" list="industry">
                             <datalist id="industry">
                                 @foreach($industry as $ind)
                                 <option value="{{$ind}}">
                                 @endforeach
-                            </datalist>
+                            </datalist>--}}
                             @if($errors->has('industry'))
                             <div class="error" style="color: red;">{{$errors->first('industry')}}</div>
                            @endif
@@ -584,7 +613,7 @@
                            </button>
                          </div>
                          <div class="modal-body editskillsbody">
-                          <select class="form-control selectedskills" multiple="multiple" placeholder="Select State" name="skills[]">
+                          <select class="form-control selectedskills" multiple="multiple" name="skills[]">
                              <option></option>
                              @foreach($skills as $skill)
                                <option value="{{$skill->id}}">{{$skill->skill}}</option>
@@ -617,7 +646,7 @@
                          
                            <div class="form-group col-xs-12">
                                                                  
-                               <select class="form-control select2" multiple="multiple" placeholder="Select Skill" name="skills[]">
+                               <select class="form-control select2" multiple="multiple" name="skills[]">
                                  <option></option>
                                  @foreach($skills as $skill)
                                    <option value="{{$skill->id}}">{{$skill->skill}}</option>
@@ -640,7 +669,7 @@
         <div class="mt-5">
             <!--<div class="col-md-3 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">-->
                 <div>
-                @if(Auth::check()&&Auth::user()->id==$user->id)
+                @if(!empty(Auth::user()->profile->phone_number))
                    {{--<a href="{{route('company.view')}}"><button class="btn btn-danger btn-lg">Edit</button></a>--}}
  
                    <a class="btn btn-warning btn-lg float-right" href="{{route('user.history')}}" role="button"><u><strong>Continue<strong></u> &nbsp;&nbsp;<i class="ion-ios-arrow-forward"></i>
@@ -753,6 +782,18 @@
         });
 
         $('.selectedskills').select2().val({{ json_encode($user->skills()->allRelatedIds()) }}).trigger('change');
+
+        //$("#select-Des").css('width','100%');
+        $('.select1').select2({
+          //width: 'resolve', 
+          //theme: "bootstrap",
+          placeholder: "Please select Designation",
+          allowClear: true,
+
+        });
+
+        //$("#select-Des").select2();
+
     });
     </script>
 @endsection

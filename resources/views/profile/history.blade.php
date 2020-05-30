@@ -3,6 +3,7 @@
 @section('select2css')
    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
 
    <style>
@@ -94,12 +95,22 @@
                                             <div class="input-group-prepend">
                                               <span class="input-group-text"><i class="fa fa-trophy"></i>&nbsp;Education</span>
                                             </div>
-                                            <input type="text" id="editQualification" class="form-control" name="edit_qualification" value="{{$education->qualification}}">
-                                          
+                                            {{--<input type="text" id="editQualification" class="form-control" name="edit_qualification" value="{{$education->qualification}}">--}}
+                                            <select class="form-control" id="editCourseType" name="edit_qualification">
+                                              <option value="" {{$education->qualification==''?'selected':''}}>Select</option>
+                                              <option value="Doctorate/PhD" {{$education->qualification=='Doctorate/PhD'?'selected':''}}>Doctorate/PhD</option>
+                                              <option value="Masters/Post-Graduation" {{$education->qualification=='Masters/Post-Graduation'?'selected':''}}>Masters/Post-Graduation</option>
+                                              <option value="Graduation/Diploma" {{$education->qualification=='Graduation/Diploma'?'selected':''}}>Graduation/Diploma</option>
+                                              <option value="12th" {{$education->qualification=='12th'?'selected':''}}>12th</option>
+                                              <option value="10th" {{$education->qualification=='10th'?'selected':''}}>10th</option>
+                                              <option value="Below 10th" {{$education->qualification=='Below 10th'?'selected':''}}>Below 10th</option>
+                                             
+                                          </select>
                                           </div>                                
                                           <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                               <span class="input-group-text"><i class="fas fa-graduation-cap"></i>&nbsp;Course</span>
+                                              
                                             </div>
                                             <input id="editCourse" class="form-control" name="edit_course" list="edit_course" value="{{$education->course}}">
                                                       <datalist id="edit_course">                                                          
@@ -127,11 +138,18 @@
                                                         <option value="MVSC">
                                                         <option value="PG Diploma">
                                                 </datalist>
-                                          
+                                                
                                           </div>
+
+                                          <div class="input-group mb-3">
+                                            <span style="color:red">*If your course is not listed, please enter the same manually.</span></p>
+                                              
+                                          </div>
+
                                           <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                               <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
+                                              
                                             </div>
                                             <input id="editSpecialization" class="form-control" name="edit_specialization" list="edit_specialization" value="{{$education->specialization}}">
                                                     <datalist id="edit_specialization">
@@ -162,7 +180,11 @@
                                                       <option value="Production/Industrial">
                                                       <option value="Textile">
                                               </datalist>
-                                          
+                                              
+                                          </div>
+                                          <div class="input-group mb-3">
+                                            <span style="color:red">*If your specialization is not listed, please enter the same manually.</span></p>
+                                              
                                           </div>
 
                                           <div class="input-group mb-3">
@@ -194,14 +216,14 @@
                                                     <span class="input-group-text"><i class="fa fa-percent"></i><i class="fa fa-font"></i>&nbsp;Performance Scale</span>
                                                   </div>
                                                 <select id="cmbParameter3" class="form-control forminputbox" name="cmbParameter3">
-                                                  <option value="">---Select---</option>
-                                                  <option value="Percentage">Percentage</option>
-                                                  <option value="CGPA(Scale of 10)">CGPA(Scale of 10)</option>
-                                                  <option value="CGPA(Scale of 9)">CGPA(Scale of 9)</option>
-                                                  <option value="CGPA(Scale of 8)">CGPA(Scale of 8)</option>
-                                                  <option value="CGPA(Scale of 7)">CGPA(Scale of 7)</option>
-                                                  <option value="CGPA(Scale of 5)">CGPA(Scale of 5)</option>
-                                                  <option value="CGPA(Scale of 4)">CGPA(Scale of 4)</option>
+                                                  <option value=""{{$education->c_type==''?'selected':''}}>---Select---</option>
+                                                  <option value="Percentage" {{$education->performance_scale=='Percentage'?'selected':''}}>Percentage</option>
+                                                  <option value="CGPA(Scale of 10)" {{$education->performance_scale=='CGPA(Scale of 10)'?'selected':''}}>CGPA(Scale of 10)</option>
+                                                  <option value="CGPA(Scale of 9)" {{$education->performance_scale=='CGPA(Scale of 9)'?'selected':''}}>CGPA(Scale of 9)</option>
+                                                  <option value="CGPA(Scale of 8)" {{$education->performance_scale=='CGPA(Scale of 8)'?'selected':''}}>CGPA(Scale of 8)</option>
+                                                  <option value="CGPA(Scale of 7)" {{$education->performance_scale=='CGPA(Scale of 7)'?'selected':''}}>CGPA(Scale of 7)</option>
+                                                  <option value="CGPA(Scale of 5)" {{$education->performance_scale=='CGPA(Scale of 5)'?'selected':''}}>CGPA(Scale of 5)</option>
+                                                  <option value="CGPA(Scale of 4)" {{$education->performance_scale=='CGPA(Scale of 4)'?'selected':''}}>CGPA(Scale of 4)</option>
                                               </select>
                                               
                                                 </div>
@@ -211,7 +233,7 @@
                                                 <div class="input-group-prepend">
                                                 <span class="input-group-text">Performance </span>
                                                 </div>
-                                                <input type="text" id="mytext3" class="form-control" name="mytext3" />
+                                                <input type="text" id="mytext3" class="form-control" name="mytext3" value="{{$education->performance}}"/>
                                             
                                               </div>
                                           </div>
@@ -283,7 +305,16 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fa fa-trophy"></i>&nbsp;Education</span>
                                     </div>
-                                    <input type="text" id="addQualification" class="form-control" name="add_qualification">
+                                    <select class="form-control" id="addQualification" name="add_qualification">
+                                      <option value="">Select</option>
+                                      <option value="Doctorate/PhD">Doctorate/PhD</option>
+                                      <option value="Masters/Post-Graduation">Masters/Post-Graduation</option>
+                                      <option value="Graduation/Diploma">Graduation/Diploma</option>
+                                      <option value="12th">12th</option>
+                                      <option value="10th">10th</option>
+                                      <option value="Below 10th">Below 10th</option>
+                                     
+                                  </select>
                                      
                                   </div> 
                                   
@@ -298,6 +329,7 @@
                                   <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-graduation-cap"></i>&nbsp;Course</span>
+                                      
                                     </div>
                                     
                                     <input id="addCourse" class="form-control" name="add_course" list="add_course">
@@ -326,7 +358,11 @@
                                                               <option value="MVSC">
                                                               <option value="PG Diploma">
                                                       </datalist>
-                
+                                                      
+                                  </div>
+                                  <div class="input-group mb-3">
+                                    <span style="color:red">*If your course is not listed, please enter the same manually.</span></p>
+                                      
                                   </div>
 
 
@@ -340,6 +376,7 @@
                                   <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
+                                      
                                     </div>
                                     
                                     <input id="addSpecialization" class="form-control" name="add_specialization" list="add_specialization">
@@ -371,10 +408,13 @@
                                                             <option value="Production/Industrial">
                                                             <option value="Textile">
                                                     </datalist>
-                
+                                    
                                   </div>
-
-
+                                  
+                                  <div class="input-group mb-3">
+                                    <span style="color:red">*If your specialization is not listed, please enter the same manually.</span></p>
+                                      
+                                  </div>
 
                                   <div class="input-group mb-3">
                                     <div class="input-group-prepend">
