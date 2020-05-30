@@ -15,7 +15,7 @@
 3) Also, import 'countries.sql', 'states.sql', 'cities.sql', 'designations.sql', 'industries.sql', 'skills.sql' at your database and don't forget to delete the previous existing tables with same name which got created after 'php artisan migrate' in first step!
 Well sql query does the same but just in case..
 
-(I will email these .sql files)
+(I will email these .sql files or the same will be available here inside 'OPH_sql_import1')
 
 NOTE: 'cities.sql' is comparatively a big file. May not get imported easily without doing some extra one or two steps.. i.e:
 -----------------
@@ -35,7 +35,10 @@ C:\xampp\mysql\bin>mysql -u [username] -p [databaseName] < cities.sql
 ~~[AssignedTo: Priti]
 
 -SEPARATING EMPLOYERS, CONSULTANTS:
-~~[To be assigned]
+~~[AssignedTo: Pawan]
+
+-WEB DESIGN:
+~~[AssignedTo: Akanksha]
 
 
 Other pages (and more to be added later):
