@@ -24,7 +24,7 @@ xampp control panel-> (mysql)config -> my.ini -> (open and set)
 myisam_sort_buffer_size = 100M
 2)
 copy cities.sql to "C:\xampp\mysql\bin", then in terminal-
-C:\xampp\mysql\bin>mysql -u [username] -p oph < cities.sql
+C:\xampp\mysql\bin>mysql -u [username] -p [databaseName] < cities.sql
 
 
 ## Initial tasks:

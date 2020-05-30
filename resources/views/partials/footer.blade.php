@@ -121,8 +121,68 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       changeYear: true,
       yearRange: "-70:+0"
       
-});
-    } );
+    });
+
+
+    $('.datepicker-Y').datepicker( {
+    dateFormat: "yy",
+    yearRange: "c-100:c",
+    changeMonth: false,
+    changeYear: true,
+    showButtonPanel: false,
+    closeText:'Select',
+    currentText: 'This year',
+    onClose: function(dateText, inst) {
+      var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+      $(this).val($.datepicker.formatDate('yy', new Date(year, 1, 1)));
+    },
+    onChangeMonthYear : function () {
+      $(this).datepicker( "hide" );
+    }
+  }).focus(function () {
+    $(".ui-datepicker-month").hide();
+    $(".ui-datepicker-calendar").hide();
+    $(".ui-datepicker-current").hide();
+    $(".ui-datepicker-prev").hide();
+    $(".ui-datepicker-next").hide();
+    $("#ui-datepicker-div").position({
+      my: "left top",
+      at: "left bottom",
+      of: $(this)
+    });
+  }).attr("readonly", false);
+
+
+  $('.datepicker-YM').datepicker( {
+    yearRange: "c-100:c",
+    changeMonth: true,
+    changeYear: true,
+    showButtonPanel: true,
+    closeText:'Select',
+    currentText: 'This year',
+    onClose: function(dateText, inst) {
+      var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+      var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+      $(this).val($.datepicker.formatDate('MM yy (M y) (mm/y)', new Date(year, month, 1)));
+    }
+  }).focus(function () {
+    $(".ui-datepicker-calendar").hide();
+    $(".ui-datepicker-current").hide();
+    $("#ui-datepicker-div").position({
+      my: "left top",
+      at: "left bottom",
+      of: $(this)
+    });
+  }).attr("readonly", false);
+
+
+
+    });
+
+
+
+
+
 </script>
 
 

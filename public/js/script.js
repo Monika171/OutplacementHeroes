@@ -1,59 +1,152 @@
 $(document).ready(function(){
 
-	// unable to pick multiple checkbox to category
-   $('input.catFilter').on('change', function() {
-    $('input.catFilter').not(this).prop('checked', false);  
-	});
+// initialize the plugin
 
-   //Delete job posting in Client dashboard
-    $('body').on('click', '#deleteJob', function(){
-        var id = $(this).data('id');
-        var jobPosting = $(this).parents("tr");
-        $('.loading').show();
-            $.ajax({ 
-                type: 'post',
-                url: '/jobs/' + id,
-                headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: {
-                  _method: 'DELETE',
-                },
-                success: function(data) {
-                   jobPosting.fadeOut(350);
-                   toastr.success(' ', 'Job Posting Deleted', {timeOut: 3000, positionClass: 'toast-top-center'});
-                   $('.loading').hide();
-                }
-            });
-        });
+$('#frmParameter2').validate({
+	rules: {
+		
+		cmbParameter2: {
+			required: true
+		},
+		mytext: {
+			required: true
+		}
+		
+	}
+});
 
+// dynamically change the rules (add)
 
-	//Edit job posting in Client dashboard
-	 $('body').on('click', '#editJob', function(){
-        var id = $(this).data('id');
-        $('.loading').show();
-            $.ajax({ 
-                type: 'get',
-                url: '/jobs/' + id + '/edit',
-                headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(data) {
-                  window.location.href = '/jobs/'+ id + '/edit';
-                  $('.loading').hide();
-                }
-            });
-        });
+$('#cmbParameter2').on('change', function () {
 
+	$('input[name="mytext"]').rules('remove');
 
+	if ($(this).val() == 'Percentage') {  // Amount
+		$('input[name="mytext"]').rules('add', {
+			 
+			required: true,
+			range: [1, 100]
+		});
+	}else if ($(this).val() == 'CGPA(Scale of 10)') {  // Name
+		$('input[name="mytext"]').rules('add', {
+			 required: true,
+			 range: [1, 10]
+			
+		});
+	}else if ($(this).val() == 'CGPA(Scale of 9)') {  // Name
+		$('input[name="mytext"]').rules('add', {
+			  required: true,
+			 range: [1, 9]
+		   
+		});
+	}else if ($(this).val() == 'CGPA(Scale of 8)') {  // Name
+		$('input[name="mytext"]').rules('add', {
+							required: true,                 
+			 range: [1, 8]
+			
+		});
+	}else if ($(this).val() == 'CGPA(Scale of 7)') {  // Name
+		$('input[name="mytext"]').rules('add', {
+			 required: true,
+			 range: [1, 7]
+			
+		});
+	}else if ($(this).val() == 'CGPA(Scale of 5)') {  // Name
+		$('input[name="mytext"]').rules('add', {
+		   required: true,
+			 range: [1, 5]
+		});
+	} else if ($(this).val() == 'CGPA(Scale of 4)') {  // Name
+		$('input[name="mytext"]').rules('add', {
+			 required: true,
+			 range: [1, 4]
+			
+		});
+	}
+	
+	$('input[name="mytext"]').valid();  // trigger validation of the text field (optional)
 
-   // Add new Educational background
-   $(document).on('click', '#addNewEducation', function(event){ 
-    event.preventDefault();
-   	var course = $(this).parent().siblings().find('#addCourse');
-   	var school = $(this).parent().siblings().find('#addSchool');
-   	var year = $(this).parent().siblings().find('#addSchoolYear');
-   	var achievement = $(this).parent().siblings().find('#addAchievement');
+});
+
+//edit performance
+$('#frmParameter3').validate({
+	rules: {	
+		cmbParameter3: {
+			required: true
+		},
+		mytext3: {
+			required: true
+			
+		}
+	}
+});
+// dynamically change the rules (edit)
+
+$('#cmbParameter3').on('change', function () {
+
+	$('input[name="mytext3"]').rules('remove');
+
+	if ($(this).val() == 'Percentage') {  // 
+		$('input[name="mytext3"]').rules('add', {
+			 
+			required: true,
+			range: [1, 100]
+		});
+	}else if ($(this).val() == 'CGPA(Scale of 10)') {  // Name
+			$('input[name="mytext3"]').rules('add', {
+			 required: true,
+			 range: [1, 10]
+			
+		});
+	}else if ($(this).val() == 'CGPA(Scale of 9)') {  // Name
+		$('input[name="mytext3"]').rules('add', {
+			  required: true,
+			 range: [1, 9]
+		   
+		});
+	}else if ($(this).val() == 'CGPA(Scale of 8)') {  // Name
+		$('input[name="mytext3"]').rules('add', {
+			required: true,                 
+			 range: [1, 8]
+			
+		});
+	}else if ($(this).val() == 'CGPA(Scale of 7)') {  // Name
+		$('input[name="mytext3"]').rules('add', {
+			 required: true,
+			 range: [1, 7]
+			
+		});
+	}else if ($(this).val() == 'CGPA(Scale of 5)') {  // Name
+		$('input[name="mytext3"]').rules('add', {
+		   required: true,
+			 range: [1, 5]
+		});
+	} else if ($(this).val() == 'CGPA(Scale of 4)') {  // Name
+		$('input[name="mytext3"]').rules('add', {
+			 required: true,
+			 range: [1, 4]
+			
+		});
+	}
+	
+	$('input[name="mytext3"]').valid();  // trigger validation of the text field (optional)
+	//console.log("changeeee10");
+});
+	
+	
+	 // Add new Educational background
+   	$(document).on('click', '#addNewEducation', function(event){ 
+	event.preventDefault();
+	//console.log('i was here');
+	var qualification = $(this).parent().siblings().find('#addQualification');
+	var course = $(this).parent().siblings().find('#addCourse');
+	var specialization = $(this).parent().siblings().find('#addSpecialization');
+	var institute = $(this).parent().siblings().find('#addInstitute');
+	var c_type = $(this).parent().siblings().find('#addCourseType');
+	var cmbParameter2 = $(this).parent().siblings().find('#cmbParameter2');
+	var mytext = $(this).parent().siblings().find('#mytext');
+   	var p_year = $(this).parent().siblings().find('#addPassingYear');
+
     $('.loading').show();
 	    $.ajax({ 
 	        type: 'post',
@@ -62,15 +155,24 @@ $(document).ready(function(){
 	          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	        },
 	        data: {
-	          course:course.val(),
-	          school:school.val(),
-	          year:year.val(),
-	          achievement:achievement.val()
-	        },success: function(data) {     
-	        	course.val("");
-	        	school.val("");
-	        	year.val("");
-	        	achievement.val("");
+				qualification:qualification.val(),
+			  course:course.val(),
+			  specialization:specialization.val(),
+	          institute:institute.val(),
+			  c_type:c_type.val(),
+			  cmbParameter2:cmbParameter2.val(),
+			  mytext:mytext.val(),
+	          p_year:p_year.val(),
+	        },success: function(data) { 
+				//console.log('socus');
+				qualification.val("");    
+				course.val("");
+				specialization.val("");
+				institute.val("");
+				c_type.val("");
+				cmbParameter2.val("");
+			 	mytext.val("");
+	        	p_year.val("");
 	            $('#educationBackgroundBody').load(' #educationBackgroundBody > div');
 	            toastr.success(' ', 'Education Background Added', {timeOut: 3000, positionClass: 'toast-top-center'});
 	            $('.loading').hide();
@@ -80,11 +182,17 @@ $(document).ready(function(){
 
    // Edit Educational Background
    $(document).on('click', '.editEducation', function(){ 
-   	id = $(this).data('id');
-   	var course = $(this).parent().siblings().find('#editCourse').val();
-   	var school = $(this).parent().siblings().find('#editSchool').val();
-   	var year = $(this).parent().siblings().find('#editSchoolYear').val();
-   	var achievement = $(this).parent().siblings().find('#editAchievement').val();
+	   id = $(this).data('id');
+	  
+		var qualification = $(this).parent().siblings().find('#editQualification').val();
+		var course = $(this).parent().siblings().find('#editCourse').val();
+		var specialization = $(this).parent().siblings().find('#editSpecialization').val();
+		var institute = $(this).parent().siblings().find('#editInstitute').val();
+		var c_type = $(this).parent().siblings().find('#editCourseType').val();
+		var cmbParameter2 = $(this).parent().siblings().find('#cmbParameter3').val();
+		var mytext = $(this).parent().siblings().find('#mytext3').val();
+		var p_year = $(this).parent().siblings().find('#editPassingYear').val();
+   	
     $('.loading').show();
    		 $.ajax({ 
 	        type: 'post',
@@ -93,11 +201,16 @@ $(document).ready(function(){
 	          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	        },
 	        data: {
-	       	  id: id,
-	          course:course,
-	          school:school,
-	          year:year,
-	          achievement:achievement
+	  
+					id: id,
+					qualification:qualification,
+					course:course,
+					specialization:specialization,
+					institute:institute,
+					c_type:c_type,
+					cmbParameter2:cmbParameter2,
+			 		mytext:mytext,
+					p_year:p_year
 	        },success: function(data) {    
 	            $('#educationBackgroundBody').load(' #educationBackgroundBody > div');
 	            toastr.success(' ', 'Education Background Updated', {timeOut: 3000, positionClass: 'toast-top-center'});
@@ -110,7 +223,9 @@ $(document).ready(function(){
 
    // Delete Educational Background
    $(document).on('click', '.deleteEducation', function(){ 
-   	id = $(this).data('id');
+	
+	   id = $(this).data('id');
+	   
     $('.loading').show();
    		$.ajax({ 
 	        type: 'post',
@@ -128,12 +243,15 @@ $(document).ready(function(){
 	    });
   }); 	
 
-	// Add new Educational background
+	// Add Work Background
    $(document).on('click', '.addNewWorkButton', function(){ 
-   	var position = $(this).parent().siblings().find('#addPosition');
-   	var company = $(this).parent().siblings().find('#addCompany');
-   	var year = $(this).parent().siblings().find('#addWorkYear');
-   	var description = $(this).parent().siblings().find('#addWorkDescription');
+		var company = $(this).parent().siblings().find('#addCompany');
+		var industry = $(this).parent().siblings().find('#addIndustry');
+	   	var designation = $(this).parent().siblings().find('#addDesignation');
+	   	var func = $(this).parent().siblings().find('#addFunc');
+	   	var start_date = $(this).parent().siblings().find('#addStartDate');
+	   	var end_date = $(this).parent().siblings().find('#addEndDate');
+   		var description = $(this).parent().siblings().find('#addWorkDescription');
     $('.loading').show();
 	    $.ajax({ 
 	        type: 'post',
@@ -142,14 +260,20 @@ $(document).ready(function(){
 	          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	        },
 	        data: {
-	          position: position.val(),
-	          company: company.val(),
-	          year: year.val(),
-	          description: description.val()
+				company: company.val(),
+				industry: industry.val(),
+				designation: designation.val(),
+				func: func.val(),
+				start_date: start_date.val(),
+				end_date: end_date.val(),
+				description: description.val()
 	        },success: function(data) {     
-	        	position.val("");
 	        	company.val("");
-	        	year.val("");
+				industry.val("");
+				designation.val("");
+				func.val("");
+				start_date.val("");
+				end_date.val("");
 	        	description.val("");
 	            $('.workBackgroundBody').load(' .workBackgroundBody > div');
 	            toastr.success(' ', 'New Work Added', {timeOut: 3000, positionClass: 'toast-top-center'});
@@ -161,11 +285,15 @@ $(document).ready(function(){
 
     // Edit Work Background
    $(document).on('click', '.editWorkBackground', function(){ 
-   	var id = $(this).data('id');
-   	var position = $(this).parent().siblings().find('#editPosition').val();
-   	var company = $(this).parent().siblings().find('#editCompany').val();
-   	var workyear = $(this).parent().siblings().find('#editWorkYear').val();
-   	var description = $(this).parent().siblings().find('#editWorkDescription').val();
+   		var id = $(this).data('id');
+   		var company = $(this).parent().siblings().find('#editCompany').val();
+		var industry = $(this).parent().siblings().find('#editIndustry').val();
+	   	var designation = $(this).parent().siblings().find('#editDesignation').val();
+	   	var func = $(this).parent().siblings().find('#editFunc').val();
+	   	var start_date = $(this).parent().siblings().find('#editStartDate').val();
+	   	var end_date = $(this).parent().siblings().find('#editEndDate').val();
+		var description = $(this).parent().siblings().find('#editWorkDescription').val();
+		   
     $('.loading').show();
    		 $.ajax({ 
 	        type: 'post',
@@ -175,10 +303,13 @@ $(document).ready(function(){
 	        },
 	        data: {
 	       	  id: id,
-	          position:position,
-	          company:company,
-	          workyear:workyear,
-	          description:description
+				company:company,
+				industry:industry,
+				designation:designation,
+				func:func,
+				start_date:start_date,
+				end_date:end_date,
+	          	description:description
 	        },success: function(data) {    
 	            $('.workBackgroundBody').load(' .workBackgroundBody > div');
 	            toastr.success(' ', 'Education Background Updated', {timeOut: 3000, positionClass: 'toast-top-center'});
@@ -205,151 +336,5 @@ $(document).ready(function(){
 			        }
 			    });
   }); 	
-
-   // Add Profile information
-   $(document).on('click', '.addProfileButton', function(){ 
-	   	var title = $(this).parent().siblings().find('#editJobTitle').val();
-	   	var city = $(this).parent().siblings().find('#editCity').val();
-	   	var province = $(this).parent().siblings().find('#editProvince').val();
-	   	var country = $(this).parent().siblings().find('#editCountry').val();
-	   	var overview = $(this).parent().siblings().find('#editOverview').val();
-	    $('.loading').show();   
-	   		 $.ajax({ 
-		        type: 'post',
-		        url: '/profile/store',
-		        headers: {
-		          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		        },
-		        data: {
-		          title:title,
-		          city:city,
-		          province:province,
-		          country:country,
-		          overview:overview
-		        },success: function(data) {    
-			    location.reload();
-	            toastr.success(' ', 'Profile Successfully Updated', {timeOut: 3000, positionClass: 'toast-top-center'});
-	            $('.loading').hide();
-	        }
-	    });
-   });
-
-
-
-   // Edit Profile information
-   $(document).on('click', '.editProfileButton', function(){ 
-	   	var id = $(this).data('id');
-	   	var title = $(this).parent().siblings().find('#editJobTitle').val();
-	   	var city = $(this).parent().siblings().find('#editCity').val();
-	   	var province = $(this).parent().siblings().find('#editProvince').val();
-	   	var country = $(this).parent().siblings().find('#editCountry').val();
-	   	var overview = $(this).parent().siblings().find('#editOverview').val();
-	    $('.loading').show();   
-	   		 $.ajax({ 
-		        type: 'post',
-		        url: '/profile/edit',
-		        headers: {
-		          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		        },
-		        data: {
-		       	  id: id,
-		          title:title,
-		          city:city,
-		          province:province,
-		          country:country,
-		          overview:overview
-		        },success: function(data) {    
-			    location.reload();
-	            toastr.success(' ', 'Profile Successfully Updated', {timeOut: 3000, positionClass: 'toast-top-center'});
-	            $('.loading').hide();
-	        }
-	    });
-   });
-
-   //Ban Users
-    $(document).on('click', '.banUsers', function(){ 
-    	var id = $(this).data('id');
-    	$('.loading').show();
-    		$.ajax({ 
-	        type: 'post',
-	        url: '/panel/users/ban',
-	        headers: {
-	          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	        },
-	        data: {
-	       	  id: id
-	        },success: function(data) {  
-	            location.reload();
-	            toastr.success(' ', 'Banned', {timeOut: 3000, positionClass: 'toast-top-center'});
-	            $('.loading').hide();
-	        }
-	    });
-    });	
-
-    //Unban Freelancers
-    $(document).on('click', '.unbanFreelancer', function(){ 
-    	var id = $(this).data('id');
-    	$('.loading').show();
-    		$.ajax({ 
-	        type: 'post',
-	        url: '/panel/freelancer/unban',
-	        headers: {
-	          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	        },
-	        data: {
-	       	  id: id
-	        },success: function(data) {  
-	            location.reload();
-	            toastr.success(' ', 'User Unbanned', {timeOut: 3000, positionClass: 'toast-top-center'});
-	            $('.loading').hide();
-	        }
-	    });
-    });	
-
-     //Unban Clients
-    $(document).on('click', '.unbanClient', function(){ 
-    	var id = $(this).data('id');
-    	$('.loading').show();
-    		$.ajax({ 
-	        type: 'post',
-	        url: '/panel/client/unban',
-	        headers: {
-	          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	        },
-	        data: {
-	       	  id: id
-	        },success: function(data) {  
-	            location.reload();
-	            toastr.success(' ', 'Client Unbanned', {timeOut: 3000, positionClass: 'toast-top-center'});
-	            $('.loading').hide();
-	        }
-	    });
-    });	
-
-    //Delete job posting in Admin Panel
-    $('body').on('click', '.deleteJobPosting', function(){
-        var id = $(this).data('id');
-        console.log(id);
-        $('.loading').show();
-            $.ajax({ 
-                type: 'get',
-                url: '/panel/jobs/delete/'+id,
-                headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: {
-                  _method: 'DELETE',
-                },
-                success: function(data) {
-                   location.reload();
-                   toastr.success(' ', 'Job Posting Deleted', {timeOut: 3000, positionClass: 'toast-top-center'});
-                   $('.loading').hide();
-                }
-            });
-        });
-
-
-  
-
 
 });//document.ready
