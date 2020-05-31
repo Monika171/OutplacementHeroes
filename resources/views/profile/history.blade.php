@@ -90,7 +90,8 @@
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
-                                    <div class="modal-body addeducationbody">                                
+                                    <div class="modal-body addeducationbody"> 
+
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                               <span class="input-group-text"><i class="fa fa-trophy"></i>&nbsp;Education</span>
@@ -106,7 +107,8 @@
                                               <option value="Below 10th" {{$education->qualification=='Below 10th'?'selected':''}}>Below 10th</option>
                                              
                                           </select>
-                                          </div>                                
+                                          </div>  
+                                                                        
                                           <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                               <span class="input-group-text"><i class="fas fa-graduation-cap"></i>&nbsp;Course</span>
@@ -307,7 +309,7 @@
                                      
                                   </select>
                                      
-                                  </div> <br>
+                                  </div>
                                   
                                   
                                   {{--<div class="input-group mb-3">
