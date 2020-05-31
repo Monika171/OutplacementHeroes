@@ -96,7 +96,7 @@
                                               <span class="input-group-text"><i class="fa fa-trophy"></i>&nbsp;Education</span>
                                             </div>
                                             {{--<input type="text" id="editQualification" class="form-control" name="edit_qualification" value="{{$education->qualification}}">--}}
-                                            <select class="form-control" id="editCourseType" name="edit_qualification">
+                                            <select id="editQualification" class="form-control" name="edit_qualification">
                                               <option value="" {{$education->qualification==''?'selected':''}}>Select</option>
                                               <option value="Doctorate/PhD" {{$education->qualification=='Doctorate/PhD'?'selected':''}}>Doctorate/PhD</option>
                                               <option value="Masters/Post-Graduation" {{$education->qualification=='Masters/Post-Graduation'?'selected':''}}>Masters/Post-Graduation</option>
@@ -113,7 +113,29 @@
                                               
                                             </div>
                                             <input id="editCourse" class="form-control" name="edit_course" list="edit_course" value="{{$education->course}}">
-                                                      <datalist id="edit_course">                                                          
+                                                      <datalist id="edit_course">
+                                                        <option value="B.A"> 
+                                                        <option value="B.Arch">  
+                                                        <option value="B.B.A/B.M.S">  
+                                                        <option value="B.Com">  
+                                                        <option value="B.Des.">                                                          
+                                                        <option value="B.Ed">  
+                                                        <option value="B.El.Ed">  
+                                                        <option value="B.P.Ed">  
+                                                        <option value="B.Pharma"> 
+                                                        <option value="B.Sc."> 
+                                                        <option value="B.Tech/B.E.">  
+                                                        <option value="B.U.M.S">  
+                                                        <option value="BAMS">  
+                                                        <option value="BCA">                                                          
+                                                        <option value="BDS">  
+                                                        <option value="BFA">  
+                                                        <option value="BHM">  
+                                                        <option value="BHMS"> 
+                                                        <option value="BHMS">  
+                                                        <option value="Diploma">  
+                                                        <option value="LLB"> 
+                                                        <option value="MBBS">                                                           
                                                         <option value="CA">
                                                         <option value="CS">
                                                         <option value="DM">
@@ -151,41 +173,9 @@
                                               <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
                                               
                                             </div>
-                                            <input id="editSpecialization" class="form-control" name="edit_specialization" list="edit_specialization" value="{{$education->specialization}}">
-                                                    <datalist id="edit_specialization">
-                                                      <option value="Agriculture">
-                                                      <option value="Automobile">
-                                                      <option value="Aviation">
-                                                      <option value="Bio-Chemistry/Bio-Technology">
-                                                      <option value="Biomedical">
-                                                      <option value="Ceramics">
-                                                      <option value="Chemical">
-                                                      <option value="Civil">
-                                                      <option value="Computers">
-                                                      <option value="Electrical">
-                                                      <option value="Electronics/Telecommunication">
-                                                      <option value="Energy">
-                                                      <option value="Environmental">
-                                                      <option value="Instrumentation">
-                                                      <option value="Marine">
-                                                      <option value="Mechanical">
-                                                      <option value="Metallurgy">
-                                                      <option value="Mineral">
-                                                      <option value="Mining">
-                                                      <option value="Nuclear">
-                                                      <option value="Other Engineering">
-                                                      <option value="Paint/Oil">
-                                                      <option value="Petroleum">
-                                                      <option value="Plastics">
-                                                      <option value="Production/Industrial">
-                                                      <option value="Textile">
-                                              </datalist>
-                                              
+                                            <input type="text" id="editSpecialization" class="form-control" name="edit_specialization">
                                           </div>
-                                          <div class="input-group mb-3">
-                                            <span style="color:red">*If your specialization is not listed, please enter the same manually.</span></p>
-                                              
-                                          </div>
+
 
                                           <div class="input-group mb-3">
                                             <div class="input-group-prepend">
@@ -305,7 +295,8 @@
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fa fa-trophy"></i>&nbsp;Education</span>
                                     </div>
-                                    <select class="form-control" id="addQualification" name="add_qualification">
+                                    {{--<input type="text" id="addQualification" class="form-control" name="add_qualification">--}}
+                                    <select id="addQualification" class="form-control" name="add_qualification">
                                       <option value="">Select</option>
                                       <option value="Doctorate/PhD">Doctorate/PhD</option>
                                       <option value="Masters/Post-Graduation">Masters/Post-Graduation</option>
@@ -316,7 +307,7 @@
                                      
                                   </select>
                                      
-                                  </div> 
+                                  </div> <br>
                                   
                                   
                                   {{--<div class="input-group mb-3">
@@ -333,7 +324,29 @@
                                     </div>
                                     
                                     <input id="addCourse" class="form-control" name="add_course" list="add_course">
-                                                      <datalist id="add_course">                                                          
+                                                      <datalist id="add_course">
+                                                              <option value="B.A"> 
+                                                              <option value="B.Arch">  
+                                                              <option value="B.B.A/B.M.S">  
+                                                              <option value="B.Com">  
+                                                              <option value="B.Des.">                                                          
+                                                              <option value="B.Ed">  
+                                                              <option value="B.El.Ed">  
+                                                              <option value="B.P.Ed">  
+                                                              <option value="B.Pharma"> 
+                                                              <option value="B.Sc."> 
+                                                              <option value="B.Tech/B.E.">  
+                                                              <option value="B.U.M.S">  
+                                                              <option value="BAMS">  
+                                                              <option value="BCA">                                                          
+                                                              <option value="BDS">  
+                                                              <option value="BFA">  
+                                                              <option value="BHM">  
+                                                              <option value="BHMS"> 
+                                                              <option value="BHMS">  
+                                                              <option value="Diploma">  
+                                                              <option value="LLB"> 
+                                                              <option value="MBBS">  
                                                               <option value="CA">
                                                               <option value="CS">
                                                               <option value="DM">
@@ -366,56 +379,15 @@
                                   </div>
 
 
-                                  {{--<div class="input-group mb-3">
+                                  <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
+                                      
                                     </div>
                                     <input type="text" id="addSpecialization" class="form-control" name="add_specialization">
-                                  </div>--}}
-
-                                  <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
-                                      
-                                    </div>
-                                    
-                                    <input id="addSpecialization" class="form-control" name="add_specialization" list="add_specialization">
-                                                      <datalist id="add_specialization">
-                                                            <option value="Agriculture">
-                                                            <option value="Automobile">
-                                                            <option value="Aviation">
-                                                            <option value="Bio-Chemistry/Bio-Technology">
-                                                            <option value="Biomedical">
-                                                            <option value="Ceramics">
-                                                            <option value="Chemical">
-                                                            <option value="Civil">
-                                                            <option value="Computers">
-                                                            <option value="Electrical">
-                                                            <option value="Electronics/Telecommunication">
-                                                            <option value="Energy">
-                                                            <option value="Environmental">
-                                                            <option value="Instrumentation">
-                                                            <option value="Marine">
-                                                            <option value="Mechanical">
-                                                            <option value="Metallurgy">
-                                                            <option value="Mineral">
-                                                            <option value="Mining">
-                                                            <option value="Nuclear">
-                                                            <option value="Other Engineering">
-                                                            <option value="Paint/Oil">
-                                                            <option value="Petroleum">
-                                                            <option value="Plastics">
-                                                            <option value="Production/Industrial">
-                                                            <option value="Textile">
-                                                    </datalist>
-                                    
-                                  </div>
-                                  
-                                  <div class="input-group mb-3">
-                                    <span style="color:red">*If your specialization is not listed, please enter the same manually.</span></p>
-                                      
                                   </div>
 
+             
                                   <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fa fa-university"></i>&nbsp;Institute</span>
@@ -481,6 +453,7 @@
                                     {{--<input type="text" id="addPassingYear" class="form-control" name="add_p_year">--}}
                                     <input type="text" id="addPassingYear" class="form-control datepicker-Y" name="add_p_year">
                                   </div>
+                                  
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
