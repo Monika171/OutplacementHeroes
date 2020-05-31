@@ -408,6 +408,7 @@
                                       <span class="input-group-text"><i class="fa fa-hourglass-half"></i>&nbsp;Course Type</span>
                                     </div>
                                     <select class="form-control" id="addCourseType" name="add_c_type">
+                                        <option value="">Select</option>
                                         <option value="fulltime">Full Time</option>
                                         <option value="parttime">Part Time</option>
                                         <option value="correspondence/distance Learning">Correspondence/Distance Learning</option>
