@@ -20,21 +20,18 @@ use Illuminate\Support\Facades\Route;
 //dummy example (ignore)
 Route::view('demo','demo');
 
-
-//Route::get('/','JobController@index');
-
 Route::get('/','OutplacementherosController@index');
 
-
-
-
-//Route::get('/jobs/create','JobController@create')->name('job.create');
 
 //Auth::routes();
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
+//Route::get('/','JobController@index');
+//Route::get('/jobs/create','JobController@create')->name('job.create');
 
 //Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show');
 
@@ -62,7 +59,7 @@ Route::post('user/resume','UserController@resume')->name('resume');
 Route::post('user/profile_pic','UserController@profile_pic')->name('profile_pic');
 Route::post('user/profile_pic/delete','UserController@delete_spic')->name('spic.delete');
 Route::post('user/resume/delete','UserController@delete_resume')->name('resume.delete');
-Route::get('/user/{id}','UserController@show_profile')->name('user.show');
+Route::get('/user/{id}','UserController@show_profile')->name('user.show'); //checked
 //user work,education history
 Route::get('user/profile/history','UserController@history')->name('user.history');
 
@@ -112,7 +109,7 @@ Route::get('volunteer/profile','VolunteerController@index')->name('volunteer.pro
 Route::post('user/volunteer/create','VolunteerController@store')->name('volunteer.store');
 Route::post('volunteer/profile_pic','VolunteerController@vprofile_pic')->name('vprofile_pic');
 Route::post('volunteer/profile_pic/delete','VolunteerController@delete_vpic')->name('vpic.delete');
-Route::get('volunteer/{id}','VolunteerController@show')->name('volunteer.show');
+Route::get('volunteer/{id}','VolunteerController@show')->name('volunteer.show'); //checked
 
 Route::get('/vseekers','VolunteerController@listseekers')->name('vseeker.index');
 Route::get('/vseeker/{id}','VolunteerController@show_profile')->name('vseeker.show');
@@ -127,7 +124,7 @@ Route::get('jvolunteer/profile','JvolunteerController@index')->name('jvolunteer.
 Route::post('user/jvolunteer/create','JvolunteerController@store')->name('jvolunteer.store');
 Route::post('jvolunteer/profile_pic','JvolunteerController@jvprofile_pic')->name('jvprofile_pic');
 Route::post('jvolunteer/profile_pic/delete','JvolunteerController@delete_jvpic')->name('jvpic.delete');
-Route::get('jvolunteer/{id}','JvolunteerController@show')->name('jvolunteer.show');
+Route::get('jvolunteer/{id}','JvolunteerController@show')->name('jvolunteer.show'); //checked
 
 Route::get('/jvseekers','JvolunteerController@listseekers')->name('jvseeker.index');
 Route::get('/jvseeker/{id}','JvolunteerController@show_profile')->name('jvseeker.show');

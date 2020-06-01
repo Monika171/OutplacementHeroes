@@ -149,6 +149,7 @@ class JvolunteerController extends Controller
               public function show_profile($id){
 
                     $user = User::findOrFail($id);
+
                     return view('jvolunteer.seekerprofile', compact('user'));
 
               }
