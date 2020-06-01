@@ -371,7 +371,11 @@
                         </div>
 
                         <div id="todisplay">
-                        <h5><u><strong>Most Recent/Current Employment Details: </strong></u></h5>
+                        <p class="mb-0"> <h5><u><strong>Most Recent/Current Employment Details: </strong></u></h5>
+                        <span style="color:rgb(209, 39, 39)">
+                        To fill up more work history details before 'most recent/current' employment,
+                        please visit the link(called 'Education & Work History') which will appear on top, right after this form has been submitted.
+                        </span></p>
                         <br>
                         <div class="form-group">
 
