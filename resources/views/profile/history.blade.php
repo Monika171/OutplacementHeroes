@@ -175,7 +175,7 @@
                                               <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
                                               
                                             </div>
-                                            <input type="text" id="editSpecialization" class="form-control" name="edit_specialization">
+                                            <input type="text" id="editSpecialization" class="form-control" name="edit_specialization" value="{{$education->specialization}}">
                                           </div>
 
 
@@ -491,9 +491,9 @@
                              <h6 class="h6 mb-2 text-muted"><strong>Industry:</strong>&nbsp;{{$work->industry}}</h6> 
                              <h6 class="h6 mb-2 text-muted"><strong>Designation:</strong>&nbsp;{{$work->designation}}</h6> 
                              {{--<h5 class="h6 mb-2 text-muted">{{$work->function}}</h5>--}}                           
-                             <h6 class="h6 text-black"><strong>Started Working From:</strong>&nbsp;{{ $work->start_date }}</h6>
-                             <h6 class="h6 text-black"><strong>Worked Till:</strong>&nbsp;{{ $work->end_date }}</h6>
-                             <div class="mt-3 text-muted"><strong>Description:</strong>&nbsp;{!! nl2br(e($work->description)) !!}</div>
+                             <h6 class="h6 mb-2 text-muted"><strong>Started Working From:</strong>&nbsp;{{ $work->start_date }}</h6>
+                             <h6 class="h6 mb-2 text-muted"><strong>Worked Till:</strong>&nbsp;{{ $work->end_date }}</h6>
+                             {{--<div class="h6 mb-2 text-muted"><strong>Description:</strong>&nbsp;{!! nl2br(e($work->description)) !!}</div>--}}
                              <hr>
                            </div>
 
@@ -551,17 +551,20 @@
                                         </div>                                        
                                         <input type="text" id="editStartDate" class="form-control datepicker-YM" value="{{$work->start_date}}">
                                       </div>
+
                                       <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-calendar"></i>&nbsp;Worked Till:</span>
                                         </div>
                                         <input type="text" id="editEndDate" class="form-control datepicker-YM" value="{{$work->end_date}}">
                                       </div>
-                                      <div class="form-group">
+
+                                      {{--<div class="form-group">
                                         <span class="input-group-text"><i class="fa fa-map"></i>&nbsp;Description</span>
                                         <textarea class="form-control" id="editWorkDescription" rows="3">{{$work->description}}</textarea>
                                       </div>
-                                    </div>
+                                    </div>--}}
+
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                       <button type="submit" class="btn btn-primary editWorkBackground" data-dismiss="modal" data-id="{{$work->id}}">Save changes</button>
@@ -663,10 +666,10 @@
                                   </div>
                                   <input type="text" id="addEndDate" class="form-control datepicker-YM">
                                 </div>
-                                <div class="form-group">
+                                {{--<div class="form-group">
                                   <span class="input-group-text"><i class="fa fa-map"></i>&nbsp;Description</span>
                                   <textarea class="form-control" id="addWorkDescription" rows="3"></textarea>
-                                </div>
+                                </div>--}}
 
                               </div>
                               <div class="modal-footer">

@@ -79,10 +79,11 @@ class UserController extends Controller
                                 'recent_company' => 'sometimes',   
                                 'start_date' => 'required_with:recent_company',
                                 //'industry' => 'required_with:recent_company',
+                                //'recent_designation' => 'required_with:recent_company', 
                                 'currently_working_here' => 'required_without_all:fresher,end_date',
                                 'salary_in_thousands'=>'numeric|digits_between:4,5|nullable',
                                 'notice_period'=>'required',
-                                //'recent_designation' => 'required_with:recent_company',           
+                                          
                                         
                                   //'phone_number'=>'required|numeric|digits_between:10,10',
                                 ]);
