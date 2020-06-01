@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::view('demo','demo');
 
 //jobsController for this JobPortal. Basically used to post anything on welcome page. eg: blog, testimonial (irrelevant name sorry!)
-Route::get('/','JobController@index');
+//Route::get('/','JobController@index');
+
+Route::get('/','OutplacementherosController@index');
 
 //Route::get('/jobs/create','JobController@create')->name('job.create');
 
