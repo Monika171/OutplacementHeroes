@@ -520,7 +520,7 @@
                 </div>
                     <hr>
                     <div class="form-group">
-                        <label for="expected_ctc" class="h6">Expected CTC:</label>
+                        <label for="expected_ctc" class="h6">Expected CTC (in Lakhs):</label>
                         <input type="text" class="form-control" name="expected_ctc" value="{{Auth::user()->profile->expected_ctc?Auth::user()->profile->expected_ctc:old("expected_ctc")}}">
                         @if($errors->has('expected_ctc'))
                         <div class="error" style="color: red;">{{$errors->first('expected_ctc')}}</div>
