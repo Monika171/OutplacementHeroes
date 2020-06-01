@@ -53,8 +53,8 @@ class UserController extends Controller
                           }
 
                           $preferred_location = City::where('country_id','101')->pluck('name');
-                          $recent_designation = Designation::all()->pluck('designation');
-                          $industry = Industry::all()->pluck('industry');
+                          $recent_designation = Designation::orderBy('designation', 'asc')->pluck('designation');
+                          $industry = Industry::orderBy('industry', 'asc')->pluck('industry');
 
                           //dd($recent_designation);
                           /*$educations = Education::where('user_id', $user->id)
@@ -210,8 +210,8 @@ class UserController extends Controller
                         $user = User::find($user_id);
                         $profile = Profile::where('user_id', $user->id)->first();
 
-                        $designation = Designation::all()->pluck('designation');
-                        $industry = Industry::all()->pluck('industry');
+                        $designation = Designation::orderBy('designation', 'asc')->pluck('designation');
+                        $industry = Industry::orderBy('industry', 'asc')->pluck('industry');
                         //dd($profile);
                         //$skills = Skill::orderBy('skill', 'asc')->get();     
                         

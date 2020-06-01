@@ -57,8 +57,8 @@ class CompanyController extends Controller
           $c_id = "";
         }
 
-        $authority_designation = Designation::all()->pluck('designation');
-        $industry = Industry::all()->pluck('industry');
+        $authority_designation = Designation::orderBy('designation', 'asc')->pluck('designation');
+        $industry = Industry::orderBy('industry', 'asc')->pluck('industry');
 
         return view('company.create',compact('user', 'company', 'countries','s_id','c_id','authority_designation','industry'));
         

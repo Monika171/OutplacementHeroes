@@ -45,8 +45,9 @@ class VolunteerController extends Controller
             $c_id = "";
           }
 
-          $designation = Designation::all()->pluck('designation');
-          $industry = Industry::all()->pluck('industry');
+          $designation = Designation::orderBy('designation', 'asc')->pluck('designation');
+          $industry = Industry::orderBy('industry', 'asc')->pluck('industry');
+
           return view('volunteer.index', compact('user', 'vprofile', 'skills','countries','s_id','c_id','designation','industry')); 
       }
 
