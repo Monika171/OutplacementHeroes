@@ -58,6 +58,14 @@ class HomeController extends Controller
     
                 }
 
+            
+                if(auth::user()->user_type=='jvolunteer'){
+                    $id = auth()->user()->id;
+                    return redirect()->to('/jvseekers');
+                    //return redirect()->to('/volunteer/'.$id);
+        
+                    }
+
         $adminRole = Auth::user()->roles()->pluck('name');
             if($adminRole->contains('admin')){
                 return redirect('/dashboard');

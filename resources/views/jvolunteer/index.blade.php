@@ -17,7 +17,7 @@
           <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
               <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                   <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                 <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Edit Profile Information (Mentor Support Volunteer)</h1>
+                 <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Edit Profile Information <br> (Job-Search Support Volunteer)</h1>
               </div>
           </div>
     </div>
@@ -28,10 +28,10 @@
     <div class="row">
 
         <div class="col-md-3 px-4">
-            @if(empty(Auth::user()->vprofile->profile_pic))
+            @if(empty(Auth::user()->jvprofile->profile_pic))
             <img src="{{asset('profile_pic/man.jpg')}}" width="100" style="width: 100%;">
             @else
-            <img src="{{asset('uploads/profile_pic')}}/{{Auth::user()->vprofile->profile_pic}}" width="100" style="width: 100%;">
+            <img src="{{asset('uploads/profile_pic')}}/{{Auth::user()->jvprofile->profile_pic}}" width="100" style="width: 100%;">
 
             @endif
 
@@ -42,7 +42,7 @@
                 <div class="card">
                     <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">Update profile picture</div>
                     <div class="card-body">
-                        <form action="{{route('vprofile_pic')}}" method="POST" enctype="multipart/form-data">@csrf
+                        <form action="{{route('jvprofile_pic')}}" method="POST" enctype="multipart/form-data">@csrf
                         <input type="file" class="form-control" name="profile_pic">
                         <br>
                         <button class="btn btn-info btn-sm float-left" type="submit">Update</button>
@@ -53,15 +53,15 @@
                         </form>
 
                         <!-- Button trigger modal -->
-                        @if(!empty(Auth::user()->vprofile->profile_pic))
-                        <button type="button" class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#pic{{Auth::user()->vprofile->id}}">
+                        @if(!empty(Auth::user()->jvprofile->profile_pic))
+                        <button type="button" class="btn btn-danger btn-sm float-right" data-toggle="modal" data-target="#pic{{Auth::user()->jvprofile->id}}">
                             Remove
                         </button>
                         @endif
                         
                         
                         <!-- Modal -->
-                        <div class="modal fade" id="pic{{Auth::user()->vprofile->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="pic{{Auth::user()->jvprofile->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -74,8 +74,8 @@
                                 Your profile picture will be removed. Are you sure?
                                 </div>
                                 <div class="modal-footer">
-                                <form action="{{route('vpic.delete')}}" method="POST">@csrf
-                                    <input type="hidden" name="id" value="{{Auth::user()->vprofile->id}}">
+                                <form action="{{route('jvpic.delete')}}" method="POST">@csrf
+                                    <input type="hidden" name="id" value="{{Auth::user()->jvprofile->id}}">
                                     <button class="btn btn-danger" type="submit">Delete</button>
                                 
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -93,24 +93,24 @@
                 <div class="card-header d-inline-block text-dark font-weight-bold font-size: 12px; mb-0">About me (preview)</div>
                 <div class="card-body">
 
-                @if(empty(Auth::user()->vprofile->profile_pic))
+                @if(empty(Auth::user()->jvprofile->profile_pic))
                     <p style="color: rgb(236, 32, 32); font-weight: bold; font-size: 18px;">Please upload your profile picture</p>
                 @endif
                
                 <p><strong>Member since:</strong> &nbsp; &nbsp; {{date('F d Y',strtotime(Auth::user()->created_at))}}</p>
                 <p><strong>Name:</strong> &nbsp; &nbsp; {{Auth::user()->name}}</p>
-                <p><strong>Gender:</strong> &nbsp; &nbsp; {{Auth::user()->vprofile->gender}}</p>
-                <p><strong>Date of Birth:</strong> &nbsp; &nbsp; {{Auth::user()->vprofile->dob}}</p>
+                <p><strong>Gender:</strong> &nbsp; &nbsp; {{Auth::user()->jvprofile->gender}}</p>
+                <p><strong>Date of Birth:</strong> &nbsp; &nbsp; {{Auth::user()->jvprofile->dob}}</p>
                 <p><strong>Email:</strong> &nbsp; &nbsp; {{Auth::user()->email}}</p>
-                <p><strong>Phone:</strong> &nbsp; &nbsp; {{Auth::user()->vprofile->phone_number}}</p>
-                <p><strong>Address:</strong> &nbsp; &nbsp; {{Auth::user()->vprofile->address_line1}},
-                {{Auth::user()->vprofile->address_line2}}<br>
-                {{Auth::user()->vprofile->city}},&nbsp;{{Auth::user()->vprofile->state}},
-                {{Auth::user()->vprofile->country}}</p>
-                <p>Pincode:&nbsp; &nbsp; {{Auth::user()->vprofile->pincode}}</p>
-                <p><strong>Qualification:</strong><br>{{Auth::user()->vprofile->qualification}}</p>            
-                <p><strong>Industry:</strong><br>{{Auth::user()->vprofile->industry}}</p>              
-                <p><strong>Designation:</strong><br>{{Auth::user()->vprofile->designation}}</p>
+                <p><strong>Phone:</strong> &nbsp; &nbsp; {{Auth::user()->jvprofile->phone_number}}</p>
+                <p><strong>Address:</strong> &nbsp; &nbsp; {{Auth::user()->jvprofile->address_line1}},
+                {{Auth::user()->jvprofile->address_line2}}<br>
+                {{Auth::user()->jvprofile->city}},&nbsp;{{Auth::user()->jvprofile->state}},
+                {{Auth::user()->jvprofile->country}}</p>
+                <p>Pincode:&nbsp; &nbsp; {{Auth::user()->jvprofile->pincode}}</p>
+                <p><strong>Qualification:</strong><br>{{Auth::user()->jvprofile->qualification}}</p>            
+                <p><strong>Industry:</strong><br>{{Auth::user()->jvprofile->industry}}</p>              
+                <p><strong>Designation:</strong><br>{{Auth::user()->jvprofile->designation}}</p>
             </div>
             </div>
             <br>
@@ -129,13 +129,13 @@
             <div class="card">
                 <div class="card-header d-inline-block h5 text-dark font-weight-bold mb-0">Primary Information</div>
                 
-                <form  id="frmParameter" action="{{route('volunteer.store')}}" method="POST">@csrf
+                <form  id="frmParameter" action="{{route('jvolunteer.store')}}" method="POST">@csrf
                     <div class="card-body">
 
 
                     <div class="form-group required">
                         <label for=""  class="control-label h6">Phone number</label>
-                        <input type="text" class="form-control" name="phone" value="{{Auth::user()->vprofile->phone?Auth::user()->vprofile->phone:old("phone")}}">
+                        <input type="text" class="form-control" name="phone" value="{{Auth::user()->jvprofile->phone?Auth::user()->jvprofile->phone:old("phone")}}">
                         @if($errors->has('phone'))
                             <div class="error" style="color: red;">{{$errors->first('phone')}}</div>
                         @endif
@@ -144,7 +144,7 @@
 
                     <div class="form-group required">
                         <label for="" class="control-label h6">Address Line 1</label>
-                        <input type="text" class="form-control" name="address_line1" value="{{Auth::user()->vprofile->address_line1?Auth::user()->vprofile->address_line1:old("address_line1")}}">
+                        <input type="text" class="form-control" name="address_line1" value="{{Auth::user()->jvprofile->address_line1?Auth::user()->jvprofile->address_line1:old("address_line1")}}">
                         @if($errors->has('address_line1'))
                          <div class="error" style="color: red;">{{$errors->first('address_line1')}}</div>
                         @endif
@@ -152,7 +152,7 @@
 
                     <div class="form-group">
                         <label for="" class="h6">Address Line 2</label>
-                        <input type="text" class="form-control" name="address_line2" value="{{Auth::user()->vprofile->address_line2?Auth::user()->vprofile->address_line2:old("address_line2")}}">
+                        <input type="text" class="form-control" name="address_line2" value="{{Auth::user()->jvprofile->address_line2?Auth::user()->jvprofile->address_line2:old("address_line2")}}">
                         @if($errors->has('address_line2'))
                          <div class="error" style="color: red;">{{$errors->first('address_line2')}}</div>
                         @endif
@@ -167,7 +167,7 @@
                         <select name="country" id="country" class="form-control">
                             <option value="">Select Country</option>
                             @foreach($countries as $key => $value)
-                            <option value="{{$key}}" {{Auth::user()->vprofile->country==$value?'selected':''}}>{{$value}}</option>
+                            <option value="{{$key}}" {{Auth::user()->jvprofile->country==$value?'selected':''}}>{{$value}}</option>
                             @endforeach
                         </select>
                         @if($errors->has('country'))
@@ -184,7 +184,7 @@
                           <label for="state" class="control-label h6">Select your state</label>
                         
                         <select name="state" id="state" class="form-control">
-                            <option value="{{Auth::user()->vprofile->state?$s_id:''}}">{{Auth::user()->vprofile->state?Auth::user()->vprofile->state:'Select state'}}</option>
+                            <option value="{{Auth::user()->jvprofile->state?$s_id:''}}">{{Auth::user()->jvprofile->state?Auth::user()->jvprofile->state:'Select state'}}</option>
                         
                         </select>
 							
@@ -201,7 +201,7 @@
                         <label for="city" class="control-label h6">Select your city</label>
                         
                         <select name="city" id="city" class="form-control">
-                            <option value="{{Auth::user()->vprofile->city?$c_id:''}}">{{Auth::user()->vprofile->city?Auth::user()->vprofile->city:'Select city'}}</option>
+                            <option value="{{Auth::user()->jvprofile->city?$c_id:''}}">{{Auth::user()->jvprofile->city?Auth::user()->jvprofile->city:'Select city'}}</option>
                         
                         </select>
                         @if($errors->has('city'))
@@ -217,7 +217,7 @@
                     <div class="form-group required">
                         <label for="pincode" class="control-label h6">{{ __('Pincode') }}</label>
                         
-                            <input type="text" class="form-control @error('pincode') is-invalid @enderror" name="pincode"  value="{{Auth::user()->vprofile->pincode?Auth::user()->vprofile->pincode:old("pincode")}}">
+                            <input type="text" class="form-control @error('pincode') is-invalid @enderror" name="pincode"  value="{{Auth::user()->jvprofile->pincode?Auth::user()->jvprofile->pincode:old("pincode")}}">
                             @error('pincode')
                             <span class="invalid-feedback" role="alert">
                             <strong>Please enter valid 6 digit pincode</strong>
@@ -228,7 +228,7 @@
 
                     {{--<div class="form-group required">
                         <label for=""  class="control-label h6">Qualification</label>
-                        <input type="text" class="form-control" name="qualification" value="{{Auth::user()->vprofile->qualification?Auth::user()->vprofile->qualification:old("qualification")}}">
+                        <input type="text" class="form-control" name="qualification" value="{{Auth::user()->jvprofile->qualification?Auth::user()->jvprofile->qualification:old("qualification")}}">
                         @if($errors->has('qualification'))
                             <div class="error" style="color: red;">{{$errors->first('qualification')}}</div>
                         @endif
@@ -238,13 +238,13 @@
                     <div class="form-group required">
                         <label for="qualification" class="control-label">Highest Qualification</label>
                         <select class="form-control" name="qualification">
-                            <option value="" {{Auth::user()->vprofile->qualification==''?'selected':''}}>Select</option>
-                            <option value="Doctorate/PhD" {{Auth::user()->vprofile->qualification=='Doctorate/PhD'?'selected':''}}>Doctorate/PhD</option>
-                            <option value="Masters/Post-Graduation" {{Auth::user()->vprofile->qualification=='Masters/Post-Graduation'?'selected':''}}>Masters/Post-Graduation</option>
-                            <option value="Graduation/Diploma" {{Auth::user()->vprofile->qualification=='Graduation/Diploma'?'selected':''}}>Graduation/Diploma</option>
-                            <option value="12th" {{Auth::user()->vprofile->qualification=='12th'?'selected':''}}>12th</option>
-                            <option value="10th" {{Auth::user()->vprofile->qualification=='10th'?'selected':''}}>10th</option>
-                            <option value="Below 10th" {{Auth::user()->vprofile->qualification=='Below 10th'?'selected':''}}>Below 10th</option>
+                            <option value="" {{Auth::user()->jvprofile->qualification==''?'selected':''}}>Select</option>
+                            <option value="Doctorate/PhD" {{Auth::user()->jvprofile->qualification=='Doctorate/PhD'?'selected':''}}>Doctorate/PhD</option>
+                            <option value="Masters/Post-Graduation" {{Auth::user()->jvprofile->qualification=='Masters/Post-Graduation'?'selected':''}}>Masters/Post-Graduation</option>
+                            <option value="Graduation/Diploma" {{Auth::user()->jvprofile->qualification=='Graduation/Diploma'?'selected':''}}>Graduation/Diploma</option>
+                            <option value="12th" {{Auth::user()->jvprofile->qualification=='12th'?'selected':''}}>12th</option>
+                            <option value="10th" {{Auth::user()->jvprofile->qualification=='10th'?'selected':''}}>10th</option>
+                            <option value="Below 10th" {{Auth::user()->jvprofile->qualification=='Below 10th'?'selected':''}}>Below 10th</option>
                            
                         </select>
                         @if($errors->has('qualification'))
@@ -258,7 +258,7 @@
 
                         <label for="designation" class="h6">Designation</label>
                         
-                        <input class="form-control" value="{{Auth::user()->vprofile->designation?Auth::user()->vprofile->designation:old("designation")}}" name="designation" list="designation">
+                        <input class="form-control" value="{{Auth::user()->jvprofile->designation?Auth::user()->jvprofile->designation:old("designation")}}" name="designation" list="designation">
                             <datalist id="designation">
                                 @foreach($designation as $d)
                                 <option value="{{$d}}">
@@ -274,7 +274,7 @@
 
                     <div class="form-group">
                         <label for="industry" class="h6">Industry</label>
-                        <input class="form-control" value="{{Auth::user()->vprofile->industry?Auth::user()->vprofile->industry:old("industry")}}"  name="industry" list="industry">
+                        <input class="form-control" value="{{Auth::user()->jvprofile->industry?Auth::user()->jvprofile->industry:old("industry")}}"  name="industry" list="industry">
                             <datalist id="industry">
                                 @foreach($industry as $ind)
                                 <option value="{{$ind}}">
@@ -398,7 +398,7 @@
 
     $(document).ready(function(){
 
-        //console.log({{Auth::user()->vprofile->state}});
+        //console.log({{Auth::user()->jvprofile->state}});
             $('select[name="country"]').on('change', function(){
  
                 var country_id = $(this).val();

@@ -28,9 +28,42 @@
                 <a class="nav-link" href="{{ route('employer.register') }}">{{ __('Employer Sign Up') }}</a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('volunteer.register') }}">{{ __('Volunteer Sign Up') }}</a>
+            {{--<li class="nav-item">
+                <a class="nav-link" href="{{ route('volunteer.register') }}">{{ __('Volunteer Sign Up (Mentor Support)') }}</a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('jvolunteer.register') }}">{{ __('Volunteer Sign Up (Job Search Support)') }}</a>
+            </li>--}}
+
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    
+                   Volunteer Sign Up
+        
+                    <span class="caret"></span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                
+                    
+                        <a class="dropdown-item" href="{{ route('volunteer.register') }}">
+                            <strong>{{ __('Mentor Support Volunteer') }}</strong>
+                        </a>
+                    
+                          
+                    
+
+                        <a class="dropdown-item" href="{{ route('jvolunteer.register') }}"
+                        >
+                        <strong>{{ __('Job-Search Support Volunteer') }}</strong>
+                        </a>
+
+                        
+                </div>
+            </li>
+            
 
             <li class="nav-item">
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ophLogin">
@@ -44,17 +77,19 @@
                     
                                                     
                     @if(Auth::user()->user_type=='employer')
-                        {{Auth::user()->company->cname}}
-                        
+                    {{Auth::user()->company->cname}}                        
                     
                     @elseif(Auth::user()->user_type=='seeker')
-                            {{Auth::user()->name}}
+                    {{Auth::user()->name}}
 
                     @elseif(Auth::user()->user_type=='volunteer')
-                            {{Auth::user()->name}}
+                    {{Auth::user()->name}}
 
-                    @else
-                            {{Auth::user()->name}}
+                    @elseif(Auth::user()->user_type=='jvolunteer')
+                    {{Auth::user()->name}}
+
+                    @else  
+                            {{Auth::user()->name}}  
                     @endif
         
                     <span class="caret"></span>
@@ -85,6 +120,18 @@
                         </a>
 
                         <a class="dropdown-item" href="{{route('vseeker.index')}}"
+                        >
+                            {{ __('Dashboard') }}
+                        </a>
+
+                        @elseif(Auth::user()->user_type=='jvolunteer')
+
+                        <a class="dropdown-item" href="{{route('jvolunteer.show',[Auth::user()->id])}}"
+                        >
+                            {{ __('Profile') }}
+                        </a>
+
+                        <a class="dropdown-item" href="{{route('jvseeker.index')}}"
                         >
                             {{ __('Dashboard') }}
                         </a>

@@ -44,8 +44,8 @@ class JvolunteerController extends Controller
                 $c_id = "";
               }
 
-              $designation = Designation::all()->pluck('designation');
-              $industry = Industry::all()->pluck('industry');
+              $designation = Designation::orderBy('designation', 'asc')->pluck('designation');
+              $industry = Industry::orderBy('industry', 'asc')->pluck('industry');
               return view('jvolunteer.index', compact('user', 'jvprofile', 'skills','countries','s_id','c_id','designation','industry')); 
           }
 
@@ -99,7 +99,7 @@ class JvolunteerController extends Controller
                   if($request->hasfile('profile_pic')){
                       $file = $request->file('profile_pic');
                       $ext =  $file->getClientOriginalExtension();
-                      $filename = 'VOL-'.time().'.'.$ext;
+                      $filename = 'JVOL-'.time().'.'.$ext;
                       $file->move('uploads/profile_pic/',$filename);
                       JvolunteerProfile::where('user_id',$user_id)->update([
                         'profile_pic'=>$filename
@@ -109,7 +109,7 @@ class JvolunteerController extends Controller
           
             }
 
-            public function delete_vpic(Request $request){
+            public function delete_jvpic(Request $request){
                   $id = request('id');
                   $p = JvolunteerProfile::findOrFail($id);
                   $filename = $p->profile_pic;

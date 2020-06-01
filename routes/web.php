@@ -20,10 +20,13 @@ use Illuminate\Support\Facades\Route;
 //dummy example (ignore)
 Route::view('demo','demo');
 
-//jobsController for this JobPortal. Basically used to post anything on welcome page. eg: blog, testimonial (irrelevant name sorry!)
+
 //Route::get('/','JobController@index');
 
 Route::get('/','OutplacementherosController@index');
+
+
+
 
 //Route::get('/jobs/create','JobController@create')->name('job.create');
 
@@ -117,17 +120,17 @@ Route::get('/vseeker/{id}','VolunteerController@show_profile')->name('vseeker.sh
 
 //Job Search Support VOLUNTEER
 
-/*Route::view('jvolunteer/register','auth.jvolunteer-register')->name('jvolunteer.register');
+Route::view('jvolunteer/register','auth.jvolunteer-register')->name('jvolunteer.register');
 Route::post('jvolunteer/register','JvolunteerRegisterController@jvolunteerRegister')->name('jvol.register');
 
 Route::get('jvolunteer/profile','JvolunteerController@index')->name('jvolunteer.profile');
 Route::post('user/jvolunteer/create','JvolunteerController@store')->name('jvolunteer.store');
-Route::post('jvolunteer/profile_pic','JvolunteerController@vprofile_pic')->name('jvprofile_pic');
-Route::post('jvolunteer/profile_pic/delete','JvolunteerController@delete_vpic')->name('jvpic.delete');
+Route::post('jvolunteer/profile_pic','JvolunteerController@jvprofile_pic')->name('jvprofile_pic');
+Route::post('jvolunteer/profile_pic/delete','JvolunteerController@delete_jvpic')->name('jvpic.delete');
 Route::get('jvolunteer/{id}','JvolunteerController@show')->name('jvolunteer.show');
 
 Route::get('/jvseekers','JvolunteerController@listseekers')->name('jvseeker.index');
-Route::get('/jvseeker/{id}','JvolunteerController@show_profile')->name('jvseeker.show');*/
+Route::get('/jvseeker/{id}','JvolunteerController@show_profile')->name('jvseeker.show');
 
 
 //Auth::routes();
