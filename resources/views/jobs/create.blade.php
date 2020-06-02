@@ -1,8 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
 
-<!--NO REQUIREMENT OF THIS FORM, TO BE MODIFIED FOR SEPARATING EMPLOYERS-->
+<div class="hero-wrap" style="height: 410px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
+    <!--<div class="overlay"></div>-->
+    <div class="container">
+          <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
+              <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
+                  <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
+                 <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Job Seekers</h1>
+              </div>
+          </div>
+    </div>
+</div>
 
 <div class="container">
 
@@ -18,11 +28,7 @@
             <div class="card-header">Create a job</div>
             <div class="card-body">
 
-            <!--ROUTE TO BE MODIFIED-->
-
             <form action="{{route('job.store')}}" method="POST">@csrf
-
-            
 
             <div class="form-group">
                 <label for="title">Title:</label>
@@ -45,7 +51,15 @@
                  @endif
             </div>
 
-           
+            <div class="form-group">
+                <label for="role">Role:</label>
+            <textarea name="roles"  class="form-control {{ $errors->has('roles') ? ' is-invalid' : '' }}" >{{old('roles')}}</textarea>
+            @if ($errors->has('roles'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('roles') }}</strong>
+                </span>
+                 @endif
+            </div>
             <div class="form-group">
                 <label for="category">Category:</label>
                 <select name="category" class="form-control">
@@ -56,7 +70,7 @@
 
             </div>
             <div class="form-group">
-                <label for="position">Previous Position:</label>
+                <label for="position">Position:</label>
                 <input type="text" name="position" class="form-control {{ $errors->has('position') ? ' is-invalid' : '' }}"  value="{{ old('position') }}">
                 @if ($errors->has('position'))
                 <span class="invalid-feedback" role="alert">
@@ -75,8 +89,21 @@
                  @endif
             </div>
 
+
+
+
+            <div class="form-group">
+                <label for="number_of_vacancy">No of vacancy:</label>
+                <input type="text" name="number_of_vacancy" class="form-control{{ $errors->has('number_of_vacancy') ? ' is-invalid' : '' }}"  value="{{ old('number_of_vacancy') }}">
+                @if ($errors->has('number_of_vacancy'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('number_of_vacancy') }}</strong>
+                </span>
+                 @endif
+            </div>
+
              <div class="form-group">
-                <label for="experience">Experience at this company:</label>
+                <label for="experience">Year of experience:</label>
                 <input type="text" name="experience" class="form-control{{ $errors->has('experience') ? ' is-invalid' : '' }}"  value="{{ old('experience') }}">
                 @if ($errors->has('experience'))
                 <span class="invalid-feedback" role="alert">
@@ -94,21 +121,7 @@
                 </select>
             </div>
 
-            <!--
-            
-             <div class="form-group">
-                <label for="role">Role:(Basically what the seeker knows)</label>
-                deleted some elements here
-            </div>
-                
-
-            <div class="form-group">
-                <label for="number_of_vacancy">No of vacancy:</label>
-                deleted some elements here
-            </div>
-
-                
-                <div class="form-group">
+               <div class="form-group">
                 <label for="type">Salary/year:</label>
                 <select class="form-control" name="salary">
                     <option value="negotiable">Negotiable</option>
@@ -122,6 +135,8 @@
                 </select>
             </div>
  
+
+
 
             <div class="form-group">
                 <label for="type">Type:</label>
@@ -137,10 +152,9 @@
                     <option value="1">live</option>
                     <option value="0">draft</option>
                 </select>
-            </div> -->
-
+            </div>
             <div class="form-group">
-                <label for="lastdate">Last date of work:</label>
+                <label for="lastdate">Last date:</label>
                 <input type="text" id="datepicker"  name="last_date" class="form-control {{ $errors->has('last_date') ? ' is-invalid' : '' }}"  value="{{ old('last_date') }}">
                 @if ($errors->has('last_date'))
                 <span class="invalid-feedback" role="alert">
