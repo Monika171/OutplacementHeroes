@@ -7,8 +7,13 @@ use App\Job;
 use App\Company;
 use Auth;
 use App\User;
-use App\Category;
-use App\Post;
+use App\Industry;
+use App\Country;
+use App\State;
+use App\City;
+use App\Designation;
+
+
 
 //get and show blog, used old controller name (irrelevant name sorry!)
 class JobController extends Controller
@@ -19,6 +24,51 @@ class JobController extends Controller
     public function  create(){
         return view('jobs.create');
     } 
+
+    public function  store(JobPostRequest $request){
+        
+        $user_id = auth()->user()->id;
+        $company = Company::where('user_id',$user_id)->first();
+        $company_id = $company->id;
+
+        $country = Country::where('id',request('country'))->first();
+        $state = State::where('id',request('state'))->first();
+        $city = City::where('id',request('city'))->first();
+
+        Job::create([
+            'user_id' => $user_id,
+            'company_id' => $company_id,
+            'title'=>request('title'),
+            'slug' =>str_slug(request('title')),
+            'description'=>request('description'),
+            'position'=>request('position'),
+            'salary'=>request('salary'),         
+            'roles'=>request('roles'),
+            'function'=>request('function'),
+            'category_id' =>request('category'),            
+            'address_line1'=>request('address_line1'),        
+            'address_line2'=>request('address_line2'),
+            'country'=>$country->name,
+            'state'=>$state->name,
+            'city'=>$city->name,
+            'pincode'=>request('pincode'),
+            'type'=>request('type'),
+            'notice_period'=>request('notice_period'),
+            'status'=>request('status'),
+            'last_date'=>request('last_date'),
+            'number_of_vacancy'=>request('number_of_vacancy'),
+            'qualification'=>request('qualification'),
+            'experience'=>request('experience'),
+            'gender'=>request('gender'),
+            'preferences'=>request('preferences'),       
+
+        ]);
+        return redirect()->back()->with('message','Job posted successfully!');
+     }
+
+
+
+
 
     /*public function index(){
 

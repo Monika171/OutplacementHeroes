@@ -36,7 +36,8 @@ class CreateJobsTable extends Migration
             $table->integer('status')->nullable();
             $table->string('last_date')->nullable();
             $table->integer('number_of_vacancy')->nullable();
-            $table->string('qualification')->nullable();
+            $table->string('course')->nullable();
+            $table->string('specialization')->nullable();
             $table->integer('experience')->nullable();
             $table->string('gender')->nullable();
             $table->mediumText('preferences')->nullable();
