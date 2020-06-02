@@ -8,7 +8,7 @@
           <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
               <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                   <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                 <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Job Seekers</h1>
+                 <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Post a Job</h1>
               </div>
           </div>
     </div>
@@ -60,6 +60,8 @@
                 </span>
                  @endif
             </div>
+
+            {{--industry--}}
             <div class="form-group">
                 <label for="category">Category:</label>
                 <select name="category" class="form-control">
@@ -143,7 +145,7 @@
                 <select class="form-control" name="type">
                     <option value="fulltime">fulltime</option>
                     <option value="parttime">parttime</option>
-                    <option value="casual">casual</option>
+                    <option value="volunteer">volunteer</option>
                 </select>
             </div>
             <div class="form-group">
@@ -155,7 +157,7 @@
             </div>
             <div class="form-group">
                 <label for="lastdate">Last date:</label>
-                <input type="text" id="datepicker"  name="last_date" class="form-control {{ $errors->has('last_date') ? ' is-invalid' : '' }}"  value="{{ old('last_date') }}">
+                <input type="text" name="last_date" class="datepicker form-control {{ $errors->has('last_date') ? ' is-invalid' : '' }}"  value="{{ old('last_date') }}">
                 @if ($errors->has('last_date'))
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('last_date') }}</strong>

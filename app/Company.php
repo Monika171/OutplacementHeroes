@@ -10,7 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
   protected $fillable = [
-    'cname', 'user_id', 'slug','address','phone','website','logo','cover_photo','slogan','description','industry'
+    'user_id', 'cname', 'slug','phone','address_line1','address_line2',
+    'country','state','city','pincode','industry','website','linkedin',
+    'twitter','facebook','logo','cover_photo','slogan','description',
+    'authority_designation'
 ];
 
     public function jobs(){

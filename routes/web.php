@@ -31,7 +31,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //Route::get('/','JobController@index');
-//Route::get('/jobs/create','JobController@create')->name('job.create');
+Route::get('/jobs/create','JobController@create')->name('job.create');
+Route::post('/jobs/create','JobController@store')->name('job.store');
 
 //Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show');
 
