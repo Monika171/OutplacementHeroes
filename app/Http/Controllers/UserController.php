@@ -15,6 +15,7 @@ use App\City;
 use App\Designation;
 use App\Industry;
 use App\Specialization;
+use App\Course;
 use Auth;
 
 
@@ -211,6 +212,7 @@ class UserController extends Controller
                         $user = User::find($user_id);
                         $profile = Profile::where('user_id', $user->id)->first();
 
+                        $course = Course::orderBy('course', 'asc')->pluck('course');
                         $specialization = Specialization::orderBy('specialization', 'asc')->pluck('specialization');
                         $designation = Designation::orderBy('designation', 'asc')->pluck('designation');
                         $industry = Industry::orderBy('industry', 'asc')->pluck('industry');
@@ -223,7 +225,7 @@ class UserController extends Controller
                         $works = Work::where('user_id', $user->id)
                                     ->orderBy('created_at', 'desc')
                                     ->get(); 
-                        return view('profile.history', compact('user', 'profile', 'specialization', 'designation', 'industry', 'educations', 'works')); 
+                        return view('profile.history', compact('user', 'profile','course', 'specialization', 'designation', 'industry', 'educations', 'works')); 
                     
                           
                       }
