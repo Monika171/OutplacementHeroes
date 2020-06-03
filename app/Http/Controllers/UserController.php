@@ -77,7 +77,7 @@ class UserController extends Controller
                                 'state'=>'required',
                                 'city'=>'required',
                                 'pincode'=>'required|numeric|digits_between:6,6',
-                                'experience_years'=>'required',
+                                'experience_years'=>'required|integer|min:0',
                                 'recent_company' => 'sometimes',   
                                 'start_date' => 'required_with:recent_company',
                                 //'industry' => 'required_with:recent_company',
