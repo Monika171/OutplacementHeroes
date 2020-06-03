@@ -363,13 +363,13 @@
                     @endif
                     
                     </div>
+                    
                     <div class="form-group required">
                         <label for="" class="control-label h6">Company Description</label>
                         <textarea name="description" class="form-control" rows="6" cols="70" style="width:100"> {{Auth::user()->company->description?Auth::user()->company->description:old("description")}}</textarea>
                         @if($errors->has('description'))
                         <div class="error" style="color: red;">{{$errors->first('description')}}</div>
-                    @endif
-                    
+                    @endif                   
                     
                     </div>
                                  

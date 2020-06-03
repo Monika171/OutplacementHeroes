@@ -7,11 +7,14 @@ use App\Job;
 use App\Company;
 use Auth;
 use App\User;
-use App\Industry;
 use App\Country;
 use App\State;
 use App\City;
+use App\Skill;
+use App\Industry;
 use App\Designation;
+use App\Specialization;
+use App\Course;
 
 
 
@@ -22,7 +25,18 @@ class JobController extends Controller
   
     
     public function  create(){
-        return view('jobs.create');
+
+        //$skills = Skill::orderBy('skill', 'asc')->get();
+        $position = Designation::orderBy('designation', 'asc')->pluck('designation');        
+        $course = Course::orderBy('course', 'asc')->pluck('course');
+        $specialization = Specialization::orderBy('specialization', 'asc')->pluck('specialization');
+        $countries = Country::all()->pluck('name','id');
+        
+        
+        return view('jobs.create', compact('position','course','specialization','countries'));
+
+        //$category = Industry::all()->pluck('industry','id');
+        //return view('profile.index', compact('user', 'profile', 'skills','countries','preferred_location','s_id','c_id','recent_designation','industry')); 
     } 
 
     public function  store(JobPostRequest $request){
