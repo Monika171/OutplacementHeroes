@@ -114,72 +114,25 @@
                                               <span class="input-group-text"><i class="fas fa-graduation-cap"></i>&nbsp;Course</span>
                                               
                                             </div>
-                                            <input id="editCourse" class="form-control" name="edit_course" list="edit_course" value="{{$education->course}}">
-                                                      <datalist id="edit_course">
-                                                        <option value="B.A"> 
-                                                        <option value="B.Arch">  
-                                                        <option value="B.B.A/B.M.S">  
-                                                        <option value="B.Com">  
-                                                        <option value="B.Des.">                                                          
-                                                        <option value="B.Ed">  
-                                                        <option value="B.El.Ed">  
-                                                        <option value="B.P.Ed">  
-                                                        <option value="B.Pharma"> 
-                                                        <option value="B.Sc."> 
-                                                        <option value="B.Tech/B.E.">  
-                                                        <option value="B.U.M.S">  
-                                                        <option value="BAMS">  
-                                                        <option value="BCA">                                                          
-                                                        <option value="BDS">  
-                                                        <option value="BFA">  
-                                                        <option value="BHM">  
-                                                        <option value="BHMS"> 
-                                                        <option value="BHMS">  
-                                                        <option value="Diploma">  
-                                                        <option value="LLB"> 
-                                                        <option value="MBBS">                                                           
-                                                        <option value="CA">
-                                                        <option value="CS">
-                                                        <option value="DM">
-                                                        <option value="ICWA (CMA)">
-                                                        <option value="Integrated PG">
-                                                        <option value="LLM">
-                                                        <option value="M.A">
-                                                        <option value="M.Arch">
-                                                        <option value="M.Ch">
-                                                        <option value="M.Com">
-                                                        <option value="M.Des">
-                                                        <option value="M.Ed">
-                                                        <option value="M.Pharma">
-                                                        <option value="MS/M.Sc(Science)">
-                                                        <option value="M.Tech">
-                                                        <option value="MBA/PGDM">
-                                                        <option value="MCA">
-                                                        <option value="MCM">
-                                                        <option value="MDS">
-                                                        <option value="MFA">
-                                                        <option value="Medical-MS/MD">
-                                                        <option value="MVSC">
-                                                        <option value="PG Diploma">
-                                                </datalist>
+                                            <select id="editCourse" class="form-control" name="edit_course">
+                                                    <option value="" {{$education->course==''?'selected':''}}>Select</option>                               
+                                                @foreach($course as $co)
+                                                    <option value="{{$co}}" {{$education->course==$co?'selected':''}}>{{$co}}</option>
+                                                @endforeach
+                                           </select>
                                                 
                                           </div>
 
-                                          <div class="input-group mb-3">
-                                            <span style="color:red">*If your course is not listed, please enter the same manually.</span></p>
-                                              
-                                          </div>
-
-                                         {{-- <div class="input-group mb-3">
+                                        <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                               <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
                                               
                                             </div>
                                             <input type="text" id="editSpecialization" class="form-control" name="edit_specialization" value="{{$education->specialization}}">
-                                          </div>--}}
+                                          </div>
 
                                                 
-                                            <div class="input-group mb-3">
+                                             {{-- <div class="input-group mb-3">
                                               <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
                                               </div>
@@ -194,7 +147,7 @@
                                             <div class="input-group mb-3">
                                               <span style="color:red">*If your specialization is not listed, please enter the same manually.</span></p>
                                                 
-                                            </div><br>
+                                            </div><br>--}}
 
 
                                           <div class="input-group mb-3">
@@ -340,76 +293,26 @@
                                   
                                   <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-graduation-cap"></i>&nbsp;Course</span>
-                                      
-                                    </div>
-                                    
-                                    <input id="addCourse" class="form-control" name="add_course" list="add_course">
-                                                      <datalist id="add_course">
-                                                              <option value="B.A"> 
-                                                              <option value="B.Arch">  
-                                                              <option value="B.B.A/B.M.S">  
-                                                              <option value="B.Com">  
-                                                              <option value="B.Des.">                                                          
-                                                              <option value="B.Ed">  
-                                                              <option value="B.El.Ed">  
-                                                              <option value="B.P.Ed">  
-                                                              <option value="B.Pharma"> 
-                                                              <option value="B.Sc."> 
-                                                              <option value="B.Tech/B.E.">  
-                                                              <option value="B.U.M.S">  
-                                                              <option value="BAMS">  
-                                                              <option value="BCA">                                                          
-                                                              <option value="BDS">  
-                                                              <option value="BFA">  
-                                                              <option value="BHM">  
-                                                              <option value="BHMS"> 
-                                                              <option value="BHMS">  
-                                                              <option value="Diploma">  
-                                                              <option value="LLB"> 
-                                                              <option value="MBBS">  
-                                                              <option value="CA">
-                                                              <option value="CS">
-                                                              <option value="DM">
-                                                              <option value="ICWA (CMA)">
-                                                              <option value="Integrated PG">
-                                                              <option value="LLM">
-                                                              <option value="M.A">
-                                                              <option value="M.Arch">
-                                                              <option value="M.Ch">
-                                                              <option value="M.Com">
-                                                              <option value="M.Des">
-                                                              <option value="M.Ed">
-                                                              <option value="M.Pharma">
-                                                              <option value="MS/M.Sc(Science)">
-                                                              <option value="M.Tech">
-                                                              <option value="MBA/PGDM">
-                                                              <option value="MCA">
-                                                              <option value="MCM">
-                                                              <option value="MDS">
-                                                              <option value="MFA">
-                                                              <option value="Medical-MS/MD">
-                                                              <option value="MVSC">
-                                                              <option value="PG Diploma">
-                                                      </datalist>
-                                                      
+                                      <span class="input-group-text"><i class="fas fa-graduation-cap"></i>&nbsp;Course</span>                                      
+                                    </div>                                    
+                                    <select id="addCourse" class="form-control" name="add_course">
+                                              <option value="">Select</option>                               
+                                          @foreach($course as $co)
+                                              <option value="{{$co}}">{{$co}}</option>
+                                          @endforeach
+                                    </select>                                                      
                                   </div>
+
                                   <div class="input-group mb-3">
-                                    <span style="color:red">*If your course is not listed, please enter the same manually.</span></p>
-                                      
-                                  </div>
-
-
-                                  {{--<div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
                                       
                                     </div>
                                     <input type="text" id="addSpecialization" class="form-control" name="add_specialization">
-                                  </div>--}}
+                                  </div>
 
                                   
-                                <div class="input-group mb-3">
+                                {{--<div class="input-group mb-3">
                                   <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
                                   </div>
@@ -424,7 +327,7 @@
                                 <div class="input-group mb-3">
                                   <span style="color:red">*If your specialization is not listed, please enter the same manually.</span></p>
                                     
-                                </div><br>
+                                </div><br>--}}
 
              
                                   <div class="input-group mb-3">
@@ -557,23 +460,24 @@
                                         <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-briefcase"></i>&nbsp;Industry</span>
                                         </div>
-                                        <input id="editIndustry" class="form-control" value="{{$work->industry}}" name="industry" list="industry">
-                                        <datalist id="industry">
-                                          @foreach($industry as $ind)
-                                          <option value="{{$ind}}">
-                                          @endforeach
-                                      </datalist>
+                                      <select id="editIndustry" class="form-control" name="industry">
+                                        <option value="" {{$work->industry==''?'selected':''}}>Select</option>                               
+                                        @foreach($industry as $ind)
+                                            <option value="{{$ind}}" {{$work->industry==$ind?'selected':''}}>{{$ind}}</option>
+                                        @endforeach
+                                      </select>
+
                                       </div>
                                       <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-address-card"></i>&nbsp;Designation</span>
-                                        </div>
-                                        <input id="editDesignation" class="form-control" value="{{$work->designation}}" name="designation" list="designation">
-                                        <datalist id="designation">
-                                          @foreach($designation as $d)
-                                          <option value="{{$d}}">
-                                          @endforeach
-                                      </datalist>                                      
+                                        </div>    
+                                      <select id="editDesignation" class="form-control" name="designation">
+                                        <option value="" {{$work->designation==''?'selected':''}}>Select</option>                               
+                                        @foreach($designation as $d)
+                                            <option value="{{$d}}" {{$work->designation==$d?'selected':''}}>{{$d}}</option>
+                                        @endforeach
+                                      </select>                                  
                                       </div>
 
                                       {{--<div class="input-group mb-3">
@@ -663,12 +567,12 @@
                                   <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-briefcase"></i>&nbsp;Industry</span>
                                   </div>
-                                  <input id="addIndustry" class="form-control"  name="industry" list="industry">
-                                  <datalist id="industry">
-                                    @foreach($industry as $ind)
-                                    <option value="{{$ind}}">
-                                    @endforeach
-                                </datalist>
+                                <select id="addIndustry" class="form-control" name="industry">
+                                    <option value="">Select</option>                               
+                                      @foreach($industry as $ind)
+                                          <option value="{{$ind}}">{{$ind}}</option>
+                                      @endforeach
+                                </select> 
                                 </div>
 
 
@@ -676,12 +580,13 @@
                                   <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-address-card"></i>&nbsp;Designation</span>
                                   </div>
-                                  <input id="addDesignation" class="form-control" name="designation" list="designation">
-                                        <datalist id="designation">
+
+                                      <select id="addDesignation" class="form-control" name="designation">
+                                        <option value="">Select</option>                               
                                           @foreach($designation as $d)
-                                          <option value="{{$d}}">
+                                              <option value="{{$d}}">{{$d}}</option>
                                           @endforeach
-                                      </datalist>
+                                    </select> 
 
                                 </div>
 
