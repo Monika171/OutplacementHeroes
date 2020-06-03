@@ -419,6 +419,17 @@
                 
                     </div>
 
+                     {{--
+                        <div class="form-group">
+
+                        <label for="function" class="h6">Function (Recent/Current)</label>              
+                        
+                        <input type="text" class="form-control" name="function" value="{{Auth::user()->profile->function?Auth::user()->profile->function:old("function")}}">
+                        @if($errors->has('function'))
+                        <div class="error" style="color: red;">{{$errors->first('function')}}</div>
+                        @endif
+                        </div>--}}
+
                     <div class="row">
                     <div class="col-md-6">
                     <div class="form-group">
