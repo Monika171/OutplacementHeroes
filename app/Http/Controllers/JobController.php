@@ -39,7 +39,21 @@ class JobController extends Controller
         //return view('profile.index', compact('user', 'profile', 'skills','countries','preferred_location','s_id','c_id','recent_designation','industry')); 
     } 
 
-    public function  store(JobPostRequest $request){
+    public function  store(Request $request){
+
+        $this->validate($request,[
+           
+            'title'=>'required|min:2',
+            'position'=>'required',
+            'experience'=>'required',
+            'country'=>'required',
+            'state'=>'required',
+            'city'=>'required',
+            'pincode'=>'numeric|digits_between:6,6|nullable',
+            'number_of_vacancy'=>'numeric|nullable', 
+            'last_date'=>'required',                     
+ 
+            ]);
         
         $user_id = auth()->user()->id;
         $company = Company::where('user_id',$user_id)->first();
@@ -55,28 +69,27 @@ class JobController extends Controller
             'title'=>request('title'),
             'slug' =>str_slug(request('title')),
             'description'=>request('description'),
+            'category_id' =>request('category'),
             'position'=>request('position'),
-            'salary'=>request('salary'),         
             'roles'=>request('roles'),
             'function'=>request('function'),
-            'category_id' =>request('category'),            
+            'salary'=>request('salary'),         
+            'experience'=>request('experience'),
+            'course'=>request('course'),
+            'specialization'=>request('specialization'),
+            'gender'=>request('gender'),
+            'preferences'=>request('preferences'),  
             'address_line1'=>request('address_line1'),        
             'address_line2'=>request('address_line2'),
             'country'=>$country->name,
             'state'=>$state->name,
             'city'=>$city->name,
             'pincode'=>request('pincode'),
-            'type'=>request('type'),
-            'notice_period'=>request('notice_period'),
-            'status'=>request('status'),
-            'last_date'=>request('last_date'),
             'number_of_vacancy'=>request('number_of_vacancy'),
-            'course'=>request('course'),
-            'specialization'=>request('specialization'),
-            'experience'=>request('experience'),
-            'gender'=>request('gender'),
-            'preferences'=>request('preferences'),       
-
+            'type'=>request('type'),
+            'notice_period'=>request('notice_period'),            
+            'last_date'=>request('last_date'),
+            'status'=>request('status'),
         ]);
         return redirect()->back()->with('message','Job posted successfully!');
      }
