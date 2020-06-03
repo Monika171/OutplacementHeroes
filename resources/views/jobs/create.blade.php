@@ -128,6 +128,70 @@
 
 
                             <!--course-->
+
+                            <div class="form-group required">
+                                <label for="course" class="control-label">Qualification/Course</label>
+                                <select class="form-control" name="course">
+                                        <option value="">Select</option>                                    
+                                        <option value="B.A">B.A 
+                                        <option value="B.Arch">B.Arch 
+                                        <option value="B.B.A/B.M.S">B.B.A/B.M.S 
+                                        <option value="B.Com">B.Com
+                                        <option value="B.Des.">B.Des.                                                       
+                                        <option value="B.Ed">B.Ed
+                                        <option value="B.El.Ed">B.El.Ed
+                                        <option value="B.P.Ed">B.P.Ed 
+                                        <option value="B.Pharma">B.Pharma
+                                        <option value="B.Sc.">B.Sc.
+                                        <option value="B.Tech/B.E.">B.Tech/B.E. 
+                                        <option value="B.U.M.S">B.U.M.S  
+                                        <option value="BAMS">BAMS 
+                                        <option value="BCA">                                                          
+                                        <option value="BDS">  
+                                        <option value="BFA">  
+                                        <option value="BHM">  
+                                        <option value="BHMS"> 
+                                        <option value="BHMS">  
+                                        <option value="Diploma">  
+                                        <option value="LLB"> 
+                                        <option value="MBBS">  
+                                        <option value="CA">
+                                        <option value="CS">
+                                        <option value="DM">
+                                        <option value="ICWA (CMA)">
+                                        <option value="Integrated PG">
+                                        <option value="LLM">
+                                        <option value="M.A">
+                                        <option value="M.Arch">
+                                        <option value="M.Ch">
+                                        <option value="M.Com">
+                                        <option value="M.Des">
+                                        <option value="M.Ed">
+                                        <option value="M.Pharma">
+                                        <option value="MS/M.Sc(Science)">
+                                        <option value="M.Tech">
+                                        <option value="MBA/PGDM">
+                                        <option value="MCA">
+                                        <option value="MCM">
+                                        <option value="MDS">
+                                        <option value="MFA">
+                                        <option value="Medical-MS/MD">
+                                        <option value="MVSC">
+                                        <option value="PG Diploma">
+                                        <option value="Doctorate/PhD">Doctorate/PhD</option>
+                                        <option value="Diploma">Diploma</option>
+                                        <option value="12th">12th</option>
+                                        <option value="10th">10th</option>
+                                        <option value="Below 10th">Below 10th</option>
+                                   
+                                </select>
+                                @if($errors->has('course'))
+                                <div class="error" style="color: red;">{{$errors->first('course')}}</div>
+                                @endif
+                            </div>
+
+
+
                             <!--specialization-->
 
                             <div class="form-group">
