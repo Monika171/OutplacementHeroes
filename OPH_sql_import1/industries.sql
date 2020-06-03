@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2020 at 06:03 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.5
+-- Generation Time: Jun 03, 2020 at 05:14 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `oph1`
+-- Database: `oph`
 --
 
 -- --------------------------------------------------------
@@ -62,7 +63,7 @@ INSERT INTO `industries` (`id`, `industry`, `created_at`, `updated_at`) VALUES
 (21, 'Computer Games', NULL, NULL),
 (22, 'Computer Hardware', NULL, NULL),
 (23, 'Computer Networking', NULL, NULL),
-(24, 'Computer Software/Engineering', NULL, NULL),
+(24, 'Computer/Software Engineering', NULL, NULL),
 (25, 'Computer/Network Security', NULL, NULL),
 (26, 'Construction', NULL, NULL),
 (27, 'Consumer Electronics', NULL, NULL),

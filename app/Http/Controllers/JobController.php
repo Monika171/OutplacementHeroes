@@ -63,6 +63,8 @@ class JobController extends Controller
         $state = State::where('id',request('state'))->first();
         $city = City::where('id',request('city'))->first();
 
+        //dd($request->all());
+
         Job::create([
             'user_id' => $user_id,
             'company_id' => $company_id,

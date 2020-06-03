@@ -27,22 +27,23 @@
 <div class="container">
     <div class="row">    
 
+            
+            <div class="col-md-12 col-lg-12 mb-5">
+                
             @if(Session::has('message'))
             <div class="alert alert-success">
                 {{Session::get('message')}}
             </div>
             
             @endif
-            
-            <div class="col-md-12 col-lg-8 mb-5">
-        <div class="card">
+            <div class="card">
                 <div class="card-header d-inline-block h5 text-dark font-weight-bold mb-0">Create a Job</div>
                 
                 <form action="{{route('job.store')}}" method="POST">@csrf
                     <div class="card-body">
 
 					<div class="form-group required">
-                        <label for="title" class="control-label h6">Title</label>
+                        <label for="title" class="control-label">Title</label>
                         <input type="text" class="form-control" name="title" value="{{old("title")}}">
                         @if($errors->has('title'))
                          <div class="error" style="color: red;">{{$errors->first('title')}}</div>
@@ -51,8 +52,8 @@
 					
 					
                     <div class="form-group required">
-                        <label for="description" class="control-label h6">Description</label>
-                        <textarea name="description" class="form-control" rows="6" cols="70" style="width:100"> {{old("description")}}</textarea>
+                        <label for="description" class="control-label">Description</label>
+                        <textarea name="description" class="form-control" rows="4" cols="70" style="width:100"> {{old("description")}}</textarea>
                         @if($errors->has('description'))
                         <div class="error" style="color: red;">{{$errors->first('description')}}</div>
                     @endif                  
@@ -60,7 +61,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="category" class="control-label h6">Job Category</label>
+                        <label for="category" class="control-label">Job Category</label>
 							<select name="category" class="form-control">
                                 <option value="">Select</option>
 							@foreach(App\Industry::all() as $cat)
@@ -73,7 +74,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="position" class="control-label h6">Position</label>                        
+                        <label for="position" class="control-label">Position</label>                        
                         <input class="form-control" value="{{old("position")}}" name="position" list="position">
                             <datalist id="position">
                                 @foreach($position as $p)
@@ -87,7 +88,7 @@
 
 					
 					<div class="form-group">
-                        <label for="role" class="control-label h6">Role</label>
+                        <label for="role" class="control-label">Role</label>
                         <textarea name="roles" class="form-control" rows="3" cols="70" style="width:100"> {{old("roles")}}</textarea>
                         @if($errors->has('roles'))
                         <div class="error" style="color: red;">{{$errors->first('roles')}}</div>
@@ -98,7 +99,7 @@
                     <!--Function-->
 
                     {{--<div class="input-group mb-3">
-                        <label for="function" class="control-label h6">Function</label>
+                        <label for="function" class="control-label">Function</label>
                         <input type="text" class="form-control" name="function" value="{{old("function")}}">
 
                         @if($errors->has('function'))
@@ -107,7 +108,7 @@
                       </div>--}}
 
                     <div class="form-group">
-                        <p class="mb-0"> <label for="salary" class="control-label h6">CTC (or Salary/month)<span style="color:red">*</span></label> &nbsp; &nbsp;
+                        <p class="mb-0"> <label for="salary" class="control-label">CTC (or Salary/month)<span style="color:red">*</span></label> &nbsp; &nbsp;
                         <span style="color:red">Please mention Negotiable, if negotiable.</span></p>
                         <input type="text" class="form-control" name="salary" value="{{old("salary")}}">
                         @if($errors->has('salary'))
@@ -117,7 +118,7 @@
 
 
                     <div class="form-group">
-                        <p class="mb-0"> <label for="experience" class="control-label h6">Experience<span style="color:red">*</span></label> &nbsp; &nbsp;
+                        <p class="mb-0"> <label for="experience" class="control-label">Experience<span style="color:red">*</span></label> &nbsp; &nbsp;
                         <span style="color:red">If no value is selected. 'zero' will be set by default.</span></p>
                         <select name="experience" class="form-control">                         
                                 @for ($i = 0; $i <= 50; $i++)
@@ -130,7 +131,7 @@
                     </div>
 
                     <div class="form-group required">
-                        <label for="course" class="control-label h6">Qualification/Course</label>
+                        <label for="course" class="control-label">Qualification/Course</label>
                         <select class="form-control" name="course">
                                     <option value="">Select</option>                               
                                 @foreach($course as $co)
@@ -144,7 +145,7 @@
                     </div>
 
                     <div class="form-group required">
-                        <label for="specialization" class="control-label h6">Specialization</label>
+                        <label for="specialization" class="control-label">Specialization</label>
                         <select class="form-control" name="specialization">
                                 <option value="">Select</option>                            
                                 @foreach($specialization as $sp)
@@ -158,8 +159,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="gender" class="control-label h6">Gender</label>
+                        <label for="gender" class="control-label">Gender</label>
                         <select class="form-control" name="gender">
+                            <option value="">Select</option>
                             <option value="any">Any</option>
                             <option value="male">male</option>
                             <option value="female">female</option>
@@ -170,8 +172,8 @@
                     </div>
                         
                     <div class="form-group required">
-                        <label for="preferences" class="control-label h6">Preferences</label>
-                        <textarea name="preferences" class="form-control" rows="6" cols="70" style="width:100"> {{old("preferences")}}</textarea>
+                        <label for="preferences" class="control-label">Preferences</label>
+                        <textarea name="preferences" class="form-control" rows="4" cols="70" style="width:100"> {{old("preferences")}}</textarea>
                         @if($errors->has('preferences'))
                         <div class="error" style="color: red;">{{$errors->first('preferences')}}</div>
                         @endif             
@@ -179,7 +181,7 @@
 					
 		
                     <div class="form-group required">
-                        <label for="address_line1" class="control-label h6">Address Line 1</label>
+                        <label for="address_line1" class="control-label">Address Line 1</label>
                         <input type="text" class="form-control" name="address_line1" value="{{old("address_line1")}}">
                         @if($errors->has('address_line1'))
                          <div class="error" style="color: red;">{{$errors->first('address_line1')}}</div>
@@ -187,7 +189,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="address_line2" class="control-label h6">Address Line 2</label>
+                        <label for="address_line2" class="control-label">Address Line 2</label>
                         <input type="text" class="form-control" name="address_line2" value="{{old("address_line2")}}">
                         @if($errors->has('address_line2'))
                          <div class="error" style="color: red;">{{$errors->first('address_line2')}}</div>
@@ -197,7 +199,7 @@
                     <div class="row">
                     <div class="col-md-4">
                         <div class="form-group required">
-                            <label for="country" class="control-label h6">Select your country</label>                            
+                            <label for="country" class="control-label">Select your country</label>                            
                             <select name="country" id="country" class="form-control">
                                 <option value="">Select Country</option>
                                 @foreach($countries as $key => $value)
@@ -212,7 +214,7 @@
 
                     <div class="col-md-4">                                                       
                         <div class="form-group required">
-                            <label for="state" class="control-label h6">Select your state</label>                        
+                            <label for="state" class="control-label">Select your state</label>                        
                             <select name="state" id="state" class="form-control">
                                 <option value="">Select State</option>                        
                             </select>							
@@ -223,7 +225,7 @@
                     </div>
                         <div class="col-md-4">                        
                             <div class="form-group required">
-                                <label for="city" class="control-label h6">Select your city</label>                                
+                                <label for="city" class="control-label">Select your city</label>                                
                                 <select name="city" id="city" class="form-control">
                                     <option value="">Select City</option>                                
                                 </select>
@@ -236,7 +238,7 @@
                     </div>                        
 
                     <div class="form-group required">
-                        <label for="pincode" class="control-label h6">{{ __('Pincode') }}</label>
+                        <label for="pincode" class="control-label">{{ __('Pincode') }}</label>
                         
                             <input type="text" class="form-control @error('pincode') is-invalid @enderror" name="pincode"  value="{{old("pincode")}}">
                             @error('pincode')
@@ -247,7 +249,7 @@
                     </div>                    					 
 
                     <div class="form-group">
-                        <label for="number_of_vacancy"  class="control-label h6">Number of vacancy</label>
+                        <label for="number_of_vacancy"  class="control-label">Number of vacancy</label>
                         <input type="text" class="form-control" name="number_of_vacancy" value="{{old("number_of_vacancy")}}">
                         @if($errors->has('number_of_vacancy'))
                             <div class="error" style="color: red;">{{$errors->first('number_of_vacancy')}}</div>
@@ -255,11 +257,11 @@
                     </div>		                        
 
                     <div class="form-group">
-                            <label for="type" class="control-label h6">Type</label>
+                            <label for="type" class="control-label">Type</label>
                             <select class="form-control" name="type">
-                                <option value="fulltime">fulltime</option>
-                                <option value="parttime">parttime</option>
-                                <option value="volunteer">volunteer</option>
+                                <option value="fulltime">Fulltime</option>
+                                <option value="parttime">Parttime</option>
+                                <option value="volunteer">Volunteer</option>
                             </select>
                             @if($errors->has('type'))
                             <div class="error" style="color: red;">{{$errors->first('type')}}</div>
@@ -269,7 +271,7 @@
                         <!--Notice period-->
 
                     <div class="form-group required">
-                            <label for="notice_period" class="control-label h6">Notice Period</label>
+                            <label for="notice_period" class="control-label">Notice Period</label>
                             <select class="form-control" name="notice_period">
                                 <option value="">Select</option>
                                 <option value="Immediately">Immediately</option>
@@ -286,7 +288,7 @@
 
 					
 					<div class="form-group">            
-                        <label for="lastdate" class="h6">Last Date</label>                        
+                        <label for="lastdate" class="control-label">Last Date</label>                        
                             <input type="text" class="form-control datepicker" name="last_date" value="{{old("last_date")}}">    
                             @if($errors->has('last_date'))
                             <div class="error" style="color: red;">{{$errors->first('last_date')}}</div>
@@ -297,7 +299,7 @@
                     
 					
 					<div class="form-group">
-                        <label for="status" class="control-label h6">Status</label>
+                        <label for="status" class="control-label">Status</label>
                         <select class="form-control" name="status">
                              <option value="1">Live</option>
                             <option value="0">Draft</option>
@@ -309,7 +311,7 @@
                     
 
                     <div class="form-group">
-                        <button class="btn btn-info" type="submit">Submit</button>
+                        <button class="btn btn-dark" type="submit">Submit</button>
                     </div>
                 
         
