@@ -59,17 +59,8 @@
                     @endif                  
                     
                     </div>
-					
-					<div class="form-group">
-                        <label for="role" class="control-label h6">Role</label>
-                        <textarea name="roles" class="form-control" rows="6" cols="70" style="width:100"> {{old("roles")}}</textarea>
-                        @if($errors->has('roles'))
-                        <div class="error" style="color: red;">{{$errors->first('roles')}}</div>
-                    @endif                  
-                    
-                    </div>
-					
-					<div class="form-group">
+
+                    <div class="form-group">
                         <label for="category" class="h6">Job Category</label>
 							<select name="category" class="form-control">
 							@foreach(App\Industry::all() as $cat)
@@ -80,8 +71,8 @@
                             <div class="error" style="color: red;">{{$errors->first('category')}}</div>
                            @endif                        
                     </div>
-					
-					 <div class="form-group">
+
+                    <div class="form-group">
 
                         <label for="position" class="h6">Position</label>
                         
@@ -96,7 +87,64 @@
                         @endif
                 
                     </div>
+
+
 					
+					<div class="form-group">
+                        <label for="role" class="control-label h6">Role</label>
+                        <textarea name="roles" class="form-control" rows="6" cols="70" style="width:100"> {{old("roles")}}</textarea>
+                        @if($errors->has('roles'))
+                        <div class="error" style="color: red;">{{$errors->first('roles')}}</div>
+                    @endif                  
+                    
+                    </div>
+
+                    <!--Function-->
+
+                    <div class="form-group">
+                        <p class="mb-0"> <label for="salary" class="h6">CTC (or Salary/month)<span style="color:red">*</span></label> &nbsp; &nbsp;
+                        <span style="color:red">Please mention Negotiable, if negotiable.</span></p>
+                            <input type="text" class="form-control" name="salary" value="{{old("salary")}}">
+                            @if($errors->has('salary'))
+                            <div class="error" style="color: red;">{{$errors->first('salary')}}</div>
+                            @endif
+                        </div>
+
+
+                        <div class="form-group">
+                            <p class="mb-0"> <label for="experience" class="h6">Experience<span style="color:red">*</span></label> &nbsp; &nbsp;
+                            <span style="color:red">If no value is selected. 'zero' will be set by default.</span></p>
+                                <select name="experience" class="form-control">                         
+                                     @for ($i = 0; $i <= 50; $i++)
+                                    <option value="{{ $i }}">{{ $i }} &nbsp; year(s)</option>
+                                    @endfor
+                                </select>
+                                @if($errors->has('experience'))
+                                <div class="error" style="color: red;">{{$errors->first('experience')}}</div>
+                                @endif
+        
+                            
+                            </div>
+
+
+                            <!--course-->
+                            <!--specialization-->
+
+                            <div class="form-group">
+                                <label for="gender" class="control-label h6">Gender</label>
+                                <select class="form-control" name="gender">
+                                    <option value="any">Any</option>
+                                    <option value="male">male</option>
+                                    <option value="female">female</option>
+                                </select>
+                                @if($errors->has('gender'))
+                                <div class="error" style="color: red;">{{$errors->first('gender')}}</div>
+                                @endif
+                        </div>
+
+                        <!--preferences-->				
+					
+		
                     <div class="form-group required">
                         <label for="address_line1" class="control-label h6">Address Line 1</label>
                         <input type="text" class="form-control" name="address_line1" value="{{old("address_line1")}}">
@@ -178,7 +226,16 @@
                             <strong>Please enter valid 6 digit pincode</strong>
                             </span>
                             @enderror                        
-                    </div>
+                    </div>                    					 
+					
+
+
+					
+					 
+                                      
+
+					
+
 
                     <div class="form-group">
                         <label for="number_of_vacancy"  class="control-label h6">Number of vacancy</label>
@@ -187,68 +244,24 @@
                             <div class="error" style="color: red;">{{$errors->first('number_of_vacancy')}}</div>
                         @endif
                                       
-                    </div>
-					
-					 <br>
-                                      
-                    <div class="form-group">
-					<p class="mb-0"> <label for="experience" class="h6">Experience<span style="color:red">*</span></label> &nbsp; &nbsp;
-                    <span style="color:red">If no value is selected. 'zero' will be set by default.</span></p>
-                        <select name="experience" class="form-control">                         
-                             @for ($i = 0; $i <= 50; $i++)
-                            <option value="{{ $i }}">{{ $i }} &nbsp; year(s)</option>
-                            @endfor
-                        </select>
-                        @if($errors->has('experience'))
-                        <div class="error" style="color: red;">{{$errors->first('experience')}}</div>
-                        @endif
+                    </div>		                        
 
-                    
-                    </div>
-					
-					<div class="form-group">
-                            <label for="gender" class="control-label h6">Gender</label>
-                            <select class="form-control" name="gender">
-                                <option value="any">Any</option>
-								<option value="male">male</option>
-								<option value="female">female</option>
-                            </select>
-                            @if($errors->has('gender'))
-                            <div class="error" style="color: red;">{{$errors->first('gender')}}</div>
-                            @endif
-                    </div>
-					
-					 <div class="form-group">
-                    <p class="mb-0"> <label for="salary" class="h6">CTC (or Salary/month)<span style="color:red">*</span></label> &nbsp; &nbsp;
-                    <span style="color:red">Please mention Negotiable, if negotiable.</span></p>
-                        <input type="text" class="form-control" name="salary" value="{{old("salary")}}">
-                        @if($errors->has('salary'))
-                        <div class="error" style="color: red;">{{$errors->first('salary')}}</div>
+
+
+                    <div class="form-group">
+                        <label for="type" class="control-label h6">Type</label>
+                        <select class="form-control" name="type">
+                            <option value="fulltime">fulltime</option>
+                            <option value="parttime">parttime</option>
+                            <option value="volunteer">volunteer</option>
+                        </select>
+                        @if($errors->has('type'))
+                        <div class="error" style="color: red;">{{$errors->first('type')}}</div>
                         @endif
-                    </div>
-					
-						<div class="form-group">
-                            <label for="type" class="control-label h6">Type</label>
-                            <select class="form-control" name="type">
-                                <option value="fulltime">fulltime</option>
-								<option value="parttime">parttime</option>
-								<option value="volunteer">volunteer</option>
-                            </select>
-                            @if($errors->has('type'))
-                            <div class="error" style="color: red;">{{$errors->first('type')}}</div>
-                            @endif
-                    </div>
-					
-					<div class="form-group">
-                            <label for="status" class="control-label h6">Status</label>
-                            <select class="form-control" name="status">
-                                 <option value="1">Live</option>
-								<option value="0">Draft</option>
-                            </select>
-                            @if($errors->has('status'))
-                            <div class="error" style="color: red;">{{$errors->first('status')}}</div>
-                            @endif
-                    </div>
+                </div>
+
+                <!--Notice period-->
+
 					
 					    <div class="form-group">
             
@@ -262,6 +275,19 @@
                            @endif
                         
                     </div>
+
+                    
+					
+					<div class="form-group">
+                        <label for="status" class="control-label h6">Status</label>
+                        <select class="form-control" name="status">
+                             <option value="1">Live</option>
+                            <option value="0">Draft</option>
+                        </select>
+                        @if($errors->has('status'))
+                        <div class="error" style="color: red;">{{$errors->first('status')}}</div>
+                        @endif
+                </div>
                     
 
                     <div class="form-group">
