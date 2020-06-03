@@ -37,7 +37,7 @@
             
             @endif
             <div class="card">
-                <div class="card-header d-inline-block h5 text-dark font-weight-bold mb-0">Create a Job</div>
+                {{--<div class="card-header d-inline-block h5 text-dark font-weight-bold mb-0">Create a Job</div>--}}
                 
                 <form action="{{route('job.store')}}" method="POST">@csrf
                     <div class="card-body">
