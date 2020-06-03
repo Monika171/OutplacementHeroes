@@ -170,13 +170,31 @@
                                               
                                           </div>
 
-                                          <div class="input-group mb-3">
+                                         {{-- <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                               <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
                                               
                                             </div>
                                             <input type="text" id="editSpecialization" class="form-control" name="edit_specialization" value="{{$education->specialization}}">
-                                          </div>
+                                          </div>--}}
+
+                                                
+                                            <div class="input-group mb-3">
+                                              <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
+                                              </div>
+                                              <input id="editSpecialization" class="form-control" name="edit_specialization" list="edit_specialization" value="{{$education->specialization}}">
+                                                    <datalist id="edit_specialization">
+                                                      @foreach($specialization as $sp)
+                                                      <option value="{{$sp}}">
+                                                      @endforeach
+                                                  </datalist>
+                                            </div>
+
+                                            <div class="input-group mb-3">
+                                              <span style="color:red">*If your specialization is not listed, please enter the same manually.</span></p>
+                                                
+                                            </div><br>
 
 
                                           <div class="input-group mb-3">
@@ -319,6 +337,7 @@
                                     <input type="text" id="addCourse" class="form-control" name="add_course">
                                   </div>--}}
 
+                                  
                                   <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fas fa-graduation-cap"></i>&nbsp;Course</span>
@@ -381,13 +400,31 @@
                                   </div>
 
 
-                                  <div class="input-group mb-3">
+                                  {{--<div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
                                       
                                     </div>
                                     <input type="text" id="addSpecialization" class="form-control" name="add_specialization">
+                                  </div>--}}
+
+                                  
+                                <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
                                   </div>
+                                  <input id="addSpecialization" class="form-control" name="specialization" list="specialization">
+                                        <datalist id="specialization">
+                                          @foreach($specialization as $sp)
+                                          <option value="{{$sp}}">
+                                          @endforeach
+                                      </datalist>
+
+                                </div>
+                                <div class="input-group mb-3">
+                                  <span style="color:red">*If your specialization is not listed, please enter the same manually.</span></p>
+                                    
+                                </div><br>
 
              
                                   <div class="input-group mb-3">
