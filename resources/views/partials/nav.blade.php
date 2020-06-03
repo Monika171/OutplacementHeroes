@@ -105,10 +105,15 @@
 
                 
                     @if(Auth::user()->user_type=='employer')
+
+                        <a class="dropdown-item" href="{{route('my.job')}}">
+                            {{ __('My Jobs') }}
+                        </a>
                         <a class="dropdown-item" href="{{route('company.index',[Auth::user()->company->id,Auth::user()->company->slug])}}"
                         >
                             {{ __('My Company') }}
                         </a>
+                        
                     
                           
                     @elseif(Auth::user()->user_type=='seeker')
