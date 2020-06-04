@@ -14,61 +14,41 @@
 </div>
 
 
+    <section class="ftco-section bg-light">
+      <div class="container">
+        <div class="row d-flex">
+		
+		@foreach($companies as $company)
+          <div class="col-md-3 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <!--logo-->
+              <a href="{{route('company.index',[$company->id,$company->slug])}}">
+			   @if(empty($company->logo))
+					<img width="100" src="{{asset('profile_pic/logo.jpg')}}" class="card-img-top">
 
-<div class="container mt-9">
-	<div class="row">
-        <!--<div class="card-deck">-->
-            <div class="row course-set courses__row">
-            @foreach($companies as $company)
-            <!--<div class="col-md-3">card mb-3-->
-
-                <!--<div class="card" style="width: 18rem;">-->
-                    
-                    <div class="col-md-4 p-4 mb-8 bg-white">
-                            <article class="col-md-4 course-block course-block-lessons">
-                                @if(empty($company->logo))
-                                <img width="100" src="{{asset('profile_pic/logo.jpg')}}" class="card-img-top">
-
-                                @else
-                                <img width="100" src="{{asset('uploads/logo')}}/{{$company->logo}}"class="card-img-top">
+					@else
+					<img width="100" src="{{asset('uploads/logo')}}/{{$company->logo}}"class="card-img-top">
 
 
-                                @endif
-                            <div>
-                                <h5 class="card-title text-center">{{$company->cname}}</h5>
-                        
-                                <center><a href="{{route('company.index',[$company->id,$company->slug])}}" class="btn btn-primary btn-sm">View Company</a></center>
-                            
-                               
-                            </div>
-                            </article>
-                    </div>
-                        
-                    
-                      
-                {{--<div class="col-sm-2" style="min-width: 18rem; max-width: 18rem;">
-                        <div class="card">
-                                @if(empty($company->logo))
-                                <img width="100" src="{{asset('profile_pic/logo.jpg')}}"class="card-img-top">
+                @endif
+                </a> 
+              <div class="text mt-3">
+                <a href="{{route('company.index',[$company->id,$company->slug])}}">
+                    <h3 class="heading text-center">{{$company->cname}}</h3>
+                </a>               
 
-                                @else
-                                <img width="100" src="{{asset('uploads/logo')}}/{{$company->logo}}"class="card-img-top">
-
-
-                                @endif
-                            <div class="card-body">
-                                <h5 class="card-title text-center">{{$company->cname}}</h5>
-                        
-                                <center><a href="{{route('company.index',[$company->id,$company->slug])}}" class="btn btn-primary">View Company</a></center>
-                            </div>
-                        </div>
-
-                </div>--}}
-		    @endforeach
+              </div>
+            </div>
+          </div>
+ 
+		  
+		 @endforeach 
         </div>
-	</div>
-
-			{{$companies->links()}}
-
-</div>
-@endsection
+<!--pagination here-->
+                <div class="pagination center">  
+                {{$companies->links()}}
+                </div>
+      </div>
+    </section>
+		
+		@endsection

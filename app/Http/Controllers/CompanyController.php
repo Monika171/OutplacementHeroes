@@ -31,7 +31,7 @@ class CompanyController extends Controller
     }
 
     public function company(){
-        $companies = Company::latest()->paginate(1);
+        $companies = Company::latest()->paginate(20);
         return view('company.company',compact('companies'));
       }
       
