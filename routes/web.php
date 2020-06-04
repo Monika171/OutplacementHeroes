@@ -38,6 +38,7 @@ Route::get('/jobs/my-job','JobController@myjob')->name('my.job');
 Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show');
 Route::get('/jobs/my-job/{id}/edit','JobController@edit')->name('job.edit');
 Route::post('/jobs/my-job/{id}/edit','JobController@update')->name('job.update');
+Route::post('/applications/{id}','JobController@apply')->name('apply');
 
 //employer register
 Route::view('employer/register','auth.employer-register')->name('employer.register');

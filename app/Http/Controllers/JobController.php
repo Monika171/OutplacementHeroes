@@ -19,7 +19,12 @@ use App\Course;
 
 class JobController extends Controller
 {
-    
+
+    public function __construct(){
+
+        $this->middleware(['employer','verified'],['except'=>array('index','show')]);
+       // $this->middleware(['employer','verified'],['except'=>array('index','show','apply','allJobs','searchJobs','category')]);
+    }    
   
     
     public function  create(){
@@ -43,7 +48,7 @@ class JobController extends Controller
            
             'title'=>'required|min:2',
             'position'=>'required',
-            'experience'=>'required|min:0',
+            'experience'=>'required|integer|min:0',
             'country'=>'required',
             'state'=>'required',
             'city'=>'required',
@@ -135,7 +140,7 @@ class JobController extends Controller
             'title'=>'required|min:2',
             'position'=>'required',
             'experience'=>'required|min:0',
-            'country'=>'required',
+            'country'=>'required|integer|min:0',
             'state'=>'required',
             'city'=>'required',
             'pincode'=>'numeric|digits_between:6,6|nullable',

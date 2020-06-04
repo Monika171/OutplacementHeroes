@@ -120,7 +120,7 @@
                     <div class="form-group required">
                         <label for="experience" class="control-label">Experience</label> 
                         <span style="color:red">If no value is selected. 'zero' will be set by default.</span>
-                        <select name="experience_years" class="form-control">  
+                        <select name="experience" class="form-control">  
                                                   
                             @for ($i = 0; $i <= 50; $i++)
                            <option value="{{ $i }}" {{$job->experience==$i?'selected':''}}>{{ $i }} &nbsp; year(s)</option>
