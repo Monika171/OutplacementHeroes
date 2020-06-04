@@ -33,13 +33,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::get('/','JobController@index');
 Route::get('/jobs/create','JobController@create')->name('job.create');
 Route::post('/jobs/create','JobController@store')->name('job.store');
-
 Route::get('/jobs/my-job','JobController@myjob')->name('my.job');
-Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show');
 Route::get('/jobs/my-job/{id}/edit','JobController@edit')->name('job.edit');
 Route::post('/jobs/my-job/{id}/edit','JobController@update')->name('job.update');
-Route::post('/applications/{id}','JobController@apply')->name('apply');
+Route::get('/jobs/my-job/applications','JobController@applicant')->name('applicant');
+Route::get('/jobs/alljobs','JobController@allJobs')->name('alljobs'); //for job-search support volunteer?
 
+Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show');
+Route::post('/applications/{id}','JobController@apply')->name('apply');
 //employer register
 Route::view('employer/register','auth.employer-register')->name('employer.register');
 Route::post('employer/register','EmployerRegisterController@employerRegister')->name('emp.register');

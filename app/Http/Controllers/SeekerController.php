@@ -17,10 +17,8 @@ class SeekerController extends Controller
 
 
     
-   public function index(){
-
-    $seekers = Profile::get();
-
+   public function index(){  
+   $seekers = Profile::latest()->paginate(10);
     return view('listseeker.index', compact('seekers'));
 
    }

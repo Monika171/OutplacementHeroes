@@ -139,7 +139,7 @@ class JvolunteerController extends Controller
 
               public function listseekers(){
 
-                $seekers = Profile::get();
+                $seekers = Profile::latest()->paginate(10);            
 
                 return view('jvolunteer.dashboard', compact('seekers'));
 

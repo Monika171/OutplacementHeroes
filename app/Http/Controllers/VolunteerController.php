@@ -141,8 +141,7 @@ class VolunteerController extends Controller
 
           public function listseekers(){
 
-            $seekers = Profile::get();
-
+            $seekers = Profile::latest()->paginate(10);
             return view('volunteer.dashboard', compact('seekers'));
 
           }

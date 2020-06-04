@@ -7,7 +7,7 @@
           <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
               <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                   <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                 <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Job Seekers</h1>
+                 <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">All candidates</h1>
               </div>
           </div>
     </div>
@@ -15,12 +15,12 @@
    
 <section class="ftco-section bg-light">
 	<div class="container">
-				<!--<div class="row justify-content-center mb-5 pb-3">
+				<div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate">
-                    <span class="subheading">Registered Candidates</span>
-                    <h2 class="mb-4"><span>Recent</span> Seekers</h2>
+                    <!--<span class="subheading">Registered Candidates</span>-->
+                    <h2 class="mb-4"><span>Registered</span> Job Seekers</h2>
                 </div>
-                </div>-->
+                </div>
 		
 		<div class="row">
             @if(count($seekers)>0)
@@ -47,14 +47,14 @@
                             <div class="col-8 col-md-7">
                                 <div class="mb-2 mb-md-0 mr-5">
                                     <div class="job-post-item-header d-flex align-items-center">
-                                    <h4 class="mr-3 text-black">{{$seeker->user->name}}</h4>
+                                    <h4 class="mr-3 text-black">Name: {{$seeker->user->name}}</h4>
                                     </div>
                                 
                                     <div class="job-post-item-body d-block d-md-flex">
-                                        <div class="mr-3"><p>{{$seeker->user->email}}<br>
-                                        {{$seeker->industry}}<br>
-                                        {{$seeker->experience_years}}{{$seeker->experience_years}}<br>
-                                        {{--<div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$seeker->experience}}</a>--}}
+                                        <div class="mr-3"><p>Email: {{$seeker->user->email}}<br>
+                                        <div class="mr-3"><span class="icon-layers"></span>
+                                            Total Experience:&nbsp;&nbsp;{{$seeker->experience_years}}year(s)</a>
+                                            <br>Notice Period:&nbsp;&nbsp;{{$seeker->notice_period}}<br>
                                         <span class="icon-my_location"></span> <span>{{$seeker->state}}</span></div>
                                         </div>
                                     </div>
@@ -81,22 +81,12 @@
           @endif
 		  <!-- end -->
  
-				</div>
-				<div class="row mt-5">
-          <div class="col text-center">
-            <div class="block-27">
-              <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+                </div>
+
+                <div class="pagination center">                   
+                            {{$seekers->links()}}                
+                </div>
+                  
 			</div>
 		</section>
 		

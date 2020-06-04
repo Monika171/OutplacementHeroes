@@ -106,6 +106,9 @@
                 
                     @if(Auth::user()->user_type=='employer')
 
+                        <a class="dropdown-item" href="{{route('applicant')}}">
+                            {{ __('Applicants') }}
+                        </a>
                         <a class="dropdown-item" href="{{route('my.job')}}">
                             {{ __('My Jobs') }}
                         </a>

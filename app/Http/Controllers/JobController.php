@@ -22,7 +22,7 @@ class JobController extends Controller
 
     public function __construct(){
 
-        $this->middleware(['employer','verified'],['except'=>array('index','show')]);
+        $this->middleware(['employer','verified'],['except'=>array('index','show','apply','allJobs')]);
        // $this->middleware(['employer','verified'],['except'=>array('index','show','apply','allJobs','searchJobs','category')]);
     }    
   
@@ -201,6 +201,38 @@ class JobController extends Controller
         return view('jobs.show',compact('job'));
     }
 
+    public function apply(Request $request,$id){
+        $jobId = Job::find($id);
+        $jobId->users()->attach(Auth::user()->id);
+        return redirect()->back()->with('message','Application sent!');
+
+    }
+
+    public function applicant(){
+        $applicants = Job::has('users')->where('user_id',auth()->user()->id)->get();
+        return view('jobs.applicants',compact('applicants'));
+    }
+
+
+    public function allJobs(Request $request){
+       //copy/cut this method if needed for job-search volunteer.
+        //front search
+
+           /*$search = $request->get('search');
+           $address = $request->get('address');
+           if($search && $address){
+              $jobs = Job::where('position','LIKE','%'.$search.'%')
+                       ->orWhere('title','LIKE','%'.$search.'%')
+                       ->orWhere('type','LIKE','%'.$search.'%')
+                       ->orWhere('address','LIKE','%'.$address.'%')
+                       ->paginate(20);
+   
+               return view('jobs.alljobs',compact('jobs'));*/
+
+               $jobs = Job::latest()->paginate(10);
+               return view('jobs.alljobs',compact('jobs'));
+   
+           }
 
 
     /*public function index(){

@@ -4,6 +4,15 @@
 	<title></title>
 	<script defer src="{{ asset('js/app.js') }}"></script>
 	@yield('select2css')
+		<style>
+				.pagination.center,
+				.pagination.center ul {
+					float: left;
+					position: relative;
+				}
+				.pagination.center { left: 50%; }
+				.pagination.center ul { left: -50%; }
+		</style>
 	@include('../partials.head')
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css" rel="stylesheet" />	
 </head>
