@@ -197,60 +197,66 @@
                         @endif
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-4">
-                        <div class="form-group required">
+                    @if($job->city)
+                    <p class="h6"><span style="color:rgb(42, 57, 195);">**Currently saved job location data-<br>
+                        <strong>&nbsp;&nbsp;&nbsp;&nbsp;Country:&nbsp;{{$job->country}},&nbsp;&nbsp;
+                        State:&nbsp;{{$job->state}} and&nbsp;&nbsp; City:{{$job->city}}</strong><br>
+                        If you would like to change the same, please set these again in dropdowns below.</span></p>
+                    @endif
+                    
+                    <div class="row">                        
+                    <div class="col-md-4">
+                    <div class="form-group required">
     
-                            <label for="country" class="control-label">Select your country</label>
-                            
-                            <select name="country" id="country" class="form-control">
-                                <option value="">Select Country</option>
+                        <label for="country" class="control-label h6">Select your country</label>
+                        
+                        <select name="country" id="country" class="form-control">
+                            <option value="">Select Country</option>
                                 @foreach($countries as $key => $value)
-                                <option value="{{$key}}" {{$job->country==$value?'selected':''}}>{{$value}}</option>
+                                <option value="{{$key}}">{{$value}}</option>
                                 @endforeach
-                            </select>
-                            @if($errors->has('country'))
-                            <div class="error" style="color: red;">{{$errors->first('country')}}</div>
-                            @endif
-                                                    
-                        </div>
-                        </div>
-                        <div class="col-md-4">
-                            
-                                                        
-                        <div class="form-group required">
-    
-                              <label for="state" class="control-label">Select your state</label>
-                            
-                            <select name="state" id="state" class="form-control">
-                                <option value="{{$job->state?$s_id:''}}">{{$job->state?$job->state:'Select state'}}</option>
-                            
-                            </select>
-                                
-                            @if($errors->has('state'))
-                            <div class="error" style="color: red;">{{$errors->first('state')}}</div>
-                            @endif
-                                                    
-                        </div>
+                        </select>
+                        @if($errors->has('country'))
+                        <div class="error" style="color: red;">{{$errors->first('country')}}</div>
+                        @endif
+                                                
+                    </div>
                     </div>
                     <div class="col-md-4">
-                            
-                        <div class="form-group required">
-    
-                            <label for="city" class="control-label">Select your city</label>
-                            
-                            <select name="city" id="city" class="form-control">
-                                <option value="{{$job->city?$c_id:''}}">{{$job->city?$job->city:'Select city'}}</option>
-                            
-                            </select>
-                            @if($errors->has('city'))
-                            <div class="error" style="color: red;">{{$errors->first('city')}}</div>
-                            @endif
+                        
                                                     
-                        </div>
+                    <div class="form-group required">
     
+                          <label for="state" class="control-label h6">Select your state</label>
+                        
+                        <select name="state" id="state" class="form-control">
+                            <option value="">Select state</option>                       
+                        </select>
+                            
+                        @if($errors->has('state'))
+                        <div class="error" style="color: red;">{{$errors->first('state')}}</div>
+                        @endif
+                                                
                     </div>
-                        </div>                       
+                </div>
+                <div class="col-md-4">
+                        
+                    <div class="form-group required">
+    
+                        <label for="city" class="control-label h6">Select your city</label>
+                        
+                        <select name="city" id="city" class="form-control">
+                            <option value="">Select City</option>                        
+                        </select>
+    
+                        @if($errors->has('city'))
+                        <div class="error" style="color: red;">{{$errors->first('city')}}</div>
+                        @endif
+                                                
+                    </div>
+    
+                </div>
+                    </div>                     
 
                     <div class="form-group required">
                         <label for="pincode" class="control-label">{{ __('Pincode') }}</label>

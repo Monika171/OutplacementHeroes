@@ -60,10 +60,10 @@
                             <td>{{$job->status}}</td>
                             <td>{{$job->created_at->diffForHumans()}}</td>
                             <td>
-                            <a href="{{route('jobs.show',[$job->id,$job->slug])}}">
+                            {{--<a href="{{route('jobs.show',[$job->id,$job->slug])}}">
                             <button class="btn btn-success btn-sm">     Read
                             </button>
-                            </a>
+                            </a>--}}
                             <br><br>
                             <a href="{{route('job.edit',[$job->id])}}"> <button class="btn btn-primary btn-sm">Edit</button></a>
 

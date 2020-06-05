@@ -109,27 +109,13 @@ class JobController extends Controller
 
         $job = Job::findOrFail($id);
         //$skills = Skill::orderBy('skill', 'asc')->get();     
-               
-        if($job->state){
-        $s = State::where('name', $job->state)->first();
-        $s_id = $s->id;}
-        else {
-          $s_id = "";
-        }
-
-        if($job->city){
-        $c = City::where('name', $job->city)->first();
-        $c_id = $c->id;}
-        else {
-          $c_id = "";
-        }
 
         $position = Designation::orderBy('designation', 'asc')->pluck('designation');        
         $course = Course::orderBy('course', 'asc')->pluck('course');
         $specialization = Specialization::orderBy('specialization', 'asc')->pluck('specialization');
         $countries = Country::all()->pluck('name','id');
         
-        return view('jobs.edit',compact('job','s_id','c_id','position','course','specialization','countries'));
+        return view('jobs.edit',compact('job','position','course','specialization','countries'));
         //return view('profile.index', compact('user', 'profile', 'skills','countries','preferred_location','s_id','c_id','recent_designation','industry')); 
     }
 
