@@ -235,66 +235,53 @@
                     @endif
                 </div>
 
-                @if(Auth::user()->company->city)
-                <p class="h6"><span style="color:rgb(42, 57, 195);">**Currently saved location data-<br>
-                    <strong>&nbsp;&nbsp;&nbsp;&nbsp;Country:&nbsp;{{Auth::user()->company->country}},&nbsp;&nbsp;
-                    State:&nbsp;{{Auth::user()->company->state}} and&nbsp;&nbsp; City:{{Auth::user()->company->city}}</strong><br>
-                    If you would like to change the same, please set these again in dropdowns below.</span></p>
-                @endif
-                
-                <div class="row">                        
-                <div class="col-md-4">
-                <div class="form-group required">
+                <div class="row">
+                    <div class="col-md-4">
+                    <div class="form-group required">
 
-                    <label for="country" class="control-label h6">Select your country</label>
-                    
-                    <select name="country" id="country" class="form-control">
-                        <option value="">Select Country</option>
-                            @foreach($countries as $key => $value)
-                            <option value="{{$key}}">{{$value}}</option>
-                            @endforeach
-                    </select>
-                    @if($errors->has('country'))
-                    <div class="error" style="color: red;">{{$errors->first('country')}}</div>
-                    @endif
-                                            
-                </div>
-                </div>
-                <div class="col-md-4">
-                    
-                                                
-                <div class="form-group required">
-
-                      <label for="state" class="control-label h6">Select your state</label>
-                    
-                    <select name="state" id="state" class="form-control">
-                        <option value="">Select state</option>                       
-                    </select>
+                        <label for="country" class="control-label h6">Select your country</label>
                         
-                    @if($errors->has('state'))
-                    <div class="error" style="color: red;">{{$errors->first('state')}}</div>
-                    @endif
-                                            
+                        <select name="country" id="country" class="form-control">
+                            <option value="">Select Country</option>
+                            @foreach($countries as $key => $value)
+                            <option value="{{$key}}" {{Auth::user()->company->country==$value?'selected':''}}>{{$value}}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('country'))
+                        <div class="error" style="color: red;">{{$errors->first('country')}}</div>
+                        @endif
+                                                
+                    </div>
+                    </div>
+                    <div class="col-md-4">                           
+                                                    
+                    <div class="form-group required">    
+                          <label for="state" class="control-label h6">Select your state</label>                            
+                        <select name="state" id="state" class="form-control">
+                            <option value="">Select state</option>                            
+                        </select>
+                            
+                        @if($errors->has('state'))
+                        <div class="error" style="color: red;">{{$errors->first('state')}}</div>
+                        @endif
+                                                
+                    </div>
+                </div>
+                <div class="col-md-4">
+                        
+                    <div class="form-group required">    
+                        <label for="city" class="control-label h6">Select your city</label>                            
+                        <select name="city" id="city" class="form-control">
+                            <option value="">Select City</option>
+                        </select>
+                        @if($errors->has('city'))
+                        <div class="error" style="color: red;">{{$errors->first('city')}}</div>
+                        @endif
+                                                
+                    </div>
+
                 </div>
             </div>
-            <div class="col-md-4">
-                    
-                <div class="form-group required">
-
-                    <label for="city" class="control-label h6">Select your city</label>
-                    
-                    <select name="city" id="city" class="form-control">
-                        <option value="">Select City</option>                        
-                    </select>
-
-                    @if($errors->has('city'))
-                    <div class="error" style="color: red;">{{$errors->first('city')}}</div>
-                    @endif
-                                            
-                </div>
-
-            </div>
-                </div>
 
                     <div class="form-group required">
                         <label for="pincode" class="control-label h6">{{ __('Pincode') }}</label>
@@ -414,11 +401,67 @@
 
     $(document).ready(function(){
 
+        var coun_id = @json($coun_id);
+        var s_id = @json($s_id);
+        var c_id = @json($c_id);
+
+
+                if(coun_id){
+                    $.ajax({
+                        
+                        url: '/getStates/'+coun_id,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data){
+                            console.log(data);
+                            
+                            $('select[name="state"]').empty();
+                            $.each(data, function(key, value){
+
+                                if(key==s_id){
+                                $('select[name="state"]').append('<option value="'+key+'" selected>'+value+'</option>');}
+                                else{                                
+                                $('select[name="state"]').append('<option value="'+key+'">'+value+'</option>');}                             
+
+                            });
+                            
+                        }
+                        
+                    });
+
+                }
+
+            
+                if(s_id){
+                    
+                    $.ajax({
+                        
+                        url: '/getCities/'+s_id,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data){
+                            console.log(data);
+                            
+                            $('select[name="city"]').empty();
+                            $.each(data, function(key, value){
+                                
+                                if(key==c_id){
+                                $('select[name="city"]').append('<option value="'+key+'" selected>'+value+'</option>');}
+                                else{ 
+                                $('select[name="city"]').append('<option value="'+key+'">'+value+'</option>');}
+                            });
+                            
+                        }
+                        
+                    });
+
+                }
+
             $('select[name="country"]').on('change', function(){
  
                 var country_id = $(this).val();
                 if(country_id){
-                    //console.log(country_id);
+                    
                     $.ajax({
                         
                         url: '/getStates/'+country_id,
@@ -450,7 +493,7 @@
                 
                 var state_id = $(this).val();
                 if(state_id){
-                    //console.log(country_id);
+                    
                     $.ajax({
                         
                         url: '/getCities/'+state_id,

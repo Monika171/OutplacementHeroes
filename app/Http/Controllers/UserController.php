@@ -40,12 +40,26 @@ class UserController extends Controller
                           $profile = Profile::where('user_id', $user->id)->first();
                           $countries = Country::all()->pluck('name','id');
                           
-                          /*if($profile->state){
-                          $s = State::where('name', $profile->state)->first();
-                          $s_id = $s->id;}
-                          else {
-                            $s_id = "";
-                          }*/
+                          if($profile->country){
+                            $coun = Country::where('name', $profile->country)->first();
+                            $coun_id = $coun->id;}
+                            else {
+                              $coun_id = "";
+                            }
+                          
+                          if($profile->state){
+                            $s = State::where('name', $profile->state)->first();
+                            $s_id = $s->id;}
+                            else {
+                              $s_id = "";
+                            }
+                    
+                            if($profile->city){
+                            $c = City::where('name', $profile->city)->first();
+                            $c_id = $c->id;}
+                            else {
+                              $c_id = "";
+                            }
 
 
                           $preferred_location = City::where('country_id','101')->pluck('name');
@@ -59,7 +73,7 @@ class UserController extends Controller
                           $works = Work::where('user_id', $user->id)
                                       ->orderBy('created_at', 'desc')
                                       ->get(); */
-                          return view('profile.index', compact('user', 'profile', 'skills','countries','preferred_location','recent_designation','industry')); 
+                          return view('profile.index', compact('user', 'profile', 'skills','countries','coun_id','s_id','c_id','preferred_location','recent_designation','industry')); 
                       }
 
                   public function store(Request $request){
