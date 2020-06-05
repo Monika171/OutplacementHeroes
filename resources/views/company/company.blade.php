@@ -23,14 +23,14 @@
             <div class="blog-entry align-self-stretch">
               <!--logo-->
               <a href="{{route('company.index',[$company->id,$company->slug])}}">
-			   @if(empty($company->logo))
-					<img width="100" src="{{asset('profile_pic/logo.jpg')}}" class="card-img-top">
 
-					@else
-					<img width="100" src="{{asset('uploads/logo')}}/{{$company->logo}}"class="card-img-top">
-
-
+                @if(empty($company->logo))
+                  <img width="100" src="{{asset('profile_pic/logo.jpg')}}" class="card-img-top">
+                  @else
+                  <img width="100" src="{{asset('uploads/logo')}}/{{$company->logo}}"class="card-img-top">
                 @endif
+
+
                 </a> 
               <div class="text mt-3">
                 <a href="{{route('company.index',[$company->id,$company->slug])}}">

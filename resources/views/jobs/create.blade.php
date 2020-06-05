@@ -121,7 +121,7 @@
                         <label for="experience" class="control-label">Experience</label> &nbsp; &nbsp;
                         <span style="color:red">If no value is selected. 'zero' will be set by default.</span>
                         <select name="experience" class="form-control"> 
-                            <option value="">Select</option>                         
+                                                    
                                 @for ($i = 0; $i <= 50; $i++)
                             <option value="{{ $i }}">{{ $i }} &nbsp; year(s)</option>
                             @endfor

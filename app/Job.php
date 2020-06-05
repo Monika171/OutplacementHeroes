@@ -11,9 +11,10 @@ class Job extends Model
 {
 
   protected $fillable = ['user_id','company_id','title','slug','description',
-  'position','salary','roles','function','category_id','address_line1','address_line2',
-  'country','state','city','pincode','type','notice_period','status','last_date',
-  'number_of_vacancy','qualification','experience','gender','preferences'];
+  'category_id','position','roles','function','salary','experience','course',
+  'specialization','gender','preferences','address_line1','address_line2',
+  'country','state','city','pincode','number_of_vacancy','type',
+  'notice_period','last_date','status'];
 
 
     public function getRouteKeyName(){

@@ -19,10 +19,16 @@
     <form action="{{route('alljobs')}}" method="GET">
 
     <div class="form-inline">
-        <div class="form-group">
+        {{--<div class="form-group">
             <label>Position&nbsp;</label>
             <input type="text" name="position" class="form-control" placeholder="job position">&nbsp;&nbsp;&nbsp;
-        </div>
+        </div>--}}
+        
+        <div class="form-group">
+          <label>Keyword&nbsp;</label>
+          <input type="text" name="title" class="form-control">&nbsp;&nbsp;&nbsp;
+      </div>
+
         <div class="form-group">
             <label>Employment &nbsp;</label>
             <select class="form-control" name="type">
@@ -47,7 +53,7 @@
 
         <div class="form-group">
             <label>address</label>
-            <input type="text" name="address" class="form-control" placeholder="address">&nbsp;&nbsp;
+            <input type="text" name="city" class="form-control" placeholder="city">&nbsp;&nbsp;
         </div>
         
         <div class="form-group">
@@ -63,9 +69,15 @@
             @if(count($jobs)>0)
                 @foreach($jobs as $job)
 
-              <a href="{{route('jobs.show',[$job->id,$job->slug])}}" class="job-item d-block d-md-flex align-items-center  border-bottom @if($job->type=='parttime') partime @elseif($job->type=='fulltime')fulltime @else freelance   @endif;">
+              {{--<a href="{{route('jobs.show',[$job->id,$job->slug])}}" class="job-item d-block d-md-flex align-items-center  border-bottom @if($job->type=='parttime') partime @elseif($job->type=='fulltime')fulltime @else freelance   @endif;">--}}
                 <div class="company-logo blank-logo text-center text-md-left pl-3">
-                  <img src="{{asset('uploads/logo')}}/{{$job->company->logo}}" alt="Image" class="img-fluid mx-auto">
+
+                  @if(empty($job->company->logo))
+                  <img width="100" src="{{asset('profile_pic/logo.jpg')}}" class="img-fluid mx-auto">
+                  @else
+                  <img width="100" src="{{asset('uploads/logo')}}/{{$job->company->logo}}" class="img-fluid mx-auto">
+                  @endif
+                 
                 </div>
                 <div class="job-details h-100">
                   <div class="p-3 align-self-center">
@@ -94,7 +106,7 @@
                   @endif
 
                 </div>  
-              </a>
+              {{--</a>--}}
 
             @endforeach
             @else
@@ -106,8 +118,9 @@
         </div>
 
 {{-- {{$jobs->appends(Illuminate\Support\Facades\Input::except('page'))->links()}}  --}}
-
+<div class="pagination center">  
 {{$jobs->links()}}
+</div>
 
     </div>
 

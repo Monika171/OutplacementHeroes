@@ -229,8 +229,17 @@ class JobController extends Controller
    
                return view('jobs.alljobs',compact('jobs'));*/
 
+               $keyword = $request->get('title');
+               $type = $request->get('type');
+               $category = $request->get('category_id');
+               $city = $request->get('city');
+
+
+                //dd($keyword);
                $jobs = Job::latest()->paginate(10);
                return view('jobs.alljobs',compact('jobs'));
+
+               //keyword = request('title');
    
            }
 
