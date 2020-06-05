@@ -40,19 +40,13 @@ class UserController extends Controller
                           $profile = Profile::where('user_id', $user->id)->first();
                           $countries = Country::all()->pluck('name','id');
                           
-                          if($profile->state){
+                          /*if($profile->state){
                           $s = State::where('name', $profile->state)->first();
                           $s_id = $s->id;}
                           else {
                             $s_id = "";
-                          }
+                          }*/
 
-                          if($profile->city){
-                          $c = City::where('name', $profile->city)->first();
-                          $c_id = $c->id;}
-                          else {
-                            $c_id = "";
-                          }
 
                           $preferred_location = City::where('country_id','101')->pluck('name');
                           $recent_designation = Designation::orderBy('designation', 'asc')->pluck('designation');
@@ -65,7 +59,7 @@ class UserController extends Controller
                           $works = Work::where('user_id', $user->id)
                                       ->orderBy('created_at', 'desc')
                                       ->get(); */
-                          return view('profile.index', compact('user', 'profile', 'skills','countries','preferred_location','s_id','c_id','recent_designation','industry')); 
+                          return view('profile.index', compact('user', 'profile', 'skills','countries','preferred_location','recent_designation','industry')); 
                       }
 
                   public function store(Request $request){

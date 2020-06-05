@@ -30,23 +30,9 @@ class JvolunteerController extends Controller
               $jvprofile = JvolunteerProfile::where('user_id', $user->id)->first();
               $countries = Country::all()->pluck('name','id');
               
-              if($jvprofile->state){
-              $s = State::where('name', $jvprofile->state)->first();
-              $s_id = $s->id;}
-              else {
-                $s_id = "";
-              }
-
-              if($jvprofile->city){
-              $c = City::where('name', $jvprofile->city)->first();
-              $c_id = $c->id;}
-              else {
-                $c_id = "";
-              }
-
               $designation = Designation::orderBy('designation', 'asc')->pluck('designation');
               $industry = Industry::orderBy('industry', 'asc')->pluck('industry');
-              return view('jvolunteer.index', compact('user', 'jvprofile', 'skills','countries','s_id','c_id','designation','industry')); 
+              return view('jvolunteer.index', compact('user', 'jvprofile', 'skills','countries','designation','industry')); 
           }
 
       public function store(Request $request){

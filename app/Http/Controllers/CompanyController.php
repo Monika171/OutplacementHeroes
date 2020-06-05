@@ -43,24 +43,10 @@ class CompanyController extends Controller
         $company = Company::where('user_id', $user->id)->first();
         $countries = Country::all()->pluck('name','id');
         
-        if($company->state){
-        $s = State::where('name', $company->state)->first();
-        $s_id = $s->id;}
-        else {
-          $s_id = "";
-        }
-
-        if($company->city){
-        $c = City::where('name', $company->city)->first();
-        $c_id = $c->id;}
-        else {
-          $c_id = "";
-        }
-
         $authority_designation = Designation::orderBy('designation', 'asc')->pluck('designation');
         $industry = Industry::orderBy('industry', 'asc')->pluck('industry');
 
-        return view('company.create',compact('user', 'company', 'countries','s_id','c_id','authority_designation','industry'));
+        return view('company.create',compact('user', 'company', 'countries','authority_designation','industry'));
         
 
     }
