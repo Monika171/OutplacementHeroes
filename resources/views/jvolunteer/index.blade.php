@@ -158,7 +158,14 @@
                         @endif
                     </div>
 
-                    <div class="row">
+                    @if(Auth::user()->jvprofile->city)
+                    <p class="h6"><span style="color:rgb(42, 57, 195);">**Currently saved location data-<br>
+                        <strong>&nbsp;&nbsp;&nbsp;&nbsp;Country:&nbsp;{{Auth::user()->jvprofile->country}},&nbsp;&nbsp;
+                        State:&nbsp;{{Auth::user()->jvprofile->state}} and&nbsp;&nbsp; City:{{Auth::user()->jvprofile->city}}</strong><br>
+                        If you would like to change the same, please set these again in dropdowns below.</span></p>
+                    @endif
+                    
+                    <div class="row">                        
                     <div class="col-md-4">
                     <div class="form-group required">
 
@@ -166,9 +173,9 @@
                         
                         <select name="country" id="country" class="form-control">
                             <option value="">Select Country</option>
-                            @foreach($countries as $key => $value)
-                            <option value="{{$key}}" {{Auth::user()->jvprofile->country==$value?'selected':''}}>{{$value}}</option>
-                            @endforeach
+								@foreach($countries as $key => $value)
+								<option value="{{$key}}">{{$value}}</option>
+								@endforeach
                         </select>
                         @if($errors->has('country'))
                         <div class="error" style="color: red;">{{$errors->first('country')}}</div>
@@ -184,8 +191,7 @@
                           <label for="state" class="control-label h6">Select your state</label>
                         
                         <select name="state" id="state" class="form-control">
-                            <option value="{{Auth::user()->jvprofile->state?$s_id:''}}">{{Auth::user()->jvprofile->state?Auth::user()->jvprofile->state:'Select state'}}</option>
-                        
+                            <option value="">Select state</option>                       
                         </select>
 							
                         @if($errors->has('state'))
@@ -201,9 +207,9 @@
                         <label for="city" class="control-label h6">Select your city</label>
                         
                         <select name="city" id="city" class="form-control">
-                            <option value="{{Auth::user()->jvprofile->city?$c_id:''}}">{{Auth::user()->jvprofile->city?Auth::user()->jvprofile->city:'Select city'}}</option>
-                        
+                            <option value="">Select City</option>                        
                         </select>
+
                         @if($errors->has('city'))
                         <div class="error" style="color: red;">{{$errors->first('city')}}</div>
                         @endif

@@ -31,24 +31,10 @@ class VolunteerController extends Controller
           $vprofile = VolunteerProfile::where('user_id', $user->id)->first();
           $countries = Country::all()->pluck('name','id');
           
-          if($vprofile->state){
-          $s = State::where('name', $vprofile->state)->first();
-          $s_id = $s->id;}
-          else {
-            $s_id = "";
-          }
-
-          if($vprofile->city){
-          $c = City::where('name', $vprofile->city)->first();
-          $c_id = $c->id;}
-          else {
-            $c_id = "";
-          }
-
           $designation = Designation::orderBy('designation', 'asc')->pluck('designation');
           $industry = Industry::orderBy('industry', 'asc')->pluck('industry');
 
-          return view('volunteer.index', compact('user', 'vprofile', 'skills','countries','s_id','c_id','designation','industry')); 
+          return view('volunteer.index', compact('user', 'vprofile', 'skills','countries','designation','industry')); 
       }
 
   public function store(Request $request){
