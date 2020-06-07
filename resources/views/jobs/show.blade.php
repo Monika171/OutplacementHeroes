@@ -24,9 +24,11 @@
             </div>            
             @endif
             <div class="card">
+
                 {{--<div class="card-header">{{$job->title}}</div>--}}
 
                 <div class="card-body">
+                    
                     <p>
                         <h3>Description</h3>
                         {{$job->description}}
@@ -55,9 +57,14 @@
             <br>
             @if(Auth::check()&&Auth::user()->user_type=='seeker')
             @if(!$job->checkApplication())
-            <form action="{{route('apply',[$job->id])}}" method="POST">@csrf
-            <button type="submit" class="btn btn-success btn-sm" style="width: 100%;">Apply</button>
-            </form>
+           
+            <apply-component :jobid={{$job->id}}></apply-component>
+
+           {{--<form action="{{route('apply',[$job->id])}}" method="POST">@csrf
+            <button type="submit" class="btn btn-success" style="width: 100%;">Apply</button>
+           </form>--}}
+
+
             @endif
             @endif
         </div>

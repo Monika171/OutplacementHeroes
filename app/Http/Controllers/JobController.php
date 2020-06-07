@@ -33,8 +33,7 @@ class JobController extends Controller
         $position = Designation::orderBy('designation', 'asc')->pluck('designation');        
         $course = Course::orderBy('course', 'asc')->pluck('course');
         $specialization = Specialization::orderBy('specialization', 'asc')->pluck('specialization');
-        $countries = Country::all()->pluck('name','id');
-        
+        $countries = Country::all()->pluck('name','id');    
         
         return view('jobs.create', compact('position','course','specialization','countries'));
 
@@ -114,8 +113,29 @@ class JobController extends Controller
         $course = Course::orderBy('course', 'asc')->pluck('course');
         $specialization = Specialization::orderBy('specialization', 'asc')->pluck('specialization');
         $countries = Country::all()->pluck('name','id');
+
+        if($job->country){
+            $coun = Country::where('name', $job->country)->first();
+            $coun_id = $coun->id;}
+            else {
+              $coun_id = "";
+            }
+          
+          if($job->state){
+            $s = State::where('name', $job->state)->first();
+            $s_id = $s->id;}
+            else {
+              $s_id = "";
+            }
+    
+            if($job->city){
+            $c = City::where('name', $job->city)->first();
+            $c_id = $c->id;}
+            else {
+              $c_id = "";
+            }
         
-        return view('jobs.edit',compact('job','position','course','specialization','countries'));
+        return view('jobs.edit',compact('job','position','course','specialization','countries','coun_id','s_id','c_id'));
         //return view('profile.index', compact('user', 'profile', 'skills','countries','preferred_location','s_id','c_id','recent_designation','industry')); 
     }
 
@@ -202,6 +222,7 @@ class JobController extends Controller
 
     public function allJobs(Request $request){
        //copy/cut this method if needed for job-search volunteer.
+       //experimental, but works!!!
         //front search
 
            /*$search = $request->get('search');
@@ -220,11 +241,20 @@ class JobController extends Controller
                $category = $request->get('category_id');
                $city = $request->get('city');
 
+               if($keyword||$type||$category||$city){
+                   $jobs = Job::where('title','LIKE','%'.$keyword.'%')
+                   ->orWhere('type',$type)
+                   ->orWhere('category_id',$category)
+                   ->orWhere('city',$city)
+                   ->paginate(2);
 
-                //dd($keyword);
-               $jobs = Job::latest()->paginate(10);
-               return view('jobs.alljobs',compact('jobs'));
+                   return view('jobs.alljobs',compact('jobs'));
+               }else{
+                $jobs = Job::latest()->paginate(10);
+                return view('jobs.alljobs',compact('jobs'));
+               }
 
+               //dd($keyword);            
                //keyword = request('title');
    
            }

@@ -45,7 +45,7 @@
                 <option value="">-select-</option>
 
                     @foreach(App\Industry::all() as $cat)
-                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                        <option value="{{$cat->id}}">{{$cat->industry}}</option>
                     @endforeach
                 </select>
                 &nbsp;&nbsp;
@@ -69,7 +69,7 @@
             @if(count($jobs)>0)
                 @foreach($jobs as $job)
 
-              {{--<a href="{{route('jobs.show',[$job->id,$job->slug])}}" class="job-item d-block d-md-flex align-items-center  border-bottom @if($job->type=='parttime') partime @elseif($job->type=='fulltime')fulltime @else freelance   @endif;">--}}
+              <a href="{{route('jobs.show',[$job->id,$job->slug])}}" class="job-item d-block d-md-flex align-items-center  border-bottom @if($job->type=='parttime') partime @elseif($job->type=='fulltime')fulltime @else freelance   @endif;">
                 <div class="company-logo blank-logo text-center text-md-left pl-3">
 
                   @if(empty($job->company->logo))
@@ -106,7 +106,7 @@
                   @endif
 
                 </div>  
-              {{--</a>--}}
+              </a>
 
             @endforeach
             @else
@@ -119,7 +119,7 @@
 
 {{-- {{$jobs->appends(Illuminate\Support\Facades\Input::except('page'))->links()}}  --}}
 <div class="pagination center">  
-{{$jobs->links()}}
+  {{$jobs->appends(Illuminate\Support\Facades\Request::except('page'))->links()}}
 </div>
 
     </div>

@@ -37,10 +37,13 @@ Route::get('/jobs/my-job','JobController@myjob')->name('my.job');
 Route::get('/jobs/my-job/{id}/edit','JobController@edit')->name('job.edit');
 Route::post('/jobs/my-job/{id}/edit','JobController@update')->name('job.update');
 Route::get('/jobs/my-job/applications','JobController@applicant')->name('applicant');
-Route::get('/jobs/alljobs','JobController@allJobs')->name('alljobs'); //for job-search support volunteer?
+Route::get('/jobs/alljobs','JobController@allJobs')->name('alljobs'); //experimental, but works!!! for job-search support volunteer?
+Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show'); //Apply at this JD link
+Route::post('/applications/{id}','JobController@apply')->name('apply'); 
+//save and unsave job (seeker)
+Route::post('/save/{id}','FavouriteController@saveJob');
+Route::post('/unsave/{id}','FavouriteController@unSaveJob');
 
-Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show');
-Route::post('/applications/{id}','JobController@apply')->name('apply');
 //employer register
 Route::view('employer/register','auth.employer-register')->name('employer.register');
 Route::post('employer/register','EmployerRegisterController@employerRegister')->name('emp.register');
@@ -87,7 +90,7 @@ Route::get('/getCities/{id}', 'LocationController@getCities');
 Route::post('/profile/skills/store', 'SkillController@storeSkill');
 Route::post('/profile/skills/edit', 'SkillController@editSkill');
 
-//admin (Only can post something now! Will add more)
+//admin (Can Only post something now! Will add more)
 Route::get('/dashboard','DashboardController@index')->middleware('admin');
 Route::get('/dashboard/create','DashboardController@create')->middleware('admin');
 Route::post('/dashboard/create','DashboardController@store')->name('post.store')->middleware('admin');

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title></title>
-	<script defer src="{{ asset('js/app.js') }}"></script>
+	{{--<script defer src="{{ asset('js/app.js') }}"></script>--}}
 	@yield('select2css')
 		<style>
 				.pagination.center,
@@ -17,6 +17,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css" rel="stylesheet" />	
 </head>
 <body>
+<div id="app">
 	@include('../partials.nav')
 
 	@yield('content')
@@ -33,5 +34,8 @@
 	
 		<!-- toastr JS -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+		<script src="{{ asset('js/app.js') }}"></script>
+
+</div>
 </body>
 </html>
