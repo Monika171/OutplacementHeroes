@@ -53,197 +53,195 @@
         <div class="col-md-12 my-5">
           
            
-                <div class="card mb-3">
- 
-                   <div class="card-header">
-                        <a class="card-title">
-                          <h5 class="d-inline-block h5 text-dark font-weight-bold mb-0">Education</h5>  
-                           <button class="btn btn-primary float-right  py-0 mr-1 px-1" data-toggle="modal" data-target="#addeducation{{$user->id}}">
-                            <i class="far fa-edit text-white"></i> <span class="text-white h6">Add New</span>
-                           </button>
-                        </a>
+          <div class="card mb-3"> 
+              <div class="card-header">
+                  <a class="card-title">
+                    <h5 class="d-inline-block h5 text-dark font-weight-bold mb-0">Education</h5>  
+                      <button class="btn btn-primary float-right  py-0 mr-1 px-1" data-toggle="modal" data-target="#addeducation{{$user->id}}">
+                      <i class="far fa-edit text-white"></i> <span class="text-white h6">Add New</span>
+                      </button>
+                  </a>
+              </div>
+                <div class="card-body" id="educationBackgroundBody">                       
+                    @foreach($educations as $education)
+                    <div>
+                      <p class="float-right text-danger targetEducDiv"><i class="far fa-trash-alt" data-toggle="modal" data-target="#deleteEducation{{$education->id}}"></i></p>  
+                      <p class="float-right text-info mr-4"><i class="fas fa-pencil-alt" data-id="{{$education->id}}" data-toggle="modal" data-target="#editeducation{{$education->id}}"></i></p>
+                      <h5 class="h5 text-info"><strong>Education:</strong>&nbsp;{{$education->qualification}}</h5>
+                      <h6 class="h6 mb-2 text-muted"><strong>Course:</strong>&nbsp;{{$education->course}}</h6> 
+                      <h6 class="h6 mb-2 text-muted"><strong>Specialization:</strong>&nbsp;{{$education->specialization}}</h6>                             
+                      <h6 class="h6 mb-2 text-muted"><strong>Institute:</strong>&nbsp;{{$education->institute}}</h6>
+                      <h6 class="h6 mb-2 text-muted"><strong>Course Type:</strong>&nbsp;{{ $education->c_type }}</h6>
+                      <h6 class="h6 mb-2 text-muted"><strong>Performance Scale:</strong>&nbsp;{{ $education->performance_scale }}</h6>
+                      <h6 class="h6 mb-2 text-muted"><strong>Performance:</strong>&nbsp;{{ $education->performance }}</h6>
+                      <h6 class="h6 mb-2 text-muted"><strong>Passing Out Year:</strong>&nbsp;{{ $education->p_year }}</h6>
+                      <hr>
                     </div>
-                    <div class="card-body" id="educationBackgroundBody">                       
-                        @foreach($educations as $education)
-                        <div>
-                          <p class="float-right text-danger targetEducDiv"><i class="far fa-trash-alt" data-toggle="modal" data-target="#deleteEducation{{$education->id}}"></i></p>  
-                          <p class="float-right text-info mr-4"><i class="fas fa-pencil-alt" data-id="{{$education->id}}" data-toggle="modal" data-target="#editeducation{{$education->id}}"></i></p>
-                          <h5 class="h5 text-info"><strong>Education:</strong>&nbsp;{{$education->qualification}}</h5>
-                          <h6 class="h6 mb-2 text-muted"><strong>Course:</strong>&nbsp;{{$education->course}}</h6> 
-                          <h6 class="h6 mb-2 text-muted"><strong>Specialization:</strong>&nbsp;{{$education->specialization}}</h6>                             
-                          <h6 class="h6 mb-2 text-muted"><strong>Institute:</strong>&nbsp;{{$education->institute}}</h6>
-                          <h6 class="h6 mb-2 text-muted"><strong>Course Type:</strong>&nbsp;{{ $education->c_type }}</h6>
-                          <h6 class="h6 mb-2 text-muted"><strong>Performance Scale:</strong>&nbsp;{{ $education->performance_scale }}</h6>
-                          <h6 class="h5 mb-2 text-muted"><strong>Performance:</strong>&nbsp;{{ $education->performance }}</h6>
-                          <h6 class="h6 text-black"><strong>Passing Out Year:</strong>&nbsp;{{ $education->p_year }}</h6>
-                         <hr>
-                        </div>
 
-                          <!-- Edit Educational Background Modal -->
-                          <div class="modal fade" id="editeducation{{$education->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                             <form id="frmParameter3">
-                                <div class="modal-dialog modal-lg" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title text-info" id="exampleModalLabel">Edit Educational Background</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body addeducationbody"> 
-
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="fa fa-trophy"></i>&nbsp;Education</span>
-                                            </div>
-                                            {{--<input type="text" id="editQualification" class="form-control" name="edit_qualification" value="{{$education->qualification}}">--}}
-                                            <select id="editQualification" class="form-control" name="edit_qualification">
-                                              <option value="" {{$education->qualification==''?'selected':''}}>Select</option>
-                                              <option value="Doctorate/PhD" {{$education->qualification=='Doctorate/PhD'?'selected':''}}>Doctorate/PhD</option>
-                                              <option value="Masters/Post-Graduation" {{$education->qualification=='Masters/Post-Graduation'?'selected':''}}>Masters/Post-Graduation</option>
-                                              <option value="Graduation/Diploma" {{$education->qualification=='Graduation/Diploma'?'selected':''}}>Graduation/Diploma</option>
-                                              <option value="12th" {{$education->qualification=='12th'?'selected':''}}>12th</option>
-                                              <option value="10th" {{$education->qualification=='10th'?'selected':''}}>10th</option>
-                                              <option value="Below 10th" {{$education->qualification=='Below 10th'?'selected':''}}>Below 10th</option>
-                                             
-                                          </select>
-                                          </div>  
-                                                                        
-                                          <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="fas fa-graduation-cap"></i>&nbsp;Course</span>
-                                              
-                                            </div>
-                                            <select id="editCourse" class="form-control" name="edit_course">
-                                                    <option value="" {{$education->course==''?'selected':''}}>Select</option>                               
-                                                @foreach($course as $co)
-                                                    <option value="{{$co}}" {{$education->course==$co?'selected':''}}>{{$co}}</option>
-                                                @endforeach
-                                           </select>
-                                                
-                                          </div>
-
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
-                                              
-                                            </div>
-                                            <input type="text" id="editSpecialization" class="form-control" name="edit_specialization" value="{{$education->specialization}}">
-                                          </div>
-
-                                                
-                                             {{-- <div class="input-group mb-3">
-                                              <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
-                                              </div>
-                                                  <select id="editSpecialization" class="form-control" name="edit_specialization">
-                                                            <option value="" {{$education->specialization==''?'selected':''}}>Select</option>                               
-                                                        @foreach($specialization as $sp)
-                                                            <option value="{{$sp}}" {{$education->specialization==$sp?'selected':''}}>{{$sp}}</option>
-                                                        @endforeach
-                                                  </select>
-                                            </div>--}}                                        
-                                            
-                                          <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="fa fa-university"></i>&nbsp;Institute</span>
-                                            </div>
-                                            <input type="text" id="editInstitute" class="form-control" name="edit_institute" value="{{$education->institute}}">
-                                          </div>
-
-                                          <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="fa fa-hourglass-half"></i>&nbsp;Course Type</span>
-                                            </div>
-                                            
-                                            <select class="form-control" id="editCourseType" name="edit_c_type">
-                                              <option value="" {{$education->c_type==''?'selected':''}}>Select</option>
-                                              <option value="fulltime" {{$education->c_type=='fulltime'?'selected':''}}>Full Time</option>
-                                              <option value="parttime" {{$education->c_type=='parttime'?'selected':''}}>Part Time</option>
-                                              <option value="correspondence/distance Learning" {{$education->c_type=='correspondence/distance Learning'?'selected':''}}>Correspondence/Distance Learning</option>
-                                          </select>     
-                                          
-                                          </div>
-
-                                          <div class="row">
-
-                                            <div class="col-md-7">                                     
-                                                <div class="input-group mb-3">  
-                                                  <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fa fa-percent"></i><i class="fa fa-font"></i>&nbsp;Performance Scale</span>
-                                                  </div>
-                                                <select id="cmbParameter3" class="form-control forminputbox" name="cmbParameter3">
-                                                  <option value=""{{$education->c_type==''?'selected':''}}>---Select---</option>
-                                                  <option value="Percentage" {{$education->performance_scale=='Percentage'?'selected':''}}>Percentage</option>
-                                                  <option value="CGPA(Scale of 10)" {{$education->performance_scale=='CGPA(Scale of 10)'?'selected':''}}>CGPA(Scale of 10)</option>
-                                                  <option value="CGPA(Scale of 9)" {{$education->performance_scale=='CGPA(Scale of 9)'?'selected':''}}>CGPA(Scale of 9)</option>
-                                                  <option value="CGPA(Scale of 8)" {{$education->performance_scale=='CGPA(Scale of 8)'?'selected':''}}>CGPA(Scale of 8)</option>
-                                                  <option value="CGPA(Scale of 7)" {{$education->performance_scale=='CGPA(Scale of 7)'?'selected':''}}>CGPA(Scale of 7)</option>
-                                                  <option value="CGPA(Scale of 5)" {{$education->performance_scale=='CGPA(Scale of 5)'?'selected':''}}>CGPA(Scale of 5)</option>
-                                                  <option value="CGPA(Scale of 4)" {{$education->performance_scale=='CGPA(Scale of 4)'?'selected':''}}>CGPA(Scale of 4)</option>
-                                              </select>
-                                              
-                                                </div>
-                                            </div>
-                                          <div class="col-md-4">
-                                            <div class="input-group mb-3"> 
-                                                <div class="input-group-prepend">
-                                                <span class="input-group-text">Performance </span>
-                                                </div>
-                                                <input type="text" id="mytext3" class="form-control" name="mytext3" value="{{$education->performance}}"/>
-                                            
-                                              </div>
-                                          </div>
-                                          </div>
-
-
-                                          <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                              <span class="input-group-text"><i class="fa fa-calendar"></i>&nbsp;Passing Year</span>
-                                              
-                                            </div>
-                                            {{--<input type="text" id="editPassingYear" class="form-control" name="add_p_year" value="{{$education->p_year}}">--}}
-                                            <input type="text" id="editPassingYear" class="form-control datepicker-Y" name="edit_p_year" value="{{$education->p_year}}">
-                                          </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                      <button type="submit" class="btn btn-primary editEducation" data-dismiss="modal" data-id="{{$education->id}}">Save changes</button>
-                                    </div>
-                                  </div>
+                      <!-- Edit Educational Background Modal -->
+                      <div class="modal fade" id="editeducation{{$education->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <form id="frmParameter3">
+                            <div class="modal-dialog modal-lg" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title text-info" id="exampleModalLabel">Edit Educational Background</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
                                 </div>
-                             </form>
-                          </div>{{-- end modal --}}
+                                <div class="modal-body addeducationbody"> 
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fa fa-trophy"></i>&nbsp;Education</span>
+                                        </div>
+                                        {{--<input type="text" id="editQualification" class="form-control" name="edit_qualification" value="{{$education->qualification}}">--}}
+                                        <select id="editQualification" class="form-control" name="edit_qualification">
+                                          <option value="" {{$education->qualification==''?'selected':''}}>Select</option>
+                                          <option value="Doctorate/PhD" {{$education->qualification=='Doctorate/PhD'?'selected':''}}>Doctorate/PhD</option>
+                                          <option value="Masters/Post-Graduation" {{$education->qualification=='Masters/Post-Graduation'?'selected':''}}>Masters/Post-Graduation</option>
+                                          <option value="Graduation/Diploma" {{$education->qualification=='Graduation/Diploma'?'selected':''}}>Graduation/Diploma</option>
+                                          <option value="12th" {{$education->qualification=='12th'?'selected':''}}>12th</option>
+                                          <option value="10th" {{$education->qualification=='10th'?'selected':''}}>10th</option>
+                                          <option value="Below 10th" {{$education->qualification=='Below 10th'?'selected':''}}>Below 10th</option>
+                                          
+                                        </select>
+                                    </div>  
+                                                                    
+                                      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fas fa-graduation-cap"></i>&nbsp;Course</span>
+                                          
+                                        </div>
+                                        <select id="editCourse" class="form-control" name="edit_course">
+                                                <option value="" {{$education->course==''?'selected':''}}>Select</option>                               
+                                            @foreach($course as $co)
+                                                <option value="{{$co}}" {{$education->course==$co?'selected':''}}>{{$co}}</option>
+                                            @endforeach
+                                        </select>
+                                            
+                                      </div>
+
+                                    {{-- <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
+                                          
+                                        </div>
+                                        <input type="text" id="editSpecialization" class="form-control" name="edit_specialization" value="{{$education->specialization}}">
+                                      </div>--}}
+                                            
+                                          <div class="input-group mb-3">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
+                                          </div>
+                                              <select id="editSpecialization" class="form-control" name="edit_specialization">
+                                                        <option value="" {{$education->specialization==''?'selected':''}}>Select</option>                               
+                                                    @foreach($specialization as $sp)
+                                                        <option value="{{$sp}}" {{$education->specialization==$sp?'selected':''}}>{{$sp}}</option>
+                                                    @endforeach
+                                              </select>
+                                        </div>                                        
+                                        
+                                      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fa fa-university"></i>&nbsp;Institute</span>
+                                        </div>
+                                        <input type="text" id="editInstitute" class="form-control" name="edit_institute" value="{{$education->institute}}">
+                                      </div>
+
+                                      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fa fa-hourglass-half"></i>&nbsp;Course Type</span>
+                                        </div>
+                                        
+                                        <select class="form-control" id="editCourseType" name="edit_c_type">
+                                          <option value="" {{$education->c_type==''?'selected':''}}>Select</option>
+                                          <option value="fulltime" {{$education->c_type=='fulltime'?'selected':''}}>Full Time</option>
+                                          <option value="parttime" {{$education->c_type=='parttime'?'selected':''}}>Part Time</option>
+                                          <option value="correspondence/distance Learning" {{$education->c_type=='correspondence/distance Learning'?'selected':''}}>Correspondence/Distance Learning</option>
+                                        </select>     
+                                      
+                                      </div>
+
+                                      <div class="row">
+
+                                        <div class="col-md-7">                                     
+                                            <div class="input-group mb-3">  
+                                              <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-percent"></i><i class="fa fa-font"></i>&nbsp;Performance Scale</span>
+                                              </div>
+                                            <select id="cmbParameter3" class="form-control forminputbox" name="cmbParameter3">
+                                              <option value=""{{$education->c_type==''?'selected':''}}>---Select---</option>
+                                              <option value="Percentage" {{$education->performance_scale=='Percentage'?'selected':''}}>Percentage</option>
+                                              <option value="CGPA(Scale of 10)" {{$education->performance_scale=='CGPA(Scale of 10)'?'selected':''}}>CGPA(Scale of 10)</option>
+                                              <option value="CGPA(Scale of 9)" {{$education->performance_scale=='CGPA(Scale of 9)'?'selected':''}}>CGPA(Scale of 9)</option>
+                                              <option value="CGPA(Scale of 8)" {{$education->performance_scale=='CGPA(Scale of 8)'?'selected':''}}>CGPA(Scale of 8)</option>
+                                              <option value="CGPA(Scale of 7)" {{$education->performance_scale=='CGPA(Scale of 7)'?'selected':''}}>CGPA(Scale of 7)</option>
+                                              <option value="CGPA(Scale of 5)" {{$education->performance_scale=='CGPA(Scale of 5)'?'selected':''}}>CGPA(Scale of 5)</option>
+                                              <option value="CGPA(Scale of 4)" {{$education->performance_scale=='CGPA(Scale of 4)'?'selected':''}}>CGPA(Scale of 4)</option>
+                                          </select>
+                                          
+                                            </div>
+                                        </div>
+                                      <div class="col-md-4">
+                                        <div class="input-group mb-3"> 
+                                            <div class="input-group-prepend">
+                                            <span class="input-group-text">Performance </span>
+                                            </div>
+                                            <input type="text" id="mytext3" class="form-control" name="mytext3" value="{{$education->performance}}"/>
+                                        
+                                          </div>
+                                      </div>
+                                      </div>
 
 
-
-
-                          <!-- Delete Education Modal -->
-                              <div class="modal fade" id="deleteEducation{{$education->id}}">
-                                <div class="modal-dialog">
-                                  <div class="modal-content">
-                                  
-                                    <!-- Modal Header -->
-                                    <div class="modal-header">
-                                      <h4>REMOVE EDUCATION</h4>
-                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                      <h6 class="modal-title h6">Are you sure you want to delete <span class="text-info">"{{$education->institute}}"</span> from your profile?</h6>
-                                    </div>
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-danger text-white px-5" data-dismiss="modal">No</button>
-                                      <button type="button" class="btn btn-primary deleteEducation px-5" data-dismiss="modal" data-id="{{$education->id}}">Yes</button>
-                                    </div>
-                                    
-                                  </div>
+                                      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"><i class="fa fa-calendar"></i>&nbsp;Passing Year</span>
+                                          
+                                        </div>
+                                        {{--<input type="text" id="editPassingYear" class="form-control" name="add_p_year" value="{{$education->p_year}}">--}}
+                                        <input type="text" id="editPassingYear" class="form-control datepicker-Y" name="edit_p_year" value="{{$education->p_year}}">
+                                      </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="submit" class="btn btn-primary editEducation" data-dismiss="modal" data-id="{{$education->id}}">Save changes</button>
                                 </div>
                               </div>
-                          @endforeach
-                    </div>
+                            </div>
+                          </form>
+                      </div>{{-- end modal --}}
 
+
+
+
+                      <!-- Delete Education Modal -->
+                          <div class="modal fade" id="deleteEducation{{$education->id}}">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                              
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                  <h4>REMOVE EDUCATION</h4>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                  <h6 class="modal-title h6">Are you sure you want to delete <span class="text-info">"{{$education->institute}}"</span> from your profile?</h6>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-danger text-white px-5" data-dismiss="modal">No</button>
+                                  <button type="button" class="btn btn-primary deleteEducation px-5" data-dismiss="modal" data-id="{{$education->id}}">Yes</button>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+                      @endforeach
                 </div>
+
+          </div>
 
                     <!-- Add Educational Background Modal -->
                     <div class="modal fade" id="addeducation{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -297,16 +295,16 @@
                                     </select>                                                      
                                   </div>
 
-                                  <div class="input-group mb-3">
+                                  {{--<div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                       <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
                                       
                                     </div>
                                     <input type="text" id="addSpecialization" class="form-control" name="add_specialization">
-                                  </div>
+                                  </div>--}}
 
                                   
-                                {{--<div class="input-group mb-3">
+                                <div class="input-group mb-3">
                                   <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
                                   </div>
@@ -317,8 +315,9 @@
                                               <option value="{{$sp}}">{{$sp}}</option>
                                           @endforeach
                                     </select> 
+                                    
+                                </div>
                                       
-                                      --}}
 
              
                                   <div class="input-group mb-3">
@@ -398,7 +397,7 @@
                        </form>
                     </div>
 
-                    <div class="card mb-0">
+          <div class="card mb-0">
 
                   <div class="card-header">
                         <a class="card-title">
@@ -447,6 +446,7 @@
                                         </div>
                                         <input type="text" id="editCompany" class="form-control" value="{{$work->company}}">
                                       </div>
+
                                       <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-briefcase"></i>&nbsp;Industry</span>
@@ -459,6 +459,7 @@
                                       </select>
 
                                       </div>
+
                                       <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                           <span class="input-group-text"><i class="fa fa-address-card"></i>&nbsp;Designation</span>
@@ -495,13 +496,13 @@
                                       {{--<div class="form-group">
                                         <span class="input-group-text"><i class="fa fa-map"></i>&nbsp;Description</span>
                                         <textarea class="form-control" id="editWorkDescription" rows="3">{{$work->description}}</textarea>
-                                      </div>
-                                    </div>--}}
+                                      </div>--}}
+                                    </div>
 
-                                    <div class="modal-footer">
+                                      <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                       <button type="submit" class="btn btn-primary editWorkBackground" data-dismiss="modal" data-id="{{$work->id}}">Save changes</button>
-                                    </div>
+                                      </div>
                                   </div>
                                 </div>
                               </div>
@@ -529,6 +530,8 @@
                                   </div>
                                 </div>
                               </div>
+
+
                         @endforeach
                         </div>
                     </div>

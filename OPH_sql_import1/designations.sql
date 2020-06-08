@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2020 at 05:04 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.3.18
+-- Generation Time: Jun 08, 2020 at 11:58 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `new_lar`
+-- Database: `oph`
 --
 
 -- --------------------------------------------------------
@@ -117,7 +118,36 @@ INSERT INTO `designations` (`id`, `designation`, `created_at`, `updated_at`) VAL
 (76, 'Real estate officer', '0000-00-00', '0000-00-00'),
 (77, 'Residential appraiser', '0000-00-00', '0000-00-00'),
 (78, 'Residential real estate agent', '0000-00-00', '0000-00-00'),
-(79, 'Residential real estate broker', '0000-00-00', '0000-00-00');
+(79, 'Residential real estate broker', '0000-00-00', '0000-00-00'),
+(80, '. Net Developer - ASP/ C#', '0000-00-00', '0000-00-00'),
+(81, 'Javascript Developer', '0000-00-00', '0000-00-00'),
+(82, '.NET - Software Development Engineer', '0000-00-00', '0000-00-00'),
+(83, 'Account Manager', '0000-00-00', '0000-00-00'),
+(84, 'Academic Counselor', '0000-00-00', '0000-00-00'),
+(85, 'Active Directory Professional', '0000-00-00', '0000-00-00'),
+(86, 'Ad Sales Manager', '0000-00-00', '0000-00-00'),
+(87, 'Adavanced Analytics - Sas/spss/r', '0000-00-00', '0000-00-00'),
+(88, 'Admin Executive', '0000-00-00', '0000-00-00'),
+(89, 'Administration Head', '0000-00-00', '0000-00-00'),
+(90, 'Adobe Architect', '0000-00-00', '0000-00-00'),
+(91, 'Analyst', '0000-00-00', '0000-00-00'),
+(92, 'Android Developer', '0000-00-00', '0000-00-00'),
+(93, 'Android Engineer', '0000-00-00', '0000-00-00'),
+(94, 'Angular JS Developer', '0000-00-00', '0000-00-00'),
+(95, 'Architect', '0000-00-00', '0000-00-00'),
+(96, 'Area Manager', '0000-00-00', '0000-00-00'),
+(97, 'Backend Developer', '0000-00-00', '0000-00-00'),
+(98, 'Bar Manager', '0000-00-00', '0000-00-00'),
+(99, 'Big Data Developer', '0000-00-00', '0000-00-00'),
+(100, 'Big Data Hadoop Developer', '0000-00-00', '0000-00-00'),
+(101, 'Brand Manager', '0000-00-00', '0000-00-00'),
+(102, 'Business Development Executives', '0000-00-00', '0000-00-00'),
+(103, 'CAD Engineer', '0000-00-00', '0000-00-00'),
+(104, 'Career Consultant', '0000-00-00', '0000-00-00'),
+(105, 'Manager Sales', '0000-00-00', '0000-00-00'),
+(106, 'Media Sales Manager', '0000-00-00', '0000-00-00'),
+(107, 'Open Source Developer', '0000-00-00', '0000-00-00'),
+(108, 'Wordpress Developer', '0000-00-00', '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -137,7 +167,7 @@ ALTER TABLE `designations`
 -- AUTO_INCREMENT for table `designations`
 --
 ALTER TABLE `designations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
