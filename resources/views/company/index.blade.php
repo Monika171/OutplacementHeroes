@@ -1,4 +1,30 @@
 @extends('layouts.main')
+
+@section('select2css')
+<style>
+.holder {
+  background:rgb(255, 255, 255);
+  padding:0.5rem;
+  overflow: hidden;
+}
+.news {
+  animation : slide 20s linear infinite;
+  
+}
+
+@keyframes slide {
+  0% {
+    transform: translatex(0%)
+  }
+
+  100% {
+    transform: translatex(100%)
+  }
+}
+</style>
+@endsection
+
+
 @section('content')
 
 <div class="hero-wrap" style="height: 280px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
@@ -23,6 +49,19 @@
     <section class="ftco-section ftco-degree-bg">
       <div class="container">
         <div class="row">
+
+          <div class="col-md-12 my-0">
+            @if(Auth::check()&&Auth::user()->id==$company->user_id)
+            <div class="holder">
+              <div class="news">                
+                <p style="color: rgb(38, 6, 178); font-weight: bold; font-size: 26px;">
+                 Please share open roles at Hello@OutplacementHeros.Org
+                [Inconvenience is regretted]
+                </p>
+              </div>
+            </div>
+              @endif
+          </div>
           
           <div class="col-md-12 mb-5 ftco-animate">
             @if(empty($company->cover_photo))
