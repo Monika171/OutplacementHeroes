@@ -184,8 +184,8 @@
                         <h6 class="h6 mb-2 text-muted"><strong>Institute:</strong>&nbsp;{{$education->institute}}</h6>
                         <h6 class="h6 mb-2 text-muted"><strong>Course Type:</strong>&nbsp;{{ $education->c_type }}</h6>
                         <h6 class="h6 mb-2 text-muted"><strong>Performance Scale:</strong>&nbsp;{{ $education->performance_scale }}</h6>
-                        <h6 class="h5 mb-2 text-muted"><strong>Performance:</strong>&nbsp;{{ $education->performance }}</h6>
-                        <h6 class="h6 text-black"><strong>Passing Out Year:</strong>&nbsp;{{ $education->p_year }}</h6>
+                        <h6 class="h6 mb-2 text-muted"><strong>Performance:</strong>&nbsp;{{ $education->performance }}</h6>
+                        <h6 class="h6 mb-2 text-muted"><strong>Passing Out Year:</strong>&nbsp;{{ $education->p_year }}</h6>
                       <hr>
                       </div>
                     @endforeach

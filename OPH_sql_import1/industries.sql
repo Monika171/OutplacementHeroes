@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2020 at 05:14 PM
+-- Generation Time: Jun 08, 2020 at 11:42 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -40,23 +40,23 @@ CREATE TABLE `industries` (
 --
 
 INSERT INTO `industries` (`id`, `industry`, `created_at`, `updated_at`) VALUES
-(1, 'Accounting', NULL, NULL),
+(1, 'Accounting/Finance', NULL, NULL),
 (2, 'Airlines/Aviation', NULL, NULL),
 (3, 'Alternative Dispute Resolution', NULL, NULL),
 (4, 'Alternative Medicine', NULL, NULL),
-(5, 'Animation', NULL, NULL),
+(5, 'Animation/Gaming', NULL, NULL),
 (6, 'Apparel/Fashion', NULL, NULL),
-(7, 'Architecture/Planning', NULL, NULL),
+(7, 'Architecture/Planning/Interior Design', NULL, NULL),
 (8, 'Arts/Crafts', NULL, NULL),
 (9, 'Automotive', NULL, NULL),
 (10, 'Aviation/Aerospace', NULL, NULL),
-(11, 'Banking/Mortgage', NULL, NULL),
+(11, 'Banking/Financial Services/ Mortgage', NULL, NULL),
 (12, 'Biotechnology/Greentech', NULL, NULL),
 (13, 'Broadcast Media', NULL, NULL),
 (14, 'Building Materials', NULL, NULL),
 (15, 'Business Supplies/Equipment', NULL, NULL),
 (16, 'Capital Markets/Hedge Fund/Private Equity', NULL, NULL),
-(17, 'Chemicals', NULL, NULL),
+(17, 'Chemicals/PetroChemical/Plastic/Rubber', NULL, NULL),
 (18, 'Civic/Social Organization', NULL, NULL),
 (19, 'Civil Engineering', NULL, NULL),
 (20, 'Commercial Real Estate', NULL, NULL),
@@ -65,8 +65,8 @@ INSERT INTO `industries` (`id`, `industry`, `created_at`, `updated_at`) VALUES
 (23, 'Computer Networking', NULL, NULL),
 (24, 'Computer/Software Engineering', NULL, NULL),
 (25, 'Computer/Network Security', NULL, NULL),
-(26, 'Construction', NULL, NULL),
-(27, 'Consumer Electronics', NULL, NULL),
+(26, 'Construction/Engineering/Cement/Metals', NULL, NULL),
+(27, 'Consumer Electronics/Appliances/Durables', NULL, NULL),
 (28, 'Consumer Goods', NULL, NULL),
 (29, 'Consumer Services', NULL, NULL),
 (30, 'Cosmetics', NULL, NULL),
@@ -86,7 +86,7 @@ INSERT INTO `industries` (`id`, `industry`, `created_at`, `updated_at`) VALUES
 (44, 'Fine Art', NULL, NULL),
 (45, 'Fishery', NULL, NULL),
 (46, 'Food Production', NULL, NULL),
-(47, 'Food/Beverages', NULL, NULL),
+(47, 'Food/Beverages/FMCG', NULL, NULL),
 (48, 'Fundraising', NULL, NULL),
 (49, 'Furniture', NULL, NULL),
 (50, 'Gambling/Casinos', NULL, NULL),
@@ -95,7 +95,7 @@ INSERT INTO `industries` (`id`, `industry`, `created_at`, `updated_at`) VALUES
 (53, 'Government Relations', NULL, NULL),
 (54, 'Graphic Design/Web Design', NULL, NULL),
 (55, 'Health/Fitness', NULL, NULL),
-(56, 'Higher Education/Acadamia', NULL, NULL),
+(56, 'Higher Education/Academia', NULL, NULL),
 (57, 'Hospital/Health Care', NULL, NULL),
 (58, 'Hospitality', NULL, NULL),
 (59, 'Human Resources/HR', NULL, NULL),
@@ -107,7 +107,7 @@ INSERT INTO `industries` (`id`, `industry`, `created_at`, `updated_at`) VALUES
 (65, 'Insurance', NULL, NULL),
 (66, 'International Affairs', NULL, NULL),
 (67, 'International Trade/Development', NULL, NULL),
-(68, 'Internet', NULL, NULL),
+(68, 'Internet/Ecommerce', NULL, NULL),
 (69, 'Investment Banking/Venture', NULL, NULL),
 (70, 'Investment Management/Hedge Fund/Private Equity', NULL, NULL),
 (71, 'Judiciary', NULL, NULL),
@@ -139,7 +139,6 @@ INSERT INTO `industries` (`id`, `industry`, `created_at`, `updated_at`) VALUES
 (97, 'Non-Profit/Volunteering', NULL, NULL),
 (98, 'Oil/Energy/Solar/Greentech', NULL, NULL),
 (99, 'Online Publishing', NULL, NULL),
-(100, 'Other Industry', NULL, NULL),
 (101, 'Outsourcing/Offshoring', NULL, NULL),
 (102, 'Package/Freight Delivery', NULL, NULL),
 (103, 'Packaging/Containers', NULL, NULL),
@@ -186,7 +185,29 @@ INSERT INTO `industries` (`id`, `industry`, `created_at`, `updated_at`) VALUES
 (144, 'Wholesale', NULL, NULL),
 (145, 'Wine/Spirits', NULL, NULL),
 (146, 'Wireless', NULL, NULL),
-(147, 'Writing/Editing', NULL, NULL);
+(147, 'Writing/Editing', NULL, NULL),
+(148, 'Advertising / PR / MR / Event Management', NULL, NULL),
+(149, 'Agriculture / Dairy', NULL, NULL),
+(150, 'utomobile / Auto Anciliary / Auto Components', NULL, NULL),
+(151, 'BPO / Call Centre / ITES', NULL, NULL),
+(152, 'Brewery / Distillery', NULL, NULL),
+(153, 'Ceramics / Sanitary ware', NULL, NULL),
+(154, 'Courier / Transportation / Freight / Warehousing', NULL, NULL),
+(155, 'Electricals / Switchgears', NULL, NULL),
+(156, 'Export / Import', NULL, NULL),
+(157, 'Facility Management', NULL, NULL),
+(158, 'Food Processing', NULL, NULL),
+(159, 'Food Production', NULL, NULL),
+(160, 'Gems / Jewellery', NULL, NULL),
+(161, 'Government / Defence', NULL, NULL),
+(162, 'Heat Ventilation / Air Conditioning', NULL, NULL),
+(163, 'Industrial Products / Heavy Machinery', NULL, NULL),
+(164, 'IT-Hardware & Networking', NULL, NULL),
+(165, 'IT-Software / Software Services', NULL, NULL),
+(166, 'KPO / Research / Analytics', NULL, NULL),
+(167, 'Media / Entertainment / Internet', NULL, NULL),
+(168, 'Office Equipment / Automation', NULL, NULL),
+(169, 'Outsourcing/Offshoring', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -206,7 +227,7 @@ ALTER TABLE `industries`
 -- AUTO_INCREMENT for table `industries`
 --
 ALTER TABLE `industries`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
