@@ -2,13 +2,28 @@
 
 @section('select2css')
    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css" rel="stylesheet" />
+   
+   <link href="{{ asset('css/select2-bootstrap.min.css') }}" rel="stylesheet">
+   <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" rel="stylesheet" />-->
    <style>
     .form-group.required .control-label:after {
         content:"*";
         color:red;
       }
+
+      .select2-selection__rendered {
+        line-height: 47px !important;
+        }
+        .select2-container .select2-selection--single {
+            height: 51px !important;
+        }
+        .select2-selection__arrow {
+            height: 50px !important;
+        }
     </style>
 @endsection
+
+
 @section('content')
 
 <div class="hero-wrap" style="height: 410px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
@@ -62,8 +77,8 @@
 
                     <div class="form-group">
                         <label for="category">Job Category</label>
-							<select name="category" class="form-control">
-                                <option value="">Select</option>
+							<select name="category" class="form-control select1">
+                                <option value=""></option>
                                 @foreach(App\Industry::all() as $cat)
                                 <option value="{{$cat->id}}" {{$cat->id==$job->category_id?'selected':''}}>{{$cat->industry}}</option>
                                  @endforeach
@@ -133,8 +148,8 @@
 
                     <div class="form-group">
                         <label for="course">Qualification/Course</label>
-                        <select class="form-control" name="course">
-                                    <option value="" {{$job->course==''?'selected':''}}>Select</option>                                 
+                        <select class="form-control select1" name="course">
+                                    <option value="" {{$job->course==''?'selected':''}}></option>                                 
                                 @foreach($course as $co)
                                     <option value="{{$co}}" {{$job->course==$co?'selected':''}}>{{$co}}</option>
                                 @endforeach                                  
@@ -147,8 +162,8 @@
 
                     <div class="form-group">
                         <label for="specialization">Specialization</label>
-                        <select class="form-control" name="specialization">
-                                <option value="" {{$job->specialization==''?'selected':''}}>Select</option>                            
+                        <select class="form-control select1" name="specialization">
+                                <option value="" {{$job->specialization==''?'selected':''}}></option>                            
                                 @foreach($specialization as $sp)
                                 <option value="{{$sp}}" {{$job->specialization==$sp?'selected':''}}>{{$sp}}</option>
                             @endforeach                                  
@@ -280,7 +295,7 @@
                         <!--Notice period-->
 
                     <div class="form-group">
-                            <label for="notice_period"">Notice Period</label>
+                            <label for="notice_period">Notice Period</label>
                             <select class="form-control" name="notice_period">
                                 <option value="" {{$job->notice_period==''?'selected':''}}>Select</option>
                                 <option value="Immediately" {{$job->notice_period=='Immediately'?'selected':''}}>Immediately</option>
@@ -561,6 +576,11 @@
                 
             });
             
+            $('.select1').select2({
+                placeholder: "SELECT",
+                allowClear: true,
+
+        });     
 
     });
     </script>

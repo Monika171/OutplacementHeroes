@@ -34,9 +34,10 @@ class HomeController extends Controller
         if(auth::user()->user_type=='employer'){
             $id = auth()->user()->company->id;
             $company = auth()->user()->company->slug;
+
+            return redirect()->to('/jobs/my-job/applications');
             
-            return redirect()->to('/company/'.$id.'/'.$company);
-            
+            //return redirect()->to('/company/'.$id.'/'.$company);            
             //return redirect()->to('/company/create');
             //redirect("/user/{$user->id}/profile");
         }
@@ -44,27 +45,26 @@ class HomeController extends Controller
          
         if(auth::user()->user_type=='seeker'){
             $id = auth()->user()->id;
+            return redirect()->to('/user/profile/dashboard');
             
-            return redirect()->to('/user/'.$id);
-
-
+            //return redirect()->to('/user/'.$id);            
             //return redirect()->to('/user/profile');
             }
 
-            if(auth::user()->user_type=='volunteer'){
-                $id = auth()->user()->id;
-                return redirect()->to('/vseekers');
-                //return redirect()->to('/volunteer/'.$id);
-    
-                }
+        if(auth::user()->user_type=='volunteer'){
+            $id = auth()->user()->id;
+            return redirect()->to('/vseekers');
+            //return redirect()->to('/volunteer/'.$id);
+
+            }
 
             
-                if(auth::user()->user_type=='jvolunteer'){
-                    $id = auth()->user()->id;
-                    return redirect()->to('/jvseekers');
-                    //return redirect()->to('/volunteer/'.$id);
-        
-                    }
+        if(auth::user()->user_type=='jvolunteer'){
+            $id = auth()->user()->id;
+            return redirect()->to('/jvseekers');
+            //return redirect()->to('/volunteer/'.$id);
+
+            }
 
         $adminRole = Auth::user()->roles()->pluck('name');
             if($adminRole->contains('admin')){

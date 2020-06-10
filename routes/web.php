@@ -69,6 +69,7 @@ Route::post('user/profile_pic','UserController@profile_pic')->name('profile_pic'
 Route::post('user/profile_pic/delete','UserController@delete_spic')->name('spic.delete');
 Route::post('user/resume/delete','UserController@delete_resume')->name('resume.delete');
 Route::get('/user/{id}','UserController@show_profile')->name('user.show'); //checked
+Route::get('/user/profile/dashboard','UserController@show')->name('user.dashboard');
 //user work,education history
 Route::get('user/profile/history','UserController@history')->name('user.history');
 

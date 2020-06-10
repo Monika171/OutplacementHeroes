@@ -17,7 +17,7 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css" rel="stylesheet" />	
 </head>
 <body>
-<div id="app">
+
 	@include('../partials.nav')
 
 	@yield('content')
@@ -36,6 +36,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 		<script src="{{ asset('js/app.js') }}"></script>
 
-</div>
+
 </body>
 </html>

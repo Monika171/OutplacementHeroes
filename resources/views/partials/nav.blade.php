@@ -74,9 +74,22 @@
         @else
 
         
-            {{--@if(Auth::user()->user_type=='employer')
-            <li class="nav-item"><a href="{{route('job.create')}}" class="nav-link">Post a job</a></li>           
-            @endif--}}
+            @if(Auth::user()->user_type=='employer')
+            <li class="nav-item"><a href="{{route('applicant')}}" class="nav-link">Dashboard</a></li>
+            <li class="nav-item"><a href="{{route('job.create')}}" class="nav-link">Post a job</a></li>
+
+            @elseif(Auth::user()->user_type=='seeker')
+                    <li class="nav-item"><a href="{{route('user.dashboard')}}" class="nav-link">Dashboard</a></li>
+
+            @elseif(Auth::user()->user_type=='volunteer')
+            <li class="nav-item"><a href="{{route('vseeker.index')}}" class="nav-link">Dashboard</a></li>
+
+            @elseif(Auth::user()->user_type=='jvolunteer')
+            <li class="nav-item"><a href="{{route('jvseeker.index')}}" class="nav-link">Dashboard</a></li>
+
+            @else  
+            <li class="nav-item"><a href="/dashboard" class="nav-link">Dashboard</a></li>          
+            @endif
             
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -106,17 +119,14 @@
                 
                     @if(Auth::user()->user_type=='employer')
 
-                        <a class="dropdown-item" href="{{route('applicant')}}">
-                            {{ __('Applicants') }}
-                        </a>
-                        <a class="dropdown-item" href="{{route('my.job')}}">
-                            {{ __('My Jobs') }}
-                        </a>
                         <a class="dropdown-item" href="{{route('company.index',[Auth::user()->company->id,Auth::user()->company->slug])}}"
                         >
                             {{ __('My Company') }}
                         </a>
-                        
+
+                        <a class="dropdown-item" href="{{route('my.job')}}">
+                            {{ __('My Jobs') }}
+                        </a>                       
                     
                           
                     @elseif(Auth::user()->user_type=='seeker')
@@ -133,29 +143,19 @@
                             {{ __('Profile') }}
                         </a>
 
-                        <a class="dropdown-item" href="{{route('vseeker.index')}}"
-                        >
-                            {{ __('Dashboard') }}
-                        </a>
-
                         @elseif(Auth::user()->user_type=='jvolunteer')
 
-                        <a class="dropdown-item" href="{{route('jvolunteer.show',[Auth::user()->id])}}"
-                        >
+                        <a class="dropdown-item" href="{{route('jvolunteer.show',[Auth::user()->id])}}">
                             {{ __('Profile') }}
                         </a>
 
-                        <a class="dropdown-item" href="{{route('jvseeker.index')}}"
-                        >
-                            {{ __('Dashboard') }}
-                        </a>
 
-                        @else
+                        {{--@else
 
                         <a class="dropdown-item" href="/dashboard"
                         >
                             {{ __('Dashboard') }}
-                        </a>
+                        </a>--}}
                         
                     @endif
 

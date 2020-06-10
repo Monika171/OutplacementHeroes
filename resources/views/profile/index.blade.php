@@ -852,7 +852,7 @@
         $('.select1').select2({
           //width: 'resolve', 
           //theme: "bootstrap",
-          placeholder: "Please select Designation",
+          placeholder: "SELECT",
           allowClear: true,
 
         });

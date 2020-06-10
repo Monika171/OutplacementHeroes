@@ -2,13 +2,28 @@
 
 @section('select2css')
    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css" rel="stylesheet" />
+   
+   <link href="{{ asset('css/select2-bootstrap.min.css') }}" rel="stylesheet">
+   <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" rel="stylesheet" />-->
    <style>
     .form-group.required .control-label:after {
         content:"*";
         color:red;
       }
+
+      .select2-selection__rendered {
+        line-height: 47px !important;
+        }
+        .select2-container .select2-selection--single {
+            height: 51px !important;
+        }
+        .select2-selection__arrow {
+            height: 50px !important;
+        }
     </style>
 @endsection
+
+
 @section('content')
 
 <div class="hero-wrap" style="height: 410px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
@@ -17,7 +32,7 @@
           <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
               <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                   <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                 <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Post a Job</h1>
+                 <p style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Post a Job</p>
               </div>
           </div>
     </div>
@@ -37,7 +52,7 @@
             
             @endif
             <div class="card">
-                {{--<div class="card-header d-inline-block h5 text-dark font-weight-bold mb-0">Create a Job</div>--}}
+                {{--<div class="card-header d-inline-block h5 text-dark font-weight-bold mb-0">Post a New Job</div>--}}
                 
                 <form action="{{route('job.store')}}" method="POST">@csrf
                     <div class="card-body">
@@ -60,7 +75,7 @@
                     
                     </div>
 
-                    <div class="form-group">
+                    {{--<div class="form-group">
                         <label for="category">Job Category</label>
 							<select name="category" class="form-control">
                                 <option value="">Select</option>
@@ -71,7 +86,22 @@
                             @if($errors->has('category'))
                             <div class="error" style="color: red;">{{$errors->first('category')}}</div>
                            @endif                        
+                    </div> --}}
+
+                    <div class="form-group">
+                        <label for="category">Job Category</label>
+                        <select  class="form-control select1" name="category">
+                            <option value=""></option>
+                            @foreach(App\Industry::all() as $cat)
+                              <option value="{{$cat->id}}">{{$cat->industry}}</option>
+                            @endforeach
+                          </select>
+                          @if($errors->has('category'))
+                            <div class="error" style="color: red;">{{$errors->first('category')}}</div>
+                           @endif                        
                     </div>
+                        
+                        
 
                     <div class="form-group  required">
                         <label for="position" class="control-label">Position</label>                        
@@ -133,8 +163,8 @@
 
                     <div class="form-group">
                         <label for="course">Qualification/Course</label>
-                        <select class="form-control" name="course">
-                                    <option value="">Select</option>                               
+                        <select class="form-control select1" name="course">
+                                    <option value=""></option>                               
                                 @foreach($course as $co)
                                     <option value="{{$co}}">{{$co}}</option>
                                 @endforeach                                  
@@ -147,8 +177,8 @@
 
                     <div class="form-group">
                         <label for="specialization">Specialization</label>
-                        <select class="form-control" name="specialization">
-                                <option value="">Select</option>                            
+                        <select class="form-control select1" name="specialization">
+                                <option value=""></option>                            
                                 @foreach($specialization as $sp)
                                 <option value="{{$sp}}">{{$sp}}</option>
                             @endforeach                                  
@@ -425,7 +455,6 @@
 
 
 @section('jsplugins')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js"></script>
  
 <script type="text/javascript">
@@ -494,10 +523,14 @@
                     $('select[name="city"]').empty();
                 }
                 
-                //console.log('LISTENING')
-                
+                //console.log('LISTENING')                
             });
-            
+
+            $('.select1').select2({
+                placeholder: "SELECT",
+                allowClear: true,
+
+        });            
 
     });
     </script>

@@ -16,6 +16,7 @@ use App\Designation;
 use App\Industry;
 use App\Specialization;
 use App\Course;
+use App\Job;
 use Auth;
 
 
@@ -251,6 +252,12 @@ class UserController extends Controller
 
                           return view('listseeker.show', compact('user'));
                           //return view('welcome',compact('jobs', 'companies'));
+
+                      }
+
+                      public function show(){
+                        $jobs  = Auth::user()->favorites;
+                        return view('profile.dashboard',compact('jobs'));
 
                       }
 
