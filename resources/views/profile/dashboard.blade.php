@@ -19,7 +19,7 @@
 
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <h2>Your saved job.</h2>
+            <h2>Saved jobs</h2>
 
             @if(count($jobs)>0)
             @foreach($jobs as $job)
@@ -43,8 +43,7 @@
             @endforeach
 
             @else
-            you have not  favourited any jobs to show.
-            <a href="/">Find Jobs</a>
+            Oops! There are no saved job posts or the same must have expired.            
             @endif
 
 

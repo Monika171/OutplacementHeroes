@@ -34,8 +34,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/jobs/create','JobController@create')->name('job.create');
 Route::post('/jobs/create','JobController@store')->name('job.store');
 Route::get('/jobs/my-job','JobController@myjob')->name('my.job');
+Route::get('/jobs/my-job/{id}/toggle','JobController@toggle')->name('job.toggle');//change job status in an instant!
 Route::get('/jobs/my-job/{id}/edit','JobController@edit')->name('job.edit');
 Route::post('/jobs/my-job/{id}/edit','JobController@update')->name('job.update');
+Route::post('/jobs/my-job/{id}/delete','JobController@destroy')->name('job.destroy');
 Route::get('/jobs/my-job/applications','JobController@applicant')->name('applicant');
 Route::get('/jobs/alljobs','JobController@allJobs')->name('alljobs'); //experimental, but works!!! for job-search support volunteer?
 Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show'); //Apply at this JD link

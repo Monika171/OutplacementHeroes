@@ -15,6 +15,7 @@ use App\Industry;
 use App\Designation;
 use App\Specialization;
 use App\Course;
+use DB;
 
 
 class JobController extends Controller
@@ -100,8 +101,19 @@ class JobController extends Controller
      }
 
      public function myjob(){
-        $jobs = Job::where('user_id',auth()->user()->id)->get();
-        return view('jobs.myjob',compact('jobs'));
+        $user_id = auth()->user()->id;
+        $company = Company::where('user_id',$user_id)->first();
+        //$jobs = Job::where('user_id',$user_id)->get();
+        $jobs = Job::where('user_id',$user_id)->latest()->paginate(10);
+        return view('jobs.myjob',compact('jobs','company'));
+    }
+
+    public function toggle($id){
+        $job = Job::find($id);
+        $job->status = !$job->status;
+        $job->save();
+        return redirect()->back()->with('message','Status updated successfully');
+
     }
 
     public function edit($id){
@@ -198,6 +210,16 @@ class JobController extends Controller
             
         ]);
         return redirect()->back()->with('message','Job  Sucessfully Updated!');
+
+    }
+
+    public function destroy(Request $request,$id){       
+        
+        $job = Job::findOrFail($id);
+        $job->delete(); 
+        DB::table('job_user')->where('job_id', '=', $id)->delete(); 
+        DB::table('favourites')->where('job_id', '=', $id)->delete();  //use foreign key better!           
+        return redirect()->back()->with('message','Job Post Successfully Deleted');
 
     }
 

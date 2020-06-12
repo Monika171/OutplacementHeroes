@@ -35,7 +35,7 @@ class HomeController extends Controller
             $id = auth()->user()->company->id;
             $company = auth()->user()->company->slug;
 
-            return redirect()->to('/jobs/my-job/applications');
+            return redirect()->to('/jobs/my-job');
             
             //return redirect()->to('/company/'.$id.'/'.$company);            
             //return redirect()->to('/company/create');

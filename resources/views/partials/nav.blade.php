@@ -46,20 +46,14 @@
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                
-                    
                         <a class="dropdown-item" href="{{ route('volunteer.register') }}">
                             <strong>{{ __('Mentor Support Volunteer') }}</strong>
-                        </a>
-                    
-                          
-                    
+                        </a>                 
 
                         <a class="dropdown-item" href="{{ route('jvolunteer.register') }}"
                         >
                         <strong>{{ __('Job-Search Support Volunteer') }}</strong>
                         </a>
-
                         
                 </div>
             </li>
@@ -75,7 +69,8 @@
 
         
             @if(Auth::user()->user_type=='employer')
-            <li class="nav-item"><a href="{{route('applicant')}}" class="nav-link">Dashboard</a></li>
+
+            <li class="nav-item"><a href="{{route('my.job')}}" class="nav-link">Dashboard</a></li>
             <li class="nav-item"><a href="{{route('job.create')}}" class="nav-link">Post a job</a></li>
 
             @elseif(Auth::user()->user_type=='seeker')
@@ -124,8 +119,8 @@
                             {{ __('My Company') }}
                         </a>
 
-                        <a class="dropdown-item" href="{{route('my.job')}}">
-                            {{ __('My Jobs') }}
+                        <a class="dropdown-item" href="{{route('applicant')}}">
+                            {{ __('All Applicants') }}
                         </a>                       
                     
                           

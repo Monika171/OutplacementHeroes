@@ -49,8 +49,8 @@
                 @if($post->status=='0')
                    <a href="{{route('post.toggle',[$post->id])}}" class="badge badge-primary"> Draft</a>
                     @else
-                   <a href="{{route('post.toggle',[$post->id])}}" class="badge badge-success"> Live</a>
-                @endif
+                    <a href="{{route('post.toggle',[$post->id])}}" class="badge badge-success">Live</a>
+                @endif 
             </td>
               <td>{{$post->created_at->diffForHumans()}}</td>
               <td>
