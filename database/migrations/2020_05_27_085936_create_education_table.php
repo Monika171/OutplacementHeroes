@@ -23,7 +23,8 @@ class CreateEducationTable extends Migration
             $table->string('performance_scale')->nullable();
             $table->decimal('performance', 8, 2)->nullable();
             $table->string('p_year')->nullable();
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');   
             $table->timestamps();
         });
     }

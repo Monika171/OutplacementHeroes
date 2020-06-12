@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `specializations`
 --
 
+DROP TABLE IF EXISTS `specializations`;
 CREATE TABLE `specializations` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `specialization` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
