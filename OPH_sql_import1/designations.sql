@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `designations`
 --
 
+DROP TABLE IF EXISTS `designations`;
 CREATE TABLE `designations` (
   `id` int(11) NOT NULL,
   `designation` varchar(50) NOT NULL,

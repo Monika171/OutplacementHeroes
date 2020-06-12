@@ -15,8 +15,10 @@ class CreateJobSkillTable extends Migration
     {
         Schema::create('job_skill', function (Blueprint $table) {
             $table->id();
-            $table->integer('job_id');
-            $table->integer('skill_id');
+            $table->unsignedBigInteger('job_id');
+            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade');
+            $table->unsignedBigInteger('skill_id');
+            $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade'); 
             $table->timestamps();
         });
     }

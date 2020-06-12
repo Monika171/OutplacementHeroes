@@ -15,7 +15,8 @@ class CreateJvolunteerProfilesTable extends Migration
     {
         Schema::create('jvolunteer_profiles', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');   
             $table->string('dob');
             $table->string('gender'); 
             $table->string('phone')->nullable();

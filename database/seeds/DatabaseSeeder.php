@@ -2,10 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
-use App\Profile;
-use App\Company;
-use App\VolunteerProfile;
 use App\Role;
+use Illuminate\Support\Facades\Schema;
 //use App\Category;
 
 class DatabaseSeeder extends Seeder
@@ -17,10 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
 
         Role::truncate();
 
-        $adminRole = Role::create(['name'=>'admin']);
+        $this->call(UserTableSeeder::class);
+        $this->command->info('The admin data has been seeded!');
         Role::create(['name'=>'seeker']);  //Job Seeker
         Role::create(['name'=>'employer']); //Hiring employer
         Role::create(['name'=>'semployer']);  //Separating employer      
@@ -28,16 +28,9 @@ class DatabaseSeeder extends Seeder
         Role::create(['name'=>'jvolunteer']);  //Job Search Support Volunteer
         Role::create(['name'=>'consultant']);  //Consultant
 
-        $admin = User::create([
-            'name'=>'admin',
-            'user_type'=>'admin',
-            'email'=>'hello@outplacementheros.org',
-            'email_verified_at'=>NOW(),
-            'password'=>bcrypt('2020hired')
-            
-        ]);
+        $this->command->info('All other roles have been seeded!');
 
-        $admin->roles()->attach($adminRole);
+        Schema::enableForeignKeyConstraints();
        
 
     }
