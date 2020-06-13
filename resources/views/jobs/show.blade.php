@@ -1,4 +1,20 @@
 @extends('layouts.main')
+
+@section('select2css')  
+<style>
+p {
+  font-size: 18px;
+}
+
+.badge {
+    position: relative;
+    top: -25px;
+    left: -23px;
+}
+
+</style>
+@endsection
+
 @section('content')
 
 <div class="hero-wrap" style="height: 410px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
@@ -7,18 +23,18 @@
         <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
             <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                 <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-               <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{$job->title}}</h1>
-            </div>
+               <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{$job->title}}</h1>           
+			</div>
         </div>
   </div>
 </div>
 
-<br><br>
 
 
-     <div class="container">
-
-      @if(Session::has('message'))
+    <div class="ftco-section bg-light">
+      <div class="container">
+	  
+	        @if(Session::has('message'))
 
       <div class="alert alert-success">{{Session::get('message')}}</div>
       @endif
@@ -36,92 +52,239 @@
       </div>
 
       @endif
-      
-       <div class="row" id="app">
+        <div class="row" id="app">               
+          <div class="col-md-12 col-lg-8 mb-5 p-5 bg-white">  
 
+              <div class="row form-group mb-2">
+                <div class="col-md-12"><h5>
+                  <i class="fa fa-sticky-note" aria-hidden="true" style="color: rgb(107, 107, 150); font-size: 20px;"></i>
+                  &nbsp;&nbsp; Description</h5></div>
+                <div class="col-md-12 my-0 mb-md-0">
+                  <p> {{$job->description}}</p>
+                </div>
+              </div>
 
+              <div class="row">
+                <div class="col-md-6">
+                  
+                  <div class="row form-group mb-2">
+                    <div class="col-md-12"><h5><i class="fa fa-briefcase" aria-hidden="true" style="color: rgb(107, 107, 150); font-size: 20px;"></i>
+                      &nbsp;&nbsp; Position:</h5></div>
+                    <div class="col-md-12 my-0 mb-md-0">
+                      <p>{{$job->position}}</p>
+                    </div>
+                  </div>
 
+                </div>
+                <div class="col-md-6">
 
-          {{--<div class="title" style="margin-top: 20px;">
-                <h2>{{$job->title}}</h2> 
+                  <div class="row form-group mb-2">
+                    <div class="col-md-12"><h5><i class="fa fa-briefcase" aria-hidden="true" style="color: rgb(107, 107, 150); font-size: 20px;"></i>
+                      &nbsp;&nbsp; Industry:</h5></div>
+                    <div class="col-md-12 my-0 mb-md-0">
+                      <p>@foreach(App\Industry::all() as $cat)
+                      {{$cat->id==$job->category_id?$cat->industry:''}}         
+                      @endforeach
+                    </p> 
+                    </div>
+                  </div>
+                
+                
+                </div>
+              </div>
 
-          </div>--}}
+              <div class="row form-group mb-2">
+                <div class="col-md-12"><h5><i class="fa fa-briefcase" aria-hidden="true" style="color: rgb(107, 107, 150); font-size: 20px;"></i>
+                  &nbsp;&nbsp; Experience Required:</h5></div>
+                <div class="col-md-12 my-0 mb-md-0">
+                  <p>{{$job->experience}}&nbsp;years</p>
+                </div>
+              </div>
 
-      {{--<img src="{{asset('hero-job-image.jpg')}}" style="width: 100%;">--}}
+              <div class="row">
+                <div class="col-md-6">
 
-          <div class="col-lg-8">
+              <div class="row form-group mb-2">
+                <div class="col-md-12"><h5><i class="fa fa-credit-card" aria-hidden="true" style="color: rgb(107, 107, 150); font-size: 20px;"></i>
+                  &nbsp;&nbsp; Salary:</h5></div>
+                <div class="col-md-12 my-0 mb-md-0">
+                  <p>{{$job->salary}}</p>
+                </div>
+              </div>
 
-            <div class="p-4 mb-8 bg-white">
-              <!-- icon-book mr-3-->
-              <h3 class="h5 text-black mb-3"><i class="fa fa-book" style="color: blue;">&nbsp;</i>Description</h3>
-              <p> {{$job->description}}.</p>
-              
             </div>
+                <div class="col-md-6">
 
+              <div class="row form-group mb-2">
+                <div class="col-md-12"><h5><i class="fa fa-users" style="color: rgb(107, 107, 150); font-size: 20px;"></i>
+                  &nbsp;&nbsp; Number of Vacancy:</h5></div>
+                <div class="col-md-12 my-0 mb-md-0">
+                  <p>{{$job->number_of_vacancy }}</p>
+                </div>
+              </div>
 
-            <div class="p-4 mb-8 bg-white">
-              <!--icon-align-left mr-3-->
-              <h3 class="h5 text-black mb-3"><i class="fa fa-user" style="color: blue;">&nbsp;</i>Roles and Responsibilities</h3>
-              <p>{{$job->roles}} .</p>
+                </div>
+              </div>
+
+              <div class="row form-group mb-2">
+                <div class="col-md-12"><h5><i class="fa fa-briefcase" aria-hidden="true"style="color: rgb(107, 107, 150); font-size: 20px;"></i>
+                  &nbsp;&nbsp; Notice Period:</h5></div>
+                <div class="col-md-12 my-0 mb-md-0">
+                  <p>{{$job->notice_period}}</p>
+                </div>
+              </div>
+
+              <div class="row form-group mb-2">
+                <div class="col-md-12"><h5><i class="fa fa-briefcase" aria-hidden="true" style="color: rgb(107, 107, 150); font-size: 20px;"></i>
+                  &nbsp;&nbsp; Roles and Responsibilities:</h5></div>
+                <div class="col-md-12 my-0 mb-md-0">
+                  <p>{{$job->roles}}</p>
+                </div>
+              </div>
+
+              <div class="row form-group mb-2">
+                <div class="col-md-12"><h5><i class="fa fa-briefcase" aria-hidden="true"style="color: rgb(107, 107, 150); font-size: 20px;"></i>
+                  &nbsp;&nbsp; Preferences:</h5></div>
+                <div class="col-md-12 my-0 mb-md-0">
+                  <p>{{$job->preferences}}</p>
+                </div>
+              </div>
+
+			  {{--<div class="row form-group mb-2">
+                <div class="col-md-12"><h5><i class="fa fa-briefcase" aria-hidden="true" style="color: rgb(107, 107, 150); font-size: 20px;"></i>
+                  &nbsp;&nbsp; Employment Type:</h5></div>
+                <div class="col-md-12 my-0 mb-md-0">
+                  <p>{{$job->type}}</p>
+                </div>
+              </div>
+
               
+			  <div class="row form-group mb-2">
+          <div class="col-md-12"><h5><i class="fa fa-briefcase" aria-hidden="true" style="color: rgb(107, 107, 150); font-size: 20px;"></i>
+            &nbsp;&nbsp; Function</h5></div>
+          <div class="col-md-12 my-0 mb-md-0">
+            <p>{{$job->function}} </p>
+          </div>
+        </div>--}}
+
+        <div class="row">
+          <div class="col-md-4">
+
+            <div class="row form-group mb-2">
+              <div class="col-md-12"><h5><i class="fas fa-graduation-cap" aria-hidden="true" style="color: rgb(107, 107, 150); font-size: 20px;"></i>
+                &nbsp;Qualification:</h5></div>
+              <div class="col-md-12 my-0 mb-md-0">
+                <p>{{$job->course}} </p>
+              </div>
             </div>
-            <div class="p-4 mb-8 bg-white">
-              <h3 class="h5 text-black mb-3"><i class="fa fa-users" style="color: blue;">&nbsp;</i>Number of vacancy</h3>
-              <p>{{$job->number_of_vacancy }} .</p>
-              
-            </div>
-            <div class="p-4 mb-8 bg-white">
-              <h3 class="h5 text-black mb-3"><i class="fa fa-clock-o" style="color: blue;">&nbsp;</i>Experience</h3>
-              <p>{{$job->experience}}&nbsp;years</p>
-              
-            </div>
-            <div class="p-4 mb-8 bg-white">
-              <h3 class="h5 text-black mb-3"><i class="fa fa-venus-mars" style="color: blue;">&nbsp;</i>Gender</h3>
-              <p>{{$job->gender}} </p>
-              
-            </div>
-            <div class="p-4 mb-8 bg-white">
-              <h3 class="h5 text-black mb-3"><i class="fa fa-dollar" style="color: blue;">&nbsp;</i>Salary</h3>
-              <p>{{$job->salary}}</p>
+          </div>
+          <div class="col-md-4">
+
+            <div class="row form-group mb-2">
+              <div class="col-md-12"><h5><i class="fa fa-certificate" aria-hidden="true" style="color: rgb(107, 107, 150); font-size: 20px;"></i>
+                &nbsp;Specialization:</h5></div>
+              <div class="col-md-12 my-0 mb-md-0">
+                <p>{{$job->specialization}} </p>
+              </div>
             </div>
 
           </div>
+          <div class="col-md-4">
 
-          
-            <div class="col-md-4 p-4 site-section bg-light">
-              <h3 class="h5 text-black mb-3 text-center">Short Info</h3>
-                  <p>Company name:{{$job->company->cname}}</p>
-                <p>City:{{$job->city}}</p>
-                    <p>Employment Type:{{$job->type}}</p>
-                    <p>Position:{{$job->position}}</p>
-                    <p>Posted:{{$job->created_at->diffForHumans()}}</p>
-                    <p>Last date to apply:{{ date('F d, Y', strtotime($job->last_date)) }}</p>
+			  <div class="row form-group mb-2">
+          <div class="col-md-12"><h5><i class="fa fa-user" aria-hidden="true" style="color: rgb(107, 107, 150); font-size: 20px;"></i>
+            &nbsp;Gender:</h5></div>
+          <div class="col-md-12 my-0 mb-md-0">
+            <p>{{$job->gender}} </p>
+          </div>
+        </div>
 
+      </div>        
+    </div>
+  </div>
 
+          <div class="col-lg-4">
+		  <div class="p-4 mb-3 bg-white">
+                                              
+        <small class="badge badge-success mb-2">Posted:{{$job->created_at->diffForHumans()}}
+        </small>
+              <h3 class="h5 text-black mb-3">Last date to apply:</h3>              
+              <p class="mb-4">{{ date('F d, Y', strtotime($job->last_date)) }}</p>            
+            
+              <h3 class="h5 text-black mb-3">Job Location</h3>              
+              <p class="mb-4">{{$job->address_line1}}&nbsp;{{$job->address_line2}}&nbsp;<br>
+                {{$job->city}},&nbsp;{{$job->state}}&nbsp;{{$job->pincode}}</p>            
+            
+              <h3 class="h5 text-black mb-3">Company Name</h3>              
+              <p class="mb-4">{{$job->company->cname}}</p>
+				<p><a href="{{route('company.index',[$job->company->id,$job->company->slug])}}" class="btn btn-warning" style="width: 100%;">Visit Company Page</a></p>
 
-              <p><a href="{{route('company.index',[$job->company->id,$job->company->slug])}}" class="btn btn-warning" style="width: 100%;">Visit Company Page</a></p>
-              <p>
-        @if(Auth::check()&&Auth::user()->user_type=='seeker')
+            </div>
+            
+            <div class="p-4 mb-3 bg-white">
+              <!--<h3 class="h5 text-black mb-3">More Info</h3>-->
+                            <p>
+            @if(Auth::check()&&Auth::user()->user_type=='seeker')
            
 
-            @if(!$job->checkApplication())
-            
-            <apply-component :jobid={{$job->id}}></apply-component>
-            @else
-            <center><span style="color: #000;">You applied this job</span></center>
-            @endif
-<br>
-            <favorite-component :jobid={{$job->id}} :favorited={{$job->checkSaved()?'true':'false'}}  ></favorite-component>
-            
-            
+                @if(!$job->checkApplication())
+                
+                <apply-component :jobid={{$job->id}}></apply-component>
+                @else
+                <center><span style="color: #000;">You applied this job</span></center>
+                @endif
+            <br>
+                <favorite-component :jobid={{$job->id}} :favorited={{$job->checkSaved()?'true':'false'}}  ></favorite-component>                     
 
             @endif
+
+            @if(Auth::check()&&Auth::user()->id==$company->user_id)
+            <a class="float-left text-success mx-0" href="{{route('job.edit',[$job->id])}}"><strong>
+              <i class="fas fa-pencil-alt"></i>&nbsp;E</strong>
+            </a>
+            <br>
+          <!-- Button trigger modal -->
+             {{--<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delJob{{$job->id}}">
+                Delete
+              </button>--}}
+
+              <a class="float-right text-danger mx-0" href="#" data-toggle="modal" data-target="#delJob{{$job->id}}">
+              <strong><i class="far fa-trash-alt"></i>&nbsp;D</strong>
+              </a>
+
+              <!-- Modal -->
+              <div class="modal fade" id="delJob{{$job->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Delete Job Post</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Are you sure?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <form action="{{route('job.destroy',[$job->id])}}" method="POST">@csrf
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Modal end-->
+
+            @endif
+
+
 
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</div>
-</div>
-
-     </div>
-   
-@endsection
+	@endsection	

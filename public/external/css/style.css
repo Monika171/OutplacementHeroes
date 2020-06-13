@@ -7270,7 +7270,7 @@ a.text-dark:hover, a.text-dark:focus {
 body {
   font-family: "Nunito Sans", Arial, sans-serif;
   background: #fff;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.8;
   font-weight: 400;
   color: #999999; }
@@ -7317,7 +7317,7 @@ h1, h2, h3, h4, h5,
     .ftco-navbar-light .navbar-nav {
       padding-bottom: 10px; } }
   .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
-    font-size: 16px;
+    font-size: 17px;
     padding-top: .9rem;
     padding-bottom: .9rem;
     padding-left: 20px;
@@ -7387,7 +7387,7 @@ h1, h2, h3, h4, h5,
     cursor: pointer;
     padding-right: 0;
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 17px;
     letter-spacing: .1em; }
     .ftco-navbar-light .navbar-toggler:hover, .ftco-navbar-light .navbar-toggler:focus {
       text-decoration: none;
@@ -7440,7 +7440,7 @@ h1, h2, h3, h4, h5,
       cursor: pointer;
       padding-right: 0;
       text-transform: uppercase;
-      font-size: 16px;
+      font-size: 17px;
       letter-spacing: .1em; }
     .ftco-navbar-light.scrolled .nav-link {
       padding-top: 0.9rem !important;

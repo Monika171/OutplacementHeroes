@@ -110,7 +110,7 @@
                                                                     
                                       <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="fas fa-graduation-cap"></i>&nbsp;Course</span>
+                                          <span class="input-group-text"><i class="fas fa-graduation-cap" aria-hidden="true"></i>&nbsp;Course</span>
                                           
                                         </div>
                                         <select id="editCourse" class="form-control" name="edit_course">
@@ -124,7 +124,7 @@
 
                                     {{-- <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
+                                          <span class="input-group-text"><i class="fa fa-certificate" aria-hidden="true"></i>&nbsp;Specialization</span>
                                           
                                         </div>
                                         <input type="text" id="editSpecialization" class="form-control" name="edit_specialization" value="{{$education->specialization}}">
@@ -132,7 +132,7 @@
                                             
                                           <div class="input-group mb-3">
                                           <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
+                                            <span class="input-group-text"><i class="fa fa-certificate" aria-hidden="true"></i>&nbsp;Specialization</span>
                                           </div>
                                               <select id="editSpecialization" class="form-control" name="edit_specialization">
                                                         <option value="" {{$education->specialization==''?'selected':''}}>Select</option>                               
@@ -144,14 +144,14 @@
                                         
                                       <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="fa fa-university"></i>&nbsp;Institute</span>
+                                          <span class="input-group-text"><i class="fa fa-university" aria-hidden="true"></i>&nbsp;Institute</span>
                                         </div>
                                         <input type="text" id="editInstitute" class="form-control" name="edit_institute" value="{{$education->institute}}">
                                       </div>
 
                                       <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="fa fa-hourglass-half"></i>&nbsp;Course Type</span>
+                                          <span class="input-group-text"><i class="fa fa-hourglass-half" aria-hidden="true"></i>&nbsp;Course Type</span>
                                         </div>
                                         
                                         <select class="form-control" id="editCourseType" name="edit_c_type">
@@ -168,7 +168,10 @@
                                         <div class="col-md-7">                                     
                                             <div class="input-group mb-3">  
                                               <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fa fa-percent"></i><i class="fa fa-font"></i>&nbsp;Performance Scale</span>
+                                                <span class="input-group-text">
+                                                  <i class="fa fa-percent" aria-hidden="true"></i>
+                                                  <i class="fa fa-font" aria-hidden="true"></i>
+                                                  &nbsp;Performance Scale</span>
                                               </div>
                                             <select id="cmbParameter3" class="form-control forminputbox" name="cmbParameter3">
                                               <option value=""{{$education->c_type==''?'selected':''}}>---Select---</option>
@@ -197,7 +200,7 @@
 
                                       <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="fa fa-calendar"></i>&nbsp;Passing Year</span>
+                                          <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Passing Year</span>
                                           
                                         </div>
                                         {{--<input type="text" id="editPassingYear" class="form-control" name="add_p_year" value="{{$education->p_year}}">--}}
@@ -258,7 +261,7 @@
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fa fa-trophy"></i>&nbsp;Education</span>
+                                      <span class="input-group-text"><i class="fa fa-trophy" aria-hidden="true"></i>&nbsp;Education</span>
                                     </div>
                                     {{--<input type="text" id="addQualification" class="form-control" name="add_qualification">--}}
                                     <select id="addQualification" class="form-control" name="add_qualification">
@@ -277,7 +280,7 @@
                                   
                                   {{--<div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-graduation-cap"></i>&nbsp;Course</span>
+                                      <span class="input-group-text"><i class="fas fa-graduation-cap" aria-hidden="true"></i>&nbsp;Course</span>
                                     </div>
                                     <input type="text" id="addCourse" class="form-control" name="add_course">
                                   </div>--}}
@@ -285,7 +288,7 @@
                                   
                                   <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fas fa-graduation-cap"></i>&nbsp;Course</span>                                      
+                                      <span class="input-group-text"><i class="fas fa-graduation-cap" aria-hidden="true"></i>&nbsp;Course</span>                                      
                                     </div>                                    
                                     <select id="addCourse" class="form-control" name="add_course">
                                               <option value="">Select</option>                               
@@ -297,7 +300,7 @@
 
                                   {{--<div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
+                                      <span class="input-group-text"><i class="fa fa-certificate" aria-hidden="true"></i>&nbsp;Specialization</span>
                                       
                                     </div>
                                     <input type="text" id="addSpecialization" class="form-control" name="add_specialization">
@@ -306,7 +309,7 @@
                                   
                                 <div class="input-group mb-3">
                                   <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-certificate"></i>&nbsp;Specialization</span>
+                                    <span class="input-group-text"><i class="fa fa-certificate" aria-hidden="true"></i>&nbsp;Specialization</span>
                                   </div>
 
                                   <select id="addSpecialization" class="form-control" name="add_specialization">
@@ -322,20 +325,20 @@
              
                                   <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fa fa-university"></i>&nbsp;Institute</span>
+                                      <span class="input-group-text"><i class="fa fa-university" aria-hidden="true"></i>&nbsp;Institute</span>
                                     </div>
                                     <input type="text" id="addInstitute" class="form-control" name="add_institute">
                                   </div>
                                   {{--<div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fa fa-hourglass-half"></i>&nbsp;Course Type</span>
+                                      <span class="input-group-text"><i class="fa fa-hourglass-half" aria-hidden="true"></i>&nbsp;Course Type</span>
                                     </div>
                                     <input type="text" id="addCourseType" class="form-control" name="add_c_type">
                                   </div>--}}
 
                                   <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fa fa-hourglass-half"></i>&nbsp;Course Type</span>
+                                      <span class="input-group-text"><i class="fa fa-hourglass-half" aria-hidden="true"></i>&nbsp;Course Type</span>
                                     </div>
                                     <select class="form-control" id="addCourseType" name="add_c_type">
                                         <option value="">Select</option>
@@ -351,7 +354,10 @@
                                     <div class="col-md-7">                                     
                                   <div class="input-group mb-3">  
                                     <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fa fa-percent"></i><i class="fa fa-font"></i>&nbsp;Performance Scale</span>
+                                      <span class="input-group-text">
+                                        <i class="fa fa-percent" aria-hidden="true"></i>
+                                        <i class="fa fa-font" aria-hidden="true"></i>
+                                        &nbsp;Performance Scale</span>
                                     </div>
                                   <select id="cmbParameter2" class="form-control forminputbox" name="cmbParameter2">
                                     <option value="">---Select---</option>
@@ -381,7 +387,7 @@
 
                                   <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                      <span class="input-group-text"><i class="fa fa-calendar"></i>&nbsp;Passing Out Year</span>
+                                      <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Passing Out Year</span>
                                     </div>
                                     {{--<input type="text" id="addPassingYear" class="form-control" name="add_p_year">--}}
                                     <input type="text" id="addPassingYear" class="form-control datepicker-Y" name="add_p_year">
@@ -442,14 +448,14 @@
                                       
                                       <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="far fa-building"></i>&nbsp;Company</span>
+                                          <span class="input-group-text"><i class="far fa-building" aria-hidden="true"></i>&nbsp;Company</span>
                                         </div>
                                         <input type="text" id="editCompany" class="form-control" value="{{$work->company}}">
                                       </div>
 
                                       <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="fa fa-briefcase"></i>&nbsp;Industry</span>
+                                          <span class="input-group-text"><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;Industry</span>
                                         </div>
                                       <select id="editIndustry" class="form-control" name="industry">
                                         <option value="" {{$work->industry==''?'selected':''}}>Select</option>                               
@@ -462,7 +468,7 @@
 
                                       <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="fa fa-address-card"></i>&nbsp;Designation</span>
+                                          <span class="input-group-text"><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;Designation</span>
                                         </div>    
                                       <select id="editDesignation" class="form-control" name="designation">
                                         <option value="" {{$work->designation==''?'selected':''}}>Select</option>                               
@@ -474,27 +480,27 @@
 
                                       {{--<div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="fa fa-server"></i>&nbsp;Function</span>
+                                          <span class="input-group-text"><i class="fa fa-server" aria-hidden="true"></i>&nbsp;Function</span>
                                         </div>
                                         <input type="text" id="editFunc" class="form-control" value="{{$work->function}}">
                                       </div>--}}
 
                                       <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="fa fa-calendar"></i>&nbsp;Started Working From</span>
+                                          <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Started Working From</span>
                                         </div>                                        
                                         <input type="text" id="editStartDate" class="form-control datepicker-YM" value="{{$work->start_date}}">
                                       </div>
 
                                       <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                          <span class="input-group-text"><i class="fa fa-calendar"></i>&nbsp;Worked Till:</span>
+                                          <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Worked Till:</span>
                                         </div>
                                         <input type="text" id="editEndDate" class="form-control datepicker-YM" value="{{$work->end_date}}">
                                       </div>
 
                                       {{--<div class="form-group">
-                                        <span class="input-group-text"><i class="fa fa-map"></i>&nbsp;Description</span>
+                                        <span class="input-group-text"><i class="fa fa-map" aria-hidden="true"></i>&nbsp;Description</span>
                                         <textarea class="form-control" id="editWorkDescription" rows="3">{{$work->description}}</textarea>
                                       </div>--}}
                                     </div>
@@ -551,7 +557,7 @@
 
                                 <div class="input-group mb-3">
                                   <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-building"></i>&nbsp;Company</span>
+                                    <span class="input-group-text"><i class="fa fa-building" aria-hidden="true"></i>&nbsp;Company</span>
                                   </div>
                                   <input type="text" id="addCompany" class="form-control">
                                 </div>
@@ -559,7 +565,7 @@
 
                                 <div class="input-group mb-3">
                                   <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-briefcase"></i>&nbsp;Industry</span>
+                                    <span class="input-group-text"><i class="fa fa-briefcase" aria-hidden="true"></i>&nbsp;Industry</span>
                                   </div>
                                 <select id="addIndustry" class="form-control" name="industry">
                                     <option value="">Select</option>                               
@@ -572,7 +578,7 @@
 
                                 <div class="input-group mb-3">
                                   <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-address-card"></i>&nbsp;Designation</span>
+                                    <span class="input-group-text"><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;Designation</span>
                                   </div>
 
                                       <select id="addDesignation" class="form-control" name="designation">
@@ -586,25 +592,25 @@
 
                                 {{--<div class="input-group mb-3">
                                   <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-server"></i>&nbsp;Function</span>
+                                    <span class="input-group-text"><i class="fa fa-server" aria-hidden="true"></i>&nbsp;Function</span>
                                   </div>
                                   <input type="text" id="addFunc" class="form-control">
                                 </div>--}}
 
                                 <div class="input-group mb-3">
                                   <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-calendar"></i>&nbsp;Started Working From:</span>
+                                    <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Started Working From:</span>
                                   </div>
                                   <input type="text" id="addStartDate" class="form-control datepicker-YM">
                                 </div>
                                 <div class="input-group mb-3">
                                   <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-calendar"></i>&nbsp;Worked Till:</span>
+                                    <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i>&nbsp;Worked Till:</span>
                                   </div>
                                   <input type="text" id="addEndDate" class="form-control datepicker-YM">
                                 </div>
                                 {{--<div class="form-group">
-                                  <span class="input-group-text"><i class="fa fa-map"></i>&nbsp;Description</span>
+                                  <span class="input-group-text"><i class="fa fa-map" aria-hidden="true"></i>&nbsp;Description</span>
                                   <textarea class="form-control" id="addWorkDescription" rows="3"></textarea>
                                 </div>--}}
 

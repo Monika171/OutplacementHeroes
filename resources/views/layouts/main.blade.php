@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>OPH</title>
 	{{--<script defer src="{{ asset('js/app.js') }}"></script>--}}
 	@yield('select2css')
 		<style>

@@ -1,11 +1,27 @@
 @extends('layouts.main')
 
+@section('select2css')
+  
+<style>
+
+/*.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+  background-color: rgb(149, 151, 163);
+}
+
+.table-bordered > thead > tr > th {
+    border: none;
+}*/
+
+</style>
+
+@endsection
+
 @section('content')
 
-<div class="hero-wrap" style="height: 280px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
+<div class="hero-wrap" style="height: 410px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
     <!--<div class="overlay"></div>-->
     <div class="container">
-          <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 280px" data-scrollax-parent="true">
+          <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
               <div class="col-md-9 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                   <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="{{route('company')}}">Companies <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
                   <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Welcome {{$company->cname}}</h1>
@@ -22,33 +38,36 @@
     </div>
   </div>
 
+<div class="ftco-section bg-light">
 <div class="container">
 
   @if(Session::has('message'))
 
   <div class="alert alert-success">{{Session::get('message')}}</div>
   @endif
-
+  
+  <div class="row justify-content-center mt-0 mb-2 pt-0 pb-2">
+    <div class="col-md-7 heading-section text-center ftco-animate">
+        <!--<span class="subheading">Registered Candidates</span>-->
+        <h2 class="mb-4"><span>All</span> Jobs <span>Posted by You</span></h2>
+    </div>
+    </div>
 
     <div class="row justify-content-center">
-        <div class="col-md-12 my-5">
-            <div class="card">
-                <div class="card-header">All Jobs Posted by You</div>
+        <div class="col-md-12 col-lg-12 mb-5">        
 
-                <div class="card-body">
-                    
-                    <table class="table table-striped">
+                  <div class="table-responsive-sm">
+                    <table class="table table-striped table-dark table-bordered table-hover text-center">
                         <thead>
                           <tr>
                             <th scope="col">S.No.</th>
-                            <th scope="col">Title</th>      
-                            <th scope="col">Position</th>
-                            <th scope="col">City</th>
-                            <th scope="col">Vacancy</th>
-                            <th scope="col">Last Date</th>
-                            <th scope="col"><small>Click to change</small><br>Status</th>
-                            <th scope="col">Created at</th>
-                            <th scope="col"></th>
+                            <th scope="col">TITLE</th>      
+                            <th scope="col">POSITION</th>
+                            <th scope="col">LOCATION</th>
+                            <th scope="col">VACANCY</th>
+                            <th scope="col">LAST DATE</th>
+                            <th scope="col"><small>Click to change</small><br>STATUS</th>                            
+                            <th scope="col">EDIT/<br>DELETE</th>
                             
                           </tr>
                         </thead>
@@ -62,14 +81,20 @@
                           </th> 
                             <td>
                               <a href="{{route('jobs.show',[$job->id,$job->slug])}}">{{$job->title}}</a>
+                              <br> <small>
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i></i>&nbsp;
+                                {{$job->created_at->diffForHumans()}}
+                                </small>
                             </td> 
 
                             <td>{{$job->position}}
-                            <br>
-                            <i class="fa fa-hourglass-half" aria-hidden="true"></i></i>&nbsp;{{$job->type}}
+                            {{--<br> <small>
+                            <i class="fa fa-hourglass-half" aria-hidden="true"></i></i>&nbsp;                            
+                            {{$job->type}}</small>--}}
                             </td>
 
-                            <td><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{$job->city}}</td>
+                            <td><i class="fa fa-map-marker" aria-hidden="true"></i>
+                              &nbsp;{{$job->city}},<br>&nbsp;{{$job->state}} </td>
 
                             <td>{{$job->number_of_vacancy}}</td>
 
@@ -81,13 +106,11 @@
                                @else
                               <a href="{{route('job.toggle',[$job->id])}}" class="badge badge-success"> Live</a>
                               @endif</h6>
-                            </td>
-
-                            <td>{{$job->created_at->diffForHumans()}}</td>
+                            </td>                       
 
                             <td>
-                            <a class="float-left text-success ml-1" href="{{route('job.edit',[$job->id])}}">
-                              <i class="fas fa-pencil-alt"></i>&nbsp;Edit
+                            <a class="float-left text-success mx-0" href="{{route('job.edit',[$job->id])}}"><strong>
+                              <i class="fas fa-pencil-alt"></i>&nbsp;E</strong>
                             </a>
                             <br>
                           <!-- Button trigger modal -->
@@ -95,8 +118,8 @@
                                 Delete
                               </button>--}}
 
-                              <a class="float-right text-danger mr-1" href="#" data-toggle="modal" data-target="#delJob{{$job->id}}">
-                                <i class="far fa-trash-alt"></i>&nbsp; Delete
+                              <a class="float-right text-danger mx-0" href="#" data-toggle="modal" data-target="#delJob{{$job->id}}">
+                              <strong><i class="far fa-trash-alt"></i>&nbsp;D</strong>
                               </a>
 
                               <!-- Modal -->
@@ -129,14 +152,16 @@
                         @endforeach	
                         </tbody>
                       </table>
+                  </div>
 
                       <div class="pagination center">                   
                         {{$jobs->links()}}                
                       </div>
 
-                </div>
-            </div>
+                
+            
         </div>
     </div>
+</div>
 </div>
 @endsection

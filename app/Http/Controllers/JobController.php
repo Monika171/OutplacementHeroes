@@ -216,11 +216,11 @@ class JobController extends Controller
     public function destroy(Request $request,$id){       
         
         $job = Job::findOrFail($id);
-        $job->delete(); 
-        DB::table('job_user')->where('job_id', '=', $id)->delete(); 
-        DB::table('favourites')->where('job_id', '=', $id)->delete();  //use foreign key better!           
+        $job->delete();                  
         return redirect()->back()->with('message','Job Post Successfully Deleted');
 
+        //DB::table('job_user')->where('job_id', '=', $id)->delete(); 
+        //DB::table('favourites')->where('job_id', '=', $id)->delete();  //use foreign key already! 
     }
 
 

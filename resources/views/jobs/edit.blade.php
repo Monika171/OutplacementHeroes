@@ -125,7 +125,7 @@
                     <div class="form-group">
                         <label for="salary">CTC (or Salary/month)</label> &nbsp; &nbsp;
                         <span style="color:red">Please mention Negotiable, if negotiable.</span>
-                        <input type="text" class="form-control" name="salary" value="{{$job->salary}}">
+                        <input type="text" class="form-control" name="salary" value="{{$job->salary}}" placeholder="eg: 8 LPA or 80,000/month">
                         @if($errors->has('salary'))
                         <div class="error" style="color: red;">{{$errors->first('salary')}}</div>
                         @endif
@@ -279,7 +279,7 @@
                         @endif                                      
                     </div>		                        
 
-                    <div class="form-group">
+                    {{--<div class="form-group">
                             <label for="type">Type</label>
                             <select class="form-control" name="type">
                                 <option value="">Select</option>
@@ -290,7 +290,7 @@
                             @if($errors->has('type'))
                             <div class="error" style="color: red;">{{$errors->first('type')}}</div>
                             @endif
-                    </div>
+                    </div>--}}
 
                         <!--Notice period-->
 
