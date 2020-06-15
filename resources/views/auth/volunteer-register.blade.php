@@ -5,10 +5,7 @@ Mentor Signup
 @endsection
 
   @section('select2css')
- 
- 
-  
-  @endsection
+   
   <style>
   
   .center {
@@ -101,8 +98,10 @@ Mentor Signup
   
   </style>
 
+@endsection
+
 @section('content')
-    <div class="hero-wrap" style="height: 0px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
+    {{--<div class="hero-wrap" style="height: 0px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
             <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
@@ -112,9 +111,9 @@ Mentor Signup
             </div>
         </div>
     </div>
-</div>
+</div>--}}
 
-    <div class="ftco-section bg-light">
+    <div class="ftco-section bg-light mt-5">
       <div class="container">
         <div class="row" style="margin-left: 27%;color: black;font-size: 14px;margin-bottom: -10%;margin-top: -5%;">
        
@@ -124,7 +123,7 @@ Mentor Signup
                 </div>
             @endif
 			
-		<div class="col-md-12">
+		<div class="col-md-12 mt-5">
         <div class="text-center"><h1 class="text">Mentor Signup</h1></div>
         </div>
 

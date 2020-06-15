@@ -1,18 +1,18 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="hero-wrap" style="height: 200px; background: #038cfc">
+<div class="hero-wrap" style="height: 300px; background: #038cfc">
   <div class="container">
-        <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
+        <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 300px" data-scrollax-parent="true">
             <div class="col-md-9 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                 <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="{{route('company')}}">Companies <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                <h1 style="font-size: 30px;margin-top:-28%;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Candidate Name: {{$user->name}}</h1>
+                <h1 style="font-size: 30px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Candidate Name: {{$user->name}}</h1>
             </div>
             <div class="col-md-3 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
                @if(Auth::check()&&Auth::user()->id==$user->id)
                   {{--<a href="{{route('company.view')}}"><button class="btn btn-danger btn-lg">Edit</button></a>--}}
 
-                  <a class="btn  btn-lg" style="background:#0c127d; font-size:18px;margin-top:-80%;border-radius:10px;color:white;" href="{{route('user.profile')}}" role="button">Edit Details</a>
+                  <a class="btn btn-sm" style="background:#0c127d; font-size:18px; color:white;" href="{{route('user.profile')}}" role="button">Edit Details</a>
 
                @endif
             </div>
@@ -27,12 +27,18 @@
             <div class="col-md-4  px-4 sidebar ftco-animate">
                 
                     <div class="blog-entry align-self-stretch">
+
+                      <div class="card">
+                        <div class="card-body">
+
                          @if(empty($user->profile->profile_pic))
-                        <img  class="block-20" src="{{asset('profile_pic/man.jpg')}}">
+                        <img src="{{asset('profile_pic/man.jpg')}}">
                         @else
-                        <img  class="block-20" src="{{asset('uploads/profile_pic')}}/{{$user->profile->profile_pic}}">
+                        <img src="{{asset('uploads/profile_pic')}}/{{$user->profile->profile_pic}}">
 
                         @endif
+                      </div>
+                      </div>
                       
                         <div class="text mt-3">
                           
@@ -72,7 +78,7 @@
                         <div class="card mr-4">
                           <div class="card-header">
                               <a class="card-title">
-                                 <h5 class="d-inline-block h5 text-info font-weight-bold mb-0">Skills</h5>
+                                 <h6 class="d-inline-block h6 text-info font-weight-bold mb-0">Skills</h6>
                               </a>
                           </div>
                           <div class="card-body">
@@ -127,12 +133,12 @@
                 <div class="card">
                   <div class="card-header">
                       <a class="card-title">
-                        <h5 class="d-inline-block h5 text-info font-weight-bold mb-0">Work History</h5>
+                        <h6 class="d-inline-block h6 text-info font-weight-bold mb-0">Work History</h6>
                       </a>
                   </div>
                   <div class="card-body">
                     @if(!empty($user->profile->recent_company))
-                      <h5 class="h5 text-dark"><strong>Company (Recent/Current):</strong>&nbsp;{{$user->profile->recent_company}}</h5>
+                      <h6 class="h6 text-dark"><strong>Company (Recent/Current):</strong>&nbsp;{{$user->profile->recent_company}}</h6>
                       <h6 class="h6 mb-2 text-muted"><strong>Industry (Recent/Current):</strong>&nbsp;{{$user->profile->industry}}</h6> 
                       <h6 class="h6 mb-2 text-muted"><strong>Designation (Recent/Current):</strong>&nbsp;{{$user->profile->recent_designation}}</h6> 
                       {{--<h5 class="h6 mb-2 text-muted"><strong>Function (Recent/Current):</strong>&nbsp;{{$user->profile->function}}</h5>--}}                           
@@ -150,7 +156,7 @@
                     @foreach($user->works as $work)
                     <div>
                                                                             
-                      <h5 class="h5 text-dark"><strong>Company:</strong>&nbsp;{{$work->company}}</h5>
+                      <h6 class="h6 text-dark"><strong>Company:</strong>&nbsp;{{$work->company}}</h6>
                       <h6 class="h6 mb-2 text-muted"><strong>Industry:</strong>&nbsp;{{$work->industry}}</h6> 
                       <h6 class="h6 mb-2 text-muted"><strong>Designation:</strong>&nbsp;{{$work->designation}}</h6> 
                       {{--<h5 class="h6 mb-2 text-muted">{{$work->function}}</h5>--}}                           
@@ -170,14 +176,14 @@
                 <div class="card">
                   <div class="card-header">
                       <a class="card-title">
-                        <h5 class="d-inline-block h5 text-info font-weight-bold mb-0">Education</h5>
+                        <h6 class="d-inline-block h6 text-info font-weight-bold mb-0">Education</h6>
                       </a>
                   </div>
                   <div class="card-body">
                     @foreach($user->educations as $education)
                       <div>
                         
-                        <h5 class="h5 text-dark"><strong>Education:</strong>&nbsp;{{$education->qualification}}</h5>
+                        <h6 class="h6 text-dark"><strong>Education:</strong>&nbsp;{{$education->qualification}}</h6>
                         <h6 class="h6 mb-2 text-muted"><strong>Course:</strong>&nbsp;{{$education->course}}</h6> 
                         <h6 class="h6 mb-2 text-muted"><strong>Specialization:</strong>&nbsp;{{$education->specialization}}</h6>                             
                         <h6 class="h6 mb-2 text-muted"><strong>Institute:</strong>&nbsp;{{$education->institute}}</h6>

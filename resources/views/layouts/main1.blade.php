@@ -5,6 +5,7 @@
 	<script defer src="{{ asset('js/app.js') }}"></script>
 	@yield('select2css')
 	@include('../partials.head')
+	<link rel="stylesheet" href="{{asset('external/css/style_nav2m.css')}}">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css" rel="stylesheet" />	
 	 <link rel="shortcut icon" type="image/png" href="{{ asset('HomeImages/Favicon.png') }}">
 </head>

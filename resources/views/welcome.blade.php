@@ -795,13 +795,114 @@
       <!-- <a href=" http://careers.changeleaders.in/">Currently hiring</a> -->
       <a href="Outplacement.html">Volunteer Speaks</a>
       <a href="Contact.html">Contact</a>
+
+      @if(Auth::check()&&Auth::user()->user_type=='employer')
+      <a href="{{route('company.index',[Auth::user()->company->id,Auth::user()->company->slug])}}"
+      >
+          {{ __('My Company') }}
+      </a>
+  @elseif(Auth::check()&&Auth::user()->user_type=='semployer')
+      <a href="{{route('secompany.index',[Auth::user()->secompany->id,Auth::user()->secompany->slug])}}"
+      >
+      {{ __('My Company') }}
+      </a>
+  @elseif(Auth::check()&&Auth::user()->user_type=='consultant')
+      <a href="{{route('consultant.index',[Auth::user()->consultant->id,Auth::user()->consultant->slug])}}"
+      >
+      {{ __('My Consultancy') }}
+      </a>
+  
+      
+  @elseif(Auth::check()&&Auth::user()->user_type=='seeker')
+
+      <a href="{{route('user.show',[Auth::user()->id])}}"
+      >
+          {{ __('Profile') }}
+      </a>
+
+      @elseif(Auth::check()&&Auth::user()->user_type=='volunteer')
+
+      <a href="{{route('vseeker.index')}}"
+      >
+          {{ __('Dashboard') }}
+      </a>
+
+      <a href="{{route('volunteer.show',[Auth::user()->id])}}"
+      >
+          {{ __('Profile') }}
+      </a>
+
+
+
+      @elseif(Auth::check()&&Auth::user()->user_type=='jvolunteer')
+
+      <a href="{{route('jvseeker.index')}}"
+      >
+          {{ __('Dashboard') }}
+      </a>
+
+      <a href="{{route('jvolunteer.show',[Auth::user()->id])}}"
+      >
+          {{ __('Profile') }}
+      </a>
+
+
+
+      @elseif(Auth::check()&&Auth::user()->user_type=='admin')
+
+      <a href="/dashboard"
+      >
+          {{ __('Dashboard') }}
+      </a>
+      
+  @endif
+
+
+
+
+
+
+
+
+
     </div>
     <div class="con"><h1>OutplacementHeros</h1></div>
     <div class="con1"><h2>Insuring All Future Layouts</h2></div>
     <div class="container">
       <div class="row">
+        @if(!Auth::check())
         <a href="{{ route('login') }}" class="btn1 btn1-lg pink1">LOGIN</a>
+        @else
+        <a  href="{{ route('logout') }}" class="btn1 btn1-lg pink1" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+      </a>
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+        @endif
+
       </div>
+
+
+
+      {{--@if(!Auth::check())
+
+          <button type="button" class="btn btn-primary text-white py-3 px-4 rounded" data-toggle="modal" data-target="#exampleModal">
+        Login
+        </button>
+        @else
+ <a  href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+      </a>
+ <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+        @endif
+--}}
     </div>
     <section>
       <div class="wave">
@@ -821,6 +922,7 @@
     <center><img src="{{ asset('HomeImages/3.jpeg') }}" alt="Image" width="1000px" height="600px"></center>
   </div>
   <!--Roles section-->
+  @if(!Auth::check())
   <h1 class="ribbon" style="margin-top: 5%;margin-bottom: 10%;">
     <strong class="ribbon-content">CHOOSE YOUR ROLE</strong>
   </h1>
@@ -870,8 +972,12 @@
       </div>
     </div>
   </div> 
+
+  @endif
+
+
   <!--Video Section-->
-  <h1 class="ribbon" style="margin-top: -5%;margin-bottom: 10%;">
+  <h1 class="ribbon mt-5" style="margin-bottom: 10%;">
     <strong class="ribbon-content">WHY OutplacementHeros?</strong>
   </h1>
   <center>

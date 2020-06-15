@@ -21,9 +21,9 @@
   </div>
 </section>-->
 
-<footer class="ftco-footer ftco-bg-dark ftco-section" style="background:#edf0ed;color:#7e7e7e;max-height:0px;">
+{{--<footer class="ftco-footer ftco-bg-dark ftco-section" style="background:#edf0ed;color:#7e7e7e;max-height:0px;">
   <div class="container">
- <!--   <div class="row mb-5">
+  <div class="row mb-5">
       <div class="col-md">
          <div class="ftco-footer-widget mb-4"style="color:#7e7e7e;">
           <h2 class="ftco-heading-2"style="color:#7e7e7e;margin-top:-10%;">About</h2>
@@ -54,12 +54,12 @@
       <div class="col-md-12 text-center">
 
         <p style="color:#7e7e7e;margin-top:-5%;">< Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-<!--Copyright &copy;<script>document.write(new Date().getFullYear());</script> OuplacementHeros, All rights reserved.
- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> OuplacementHeros, All rights reserved.
+ Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.</p>
       </div>
     </div>
   </div>
-</footer>
+</footer>--}}
 
 
 

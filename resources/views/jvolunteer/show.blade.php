@@ -1,18 +1,18 @@
 @extends('layouts.main')
 @section('content')
 
-<div class="hero-wrap" style="height: 200px; background:#038cfc">
+<div class="hero-wrap" style="height: 300px; background:#038cfc">
   <div class="container">
-        <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
+        <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 300px" data-scrollax-parent="true">
             <div class="col-md-9 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                 <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="{{route('company')}}">Companies <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                <h1 style="font-size: 30px;margin-top:-28%;color:white;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Job-Search Support Volunteer: {{$user->name}}</h1>
+                <h1 style="font-size: 30px;color:white;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Job-Search Support Volunteer: {{$user->name}}</h1>
             </div>
             <div class="col-md-3 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
                @if(Auth::check()&&Auth::user()->id==$user->id)
                   {{--<a href="{{route('company.view')}}"><button class="btn btn-danger btn-lg">Edit</button></a>--}}
 
-                  <a class="btn edit btn-lg" style="background:#0c127d;font-size:18px;border-radius:10px;color:white;margin-top:-80%;" href="{{route('jvolunteer.profile')}}" role="button">Edit Details</a>
+                  <a class="btn edit btn-sm" style="background:#0c127d;font-size:18px;color:white;" href="{{route('jvolunteer.profile')}}" role="button">Edit Details</a>
 
                @endif
             </div>
@@ -27,6 +27,8 @@
             <div class="col-md-4  px-4 sidebar ftco-animate">
                 
                     <div class="blog-entry align-self-stretch">
+
+                      
                          @if(empty($user->jvprofile->profile_pic))
                         <img  class="block-20" src="{{asset('profile_pic/man.jpg')}}">
                         @else

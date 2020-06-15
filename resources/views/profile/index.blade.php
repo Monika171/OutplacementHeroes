@@ -24,18 +24,18 @@
 @endsection
 @section('content')
 
-<div class="hero-wrap" style="height: 200px; background: #038cfc">
+<div class="hero-wrap" style="height: 300px; background: #038cfc">
     <div class="container">
-          <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
+          <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 300px" data-scrollax-parent="true">
               <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                   <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                 <h1  style="font-size: 30px;margin-top:-30%;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Edit Profile Information</h1>
+                 <h1  style="font-size: 30px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Edit Profile Information</h1>
               </div>
               <div class="col-md-4 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
                 @if(!empty(Auth::user()->profile->phone_number))
                    {{--<a href="{{route('company.view')}}"><button class="btn btn-danger btn-lg">Edit</button></a>--}}
  
-                   <a class="btn btn-warning btn-lg" href="{{route('user.history')}}" role="button"><u><strong>Continue</strong></u> &nbsp;&nbsp;<i class="ion-ios-arrow-forward"></i>
+                   <a class="btn btn-warning" href="{{route('user.history')}}" role="button"><u><strong>Continue</strong></u> &nbsp;&nbsp;<i class="ion-ios-arrow-forward"></i>
                      <br><small>Education & Work History</small></a>
  
                 @endif
@@ -679,7 +679,7 @@
                 @if(!empty(Auth::user()->profile->phone_number))
                    {{--<a href="{{route('company.view')}}"><button class="btn btn-danger btn-lg">Edit</button></a>--}}
  
-                   <a class="btn btn-warning btn-lg float-right" href="{{route('user.history')}}" role="button"><u><strong>Continue<strong></u> &nbsp;&nbsp;<i class="ion-ios-arrow-forward"></i>
+                   <a class="btn btn-warning float-right" href="{{route('user.history')}}" role="button"><u><strong>Continue<strong></u> &nbsp;&nbsp;<i class="ion-ios-arrow-forward"></i>
                      <br><small>Education & Work History</small></a>
  
                 @endif
