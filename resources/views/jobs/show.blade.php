@@ -208,17 +208,25 @@ p {
                                               
         <small class="badge badge-success mb-2">Posted:{{$job->created_at->diffForHumans()}}
         </small>
-              <h3 class="h5 text-black mb-3">Last date to apply:</h3>              
-              <p class="mb-4">{{ date('F d, Y', strtotime($job->last_date)) }}</p>            
+
+        <div class="text-center">
+              <h3 class="h5 text-black" style="font-weight: bold;">Last date to apply:</h3>              
+              <strong><p class="mb-4">{{ date('F d, Y', strtotime($job->last_date)) }}</p></strong> 
+              <hr>       
             
-              <h3 class="h5 text-black mb-3">Job Location</h3>              
+              <h3 class="h5 text-black">Job Location:</h3>              
               <p class="mb-4">{{$job->address_line1}}&nbsp;{{$job->address_line2}}&nbsp;<br>
                 {{$job->city}},&nbsp;{{$job->state}}&nbsp;{{$job->pincode}}</p>            
             
-              <h3 class="h5 text-black mb-3">Company Name</h3>              
-              <p class="mb-4">{{$job->company->cname}}</p>
-				<p><a href="{{route('company.index',[$job->company->id,$job->company->slug])}}" class="btn btn-warning" style="width: 100%;">Visit Company Page</a></p>
-
+              <h3 class="h5 text-black">Company Name:</h3>              
+              <p class="mb-4">{{$job->company->cname}} <br>
+              <a href="{{route('company.index',[$job->company->id,$job->company->slug])}}">
+                Click Here To Visit Company Page
+              </a> </p>
+				    {{--<p><a href="{{route('company.index',[$job->company->id,$job->company->slug])}}" class="btn btn-warning" style="width: 100%;">
+            Visit Company Page
+            </a></p>--}}
+        </div>
             </div>
             
             <div class="p-4 mb-3 bg-white">
@@ -238,19 +246,31 @@ p {
 
             @endif
 
-            @if(Auth::check()&&Auth::user()->id==$company->user_id)
-            <a class="float-left text-success mx-0" href="{{route('job.edit',[$job->id])}}"><strong>
+            @if(Auth::check()&&Auth::user()->id==$job->user_id)
+            
+            {{--<a class="float-left text-success mx-0" href="{{route('job.edit',[$job->id])}}"><strong>
               <i class="fas fa-pencil-alt"></i>&nbsp;E</strong>
             </a>
-            <br>
+
+            <a href="{{route('job.edit',[$job->id])}}"> <button class="btn btn-dark">Edit</button></a>--}}
+
+            <a class="btn btn-dark" href="{{route('job.edit',[$job->id])}}" role="button" style="width: 100%;">
+              <i class="fas fa-pencil-alt text-white"></i>&nbsp; &nbsp;Edit </a>
+
+            <br><br>
           <!-- Button trigger modal -->
-             {{--<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delJob{{$job->id}}">
-                Delete
-              </button>--}}
+
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delJob{{$job->id}}" style="width: 100%;">
+            <i class="far fa-trash-alt text-white"></i>&nbsp; &nbsp;Delete
+          </button>           
+
+             {{--<a class="btn btn-danger" data-toggle="modal" data-target="#delJob{{$job->id}}" role="button">
+            <i class="far fa-trash-alt text-white"></i>&nbsp; &nbsp;Delete </a>
+            style="font-size: 34px;float:right;color:green;"href="#" 
 
               <a class="float-right text-danger mx-0" href="#" data-toggle="modal" data-target="#delJob{{$job->id}}">
               <strong><i class="far fa-trash-alt"></i>&nbsp;D</strong>
-              </a>
+              </a>--}}
 
               <!-- Modal -->
               <div class="modal fade" id="delJob{{$job->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

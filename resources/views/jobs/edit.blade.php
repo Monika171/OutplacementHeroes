@@ -103,7 +103,7 @@
 
 					
 					<div class="form-group">
-                        <label for="role">Role</label>
+                        <label for="role">Roles & Responsibilities</label>
                         <textarea name="roles" class="form-control" rows="3" cols="70" style="width:100"> {{$job->roles}}</textarea>
                         @if($errors->has('roles'))
                         <div class="error" style="color: red;">{{$errors->first('roles')}}</div>
@@ -178,9 +178,9 @@
                         <label for="gender">Gender</label>
                         <select class="form-control" name="gender">
                             <option value="">Select</option>
-                            <option value="fulltime"{{$job->gender=='any'?'selected':''}}>Any</option>
-                            <option value="partime"{{$job->gender=='male'?'selected':''}}>Male</option>
-                            <option value="casual"{{$job->gender=='female'?'selected':''}}>Female</option>
+                            <option value="any"{{$job->gender=='any'?'selected':''}}>Any</option>
+                            <option value="male"{{$job->gender=='male'?'selected':''}}>Male</option>
+                            <option value="female"{{$job->gender=='female'?'selected':''}}>Female</option>                            
                         </select>
                         @if($errors->has('gender'))
                         <div class="error" style="color: red;">{{$errors->first('gender')}}</div>

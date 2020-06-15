@@ -24,10 +24,10 @@
           <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
               <div class="col-md-9 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                   <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="{{route('company')}}">Companies <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                  <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Welcome {{$company->cname}}</h1>
+                  <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Welcome {{$company->user->name}}</h1>
               </div>
               <div class="col-md-3 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
-                 @if(Auth::check()&&Auth::user()->id==$company->user_id)
+                 @if(Auth::check()&&Auth::user()->id==$company->user_id &&(count($jobs)>0))
                     {{--<a href="{{route('company.view')}}"><button class="btn btn-danger btn-lg">Edit</button></a>--}}
   
                     <a class="btn btn-warning btn-lg" href="{{route('applicant')}}" role="button">View Applicants &nbsp; &nbsp;<i class="ion-ios-arrow-forward"></i></a>
@@ -54,7 +54,9 @@
     </div>
 
     <div class="row justify-content-center">
-        <div class="col-md-12 col-lg-12 mb-5">        
+        <div class="col-md-12 col-lg-12 mb-5">  
+          
+          @if(count($jobs)>0)
 
                   <div class="table-responsive-sm">
                     <table class="table table-striped table-dark table-bordered table-hover text-center">
@@ -158,7 +160,13 @@
                         {{$jobs->links()}}                
                       </div>
 
-                
+          @else
+            <div class="text-center ftco-animate">
+              <!--<span class="subheading">Registered Candidates</span>-->
+              <h6 class="mt-5 mb-0">Oops! You haven't posted any jobs yet. Post a new job today and get started.</h6>
+              <p class="mt-0 mb-5">Have a nice day!</p>
+            </div>
+          @endif
             
         </div>
     </div>

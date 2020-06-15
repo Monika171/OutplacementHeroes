@@ -118,7 +118,7 @@
 
 					
 					<div class="form-group">
-                        <label for="role">Role</label>
+                        <label for="role">Roles & Responsibilities</label>
                         <textarea name="roles" class="form-control" rows="3" cols="70" style="width:100"> {{old("roles")}}</textarea>
                         @if($errors->has('roles'))
                         <div class="error" style="color: red;">{{$errors->first('roles')}}</div>

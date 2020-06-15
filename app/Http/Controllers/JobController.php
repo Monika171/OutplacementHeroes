@@ -97,7 +97,7 @@ class JobController extends Controller
             'last_date'=>request('last_date'),
             'status'=>request('status'),
         ]);
-        return redirect()->back()->with('message','Job posted successfully!');
+        return redirect('/jobs/my-job')->with('message','Job posted successfully!');
      }
 
      public function myjob(){
@@ -178,6 +178,7 @@ class JobController extends Controller
 
         $job = Job::findOrFail($id);
         //$job->update($request->all());
+        $slug = str_slug(request('title'));
 
             
         Job::where('id',$id)->update([
@@ -209,7 +210,8 @@ class JobController extends Controller
             'status'=>request('status'),
             
         ]);
-        return redirect()->back()->with('message','Job  Sucessfully Updated!');
+
+        return redirect('/jobs/'.$id.'/'.$slug)->with('message','Job  Sucessfully Updated!');      
 
     }
 
@@ -217,7 +219,7 @@ class JobController extends Controller
         
         $job = Job::findOrFail($id);
         $job->delete();                  
-        return redirect()->back()->with('message','Job Post Successfully Deleted');
+        return redirect('/jobs/my-job')->with('message','Job Post Successfully Deleted');
 
         //DB::table('job_user')->where('job_id', '=', $id)->delete(); 
         //DB::table('favourites')->where('job_id', '=', $id)->delete();  //use foreign key already! 
