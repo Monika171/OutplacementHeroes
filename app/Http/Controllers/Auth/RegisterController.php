@@ -74,6 +74,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'user_type' => $data['user_type'],
+			'notifications_frequency' => $data['notifications_frequency'],
         ]);
         //echo $user->id
 
