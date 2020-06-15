@@ -4,22 +4,19 @@
 <style>
 .holder {
   background:rgb(255, 255, 255);
-  padding:0.5rem;
+  padding:0.3rem;
   overflow: hidden;
+
 }
-.news {
-  animation : slide 20s linear infinite;
+
+.edit{
   
-}
+  float:left;
+  
+  
+  margin-left:-305%;
 
-@keyframes slide {
-  0% {
-    transform: translatex(0%)
-  }
 
-  100% {
-    transform: translatex(100%)
-  }
 }
 </style>
 @endsection
@@ -27,20 +24,20 @@
 
 @section('content')
 
-<div class="hero-wrap" style="height: 280px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
-  <!--<div class="overlay"></div>-->
-  <div class="container">
+<div class="hero-wrap" style="height: 230px; background: #038cfc;"> 
+ <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 280px" data-scrollax-parent="true">
             <div class="col-md-9 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                 <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="{{route('company')}}">Companies <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">{{$company->cname}}</h1>
+                <h1  style="font-size: 30px;margin-top:-13%;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1 }">{{$company->cname}}</h1>
             </div>
             <div class="col-md-3 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
                @if(Auth::check()&&Auth::user()->id==$company->user_id)
                   {{--<a href="{{route('company.view')}}"><button class="btn btn-danger btn-lg">Edit</button></a>--}}
 
-                  <a class="btn btn-warning btn-lg" href="{{route('company.view')}}" role="button">Edit Details</a>
-
+                  <a class="btn  edit btn-lg" style="background:#038cfc;border-radius:10px;font-size:15px;margin-top:-20%; color:white;" href="{{route('company.view')}}" role="button">Edit Details</a>
+                  
+                  
                @endif
             </div>
         </div>
@@ -48,7 +45,7 @@
 </div>
     <section class="ftco-section ftco-degree-bg">
       <div class="container">
-        <div class="row">
+        <div class="row"style="margin-top:-5%">
 
           <div class="col-md-12 my-0">
             @if(Auth::check()&&Auth::user()->id==$company->user_id)
@@ -116,10 +113,10 @@
                     <p>{{$company->description}}</p>
 
                     <h5 class="mb-2 mt-2">Address:</h5>
-                    <p>{{$company->address_line1}},
+                    <p>{{$company->address_line1}}<br>
                                 {{$company->address_line2}}<br>
-                                {{$company->city}},&nbsp; &nbsp;{{$company->state}},
-                                &nbsp;&nbsp;{{$company->country}}, &nbsp;
+                                {{$company->city}}<br>&nbsp; &nbsp;{{$company->state}}
+                                &nbsp;&nbsp;{{$company->country}} &nbsp;<br>
                                 Pincode:&nbsp; {{$company->pincode}}</p>
                     
                     <div class="row">

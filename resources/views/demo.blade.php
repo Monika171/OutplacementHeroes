@@ -1,6 +1,11 @@
 @extends('layouts.main')
 
 @section('content')
-IF YOU SEE THIS, THEN GIT GIT PULL WAS SUCCESSFUL. 
-(PV)
+ashlh;h;nmM,
+,
+,
+,
+,
+,
+npihpgofd7s6s6s6s6sts
 @endsection

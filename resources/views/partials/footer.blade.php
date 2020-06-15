@@ -21,54 +21,30 @@
   </div>
 </section>-->
 
-<footer class="ftco-footer ftco-bg-dark ftco-section">
+<footer class="ftco-footer ftco-bg-dark ftco-section" style="background:#edf0ed;color:#7e7e7e;max-height:0px;">
   <div class="container">
-    <div class="row mb-5">
+ <!--   <div class="row mb-5">
       <div class="col-md">
-         <div class="ftco-footer-widget mb-4">
-          <h2 class="ftco-heading-2">About</h2>
-          <p>OutplacementHeros is a community of Recruiting Professionals collaborating to help laid off employees.</p>
+         <div class="ftco-footer-widget mb-4"style="color:#7e7e7e;">
+          <h2 class="ftco-heading-2"style="color:#7e7e7e;margin-top:-10%;">About</h2>
+          <p style="color:#7e7e7e;">OutplacementHeros is a community of Recruiting Professionals collaborating to help laid off employees.</p>
           <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+            <li class="ftco-animate"><a href="#"><span class="icon-twitter"style="color:#7e7e7e;"></span></a></li>
+            <li class="ftco-animate"><a href="https://www.facebook.com/outplacementheros/"><span class="icon-facebook"style="color:#7e7e7e;"></span></a></li>
+            <li class="ftco-animate"><a href="https://instagram.com/outplacementheros?igshid=ppg4sguw3ieg"><span class="icon-instagram"style="color:#7e7e7e;"></span></a></li>
+            <li class="ftco-animate"><a href="https://www.linkedin.com/company/outplacementheros"><span class="icon-linkedin"style="color:#7e7e7e;"></span></a></li>
+          
           </ul>
         </div>
       </div>
       <div class="col-md">
         <div class="ftco-footer-widget mb-4">
-          <h2 class="ftco-heading-2">Employers</h2>
-          <ul class="list-unstyled">
-            <li><a href="#" class="py-2 d-block">How it works</a></li>
-            <li><a href="#" class="py-2 d-block">Register</a></li>
-            <!--<li><a href="#" class="py-2 d-block">Post a Job</a></li>-->
-            <li><a href="#" class="py-2 d-block">Skill Search</a></li>
-            <!--<li><a href="#" class="py-2 d-block">Recruiting Service</a></li>
-            <li><a href="#" class="py-2 d-block">Blog</a></li>
-            <li><a href="#" class="py-2 d-block">Faq</a></li>-->
-          </ul>
-        </div>
-      </div>
-      <div class="col-md">
-        <div class="ftco-footer-widget mb-4 ml-md-4">
-          <h2 class="ftco-heading-2">Job Seeker</h2>
-          <ul class="list-unstyled">
-            <li><a href="#" class="py-2 d-block">How it works</a></li>
-            <li><a href="#" class="py-2 d-block">Register</a></li>
-            <li><a href="#" class="py-2 d-block">Update Profile</a></li>
-            <!--<li><a href="#" class="py-2 d-block"></a></li>
-            <li><a href="#" class="py-2 d-block"></a></li>-->
-          </ul>
-        </div>
-      </div>
-      <div class="col-md">
-        <div class="ftco-footer-widget mb-4">
-          <h2 class="ftco-heading-2">Have any Question?</h2>
+          <h2 class="ftco-heading-2"style="color:#7e7e7e;margin-top:-10%;">Have any Question?</h2>
           <div class="block-23 mb-3">
             <ul>
-              <li><span class="icon icon-map-marker"></span><span class="text">Gurgaon, Haryana, India</span></li>
-              <li><a href="#"><span class="icon icon-phone"></span><span class="text">+91-7838883008</span></a></li>
-              <li><a href="#"><span class="icon icon-envelope"></span><span class="text">&nbsp;outplacementheros20@gmail.com</span></a></li>
+              <li><span class="icon icon-map-marker"style="color:#7e7e7e;"></span><span class="text"style="color:#7e7e7e;">Gurgaon, Haryana, India</span></li>
+              <li><a href="#"><span class="icon icon-phone"style="color:#7e7e7e;"></span><span class="text"style="color:#7e7e7e;">+91-7838883008</span></a></li>
+              <li><a href="#"><span class="icon icon-envelope"style="color:#7e7e7e;"></span><span class="text"style="color:#7e7e7e;">&nbsp;outplacementheros20@gmail.com</span></a></li>
             </ul>
           </div>
         </div>
@@ -77,9 +53,9 @@
     <div class="row">
       <div class="col-md-12 text-center">
 
-        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Template by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+        <p style="color:#7e7e7e;margin-top:-5%;">< Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+<!--Copyright &copy;<script>document.write(new Date().getFullYear());</script> OuplacementHeros, All rights reserved.
+ Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
       </div>
     </div>
   </div>
@@ -89,8 +65,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
 <script src="{{asset('external/js/jquery.min.js')}}"></script>
 <script src="{{asset('external/js/jquery-migrate-3.0.1.min.js')}}"></script>
 <script src="{{asset('external/js/popper.min.js')}}"></script>
