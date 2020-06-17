@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>OutplacementHeros &mdash; Colorlib Website Template</title>
+    <title>OutplacementHeros</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 @include('partials.head')
@@ -29,7 +29,7 @@
                   @if(!empty($job->company->logo))
                   <img src="{{asset('uploads/logo')}}/{{$job->company->logo}}" alt="Image" class="img-fluid mx-auto">
                   @else
-              <img src="{{asset('avatar/man.jpg')}}" alt="Image" class="img-fluid mx-auto">
+              <img src="{{asset('profile_pic/man.jpg')}}" alt="Image" class="img-fluid mx-auto">
                   @endif
                 </div>
                 <div class="job-details h-100">

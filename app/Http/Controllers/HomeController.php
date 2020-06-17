@@ -7,6 +7,7 @@ use Auth;
 use App\Job;
 use App\User;
 use App\Company;
+use App\semployers;
 use App\VolunteerProfile;
 use App\Profile;
 
@@ -38,6 +39,24 @@ class HomeController extends Controller
             return redirect()->to('/jobs/my-job');
             
             //return redirect()->to('/company/'.$id.'/'.$company);            
+            //return redirect()->to('/company/create');
+            //redirect("/user/{$user->id}/profile");
+        }
+        if(auth::user()->user_type=='consultant'){
+            $id = auth()->user()->consultant->id;
+            $company = auth()->user()->consultant->slug;
+            
+            return redirect()->to('/consultant/'.$id.'/'.$company);
+            
+            //return redirect()->to('/company/create');
+            //redirect("/user/{$user->id}/profile");
+        }
+        if(auth::user()->user_type=='semployer'){
+            $id = auth()->user()->secompany->id;
+            $company = auth()->user()->secompany->slug;
+            
+            return redirect()->to('/secompany/'.$id.'/'.$company);
+            
             //return redirect()->to('/company/create');
             //redirect("/user/{$user->id}/profile");
         }

@@ -8,20 +8,7 @@
   padding:0.5rem;
   overflow: hidden;
 }
-.news {
-  animation : slide 20s linear infinite;
-  
-}
 
-@keyframes slide {
-  0% {
-    transform: translatex(0%)
-  }
-
-  100% {
-    transform: translatex(100%)
-  }
-}
 
 .form-group.required .control-label:after {
     content:"*";
@@ -33,13 +20,13 @@
 
 @section('content')
 
-<div class="hero-wrap" style="height: 410px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
+<div class="hero-wrap" style="height: 300px; background: #038cfc;">
     <!--<div class="overlay"></div>-->
     <div class="container">
-          <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
+          <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 300px" data-scrollax-parent="true">
               <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                   <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                 <h1 style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Edit Company Information</h1>
+                 <h1 style="font-size: 35px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Edit Company Information</h1>
               </div>
           </div>
     </div>
@@ -47,7 +34,7 @@
 <br>
 <br>
 <div class="container">
-    <div class="row">
+    <div class="row"style="margin-top:-5%;">
 
         <div class="col-md-12 my-0">
             @if(Auth::check()&&Auth::user()->id==$company->user_id)
@@ -182,10 +169,10 @@
                 <p><strong>Company Name:</strong> &nbsp; &nbsp;{{Auth::user()->company->cname}}</p>
                 <p><strong>Email:</strong> &nbsp; &nbsp; {{Auth::user()->email}}</p>
                 <p><strong>Phone:</strong> &nbsp; &nbsp; {{Auth::user()->company->phone}}</p>
-                <p><strong>Address:</strong> &nbsp; &nbsp; {{Auth::user()->company->address_line1}},
+                <p><strong>Address:</strong> &nbsp; &nbsp; {{Auth::user()->company->address_line1}}
                     {{Auth::user()->company->address_line2}}<br>
-                    {{Auth::user()->company->city}},&nbsp; &nbsp;{{Auth::user()->company->state}},
-                    {{Auth::user()->company->country}}, &nbsp;
+                    {{Auth::user()->company->city}}&nbsp; &nbsp;{{Auth::user()->company->state}}
+                    {{Auth::user()->company->country}} &nbsp;
                     Pincode:&nbsp; {{Auth::user()->company->pincode}}</p>
                 <p><strong>Industry:</strong><br>{{Auth::user()->company->industry}}</p>
                 <p><strong>Our slogan:</strong> &nbsp; &nbsp; {{Auth::user()->company->slogan}}</p>

@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('demo','demo');
 
 Route::get('/','OutplacementherosController@index');
+//Route::view('/','welcome');
 
 
 //Auth::routes();
@@ -46,6 +47,18 @@ Route::post('/applications/{id}','JobController@apply')->name('apply');
 Route::post('/save/{id}','FavouriteController@saveJob');
 Route::post('/unsave/{id}','FavouriteController@unSaveJob');
 
+Route::get('dynamic-field', 'DynamicFieldController@index')->name('dynamic-field.index');
+
+Route::post('dynamic-field/insert', 'DynamicFieldController@insert')->name('dynamic-field.insert');
+Route::get('dynamic-field1', 'DynamicFieldController1@index')->name('dynamic-field1.index');
+
+Route::post('dynamic-field1/insert', 'DynamicFieldController1@insert')->name('dynamic-field1.insert');
+//mail view 
+
+Route::get('/email',function(){
+    return new WelcomeMail();
+});
+
 //employer register
 Route::view('employer/register','auth.employer-register')->name('employer.register');
 Route::post('employer/register','EmployerRegisterController@employerRegister')->name('emp.register');
@@ -58,9 +71,33 @@ Route::post('company/logo','CompanyController@companyLogo')->name('company.logo'
 Route::post('company/coverphoto','CompanyController@coverPhoto')->name('cover.photo');
 Route::post('user/logo/delete','CompanyController@delete_elogo')->name('elogo.delete');
 Route::post('user/coverphoto/delete','CompanyController@delete_ecover')->name('ecover.delete');
+//Separating Company
+Route::get('/secompany/{id}/{company}','SemployerController@index')->name('secompany.index');
+Route::get('secompany/create','SemployerController@create')->name('secompany.view');
+Route::post('secompany/create','SemployerController@store')->name('secompany.store');
+Route::post('secompany/logo','SemployerController@companyLogo')->name('secompany.logo');
+Route::post('secompany/coverphoto','SemployerController@coverPhoto')->name('secover.photo');
+Route::post('seuser/logo/delete','SemployerController@delete_elogo')->name('seelogo.delete');
+Route::post('seuser/coverphoto/delete','SemployerController@delete_ecover')->name('seecover.delete');
+//Consultant
+Route::get('/consultant/{id}/{company}','ConsultantController@index')->name('consultant.index');
+Route::get('consultant/create','ConsultantController@create')->name('consultant.view');
+Route::post('consultant/create','ConsultantController@store')->name('consultant.store');
+Route::post('consultant/logo','ConsultantController@companyLogo')->name('consultant.logo');
+Route::post('consultant/coverphoto','ConsultantController@coverPhoto')->name('concover.photo');
+Route::post('conuser/logo/delete','ConsultantController@delete_elogo')->name('conelogo.delete');
+Route::post('conuser/coverphoto/delete','ConsultantController@delete_ecover')->name('concover.delete');
+
 
 //See all companies
 Route::get('/companies','CompanyController@company')->name('company');
+Route::view('semployer/register','auth.semployer-register')->name('semployer.register');
+//Route::view('success','auth.success')->name('success');
+Route::post('semployer/register','SemployerRegisterController@semployerRegister')->name('semp.register');
+
+//consultant
+Route::view('consultant/register','auth.consultant-register')->name('consultant.register');
+Route::post('consultant/register','ConsultantRegisterController@consultantRegister')->name('cons.register');
 
 //SEEKER
 Route::get('user/profile','UserController@index')->name('user.profile');

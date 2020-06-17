@@ -27,7 +27,7 @@
 
 @section('content')
 <main>
-<div class="hero-wrap" style="height: 410px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
+{{--<div class="hero-wrap" style="height: 410px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
     <!--<div class="overlay"></div>-->
     <div class="container">
           <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
@@ -37,15 +37,34 @@
               </div>
               <div class="col-md-4 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
                 @if(Auth::check()&&Auth::user()->id==$user->id)
-                   {{--<a href="{{route('company.view')}}"><button class="btn btn-danger btn-lg">Edit</button></a>--}} 
- 
                    <a class="btn btn-warning btn-lg" href="{{route('user.profile')}}" role="button"> <i class="ion-ios-arrow-back"></i>&nbsp; <u><strong>Go Back</strong></u></a>
  
                 @endif
              </div>
           </div>
     </div>
+</div>--}}
+
+
+<div class="hero-wrap" style="height: 300px; background: #038cfc">
+  <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 300px" data-scrollax-parent="true">
+            <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
+                <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
+               <h1  style="font-size: 30px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Education and Work History</h1>
+            </div>
+            <div class="col-md-4 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
+              @if(Auth::check()&&Auth::user()->id==$user->id)               
+
+                 <a class="btn btn-warning" href="{{route('user.profile')}}" role="button"><i class="ion-ios-arrow-back"></i>&nbsp; <u><strong>Go Back</strong></u></a>
+
+              @endif
+           </div>
+        </div>
+  </div>
 </div>
+
+
 <br>
 <br>
 <div class="container">

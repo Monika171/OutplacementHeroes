@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container">
 
-    <a href="/"><img src="{{asset('external/images/oph.png')}}" alt="" width="200" style="opacity: 0.9;"></a>
+    <a href="/"><img src="{{asset('HomeImages\Logo.jpeg')}}" alt="" width="200" style="opacity: 1;"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="oi oi-menu"></span> Menu
     </button>
@@ -16,7 +16,7 @@
         @endif
       <ul class="navbar-nav ml-auto">
 
-        <li class="nav-item"><a href="{{route('company')}}" class="nav-link">Companies</a></li>
+        <li class="nav-item"><a href="{{route('company')}}" class="nav-link"style="font-size:20px;">Companies</a></li>
         @guest
             @if (Route::has('register'))
                 <li class="nav-item">
@@ -87,7 +87,7 @@
             @endif
             
             <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" style="font-size:20px" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     
                                                     
                     @if(Auth::user()->user_type=='employer')
@@ -121,9 +121,21 @@
 
                         <a class="dropdown-item" href="{{route('applicant')}}">
                             {{ __('All Applicants') }}
-                        </a>                       
+                        </a> 
+
+                    @elseif(Auth::user()->user_type=='semployer')
+                        <a class="dropdown-item" href="{{route('secompany.index',[Auth::user()->secompany->id,Auth::user()->secompany->slug])}}"
+                        >
+                        {{ __('My Company') }}
+                        </a>
+                        
+                    @elseif(Auth::user()->user_type=='consultant')
+                        <a class="dropdown-item" href="{{route('consultant.index',[Auth::user()->consultant->id,Auth::user()->consultant->slug])}}"
+                        >
+                        {{ __('My Consultancy') }}
+                        </a>
                     
-                          
+                        
                     @elseif(Auth::user()->user_type=='seeker')
 
                         <a class="dropdown-item" href="{{route('user.show',[Auth::user()->id])}}"
@@ -145,12 +157,12 @@
                         </a>
 
 
-                        {{--@else
+                        @else
 
                         <a class="dropdown-item" href="/dashboard"
                         >
                             {{ __('Dashboard') }}
-                        </a>--}}
+                        </a>
                         
                     @endif
 

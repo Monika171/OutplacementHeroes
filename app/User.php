@@ -14,6 +14,8 @@ use App\JvolunteerProfile;
 use App\Skill;
 use App\Education;
 use App\Work;
+use App\semployers;
+use App\consultant;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -25,7 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'user_type' ,
+        'name', 'email', 'password', 'user_type', 'notifications_frequency',
     ];
 
     /**
@@ -53,7 +55,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function company(){
         return $this->hasOne(Company::class);
     }
-
+    public function secompany(){
+        return $this->hasOne(semployers::class);
+    }
+    public function consultant(){
+        return $this->hasOne(consultant::class);
+    }
 
     public function roles(){
         return $this->belongsToMany(Role::class);
