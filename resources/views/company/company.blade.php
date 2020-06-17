@@ -16,7 +16,7 @@
     <section class="ftco-section bg-light">
       <div class="container">
         <div class="row d-flex">
-		
+          @if(count($companies)>0)
 		@foreach($companies as $company)
           <div class="col-md-3 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
@@ -41,7 +41,16 @@
           </div>
  
 		  
-		 @endforeach 
+     @endforeach 
+
+     @else
+
+     <div class="col-md-12 text-center ftco-animate">
+       <!--<span class="subheading">Registered Candidates</span>-->
+       <h6 class="mt-5 mb-0">Companies are joining soon.</h6>
+       <p class="mt-0 mb-5">Thank You.</p>
+     </div>
+   @endif
         </div>
 <!--pagination here-->
                 <div class="pagination center">  

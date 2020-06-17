@@ -7300,7 +7300,7 @@
     color: #157efb !important; }
   
   .ftco-navbar-light {
-    background: rgb(11, 154, 236) !important;
+    background: #038cfc !important;
     position: absolute;
     top: 0;
     left: 0;
@@ -7308,22 +7308,22 @@
     z-index: 1000; }
     @media (max-width: 991.98px) {
       .ftco-navbar-light {
-        background: rgb(11, 154, 236) !important;
+        background: #038cfc !important;
         position: relative;
         top: 0; } }
     .ftco-navbar-light .navbar-brand {
-      color: rgb(11, 154, 236); }
+      color: #038cfc; }
     @media (max-width: 991.98px) {
       .ftco-navbar-light .navbar-nav {
         padding-bottom: 10px; } }
     .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
       font-size: 20px;
-      padding-top: .9rem;
+      padding-top: 0.9rem;
       padding-bottom: .9rem;
       padding-left: 20px;
       padding-right: 20px;
       color: #fff;
-      font-weight: 700;
+      font-weight: 600;
       opacity: 1 !important; }
       .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
         color: #fff; }

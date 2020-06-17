@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
   <div class="container">
 
-    <a href="/"><img src="{{asset('HomeImages\Logo.jpeg')}}" alt="" width="200" style="opacity: 1;"></a>
+    <a href="/" class="navbar-brand"><img src="{{asset('HomeImages\Logo.jpeg')}}" alt="" width="200" height="80" style="opacity: 1;"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="oi oi-menu"></span> Menu
     </button>
@@ -16,7 +16,7 @@
         @endif
       <ul class="navbar-nav ml-auto">
 
-        <li class="nav-item"><a href="{{route('company')}}" class="nav-link"style="font-size:20px;">Companies</a></li>
+        <li class="nav-item"><a href="{{route('company')}}" class="nav-link" >Companies</a></li>
         @guest
             @if (Route::has('register'))
                 <li class="nav-item">
@@ -87,7 +87,7 @@
             @endif
             
             <li class="nav-item dropdown">
-                <a id="navbarDropdown" class="nav-link dropdown-toggle" style="font-size:20px" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     
                                                     
                     @if(Auth::user()->user_type=='employer')

@@ -1,12 +1,12 @@
 <!--<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm ftco_navbar ftco-navbar-light" id="ftco-navbar">-->
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light mb-5" id="ftco-navbar">
-    <div class="container">
-  
-      <a href="/"><img src="{{asset('HomeImages\Logo.jpeg')}}" alt="" width="200" height="80" style="opacity: 1;"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="oi oi-menu"></span> Menu
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <a href="/" class="navbar-brand"><img src="{{asset('HomeImages\Logo.jpeg')}}" alt="" width="220" height="100" style="opacity: 1;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="oi oi-menu"></span> <br> Menu
       </button>
-  
+    
+    <div class="container">    
+
       <div class="collapse navbar-collapse" id="ftco-nav">
           {{--@include('inc.messages')--}}
           @if(session('error'))
@@ -25,7 +25,7 @@
               @endif--}}
   
               <li class="nav-item">
-                  <a class="nav-link" href="{{ route('employer.register') }}">{{ __('Hiring Employer') }}</a>
+                  <a class="nav-link " href="{{ route('employer.register') }}">{{ __('Hiring Employer') }}</a>
               </li>
 
               <li class="nav-item">

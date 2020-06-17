@@ -114,9 +114,9 @@ Job Seeker Signup
     </div>
 </div>--}}
 
-    <div class="ftco-section bg-light mt-5">
+    <div class="ftco-section bg-light">
       <div class="container">
-        <div class="row" style="margin-left: 27%;color: black;font-size: 14px;margin-bottom: -10%;margin-top: -5%;">
+        <div class="row" style="margin-left: 27%;color: black;font-size: 14px;margin-bottom: -10%;">
        
             @if(Session::has('message'))
                  <div class="alert alert-success">

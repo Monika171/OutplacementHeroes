@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'OutplacementHeroes') }}</title>
+    <title>@yield('title')</title>
     <!-- Scripts -->
     <script defer src="{{ asset('js/app.js') }}"></script>
     <!--modified here-->
@@ -24,7 +24,10 @@
     <link href="{{ asset('css/app1.css') }}" rel="stylesheet">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fontawesome-iconpicker/3.2.0/js/fontawesome-iconpicker.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"><style type="text/css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    @yield('select2css')
+    <style type="text/css">
+    
     .nav
     {
       background: #038cfc;
@@ -187,11 +190,11 @@
       </div>
     </section>
       @guest
-        @if (Route::has('register'))
-          <!--li class="nav-links">
+        {{--@if (Route::has('register'))
+          <li class="nav-links">
             <a href="{{ route('register') }}">Job Seeker</a>
-          </li-->
-        @endif
+          </li>
+        @endif--}}
           <li class="nav-links">
             <a href="{{ route('employer.register') }}">{{ __('Hiring Employer') }}</a>
           </li>
@@ -298,7 +301,16 @@
       </ul>
     </div>
   </div>
-        <!--nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+
+
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
+</body>
+</html>
+
+        {{--nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -368,11 +380,4 @@
                     </ul>
                 </div>
             </div>
-        </nav-->
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-</body>
-</html>
+        </nav--}}

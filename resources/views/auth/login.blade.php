@@ -1,6 +1,19 @@
-@extends('layouts.app1')
-<head>
-    <title>Login</title>
+@extends('layouts.main1')
+@section('title')
+Login
+@endsection
+
+@section('loginLinks')
+<!-- Fonts -->
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<!-- Styles -->
+<link href="{{ asset('css/app1.css') }}" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fontawesome-iconpicker/3.2.0/js/fontawesome-iconpicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@endsection
+
+@section('select2css')
+
     <link rel="shortcut icon" type="image/png" href="{{ asset('HomeImages/Favicon.png') }}">
     <style type="text/css">
     form:after 
@@ -238,54 +251,64 @@
 
     }
     </style>
-</head>
-<body>
+@endsection
+
+
     @section('content')
-    <div class="container">
-      <section id="content">
-        @if(Session::has('message'))
-          <div class="alert alert-success">
-            {{Session::get('message')}}
-          </div>    
-        @endif
-        <form method="POST" action="{{ route('login') }}">
-          @csrf
-          <h1>LOGIN</h1>
-          <center><div>
-            <input id="email" placeholder="Email ID" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required="" autocomplete="email" />
-            @error('email')
-              <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-              </span>
-            @enderror
+    <div id="app">
+    <main class="py-4">
+
+      <div style="height:120px; width:100%; clear:both;"></div>
+
+      <div class="container">
+        <section id="content">
+          @if(Session::has('message'))
+            <div class="alert alert-success">
+              {{Session::get('message')}}
+            </div>    
+          @endif
+          <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <h1>LOGIN</h1>
+            <center><div>
+              <input id="email" placeholder="Email ID" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required="" autocomplete="email" />
+              @error('email')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+              @enderror
+            </div>
+            <div>
+              <input type="password" placeholder="Password" required="" id="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"/>
+              @error('password')
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+                </span>
+              @enderror
+            </div></center>
+            <div>
+            <label style="margin-left: -40%;" for="remember" class="checkbox">              
+              <input value="remember-me" id="remember" name="rememberMe" class="form-check-input" type="checkbox" {{ old('remember') ? 'checked' : '' }}>Remember me
+            </label>
           </div>
           <div>
-            <input type="password" placeholder="Password" required="" id="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"/>
-            @error('password')
-              <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-              </span>
-            @enderror
-          </div></center>
-          <div>
-          <label style="margin-left: -40%;" for="remember" class="checkbox">              
-            <input value="remember-me" id="remember" name="rememberMe" class="form-check-input" type="checkbox" {{ old('remember') ? 'checked' : '' }}>Remember me
-          </label>
-        </div>
-        <div>
-          <input type="submit" value="Login" />
-        </div>
-        <p style="margin-top: 5%;">
-          @if (Route::has('password.request'))
-            <a class="btn btn-link" href="{{ route('password.request') }}">
-              {{ __('Forgot Your Password?') }}
-            </a>
-          @endif
-        </p>
-      </form>
-    </section>
+            <input type="submit" value="Login" />
+          </div>
+          <p style="margin-top: 5%;">
+            @if (Route::has('password.request'))
+              <a class="btn btn-link" href="{{ route('password.request') }}">
+                {{ __('Forgot Your Password?') }}
+              </a>
+            @endif
+          </p>
+        </form>
+      </section>
+    </div>
+    </main>
   </div>
-<!--div class="container">
+
+  @endsection
+{{--div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
 
@@ -361,6 +384,5 @@
             </div>
         </div>
     </div>
-</div-->
-@endsection
-</body>
+</div--}}
+
