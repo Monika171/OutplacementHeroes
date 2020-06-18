@@ -6,7 +6,8 @@
           <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 300px" data-scrollax-parent="true">
               <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                   <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-                 <h1  style="font-size: 30px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Job Seekers</h1>
+                 <h1  style="font-size: 30px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                    <u>Job Seekers</u></h1>
               </div>
           </div>
     </div>
@@ -65,11 +66,11 @@
                                 </div>
                             </div>
                     
-                    <div class="col-6 col-md-2">
-					<div class="ml-auto d-flex">
-                    <a href="{{route('seeker.show',[$seeker->user_id])}}" class="btn btn-info btn-sm active"  role="button" aria-pressed="true">View</a>
-                     </div>
-                    </div>
+                            <div class="col-6 col-md-2">
+                            <div class="ml-auto d-flex">
+                            <a href="{{route('seeker.show',[$seeker->user_id])}}" class="btn btn-info btn-sm active"  role="button" aria-pressed="true">View</a>
+                            </div>
+                            </div>
 			  
 			  
 				</div>

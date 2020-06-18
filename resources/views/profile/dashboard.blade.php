@@ -2,13 +2,25 @@
 
 @section('content')
 
-<div class="hero-wrap" style="height: 410px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
+{{--<div class="hero-wrap" style="height: 410px; background: linear-gradient(to bottom, #003399 0%, #666699 100%)" data-stellar-background-ratio="0.5">
     <!--<div class="overlay"></div>-->
     <div class="container">
           <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 410px" data-scrollax-parent="true">
               <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                   <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
                  <h1  style="font-size: 45px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Welcome {{Auth::user()->name}}</h1>
+              </div>
+          </div>
+    </div>
+</div>--}}
+
+<div class="hero-wrap" style="height: 300px; background:#038cfc">
+    <div class="container">
+          <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 300px" data-scrollax-parent="true">
+              <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
+                  <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
+                 <h1  style="font-size: 30px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                    Welcome {{Auth::user()->name}}</h1>
               </div>
           </div>
     </div>
@@ -43,7 +55,12 @@
             @endforeach
 
             @else
-            Oops! There are no saved job posts or the same must have expired.            
+
+            <div class="col-md-12 text-center ftco-animate">
+                <!--<span class="subheading">Registered Candidates</span>-->
+                <h6 class="mt-5 mb-0">Oops! There are no saved job posts or the same must have expired. </h6>                
+            </div>
+                       
             @endif
 
 

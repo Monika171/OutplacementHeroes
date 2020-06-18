@@ -60,8 +60,8 @@
             
 
             <li class="nav-item">
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ophLogin">
-                Login
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#ophLogin">
+                <strong>LOGIN</strong>
                 </button>
                 <!--exampleModal-->
             </li>
@@ -82,7 +82,7 @@
             @elseif(Auth::user()->user_type=='jvolunteer')
             <li class="nav-item"><a href="{{route('jvseeker.index')}}" class="nav-link">Dashboard</a></li>
 
-            @else  
+            @elseif(Auth::user()->user_type=='admin')  
             <li class="nav-item"><a href="/dashboard" class="nav-link">Dashboard</a></li>          
             @endif
             
@@ -102,7 +102,13 @@
                     @elseif(Auth::user()->user_type=='jvolunteer')
                     {{Auth::user()->name}}
 
-                    @else  
+                    @elseif(Auth::user()->user_type=='semployer')
+                    {{Auth::user()->name}}
+
+                    @elseif(Auth::user()->user_type=='consultant')
+                    {{Auth::user()->name}}
+
+                    @elseif(Auth::user()->user_type=='admin')   
                             {{Auth::user()->name}}  
                     @endif
         
@@ -157,7 +163,7 @@
                         </a>
 
 
-                        @else
+                        @elseif(Auth::user()->user_type=='admin')
 
                         <a class="dropdown-item" href="/dashboard"
                         >

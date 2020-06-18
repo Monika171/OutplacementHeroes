@@ -245,41 +245,51 @@ class JobController extends Controller
 
 
     public function allJobs(Request $request){
-       //copy/cut this method if needed for job-search volunteer.
-       //experimental, but works!!!
-        //front search
 
-           /*$search = $request->get('search');
-           $address = $request->get('address');
-           if($search && $address){
-              $jobs = Job::where('position','LIKE','%'.$search.'%')
-                       ->orWhere('title','LIKE','%'.$search.'%')
-                       ->orWhere('type','LIKE','%'.$search.'%')
-                       ->orWhere('address','LIKE','%'.$address.'%')
-                       ->paginate(20);
-   
-               return view('jobs.alljobs',compact('jobs'));*/
-
-               $keyword = $request->get('title');
-               $type = $request->get('type');
+               $citylist = City::where('country_id','101')->pluck('name');
+               $positionlist = Designation::orderBy('designation', 'asc')->pluck('designation');
+              
+              
                $category = $request->get('category_id');
-               $city = $request->get('city');
+               $position = $request->get('position');
+               $city = $request->get('city');            
+               
+               if($category||$position||$city){                  
 
-               if($keyword||$type||$category||$city){
-                   $jobs = Job::where('title','LIKE','%'.$keyword.'%')
-                   ->orWhere('type',$type)
-                   ->orWhere('category_id',$category)
+                   $jobs = Job::where('category_id',$category)                   
+                   ->orWhere('position',$position)
                    ->orWhere('city',$city)
-                   ->paginate(2);
+                   ->latest()                    
+                   ->paginate(10);
 
-                   return view('jobs.alljobs',compact('jobs'));
+                   return view('jobs.alljobs',compact('jobs','citylist','positionlist'));
                }else{
                 $jobs = Job::latest()->paginate(10);
-                return view('jobs.alljobs',compact('jobs'));
+                //dd($citylist);
+                return view('jobs.alljobs',compact('jobs','citylist','positionlist'));
                }
 
                //dd($keyword);            
                //keyword = request('title');
+               //$keyword = $request->get('title');
+               /*$jobs = Job::where('title','LIKE','%'.$keyword.'%')                   
+                   ->orWhere('city',$city)
+                   ->orWhere('category_id',$category)
+                   ->orWhere('position',$position)                   
+                   ->paginate(10);*/
+
+                //copy/cut this method if needed for job-search volunteer.
+                //experimental, but works!!!
+                //front search
+                    /*$search = $request->get('search');
+                    $address = $request->get('address');
+                    if($search && $address){
+                    $jobs = Job::where('position','LIKE','%'.$search.'%')
+                            ->orWhere('title','LIKE','%'.$search.'%')
+                            ->orWhere('type','LIKE','%'.$search.'%')
+                            ->orWhere('address','LIKE','%'.$address.'%')
+                            ->paginate(20);   
+               return view('jobs.alljobs',compact('jobs'));*/
    
            }
 

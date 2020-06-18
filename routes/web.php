@@ -47,21 +47,30 @@ Route::post('/applications/{id}','JobController@apply')->name('apply');
 Route::post('/save/{id}','FavouriteController@saveJob');
 Route::post('/unsave/{id}','FavouriteController@unSaveJob');
 
+
+//hiring employer register
+Route::view('employer/register','auth.employer-register')->name('employer.register');
+Route::post('employer/register','EmployerRegisterController@employerRegister')->name('emp.register');
+
+//separating employer register
+Route::view('semployer/register','auth.semployer-register')->name('semployer.register');
+//Route::view('success','auth.success')->name('success');
+Route::post('semployer/register','SemployerRegisterController@semployerRegister')->name('semp.register');
+
+//consultant register
+Route::view('consultant/register','auth.consultant-register')->name('consultant.register');
+Route::post('consultant/register','ConsultantRegisterController@consultantRegister')->name('cons.register');
+
 Route::get('dynamic-field', 'DynamicFieldController@index')->name('dynamic-field.index');
-
 Route::post('dynamic-field/insert', 'DynamicFieldController@insert')->name('dynamic-field.insert');
-Route::get('dynamic-field1', 'DynamicFieldController1@index')->name('dynamic-field1.index');
 
+Route::get('dynamic-field1', 'DynamicFieldController1@index')->name('dynamic-field1.index');
 Route::post('dynamic-field1/insert', 'DynamicFieldController1@insert')->name('dynamic-field1.insert');
 //mail view 
 
 Route::get('/email',function(){
     return new WelcomeMail();
 });
-
-//employer register
-Route::view('employer/register','auth.employer-register')->name('employer.register');
-Route::post('employer/register','EmployerRegisterController@employerRegister')->name('emp.register');
 
 //HIRING EMPLOYER from a COMPANY
 Route::get('/company/{id}/{company}','CompanyController@index')->name('company.index');
@@ -91,13 +100,6 @@ Route::post('conuser/coverphoto/delete','ConsultantController@delete_ecover')->n
 
 //See all companies
 Route::get('/companies','CompanyController@company')->name('company');
-Route::view('semployer/register','auth.semployer-register')->name('semployer.register');
-//Route::view('success','auth.success')->name('success');
-Route::post('semployer/register','SemployerRegisterController@semployerRegister')->name('semp.register');
-
-//consultant
-Route::view('consultant/register','auth.consultant-register')->name('consultant.register');
-Route::post('consultant/register','ConsultantRegisterController@consultantRegister')->name('cons.register');
 
 //SEEKER
 Route::get('user/profile','UserController@index')->name('user.profile');

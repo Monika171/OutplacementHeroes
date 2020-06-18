@@ -51,7 +51,8 @@
         <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 300px" data-scrollax-parent="true">
             <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                 <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
-               <h1  style="font-size: 30px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Education and Work History</h1>
+               <h1  style="font-size: 30px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                <u>Education and Work History</u></h1>
             </div>
             <div class="col-md-4 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
               @if(Auth::check()&&Auth::user()->id==$user->id)               
@@ -86,7 +87,7 @@
                     <div>
                       <p class="float-right text-danger targetEducDiv"><i class="far fa-trash-alt" data-toggle="modal" data-target="#deleteEducation{{$education->id}}"></i></p>  
                       <p class="float-right text-info mr-4"><i class="fas fa-pencil-alt" data-id="{{$education->id}}" data-toggle="modal" data-target="#editeducation{{$education->id}}"></i></p>
-                      <h5 class="h5 text-info"><strong>Education:</strong>&nbsp;{{$education->qualification}}</h5>
+                      <h6 class="h6 text-info"><strong>Education:</strong>&nbsp;{{$education->qualification}}</h6>
                       <h6 class="h6 mb-2 text-muted"><strong>Course:</strong>&nbsp;{{$education->course}}</h6> 
                       <h6 class="h6 mb-2 text-muted"><strong>Specialization:</strong>&nbsp;{{$education->specialization}}</h6>                             
                       <h6 class="h6 mb-2 text-muted"><strong>Institute:</strong>&nbsp;{{$education->institute}}</h6>
@@ -443,7 +444,7 @@
                                 <i class="fas fa-pencil-alt" data-id="{{$work->id}}" data-toggle="modal" data-target="#editWork{{$work->id}}"></i>
                             </p>
                                                     
-                             <h5 class="h5 text-info"><strong>Company:</strong>&nbsp;{{$work->company}}</h5>
+                             <h6 class="h6 text-info"><strong>Company:</strong>&nbsp;{{$work->company}}</h6>
                              <h6 class="h6 mb-2 text-muted"><strong>Industry:</strong>&nbsp;{{$work->industry}}</h6> 
                              <h6 class="h6 mb-2 text-muted"><strong>Designation:</strong>&nbsp;{{$work->designation}}</h6> 
                              {{--<h5 class="h6 mb-2 text-muted">{{$work->function}}</h5>--}}                           
