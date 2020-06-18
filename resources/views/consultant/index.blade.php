@@ -37,7 +37,7 @@
 
                   <a class="btn  edit btn-lg" style="background:#038cfc;font-size:15px;margin-top:-20%;border-radius:10px; color:white;" href="{{route('consultant.view')}}" role="button"><u>Edit Details</u></a>
                   
-                  <a class="btn add btn-lg" style="background:#0c127d; font-size:18px;margin-top:-35%;border-radius:10px;color:white;" href="{{route('dynamic-field.index')}}" role="button">Add JobSeekers</a>
+                  <a class="btn add btn-lg" style="background:#0c127d; font-size:18px;margin-top:-35%;border-radius:10px;color:white;" href="{{route('dynamic-field1.index')}}" role="button">Add JobSeekers</a>
                     
                @endif
             </div>
