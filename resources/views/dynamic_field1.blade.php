@@ -94,7 +94,7 @@ $(document).ready(function(){
  $('#dynamic_form').on('submit', function(event){
         event.preventDefault();
         $.ajax({
-            url:'{{ route("dynamic-field.insert") }}',
+            url:'{{ route("dynamic-field1.insert") }}',
             method:'post',
             data:$(this).serialize(),
             dataType:'json',

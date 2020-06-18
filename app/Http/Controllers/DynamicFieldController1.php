@@ -13,7 +13,7 @@ use App\State;
 use App\City;
 use App\Designation;
 use App\Industry;
-use App\semployers;
+use App\consultant;
 use Auth;
 use App\DynamicField;
 use Validator;
@@ -24,7 +24,7 @@ class DynamicFieldController1 extends Controller
     //
     function index()
     {
-     return view('dynamic_field');
+     return view('dynamic_field1');
     }
 
     function insert(Request $request)

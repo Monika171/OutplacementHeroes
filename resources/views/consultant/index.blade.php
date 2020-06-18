@@ -57,7 +57,7 @@
             
                @if(Auth::check()&&Auth::user()->id==$company->user_id)                 
                <div class="col-md-3 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
-                  <a class="btn btn-sm" style="background:#0c127d; font-size:18px; color:white;" href="{{route('dynamic-field.index')}}" role="button">Add JobSeekers</a>
+                  <a class="btn btn-sm" style="background:#0c127d; font-size:18px; color:white;" href="{{route('dynamic-field1.index')}}" role="button">Add JobSeekers</a>
                 </div>
                @endif
            
