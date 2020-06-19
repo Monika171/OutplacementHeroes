@@ -1,6 +1,17 @@
 @extends('layouts.main')
 
 
+@section('extra_css')
+{{--
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+--}}
+  @endsection
+
+@section('content')
+
+{{--
 <div class="hero-wrap" style="height: 200px; background: #038cfc;">
     <!--<div class="overlay"></div>-->
     <div class="container">
@@ -11,19 +22,25 @@
               </div>
           </div>
     </div>
+</div>--}}
+
+
+<div class="hero-wrap" style="height: 300px; background: #038cfc;">
+    <!--<div class="overlay"></div>-->
+    <div class="container">
+          <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 300px" data-scrollax-parent="true">
+              <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
+                  <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
+                 <h1 style="font-size: 30px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                    <u>Add Job Seekers</u></h1>
+              </div>
+          </div>
+    </div>
 </div>
-<html>
- <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
- </head>
- <body>
-  <div class="container">    
-     <br />
-      <br />
+
+
+
+  <div class="container mt-5">    
    <div class="table-responsive">
                 <form method="post" id="dynamic_form">
                  <span id="result"></span>
@@ -52,9 +69,13 @@
                 </form>
    </div>
   </div>
- </body>
-</html>
 
+
+  @endsection
+
+  @section('jsplugins')
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>--> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function(){
 
@@ -124,3 +145,4 @@ $(document).ready(function(){
 
 });
 </script>
+@endsection

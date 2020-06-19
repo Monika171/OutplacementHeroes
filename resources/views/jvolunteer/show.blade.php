@@ -21,7 +21,7 @@
   </div>
 </div>
 
-    <section class="ftco-section ftco-degree-bg">
+    <section class="ftco-section bg-light">
       <div class="container">
         <div class="row">
           
@@ -29,13 +29,14 @@
                 
                     <div class="blog-entry align-self-stretch">
 
-                      
+                      <div class="text-center">
                          @if(empty($user->jvprofile->profile_pic))
                         <img  class="block-20" src="{{asset('profile_pic/man.jpg')}}">
                         @else
                         <img  class="block-20" src="{{asset('uploads/profile_pic')}}/{{$user->jvprofile->profile_pic}}">
 
                         @endif
+                      </div>
                       
                         <div class="text mt-3">
 
@@ -52,9 +53,8 @@
 
                         <div class="card mr-4">
                           <div class="card-header">
-                              <a class="card-title">
-                                 <h5 class="d-inline-block h5 text-dark font-weight-bold mb-0">Skills</h5>
-                              </a>
+                            <h6 class="d-inline-block h6 text-dark font-weight-bold mb-0">
+                              <i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;SKILLS</h6>
                           </div>
                           <div class="card-body">
                             @foreach($user->skills as $skill)

@@ -1,41 +1,8 @@
 @extends('layouts.main')
 
-@section('select2css')
-<style>
-.holder {
-  background:rgb(255, 255, 255);
-  padding:0.3rem;
-  overflow: hidden;
-
-}
-.news {
-  animation : slide 20s linear infinite;
-  
-}
-
-@keyframes slide {
-  0% {
-    transform: translatex(0%)
-  }
-
-  100% {
-    transform: translatex(100%)
-  }
-}
-.edit{
-  float:left;
-  margin-bottom:2%;
-  
-  margin-left:-305%;
-
-}
-</style>
-@endsection
-
-
 @section('content')
 
-<div class="hero-wrap" style="height: 200px; background: #038cfc;"> 
+{{--<div class="hero-wrap" style="height: 200px; background: #038cfc;"> 
  <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 280px" data-scrollax-parent="true">
             <div class="col-md-9 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
@@ -44,33 +11,42 @@
             </div>
             <div class="col-md-3 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
             
-               @if(Auth::check()&&Auth::user()->id==$company->user_id)
-                  {{--<a href="{{route('company.view')}}"><button class="btn btn-danger btn-lg">Edit</button></a>--}}
-
-                  <a class="btn  edit btn-lg" style="background:#038cfc;font-size:15px;border-radius:10px; margin-top:-30%;color:white;" href="{{route('secompany.view')}}" role="button"><u>Edit Details</u></a>
-                  
+               @if(Auth::check()&&Auth::user()->id==$company->user_id)                 
+                  <a class="btn  edit btn-lg" style="background:#038cfc;font-size:15px;border-radius:10px; margin-top:-30%;color:white;" href="{{route('secompany.view')}}" role="button"><u>Edit Details</u></a>                 
                   <a class="btn  add btn-lg" style="background:#0c127d; font-size:18px;margin-top:-35%;border-radius:10px;color:white;" href="{{route('dynamic-field.index')}}" role="button">Add JobSeekers</a>
                     
                @endif
             </div>
         </div>
   </div>
+</div>--}}
+
+<div class="hero-wrap" style="height: 300px; background: #038cfc">
+  <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-start" style="height: 300px" data-scrollax-parent="true">
+            <div class="col-md-9 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">                
+                <h1 style="font-size: 30px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+                  {{$company->cname}}</h1>
+
+                  @if(Auth::check()&&Auth::user()->id==$company->user_id)                     
+                  <a class="btn btn-sm" style="background:#0c127d; font-size:18px; color:white;" href="{{route('secompany.view')}}" role="button">Edit Company Details</a>
+                  @endif
+            </div>
+            
+               @if(Auth::check()&&Auth::user()->id==$company->user_id)                 
+               <div class="col-md-3 ftco-animate text-center text-md-right mb-5" data-scrollax=" properties: { translateY: '70%' }">
+                  <a class="btn btn-sm" style="background:#0c127d; font-size:18px; color:white;" href="{{route('dynamic-field.index')}}" role="button">Add JobSeekers</a>
+                </div>
+               @endif           
+        </div>
+  </div>
 </div>
+
     <section class="ftco-section ftco-degree-bg">
       <div class="container">
         <div class="row">
 
           <div class="col-md-12 my-0">
-            @if(Auth::check()&&Auth::user()->id==$company->user_id)
-         <!--   <div class="holder">
-              <div class="news">                
-                <p style="color: rgb(38, 6, 178); font-weight: bold; font-size: 26px;">
-                 Please share open roles at Hello@OutplacementHeros.Org
-                [Inconvenience is regretted]
-                </p>
-              </div>
-            </div>-->
-              @endif
           </div>
           
           <div class="col-md-12 mb-5 ftco-animate">

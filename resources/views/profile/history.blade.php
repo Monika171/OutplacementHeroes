@@ -65,12 +65,10 @@
   </div>
 </div>
 
-
-<br>
-<br>
+<section class="ftco-section bg-light">
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12 my-5">
+        <div class="col-md-12">
           
            
           <div class="card mb-3"> 
@@ -423,6 +421,7 @@
                        </form>
                     </div>
 
+                    <br><br>
           <div class="card mb-0">
 
                   <div class="card-header">
@@ -646,6 +645,7 @@
         </div>
     </div>
 </div>
+</section> 
 
 	<div class="loading">
 		<i class="fas fa-circle-notch fa-spin fa-3x fa-fw"></i><br/>

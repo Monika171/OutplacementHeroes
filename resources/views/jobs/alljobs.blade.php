@@ -77,10 +77,8 @@
             </form>
 
             <div class="col-md-12 mb-4 ftco-animate text-center">
-              <a href="{{route('alljobs')}}"><i class="fa fa-retweet" aria-hidden="true" style="font-size: 38px;color:rgba(29, 27, 132, 0.917);"></i></a>
+              <a href="{{route('alljobs')}}"><i class="fa fa-undo text-success" aria-hidden="true" style="font-size: 38px;"></i></a>
             </div>
-
-           
 
           @if(count($jobs)>0)
           @foreach($jobs as $job)
@@ -92,14 +90,13 @@
                            
                 
                                 <div class="col-4 col-md-3">
-                                <div class="d-flex">
-                                  @if(empty($job->company->logo))
-                                  <img width="100" src="{{asset('profile_pic/logo.jpg')}}" class="img-fluid mx-auto">
-                                  @else
-                                  <img width="100" src="{{asset('uploads/logo')}}/{{$job->company->logo}}" class="img-fluid mx-auto">
-                                  @endif
-                                
-                                </div>
+                                  <div class="d-flex">
+                                    @if(empty($job->company->logo))
+                                    <img width="100" src="{{asset('profile_pic/logo.jpg')}}" class="img-fluid mx-auto">
+                                    @else
+                                    <img width="100" src="{{asset('uploads/logo')}}/{{$job->company->logo}}" class="img-fluid mx-auto">
+                                    @endif                                
+                                  </div>
                                 </div>
                                 <div class="col-8 col-md-7">
                                     <div class="mb-2 mb-md-0 mr-5">
@@ -117,14 +114,8 @@
                                           <div class="mr-3"><i class="fa fa-building" aria-hidden="true"></i> {{$job->company->cname}}</div>
                                           <div class="mr-3"><span class="icon-my_location"></span> {{$job->city}},&nbsp;{{$job->state}}</div>
                                           <div class="mr-3"><span class="icon-money mr-1"></span>{{$job->salary}}</div>                                          
-                                        </div>                                     
-                                                                              
+                                        </div>                                                                                       
                                       </div>
-                                    
-                                        {{--<div class="job-post-item-body d-block d-md-flex">
-                                        <div class="mr-3"><span class="icon-layers"></span> <a href="#">{{$seeker->experience}}</a></div>
-                                        <div><span class="icon-my_location"></span> <span>{{$seeker->address}}</span></div>
-                                        </div>--}}
                                 </div>
                                 
                         

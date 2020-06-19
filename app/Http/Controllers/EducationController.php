@@ -24,16 +24,6 @@ class EducationController extends Controller
     	$new_education->p_year = $request->p_year;    	
     	$new_education->user_id = auth()->user()->id; 
         $new_education->save();
-        
-        /*    $table->string('qualification')->nullable()->change();
-            $table->string('course')->nullable()->change();
-            $table->string('specialization')->nullable()->change();
-            $table->string('institute')->nullable()->change();
-            $table->string('c_type')->nullable()->change();
-             $table->string('performance_scale')->nullable();
-            $table->string('performance')->nullable();
-            $table->string('p_year')->nullable()->change();
-            $table->integer('user_id'); */
     }
 
     public function updateEducation(Request $request) {    	

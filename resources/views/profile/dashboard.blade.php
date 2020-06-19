@@ -26,12 +26,11 @@
     </div>
 </div>
 
+<section class="ftco-section bg-light">
 <div class="container">
-
-
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <h2>Saved jobs</h2>
+            <h2 class="text-dark font-weight-bold text-center">Saved jobs</h2>
 
             @if(count($jobs)>0)
             @foreach($jobs as $job)
@@ -128,4 +127,5 @@
         </div>
     </div>--}}
 </div>
+</section> 
 @endsection

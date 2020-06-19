@@ -44,8 +44,8 @@
           </div>
     </div>
 </div>
-<br>
-<br>
+
+<section class="ftco-section bg-light">
 <div class="container">
     <div class="row">
 
@@ -366,8 +366,8 @@
                         <div id="todisplay">
                         <p class="mb-0"> <h5><u><strong>Most Recent/Current Employment Details: </strong></u></h5>
                         <span style="color:rgb(209, 39, 39)">
-                        To fill up more work history details before 'most recent/current' employment,
-                        please visit the link(called 'Education & Work History') which will appear on top, right after this form has been submitted.
+                        For work history details prior to 'most recent/current' employment,
+                        please visit the link ('<strong>Education & Work History</strong>') which will appear on top, after this form is submitted.
                         </span></p>
                         <br>
                         <div class="form-group">
@@ -529,7 +529,9 @@
                     <hr>
                     <div class="form-group">
                         <label for="expected_ctc" class="h6">Expected CTC (in Lakhs):</label>
-                        <input type="text" class="form-control" name="expected_ctc" value="{{Auth::user()->profile->expected_ctc?Auth::user()->profile->expected_ctc:old("expected_ctc")}}">
+                        <input type="text" class="form-control" name="expected_ctc" 
+                        placeholder="eg: 8 LPA" 
+                        value="{{Auth::user()->profile->expected_ctc?Auth::user()->profile->expected_ctc:old("expected_ctc")}}">
                         @if($errors->has('expected_ctc'))
                         <div class="error" style="color: red;">{{$errors->first('expected_ctc')}}</div>
                         @endif
@@ -589,6 +591,13 @@
 
         </div>
         <br>
+
+        <div>
+            <span class="h6" style="color:rgb(209, 39, 39)">
+           <strong> *Please Share Your Skills as Jobs will be Recommended Based on your Skills.</strong>
+        </span>
+        </div>
+        
         <div class="card mb-0">
             <div class="card-header">
                 <a class="card-title">
@@ -694,7 +703,8 @@
 
         <br>
         <br>
- 
+
+</section> 
 @endsection
 
 @section('jsplugins')

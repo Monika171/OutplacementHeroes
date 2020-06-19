@@ -249,7 +249,7 @@ p {
                 
                 <apply-component :jobid={{$job->id}}></apply-component>
                 @else
-                <center><span style="color: #000;">You applied this job</span></center>
+                <center><span style="color: #000;">Application sent.</span></center>
                 @endif
             <br>
                 <favorite-component :jobid={{$job->id}} :favorited={{$job->checkSaved()?'true':'false'}}  ></favorite-component>                     

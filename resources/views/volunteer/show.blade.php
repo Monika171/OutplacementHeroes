@@ -22,20 +22,23 @@
   </div>
 </div>
 
-    <section class="ftco-section ftco-degree-bg">
+    <section class="ftco-section bg-light">
       <div class="container">
         <div class="row">
           
-            <div class="col-md-4  px-4 sidebar ftco-animate">
+            <div class="col-md-4 sidebar ftco-animate mb-3 px-4">    
                 
                     <div class="blog-entry align-self-stretch">
-                      
+                      <div class="p-3 bg-white">
+
+                      <div class="text-center">                      
                          @if(empty($user->vprofile->profile_pic))
-                        <img  class="block-20" src="{{asset('profile_pic/man.jpg')}}">
+                        <img src="{{asset('profile_pic/man.jpg')}}">
                         @else
-                        <img  class="block-20" src="{{asset('uploads/profile_pic')}}/{{$user->vprofile->profile_pic}}">
+                        <img src="{{asset('uploads/profile_pic')}}/{{$user->vprofile->profile_pic}}">
 
                         @endif
+                      </div>
                       
                         <div class="text mt-3">
 
@@ -50,12 +53,12 @@
                         
                       </div>
 
-                        <div class="card mr-4">
-                          <div class="card-header">
-                              <a class="card-title">
-                                 <h5 class="d-inline-block h5 text-dark font-weight-bold mb-0">Skills</h5>
-                              </a>
-                          </div>
+                        <hr>
+                              
+                                 <h5 class="d-inline-block h5 text-white bg-dark font-weight-bold mb-0">&nbsp;&nbsp;
+                                  <i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;Skills&nbsp;&nbsp;</h5>
+                              <br><br>
+                                  <div class="card">
                           <div class="card-body">
                             @foreach($user->skills as $skill)
                              <button type="button" class="btn btn-sm btn-info mt-1">{{$skill->skill}}</button>
@@ -66,33 +69,47 @@
                       
                     </div>
                     </div>
-                  
+                    </div>   
             </div>
 
-        <div class="col-md-8 px-4 ftco-animate">
-
-        <h5 class="mb-2 mt-2">Email:</h5>
+        <div class="col-md-8 ftco-animate px-4">
+          <div class="p-3 bg-white mb-3">
+        <h5 class="d-inline-block mb-2 mt-2 text-white bg-dark">&nbsp;&nbsp;
+          <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;Email:&nbsp;&nbsp;</h5>
         <p>{{$user->email}}</p>
 
-        <h5 class="mb-2 mt-2">Phone:</h5>
-        <p>{{$user->vprofile->phone}}</p>
+        <hr>
 
-        <h5 class="mb-2 mt-2">Address:</h5>
+        <h5 class="d-inline-block mb-2 mt-2 text-white bg-dark">&nbsp;&nbsp;
+          <i class="fa fa-phone-square" aria-hidden="true"></i>&nbsp;&nbsp;Phone:&nbsp;&nbsp;</h5>
+        <p>{{$user->vprofile->phone}}</p>
+        <hr>
+
+        <h5 class="d-inline-block mb-2 mt-2 text-white bg-dark">&nbsp;&nbsp;
+          <i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Address:&nbsp;&nbsp;</h5>
         <p>{{$user->vprofile->address_line1}},
           {{$user->vprofile->address_line2}}<br>
           {{$user->vprofile->city}},&nbsp;{{$user->vprofile->state}},
           Pincode:&nbsp; {{$user->vprofile->pincode}}</p>
+        <hr>
 
-        <h5 class="mb-2 mt-2">Qualification:</h5>
+        <h5 class="d-inline-block mb-2 mt-2 text-white bg-dark">&nbsp;&nbsp;
+          <i class="fas fa-graduation-cap" aria-hidden="true"></i>&nbsp;&nbsp;Qualification:&nbsp;&nbsp;</h5>
         <p>{{$user->vprofile->qualification}}</p>
 
+        <hr>
+
         @if(!empty($user->vprofile->industry))
-        <h5 class="mb-2 mt-2">Industry:</h5>
+        <h5 class="d-inline-block mb-2 mt-2 text-white bg-dark">&nbsp;&nbsp;
+          <i class="fa fa-cubes" aria-hidden="true"></i>&nbsp;&nbsp;Industry:&nbsp;&nbsp;</h5>
         <p>{{$user->vprofile->industry}}</p>
+        <hr>
         @endif
         
+
         @if(!empty($user->vprofile->designation))
-        <h5 class="mb-2 mt-2">Designation:</h5>
+        <h5 class="d-inline-block mb-2 mt-2 text-white bg-dark">&nbsp;&nbsp;
+          <i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;&nbsp;Designation:&nbsp;&nbsp;</h5>
         <p>{{$user->vprofile->designation}}</p>
         @endif
 
@@ -113,7 +130,7 @@
         --}}
 
         
-
+          </div>
         </div>
       </div>
     </div>
