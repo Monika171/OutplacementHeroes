@@ -4,7 +4,7 @@
 
 ## IMPORTANT!!!
 
-1) After cloning (or updating) modify .env file with your own database, email values (or mailtrap values). Because a user can't proceed without email verification.
+1) After cloning modify .env file with your own database, email values (or mailtrap values). Because a user can't proceed without email verification.
 
 Also enter admin values, eg:
 ADMIN_NAME="Some Admin Name"
@@ -28,13 +28,14 @@ MAIL_FROM_NAME=OPH
 "php artisan db:seed" and
 "php artisan storage:link"
 
-3) Also, import 'countries.sql', 'states.sql', 'cities.sql', 'courses.sql', 'designations.sql', 'industries.sql', 'skills.sql', 'specializations.sql' at your database.
+3) Import 'countries.sql', 'states.sql', 'cities.sql', 'courses.sql', 'designations.sql', 'industries.sql', 'skills.sql', 'specializations.sql' at your database.
 (If required, delete the previous existing tables with same name which got created after 'php artisan migrate' in first step!
 Well sql query does the same but just in case..)
 
 (These .sql files are available here inside 'OPH_sql_import1')
 
-NOTE: 'cities.sql' is comparatively a big file. May not get imported easily without doing some extra one or two steps.. i.e:
+NOTE: 
+[A] 'cities.sql' is comparatively a big file. May not get imported easily without doing some extra one or two steps.. i.e:
 -----------------
 1) At
 xampp control panel-> (mysql)config -> my.ini -> (open and set)
@@ -42,6 +43,8 @@ myisam_sort_buffer_size = 100M
 2)
 copy cities.sql to "C:\xampp\mysql\bin", then in terminal-
 C:\xampp\mysql\bin>mysql -u [username] -p [databaseName] < cities.sql
+
+[B] 'skills.sql' file may not get imported directly. In that case, please copy the INSERT QUERY from the file and use SQL(INSERT) at phpmyadmin to achieve the same.
 
 
 ## Initial tasks:
@@ -54,7 +57,7 @@ C:\xampp\mysql\bin>mysql -u [username] -p [databaseName] < cities.sql
 -SEPARATING EMPLOYERS, CONSULTANTS:
 ~~[AssignedTo: Pawan]
 
--WEB DESIGN:
+-HOME+LOGIN+REGISTRATION PAGE DESIGN:
 ~~[AssignedTo: Akanksha]
 
 
