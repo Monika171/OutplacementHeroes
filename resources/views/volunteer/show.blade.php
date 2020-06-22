@@ -33,9 +33,9 @@
 
                       <div class="text-center">                      
                          @if(empty($user->vprofile->profile_pic))
-                        <img src="{{asset('profile_pic/man.jpg')}}">
+                        <img  class="block-20" src="{{asset('profile_pic/man.jpg')}}">
                         @else
-                        <img src="{{asset('uploads/profile_pic')}}/{{$user->vprofile->profile_pic}}">
+                        <img  class="block-20" src="{{asset('uploads/profile_pic')}}/{{$user->vprofile->profile_pic}}">
 
                         @endif
                       </div>
@@ -59,7 +59,7 @@
                                   <i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;Skills&nbsp;&nbsp;</h5>
                               <br><br>
                                   <div class="card">
-                          <div class="card-body">
+                          <div class="card-body p-2">
                             @foreach($user->skills as $skill)
                              <button type="button" class="btn btn-sm btn-info mt-1">{{$skill->skill}}</button>
                             @endforeach

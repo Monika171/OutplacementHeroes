@@ -13,9 +13,9 @@
           </div>
     </div>
 </div>
-<div class="container">
+<div id="app" class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 my-5">
 
             
 

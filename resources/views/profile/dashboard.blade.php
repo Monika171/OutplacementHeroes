@@ -27,105 +27,91 @@
 </div>
 
 <section class="ftco-section bg-light">
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <h2 class="text-dark font-weight-bold text-center">Saved jobs</h2>
+    <div class="container">
+    
+      @if(Session::has('message'))
+    
+      <div class="alert alert-success">{{Session::get('message')}}</div>
+      @endif
+      
+      <div class="row justify-content-center mt-0 mb-2 pt-0 pb-2">
+        <div class="col-md-7 heading-section text-center ftco-animate">
+            <!--<span class="subheading">Registered Candidates</span>-->
+            <h2 class="mb-4"><u><span>Your Recent</span> Job Applications</u></h2>
+            <span class="subheading">
+              <i class="fa fa-cubes" aria-hidden="true"></i>
+              Total Applications: <strong>{{count($jobs)}}</strong></span>
+        </div>
+        </div>
+    
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-12 mb-5">  
+              
+              @if(count($jobs)>0)
+    
+                      <div class="table-responsive-sm">
+                        <table class="table table-striped table-dark table-bordered table-hover text-center">
+                            <thead>
+                              <tr>
+                                <th scope="col">S.No.</th>
+                                <th scope="col">TITLE</th>      
+                                <th scope="col">POSITION</th>
+                                <th scope="col">LOCATION</th>
+                                <th scope="col">COMPANY<br>NAME</th>
+                                <th scope="col">DATE OF<br>APPLICATION</th>                                                            
+                                
+                                
+                              </tr>
+                            </thead>
+                            <tbody>
+                            
+                             @foreach($jobs as $job)
+                             
+                              <tr>
+                                <th scope="row">
+                                {{ $loop->iteration }}
+                              </th> 
+                                <td>
+                                  <a href="{{route('jobs.show',[$job->id,$job->slug])}}">{{$job->title}}</a>
+                                  <br> <small>
+                                    <i class="fa fa-paper-plane" aria-hidden="true"></i>&nbsp;posted
+                                    {{$job->created_at->diffForHumans()}}
+                                    </small>
+                                </td> 
+    
+                                <td>{{$job->position}}
+                                {{--<br> <small>
+                                <i class="fa fa-hourglass-half" aria-hidden="true"></i></i>&nbsp;                            
+                                {{$job->type}}</small>--}}
+                                </td>
+    
+                                <td><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                  &nbsp;{{$job->city}},<br>&nbsp;{{$job->state}} </td>
+    
+                                <td>{{$job->company->cname}}</td>
+    
+                                <td>{{ date('F d, Y', strtotime($job->pivot->created_at)) }}</td>                  
 
-            @if(count($jobs)>0)
-            @foreach($jobs as $job)
-            <div class="card">
-                <div class="card-header">{{$job->title}}</div>
+                              </tr> 
+                            @endforeach	
+                            </tbody>
+                          </table>
+                      </div>
+    
+                          <div class="pagination center">                   
+                            {{$jobs->links()}}                
+                          </div>
+    
+              @else
+                <div class="text-center ftco-animate">
+                  <!--<span class="subheading">Registered Candidates</span>-->
+                  <h6 class="mt-5 mb-0">All Your Job Applications will be Listed Here.</h6>
+                  <p class="mt-0 mb-5">Have a nice day!</p>
+                </div>
+              @endif
                 
-
-                <div class="card-body">  
-                    <small class="badge badge-success">{{$job->position}}
-                </small>
-
-                   <p> {{$job->description}}</p>
-                </div>
-                <div class="card-footer">
-                    <span><a href="{{route('jobs.show',[$job->id,$job->slug])}}">Read</a></span>
-                    <span class="float-right">Last date:{{$job->last_date}}</span>
-                </div>
-
             </div>
-            <br>
-            @endforeach
-
-            @else
-
-            <div class="col-md-12 text-center ftco-animate">
-                <!--<span class="subheading">Registered Candidates</span>-->
-                <h6 class="mt-5 mb-0">Oops! There are no saved job posts or the same must have expired. </h6>                
-            </div>
-                       
-            @endif
-
-
         </div>
     </div>
-    {{--<div class="row justify-content-center">
-        <div class="col-md-12 my-5">
-            <div class="card">
-                <div class="card-header">Applied jobs</div>
-
-                <div class="card-body">
-                    
-                    <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th scope="col">Title</th>      
-                            <th scope="col">Position</th>
-                            <th scope="col">Salary</th>
-                            <th scope="col">Experience</th>
-                            <th scope="col">City</th>
-                            <th scope="col">Vacancy</th>
-                            <th scope="col">Notice Period</th>
-                            <th scope="col">Last Date</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Created at</th>
-                            <th scope="col"></th>
-                            
-                          </tr>
-                        </thead>
-                        <tbody>
-                        
-                         @foreach($jobs as $job)
-                         
-                          <tr>
-                            <th scope="row">
-                                {{$job->title}}
-                            </th>                             
-                            <td>{{$job->position}}
-                            <br>
-                            <i class="fa fa-hourglass-half" aria-hidden="true"></i></i>&nbsp;{{$job->type}}
-                            </td>
-                            <td>{{$job->salary}}</td>
-                            <td>{{$job->experience}} year(s)</td>
-                            <td><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{$job->city}}</td>
-                            <td>{{$job->number_of_vacancy}}</td>
-                            <td>{{$job->notice_period}}</td>
-                            <td>{{$job->last_date}}</td>
-                            <td>{{$job->status}}</td>
-                            <td>{{$job->created_at->diffForHumans()}}</td>
-                            <td>
-                            <a href="{{route('jobs.show',[$job->id,$job->slug])}}">
-                            <button class="btn btn-success btn-sm">     View
-                            </button>
-                            </a>
-                            </td>
-                          
-                          </tr> 
-                        @endforeach	
-                        </tbody>
-                      </table>
-
-
-                </div>
-            </div>
-        </div>
-    </div>--}}
-</div>
-</section> 
+    </section>
 @endsection

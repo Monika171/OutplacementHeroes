@@ -797,6 +797,12 @@
       <a href="Contact.html">Contact</a>
 
       @if(Auth::check()&&Auth::user()->user_type=='employer')
+
+      <a href="{{route('my.job')}}"
+      >
+          {{ __('Dashboard') }}
+      </a>
+
       <a href="{{route('company.index',[Auth::user()->company->id,Auth::user()->company->slug])}}"
       >
           {{ __('My Company') }}
@@ -814,10 +820,14 @@
   
       
   @elseif(Auth::check()&&Auth::user()->user_type=='seeker')
+      <a href="{{route('user.dashboard')}}"
+      >
+          {{ __('Dashboard') }}
+      </a>
 
       <a href="{{route('user.show',[Auth::user()->id])}}"
       >
-          {{ __('Profile') }}
+          {{ __('My Profile') }}
       </a>
 
       @elseif(Auth::check()&&Auth::user()->user_type=='volunteer')
@@ -829,7 +839,7 @@
 
       <a href="{{route('volunteer.show',[Auth::user()->id])}}"
       >
-          {{ __('Profile') }}
+          {{ __('My Profile') }}
       </a>
 
 
@@ -843,7 +853,7 @@
 
       <a href="{{route('jvolunteer.show',[Auth::user()->id])}}"
       >
-          {{ __('Profile') }}
+          {{ __('My Profile') }}
       </a>
 
 

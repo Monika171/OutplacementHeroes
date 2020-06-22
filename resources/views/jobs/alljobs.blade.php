@@ -92,9 +92,9 @@
                                 <div class="col-4 col-md-3">
                                   <div class="d-flex">
                                     @if(empty($job->company->logo))
-                                    <img width="100" src="{{asset('profile_pic/logo.jpg')}}" class="img-fluid mx-auto">
+                                    <img width=50% src="{{asset('profile_pic/logo.jpg')}}" class="img-fluid mx-auto">
                                     @else
-                                    <img width="100" src="{{asset('uploads/logo')}}/{{$job->company->logo}}" class="img-fluid mx-auto">
+                                    <img width=50% src="{{asset('uploads/logo')}}/{{$job->company->logo}}" class="img-fluid mx-auto">
                                     @endif                                
                                   </div>
                                 </div>
@@ -110,8 +110,10 @@
                                                 @endforeach
                                           </div>
                                     
-                                        <div class="job-post-item-body d-block d-md-flex">                                          
-                                          <div class="mr-3"><i class="fa fa-building" aria-hidden="true"></i> {{$job->company->cname}}</div>
+                                        <div class="job-post-item-body d-block d-md-flex">  
+                                          <a href="{{route('company.index',[$job->company->id,$job->company->slug])}}">                                        
+                                          <div style="color:#868e96;" class="mr-3"><i class="fa fa-building" aria-hidden="true"></i>&nbsp;{{$job->company->cname}}</div>
+                                          </a>
                                           <div class="mr-3"><span class="icon-my_location"></span> {{$job->city}},&nbsp;{{$job->state}}</div>
                                           <div class="mr-3"><span class="icon-money mr-1"></span>{{$job->salary}}</div>                                          
                                         </div>                                                                                       

@@ -1,7 +1,9 @@
 <template>
     <div>
-    <button v-if="show" @click.prevent="unsave()" class="btn btn-dark" style="width: 100%;">Unsave job</button>
-    <button v-else @click.prevent="save()"   class="btn btn-info" style="width: 100%;">Save job</button>        
+    <button v-if="show" @click.prevent="unsave()" class="btn btn-sm btn-dark" style="width: 100%;">
+        <i class="fa fa-tag" aria-hidden="true"></i>&emsp; Unsave Job</button>
+    <button v-else @click.prevent="save()"   class="btn btn-sm btn-info" style="width: 100%;">
+        <i class="fa fa-tag" aria-hidden="true"></i>&emsp; Save Job</button>        
     </div>
 </template>
 

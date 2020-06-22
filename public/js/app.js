@@ -1997,6 +1997,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['jobid', 'favorited'],
   data: function data() {
@@ -37772,7 +37774,7 @@ var render = function() {
       ? _c(
           "button",
           {
-            staticClass: "btn btn-dark",
+            staticClass: "btn btn-sm btn-dark",
             staticStyle: { width: "100%" },
             on: {
               click: function($event) {
@@ -37781,12 +37783,18 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Unsave job")]
+          [
+            _c("i", {
+              staticClass: "fa fa-tag",
+              attrs: { "aria-hidden": "true" }
+            }),
+            _vm._v("  Unsave Job")
+          ]
         )
       : _c(
           "button",
           {
-            staticClass: "btn btn-info",
+            staticClass: "btn btn-sm btn-info",
             staticStyle: { width: "100%" },
             on: {
               click: function($event) {
@@ -37795,7 +37803,13 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Save job")]
+          [
+            _c("i", {
+              staticClass: "fa fa-tag",
+              attrs: { "aria-hidden": "true" }
+            }),
+            _vm._v("  Save Job")
+          ]
         )
   ])
 }

@@ -15,17 +15,23 @@
         </div>
         @endif
       <ul class="navbar-nav ml-auto">
-
-        <li class="nav-item"><a href="{{route('company')}}" class="nav-link" >Companies</a></li>
+       
         @guest
-            @if (Route::has('register'))
+            {{--@if (Route::has('register'))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Job Seeker Sign Up') }}</a>
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Job Seeker') }}</a>
                 </li>
-            @endif
+            @endif--}}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('employer.register') }}">{{ __('Hiring Employer') }}</a>
+            </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('employer.register') }}">{{ __('Employer Sign Up') }}</a>
+                <a class="nav-link" href="{{ route('consultant.register') }}">{{ __('Consultant') }}</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('semployer.register') }}">{{ __('Separating Employer') }}</a>
             </li>
 
             {{--<li class="nav-item">
@@ -39,7 +45,7 @@
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     
-                   Volunteer Sign Up
+                   Mentor
         
                     <span class="caret"></span>
                 </a>
@@ -47,12 +53,12 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                         <a class="dropdown-item" href="{{ route('volunteer.register') }}">
-                            <strong>{{ __('Mentor Support Volunteer') }}</strong>
+                            <strong>{{ __('Mentor Support') }}</strong>
                         </a>                 
 
                         <a class="dropdown-item" href="{{ route('jvolunteer.register') }}"
                         >
-                        <strong>{{ __('Job-Search Support Volunteer') }}</strong>
+                        <strong>{{ __('Mentor (Job-Search Support)') }}</strong>
                         </a>
                         
                 </div>
@@ -67,7 +73,8 @@
             </li>
         @else
 
-        
+            <li class="nav-item"><a href="{{route('company')}}" class="nav-link" >Companies</a></li>
+
             @if(Auth::user()->user_type=='employer')
 
             <li class="nav-item"><a href="{{route('my.job')}}" class="nav-link">Dashboard</a></li>
@@ -75,6 +82,8 @@
 
             @elseif(Auth::user()->user_type=='seeker')
                     <li class="nav-item"><a href="{{route('user.dashboard')}}" class="nav-link">Dashboard</a></li>
+                    <li class="nav-item"><a href="{{route('user.saved')}}" class="nav-link">
+                        <i class="fa fa-tag" aria-hidden="true"></i>Saved-Jobs</a></li>
 
             @elseif(Auth::user()->user_type=='volunteer')
             <li class="nav-item"><a href="{{route('vseeker.index')}}" class="nav-link">Dashboard</a></li>
@@ -83,7 +92,8 @@
             <li class="nav-item"><a href="{{route('jvseeker.index')}}" class="nav-link">Dashboard</a></li>
 
             @elseif(Auth::user()->user_type=='admin')  
-            <li class="nav-item"><a href="/dashboard" class="nav-link">Dashboard</a></li>          
+            <li class="nav-item"><a href="/dashboard" class="nav-link">Dashboard</a></li>
+
             @endif
             
             <li class="nav-item dropdown">
@@ -196,7 +206,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+        <h5 class="modal-title text-white bg-dark" id="exampleModalLabel"><strong>&emsp;LOGIN&emsp;</strong></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -260,9 +270,9 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
+        <button type="submit" class="btn btn-success">
+                                    {{ __('LOGIN') }}
         </button>
       </form>
 

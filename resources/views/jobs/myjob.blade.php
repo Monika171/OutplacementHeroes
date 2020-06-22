@@ -56,7 +56,7 @@
     </div>
   </div>
 
-<div class="ftco-section bg-light">
+<section class="ftco-section bg-light">
 <div class="container">
 
   @if(Session::has('message'))
@@ -118,7 +118,7 @@
 
                             <td>{{$job->number_of_vacancy}}</td>
 
-                            <td>{{$job->last_date}}</td>
+                            <td>{{ date('F d, Y', strtotime($job->last_date)) }}</td>
 
                             <td><h6>
                               @if($job->status=='0')
@@ -189,5 +189,5 @@
         </div>
     </div>
 </div>
-</div>
+</section>
 @endsection

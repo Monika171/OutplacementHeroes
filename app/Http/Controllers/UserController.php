@@ -256,11 +256,19 @@ class UserController extends Controller
                       }
 
                       public function show(){
-                        $jobs  = Auth::user()->favorites;
-                        return view('profile.dashboard',compact('jobs'));
+                        //$jobs  = Auth::user()->favorites;
+                          $user_id = auth()->user()->id;
+                          $user = User::find($user_id);
+                          $jobs = $user->jobs()->orderBy('pivot_created_at','desc')->paginate(12);                                              
+                        return view('profile.dashboard', compact('user','jobs'));
 
                       }
 
+                      public function saved(){
+                        $jobs  = Auth::user()->favorites()->orderBy('pivot_created_at','desc')->paginate(10);
+                        return view('profile.mysavedjobs',compact('jobs'));
+
+                      }                      
   
             /*public function coverletter(Request $request){
                 $this->validate($request,[

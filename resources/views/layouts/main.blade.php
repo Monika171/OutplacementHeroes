@@ -3,6 +3,7 @@
 <head>
 	<title>OutplacementHeros</title>
 	{{--<script defer src="{{ asset('js/app.js') }}"></script>--}}
+	@yield('loginLinks')
 	@yield('select2css')
 		<style>
 				.pagination.center,

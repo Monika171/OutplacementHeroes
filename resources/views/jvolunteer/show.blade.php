@@ -25,9 +25,10 @@
       <div class="container">
         <div class="row">
           
-            <div class="col-md-4  px-4 sidebar ftco-animate">
+            <div class="col-md-4 sidebar ftco-animate mb-3 px-4">
                 
                     <div class="blog-entry align-self-stretch">
+                      <div class="p-3 bg-white">
 
                       <div class="text-center">
                          @if(empty($user->jvprofile->profile_pic))
@@ -51,12 +52,13 @@
                         
                       </div>
 
-                        <div class="card mr-4">
-                          <div class="card-header">
-                            <h6 class="d-inline-block h6 text-dark font-weight-bold mb-0">
-                              <i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;SKILLS</h6>
-                          </div>
-                          <div class="card-body">
+                      <hr>
+
+                      <h5 class="d-inline-block h5 text-white bg-dark font-weight-bold mb-0">&nbsp;&nbsp;
+                        <i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;Skills&nbsp;&nbsp;</h5>
+                              <br><br>
+                            <div class="card">
+                            <div class="card-body p-2">
                             @foreach($user->skills as $skill)
                              <button type="button" class="btn btn-sm btn-info mt-1">{{$skill->skill}}</button>
                             @endforeach
@@ -66,33 +68,49 @@
                       
                     </div>
                     </div>
-                  
+                  </div>
             </div>
 
-        <div class="col-md-8 px-4 ftco-animate">
+            <div class="col-md-8 ftco-animate px-4">
+              <div class="p-3 bg-white mb-3">
 
-        <h5 class="mb-2 mt-2">Email:</h5>
+                <h5 class="d-inline-block mb-2 mt-2 text-white bg-dark">&nbsp;&nbsp;
+                  <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;Email:&nbsp;&nbsp;</h5>
         <p>{{$user->email}}</p>
 
-        <h5 class="mb-2 mt-2">Phone:</h5>
+        <hr>
+
+        <h5 class="d-inline-block mb-2 mt-2 text-white bg-dark">&nbsp;&nbsp;
+          <i class="fa fa-phone-square" aria-hidden="true"></i>&nbsp;&nbsp;Phone:&nbsp;&nbsp;</h5>
         <p>{{$user->jvprofile->phone}}</p>
 
-        <h5 class="mb-2 mt-2">Address:</h5>
+        <hr>
+
+        <h5 class="d-inline-block mb-2 mt-2 text-white bg-dark">&nbsp;&nbsp;
+          <i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;Address:&nbsp;&nbsp;</h5>
         <p>{{$user->jvprofile->address_line1}},
           {{$user->jvprofile->address_line2}}<br>
           {{$user->jvprofile->city}},&nbsp;{{$user->jvprofile->state}},
           Pincode:&nbsp; {{$user->jvprofile->pincode}}</p>
 
-        <h5 class="mb-2 mt-2">Qualification:</h5>
+          <hr>
+
+          <h5 class="d-inline-block mb-2 mt-2 text-white bg-dark">&nbsp;&nbsp;
+            <i class="fas fa-graduation-cap" aria-hidden="true"></i>&nbsp;&nbsp;Qualification:&nbsp;&nbsp;</h5>
         <p>{{$user->jvprofile->qualification}}</p>
 
+        <hr>
+
         @if(!empty($user->jvprofile->industry))
-        <h5 class="mb-2 mt-2">Industry:</h5>
+        <h5 class="d-inline-block mb-2 mt-2 text-white bg-dark">&nbsp;&nbsp;
+          <i class="fa fa-cubes" aria-hidden="true"></i>&nbsp;&nbsp;Industry:&nbsp;&nbsp;</h5>
         <p>{{$user->jvprofile->industry}}</p>
+        <hr>
         @endif
         
         @if(!empty($user->jvprofile->designation))
-        <h5 class="mb-2 mt-2">Designation:</h5>
+        <h5 class="d-inline-block mb-2 mt-2 text-white bg-dark">&nbsp;&nbsp;
+          <i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;&nbsp;Designation:&nbsp;&nbsp;</h5>
         <p>{{$user->jvprofile->designation}}</p>
         @endif
 
@@ -113,7 +131,7 @@
         --}}
 
         
-
+          </div>
         </div>
       </div>
     </div>

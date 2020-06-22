@@ -22,7 +22,7 @@ class JobController extends Controller
 {
 
     public function __construct(){
-
+                
         $this->middleware(['employer','verified'],['except'=>array('index','show','apply','allJobs')]);
        // $this->middleware(['employer','verified'],['except'=>array('index','show','apply','allJobs','searchJobs','category')]);
     }    
@@ -239,7 +239,8 @@ class JobController extends Controller
     }
 
     public function applicant(){
-        $applicants = Job::has('users')->where('user_id',auth()->user()->id)->get();
+        //$applicants = Job::has('users')->where('user_id',auth()->user()->id)->get();
+        $applicants = Job::has('users')->where('user_id',auth()->user()->id)->orderBy('created_at','desc')->paginate(1);
         return view('jobs.applicants',compact('applicants'));
     }
 

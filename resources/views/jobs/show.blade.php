@@ -216,7 +216,7 @@ p {
           <div class="col-lg-4">
 		  <div class="p-4 mb-3 bg-white">
                                               
-        <small class="badge badge-success mb-2">Posted:{{$job->created_at->diffForHumans()}}
+        <small class="badge badge-success mb-2">Posted:&nbsp;{{$job->created_at->diffForHumans()}}
         </small>
 
         <div class="text-center">
@@ -231,7 +231,8 @@ p {
               <h3 class="h5 text-black">Company Name:</h3>              
               <p class="mb-4">{{$job->company->cname}} <br>
               <a href="{{route('company.index',[$job->company->id,$job->company->slug])}}">
-                Click Here To Visit Company Page
+                [<i class="fa fa-rocket" aria-hidden="true"></i>
+                Visit Company Page]
               </a> </p>
 				    {{--<p><a href="{{route('company.index',[$job->company->id,$job->company->slug])}}" class="btn btn-warning" style="width: 100%;">
             Visit Company Page
@@ -249,7 +250,9 @@ p {
                 
                 <apply-component :jobid={{$job->id}}></apply-component>
                 @else
-                <center><span style="color: #000;">Application sent.</span></center>
+                <div class="text-center px-1 pb-1 pt-2 bg-secondary text-warning">
+                    <strong><h6>Application Sent &nbsp;<i class="fa fa-check" aria-hidden="true"></i></h6></strong>
+                </div>
                 @endif
             <br>
                 <favorite-component :jobid={{$job->id}} :favorited={{$job->checkSaved()?'true':'false'}}  ></favorite-component>                     
