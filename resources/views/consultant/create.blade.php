@@ -343,6 +343,12 @@
                         
                     </div>
 
+                    <div class="text-center bg-light">
+                        <p style="color:red">[Please provide full url links below (if any)]<br>
+                            <small class="text-secondary">eg: https://www.yourwebsite.com/</small>
+                        </p>
+                    </div>
+
                     <div class="form-group">
                         <label for="" class="h6">Consultancy Website</label>
                         <input type="text" class="form-control" name="website"  value="{{Auth::user()->consultant->website?Auth::user()->consultant->website:old("website")}}">

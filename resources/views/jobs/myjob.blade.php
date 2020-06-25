@@ -48,7 +48,7 @@
                  @if(Auth::check()&&Auth::user()->id==$company->user_id &&(count($jobs)>0))                 
   
                     <a class="btn btn-sm" style="background:#0c127d; font-size:18px; color:white;" href="{{route('applicant')}}" role="button">
-                      View Applicants &nbsp; &nbsp;<i class="ion-ios-arrow-forward"></i></a>
+                      All Applicants &nbsp; &nbsp;<i class="ion-ios-arrow-forward"></i></a>
   
                  @endif
               </div>
@@ -68,6 +68,9 @@
     <div class="col-md-7 heading-section text-center ftco-animate">
         <!--<span class="subheading">Registered Candidates</span>-->
         <h2 class="mb-4"><span>All</span> Jobs <span>Posted by You</span></h2>
+        <span class="subheading">
+          <i class="fa fa-cubes" aria-hidden="true"></i>
+          Total: <strong>{{count($jobs)}}</strong></span>
     </div>
     </div>
 
@@ -82,11 +85,11 @@
                           <tr>
                             <th scope="col">S.No.</th>
                             <th scope="col">TITLE</th>      
-                            <th scope="col">POSITION</th>
-                            <th scope="col">LOCATION</th>
-                            <th scope="col">VACANCY</th>
+                            <th scope="col">POSITION<br><small>(& Vacancy)</small></th>
+                            <th scope="col">LOCATION</th>                            
                             <th scope="col">LAST DATE</th>
-                            <th scope="col"><small>Click to change</small><br>STATUS</th>                            
+                            <th scope="col"><small>Click to change</small><br>STATUS</th>
+                            <th scope="col">TOTAL<br>APPLICATIONS</th>                          
                             <th scope="col">EDIT/<br>DELETE</th>
                             
                           </tr>
@@ -107,31 +110,44 @@
                                 </small>
                             </td> 
 
-                            <td>{{$job->position}}
-                            {{--<br> <small>
-                            <i class="fa fa-hourglass-half" aria-hidden="true"></i></i>&nbsp;                            
-                            {{$job->type}}</small>--}}
+                            <td>{{$job->position}}<br>
+                            <small>                                                        
+                            ({{$job->number_of_vacancy}})</small>
                             </td>
 
                             <td><i class="fa fa-map-marker" aria-hidden="true"></i>
-                              &nbsp;{{$job->city}},<br>&nbsp;{{$job->state}} </td>
-
-                            <td>{{$job->number_of_vacancy}}</td>
+                              &nbsp;{{$job->city}},<br>&nbsp;{{$job->state}} </td>                            
 
                             <td>{{ date('F d, Y', strtotime($job->last_date)) }}</td>
 
                             <td><h6>
+                              <br>
                               @if($job->status=='0')
                               <a href="{{route('job.toggle',[$job->id])}}" class="badge badge-secondary"> Draft</a>
                                @else
                               <a href="{{route('job.toggle',[$job->id])}}" class="badge badge-success"> Live</a>
                               @endif</h6>
-                            </td>                       
+                            </td>
+
+                            <td>
+                              {{count($job->users)}}
+
+                              @if(count($job->users)>0)
+                              <br>
+                            <a href="{{route('jobs.applicant',[$job->id,$job->slug])}}">
+                                <button type="button" class="btn btn-outline-info btn-sm">
+                                <strong>VIEW</strong></button>
+                            </a>                           
+                            @endif
+                            
+                              {{--<a href="{{route('jobs.applicant',[$job->id,$job->slug])}}">ViewApp</a>--}}
+                            </td>                      
 
                             <td>
                             <a class="float-left text-success mx-0" href="{{route('job.edit',[$job->id])}}"><strong>
                               <i class="fas fa-pencil-alt"></i>&nbsp;E</strong>
                             </a>
+                            <br>
                             <br>
                           <!-- Button trigger modal -->
                              {{--<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delJob{{$job->id}}">

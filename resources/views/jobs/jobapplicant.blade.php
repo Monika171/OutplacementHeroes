@@ -34,7 +34,7 @@
               <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
                   <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
                  <h1  style="font-size: 30px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-                    ALL&emsp;APPLICANTS</h1>
+                    <u>All&ensp;Applications</u></h1>
               </div>
           </div>
     </div>
@@ -51,25 +51,25 @@
 		
 		<div class="row">
 		<div class="col-md-12 ftco-animate">
-        @if(count($applicants)>0)
-		@foreach($applicants as $applicant)
+       
+		
 		
         <div class="card border-0" style="background: rgba(3, 2, 32, 0.958);">
             
              <div class="card-header h5 text-capitalize">
-                <a href="{{route('jobs.show',[$applicant->id,$applicant->slug])}}">                    
+                <a href="{{route('jobs.show',[$job->id,$job->slug])}}">                    
                 <h5 class="text-white" style="float:left"><i class="fa fa-clone" aria-hidden="true"></i>&emsp;
-                    <u>{{$applicant->title}}</u></h5>
+                    <u>{{$job->title}}</u></h5>
                 </a>                
                     <span class="p-1 bg-light text-dark" style="float:right; font-size: 0.563em;">
-                        &emsp;Total Applications: <strong>{{count($applicant->users)}}</strong>&emsp;
+                        &emsp;Total Applications: <strong>{{$users->total()}}</strong>&emsp;
                     </span>
              </div>
 
                 <div class="card-body p-0" >		
 		
-            @if(count($applicant->users)>0)
-			@foreach($applicant->users as $user)
+            @if(count($users)>0)
+			@foreach($users as $user)
           
             <div class="col-md-12 ftco-animate">
                    
@@ -145,10 +145,12 @@
           @endforeach
           @else
 
-          <div class="col-md-12 text-center ftco-animate">
-            <!--<span class="subheading">Registered Candidates</span>-->
-            <h6 class="mt-5 mb-0">No Applications Yet.</h6>            
-          </div>
+          <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <!--<span class="subheading">Registered Candidates</span>-->
+                <h2 class="mb-4"><span>No</span> &nbsp; applications<span>  &nbsp; yet..</span> </h2>
+            </div>
+        </div>
 
           @endif
         </div>
@@ -156,15 +158,10 @@
 		  
 		  </div> 
 		  <br>
-            @endforeach
-            @else
-            <div class="row justify-content-center mb-5 pb-3">
-                <div class="col-md-7 heading-section text-center ftco-animate">
-                    <!--<span class="subheading">Registered Candidates</span>-->
-                    <h2 class="mb-4"><span>No</span> &nbsp; applications<span>  &nbsp; yet..</span> </h2>
-                </div>
-            </div>
-            @endif
+           
+            
+            
+           
                 </div>
 
 
@@ -173,7 +170,7 @@
             <div class="row mt-5">
                 <div class="col text-center">
                     <div class="pagination center">                   
-                                {{$applicants->links()}}                
+                                {{$users->links()}}                
                     </div>
                 </div>
             </div>

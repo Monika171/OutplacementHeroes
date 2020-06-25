@@ -221,7 +221,9 @@ p {
 
         <div class="text-center">
               <h3 class="h5 text-black" style="font-weight: bold;">Last date to apply:</h3>              
-              <strong><p class="mb-4">{{ date('F d, Y', strtotime($job->last_date)) }}</p></strong> 
+              <strong><p class="mb-4">
+                @if($show==0)<i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i>@endif
+                {{ date('F d, Y', strtotime($job->last_date)) }}</p></strong> 
               <hr>       
             
               <h3 class="h5 text-black">Job Location:</h3>              
@@ -242,22 +244,30 @@ p {
             
             <div class="p-4 mb-3 bg-white">
               <!--<h3 class="h5 text-black mb-3">More Info</h3>-->
-                            <p>
-            @if(Auth::check()&&Auth::user()->user_type=='seeker')
-           
+            @if($show)               <p>
+              @if(Auth::check()&&Auth::user()->user_type=='seeker')
+            
 
-                @if(!$job->checkApplication())
-                
-                <apply-component :jobid={{$job->id}}></apply-component>
-                @else
-                <div class="text-center px-1 pb-1 pt-2 bg-secondary text-warning">
-                    <strong><h6>Application Sent &nbsp;<i class="fa fa-check" aria-hidden="true"></i></h6></strong>
-                </div>
-                @endif
-            <br>
-                <favorite-component :jobid={{$job->id}} :favorited={{$job->checkSaved()?'true':'false'}}  ></favorite-component>                     
+                  @if(!$job->checkApplication())
+                  
+                  <apply-component :jobid={{$job->id}}></apply-component>
+                  @else
+                  <div class="text-center px-1 pb-1 pt-2 bg-secondary text-warning">
+                      <h6><strong>Application Sent &nbsp;<i class="fa fa-check" aria-hidden="true"></i></strong></h6>
+                  </div>
+                  @endif
+              <br>
+                  <favorite-component :jobid={{$job->id}} :favorited={{$job->checkSaved()?'true':'false'}}  ></favorite-component>                     
 
-            @endif
+              @endif
+
+            @else
+
+            <div class="text-center px-1 pb-1 pt-2 bg-light">
+              <h5 class="text-danger"><strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> &nbsp;Job Expired.</strong></h5>
+            </div>
+
+           @endif
 
             @if(Auth::check()&&Auth::user()->id==$job->user_id)
             

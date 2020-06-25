@@ -32,7 +32,7 @@
                         <div class="my-3 p-3 bg-white">                          
                         {{--<h3 class="heading">{{$user->name}}</h3>--}}
                         @if(!empty($user->profile->resume))
-                            <a href="{{Storage::url($user->profile->resume)}}" class="btn btn-dark btn-sm active"  role="button" aria-pressed="true" style="width:100%;"><strong>VIEW RESUME</strong></a>
+                            <a href="{{Storage::url($user->profile->resume)}}" class="btn btn-dark btn-sm active"  role="button" aria-pressed="true" style="width:100%;" target="_blank"><strong>VIEW RESUME</strong></a>
                             <br>
                             <br>
                             {{--<p style="font-weight: bold; font-size: 18px;"><a href="{{Storage::url($user->profile->resume)}}">VIEW RESUME</a></p>--}}

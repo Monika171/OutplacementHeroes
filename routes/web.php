@@ -36,10 +36,11 @@ Route::get('/jobs/create','JobController@create')->name('job.create');
 Route::post('/jobs/create','JobController@store')->name('job.store');
 Route::get('/jobs/my-job','JobController@myjob')->name('my.job');
 Route::get('/jobs/my-job/{id}/toggle','JobController@toggle')->name('job.toggle');//change job status in an instant!
-Route::get('/jobs/my-job/{id}/edit','JobController@edit')->name('job.edit');
+Route::get('/jobs/my-job/{id}/edit','JobController@edit')->name('job.edit');//checked
 Route::post('/jobs/my-job/{id}/edit','JobController@update')->name('job.update');
 Route::post('/jobs/my-job/{id}/delete','JobController@destroy')->name('job.destroy');
-Route::get('/jobs/my-job/applications','JobController@applicant')->name('applicant');
+Route::get('/jobs/my-job/applications','JobController@applicant')->name('applicant');//list all applicants of company
+Route::get('/jobs/my-job/{id}/{job}','JobController@showApplicants')->name('jobs.applicant');//list applicants of A job//checked
 Route::get('/jobs/alljobs','JobController@allJobs')->name('alljobs'); //experimental, but works!!! for job-search support volunteer?
 Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show'); //Apply at this JD link
 Route::post('/applications/{id}','JobController@apply')->name('apply'); 
@@ -145,6 +146,17 @@ Route::get('/dashboard/{id}/trash','DashboardController@restore')->name('post.re
 Route::get('/dashboard/{id}/toggle','DashboardController@toggle')->name('post.toggle')->middleware('admin');
 Route::get('/posts/{id}/{slug}','DashboardController@show')->name('post.show');
 Route::get('/show_All','DashboardController@show_All')->name('post.show_All');
+
+Route::get('/dashboard/jobs','DashboardController@getAllJobs')->middleware('admin');
+//Route::get('/dashboard/{id}/jobs','DashboardController@changeJobStatus')->name('job.status')->middleware('admin');
+Route::get('/dashboard/users','DashboardController@getAllUsers')->name('allusers')->middleware('admin'); //Show USERS
+
+Route::post('/dashboard/jobs/{id}/delete','DashboardController@jobDestroy')->name('j.destroy')->middleware('admin');
+Route::post('/dashboard/user/{id}/delete','DashboardController@userDestroy')->name('u.destroy')->middleware('admin');
+
+Route::get('/dashboard/mentors/{id}','DashboardController@show_mentor')->name('mentor.show')->middleware('admin');
+Route::get('/dashboard/mentors-job-support/{id}','DashboardController@show_jmentor')->name('jmentor.show')->middleware('admin');
+
 
 
 //display all seekers

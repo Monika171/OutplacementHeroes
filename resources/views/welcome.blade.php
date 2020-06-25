@@ -776,6 +776,15 @@
 <body>
   <!--Header section-->
   <div class="nav">
+     {{--@include('inc.messages')--}}
+    @if(session('error'))
+    <div class="alert alert-danger text-center text-uppercase">
+        <h3><strong>
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>&emsp;&emsp;
+          {{session('error')}}</strong></h3>
+    </div>
+    @endif   
+
     <input type="checkbox" id="nav-check">
     <div class="nav-header">
       <a class="logo" href="/">

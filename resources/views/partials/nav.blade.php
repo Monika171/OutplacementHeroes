@@ -10,8 +10,10 @@
     <div class="collapse navbar-collapse" id="ftco-nav">
         {{--@include('inc.messages')--}}
         @if(session('error'))
-        <div class="alert alert-danger">
-            {{session('error')}}
+        <div class="alert alert-danger text-center text-uppercase">
+            <h3><strong>
+              <i class="fa fa-exclamation-circle" aria-hidden="true"></i>&emsp;&emsp;
+              {{session('error')}}</strong></h3>
         </div>
         @endif
       <ul class="navbar-nav ml-auto">
@@ -78,6 +80,8 @@
             @if(Auth::user()->user_type=='employer')
 
             <li class="nav-item"><a href="{{route('my.job')}}" class="nav-link">Dashboard</a></li>
+            <li class="nav-item"><a href="{{route('seeker.index')}}" class="nav-link">
+                <i class="fa fa-users" aria-hidden="true"></i> Job-Seekers</a></li>
             <li class="nav-item"><a href="{{route('job.create')}}" class="nav-link">Post a job</a></li>
 
             @elseif(Auth::user()->user_type=='seeker')
@@ -134,10 +138,6 @@
                         >
                             {{ __('My Company') }}
                         </a>
-
-                        <a class="dropdown-item" href="{{route('applicant')}}">
-                            {{ __('All Applicants') }}
-                        </a> 
 
                     @elseif(Auth::user()->user_type=='semployer')
                         <a class="dropdown-item" href="{{route('secompany.index',[Auth::user()->secompany->id,Auth::user()->secompany->slug])}}"

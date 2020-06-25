@@ -24,18 +24,15 @@
 		  </div>
 	</div>
   </div>
-  
-<br>
-<br>
 
-
+<section class="ftco-section bg-light">
 <div class="container">
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-3">
 			      @include('admin.left-menu')
 
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-9">
 			<div class="card">
 				<div class="card-header">
 					Enter Here
@@ -93,7 +90,7 @@
 
 <br>
 <br>
- 
+</section>
 @endsection
 
 

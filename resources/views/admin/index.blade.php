@@ -19,26 +19,24 @@
 			  <div class="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
 				  <!--<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-3"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span></span></p>-->
          <h1  style="font-size: 30px;" class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
-          <u>My Posts</u></h1>
+          Welcome {{Auth::user()->name}}</h1>
 			  </div>
 		  </div>
 	</div>
   </div>
 
-
-<br>
-<br>
-        <div class="container">
+  <section class="ftco-section bg-light">
+     <div class="container">
           @if(Session::has('message'))
 
           <div class="alert alert-success">{{Session::get('message')}}</div>
           @endif
 
         <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
           @include('admin.left-menu')
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
           <div class="card">
             <div class="card-body">
         <table class="table table-striped">
@@ -117,5 +115,5 @@
     </div>
 </div>
 
-
+</section>
 @endsection

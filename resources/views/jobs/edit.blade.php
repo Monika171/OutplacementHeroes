@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="category">Job Category</label>
+                        <label for="category">Job Category/Industry</label>
 							<select name="category" class="form-control select1">
                                 <option value=""></option>
                                 @foreach(App\Industry::all() as $cat)

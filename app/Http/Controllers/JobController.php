@@ -100,25 +100,16 @@ class JobController extends Controller
         return redirect('/jobs/my-job')->with('message','Job posted successfully!');
      }
 
-     public function myjob(){
-        $user_id = auth()->user()->id;
-        $company = Company::where('user_id',$user_id)->first();
-        //$jobs = Job::where('user_id',$user_id)->get();
-        $jobs = Job::where('user_id',$user_id)->latest()->paginate(10);
-        return view('jobs.myjob',compact('jobs','company'));
-    }
-
-    public function toggle($id){
-        $job = Job::find($id);
-        $job->status = !$job->status;
-        $job->save();
-        return redirect()->back()->with('message','Status updated successfully');
-
-    }
 
     public function edit($id){
 
         $job = Job::findOrFail($id);
+
+        //Check for correct user
+        if(auth()->user()->id !== $job->user_id){
+            return redirect('/')->with('error','Unauthorised Page');
+          }
+
         //$skills = Skill::orderBy('skill', 'asc')->get();     
 
         $position = Designation::orderBy('designation', 'asc')->pluck('designation');        
@@ -227,8 +218,31 @@ class JobController extends Controller
 
 
     public function show($id,Job $job){
+         $now = date('d-m-Y');
+        if($job->last_date > $now ){
+            $show=1;
+        }
+        else{
+            $show=0;
+        }
 
-        return view('jobs.show',compact('job'));
+        return view('jobs.show',compact('job','show'));
+    }
+
+    public function myjob(){
+        $user_id = auth()->user()->id;
+        $company = Company::where('user_id',$user_id)->first();
+        //$jobs = Job::where('user_id',$user_id)->get();
+        $jobs = Job::where('user_id',$user_id)->latest()->paginate(10);
+        return view('jobs.myjob',compact('jobs','company'));
+    }
+
+    public function toggle($id){
+        $job = Job::find($id);
+        $job->status = !$job->status;
+        $job->save();
+        return redirect()->back()->with('message','Status updated successfully');
+
     }
 
     public function apply(Request $request,$id){
@@ -237,6 +251,19 @@ class JobController extends Controller
         return redirect()->back()->with('message','Application sent!');
 
     }
+
+    public function showApplicants($id,Job $job){        
+          //$user_id = auth()->user()->id;
+          //$user = User::find($user_id);
+          //Check for correct user
+          if(auth()->user()->id !== $job->user_id){
+            return redirect('/')->with('error','Unauthorised Page');
+          }
+
+          $users = $job->users()->orderBy('pivot_created_at','asc')->paginate(14);                                              
+          return view('jobs.jobapplicant', compact('job','users'));
+      }
+
 
     public function applicant(){
         //$applicants = Job::has('users')->where('user_id',auth()->user()->id)->get();
@@ -269,30 +296,13 @@ class JobController extends Controller
                 //dd($citylist);
                 return view('jobs.alljobs',compact('jobs','citylist','positionlist'));
                }
-
-               //dd($keyword);            
-               //keyword = request('title');
-               //$keyword = $request->get('title');
-               /*$jobs = Job::where('title','LIKE','%'.$keyword.'%')                   
-                   ->orWhere('city',$city)
-                   ->orWhere('category_id',$category)
-                   ->orWhere('position',$position)                   
-                   ->paginate(10);*/
-
-                //copy/cut this method if needed for job-search volunteer.
-                //experimental, but works!!!
-                //front search
-                    /*$search = $request->get('search');
-                    $address = $request->get('address');
-                    if($search && $address){
-                    $jobs = Job::where('position','LIKE','%'.$search.'%')
-                            ->orWhere('title','LIKE','%'.$search.'%')
-                            ->orWhere('type','LIKE','%'.$search.'%')
-                            ->orWhere('address','LIKE','%'.$address.'%')
-                            ->paginate(20);   
-               return view('jobs.alljobs',compact('jobs'));*/
    
            }
+
+
+
+}
+
 
 
     /*public function index(){
@@ -329,9 +339,26 @@ class JobController extends Controller
     	return view('company.index');
     }*/
 
- 
 
+                   //dd($keyword);            
+               //keyword = request('title');
+               //$keyword = $request->get('title');
+               /*$jobs = Job::where('title','LIKE','%'.$keyword.'%')                   
+                   ->orWhere('city',$city)
+                   ->orWhere('category_id',$category)
+                   ->orWhere('position',$position)                   
+                   ->paginate(10);*/
 
+                //copy/cut this method if needed for job-search volunteer.
+                //experimental, but works!!!
+                //front search
+                    /*$search = $request->get('search');
+                    $address = $request->get('address');
+                    if($search && $address){
+                    $jobs = Job::where('position','LIKE','%'.$search.'%')
+                            ->orWhere('title','LIKE','%'.$search.'%')
+                            ->orWhere('type','LIKE','%'.$search.'%')
+                            ->orWhere('address','LIKE','%'.$address.'%')
+                            ->paginate(20);   
+               return view('jobs.alljobs',compact('jobs'));*/
 
-
-}
