@@ -69,9 +69,9 @@ d)create database and user. Fillup details in .env file including email and admi
 e) php artisan migrate  
 ("php artisan migrate:fresh" if using git pull or
 Only when not taking/importing .sql files from 'OPH_sql_import1')  
-f) php artisan db:seed --force  
-(Only when not taking/importing .sql files from 'OPH_sql_import1') 
-g) php artisan storage:link   
+f) php artisan db:seed --force    
+(Only when not taking/importing .sql files from 'OPH_sql_import1')   
+g) php artisan storage:link     
 h) php artisan key:generate    
 i) php artisan serve    
   

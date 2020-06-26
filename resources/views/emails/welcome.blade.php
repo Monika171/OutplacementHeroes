@@ -17,7 +17,7 @@ Please register at link here<br>
 
 
 
-@component('mail::button', ['url' => 'http://127.0.0.1:8000/register'])
+@component('mail::button', ['url' => 'https://www.outplacementheros.org/register'])
 Register
 @endcomponent
 This service is free of any charges and we expect you to maintain seriousness by actioning on every suggestion from www.OutplacementHeros.Org.<br>
