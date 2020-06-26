@@ -34,9 +34,10 @@ class JobController extends Controller
         $position = Designation::orderBy('designation', 'asc')->pluck('designation');        
         $course = Course::orderBy('course', 'asc')->pluck('course');
         $specialization = Specialization::orderBy('specialization', 'asc')->pluck('specialization');
-        $countries = Country::all()->pluck('name','id');    
+        $countries = Country::all()->pluck('name','id'); 
+        $skills = Skill::orderBy('skill', 'asc')->get();   
         
-        return view('jobs.create', compact('position','course','specialization','countries'));
+        return view('jobs.create', compact('position','course','specialization','countries', 'skills'));
 
         //$category = Industry::all()->pluck('industry','id');
         //return view('profile.index', compact('user', 'profile', 'skills','countries','preferred_location','s_id','c_id','recent_designation','industry')); 
@@ -54,8 +55,9 @@ class JobController extends Controller
             'city'=>'required',
             'pincode'=>'required|numeric|digits_between:6,6',
             'number_of_vacancy'=>'numeric|nullable', 
-            'last_date'=>'required',
-            'status'=>'required',                     
+            'last_date'=>'required',            
+            'skills'=>'required',
+            //'status'=>'required',                     
  
             ]);
         
@@ -69,7 +71,7 @@ class JobController extends Controller
 
         //dd($request->all());
 
-        Job::create([
+        $job = Job::create([
             'user_id' => $user_id,
             'company_id' => $company_id,
             'title'=>request('title'),
@@ -97,6 +99,7 @@ class JobController extends Controller
             'last_date'=>request('last_date'),
             'status'=>request('status'),
         ]);
+        $job->skills()->sync($request->input('skills', []));
         return redirect('/jobs/my-job')->with('message','Job posted successfully!');
      }
 
@@ -116,6 +119,7 @@ class JobController extends Controller
         $course = Course::orderBy('course', 'asc')->pluck('course');
         $specialization = Specialization::orderBy('specialization', 'asc')->pluck('specialization');
         $countries = Country::all()->pluck('name','id');
+        $skills = Skill::orderBy('skill', 'asc')->get(); 
 
         if($job->country){
             $coun = Country::where('name', $job->country)->first();
@@ -138,7 +142,7 @@ class JobController extends Controller
               $c_id = "";
             }
         
-        return view('jobs.edit',compact('job','position','course','specialization','countries','coun_id','s_id','c_id'));
+        return view('jobs.edit',compact('job','position','course','specialization','countries','coun_id','s_id','c_id','skills'));
         //return view('profile.index', compact('user', 'profile', 'skills','countries','preferred_location','s_id','c_id','recent_designation','industry')); 
     }
 
@@ -154,8 +158,9 @@ class JobController extends Controller
             'city'=>'required',
             'pincode'=>'required|numeric|digits_between:6,6',
             'number_of_vacancy'=>'numeric|nullable', 
-            'last_date'=>'required',
-            'status'=>'required',                     
+            'last_date'=>'required',            
+            'skills'=>'required',
+            //'status'=>'required',                    
  
             ]);
         
@@ -201,6 +206,8 @@ class JobController extends Controller
             'status'=>request('status'),
             
         ]);
+        
+        $job->skills()->sync($request->input('skills', []));
 
         return redirect('/jobs/'.$id.'/'.$slug)->with('message','Job  Sucessfully Updated!');      
 

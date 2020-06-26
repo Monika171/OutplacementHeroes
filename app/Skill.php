@@ -8,7 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Skill extends Model
 {
-    function user() {
-        return $this->belongsToMany('App\User');
+    public function skillsUsers()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function skillsJobs()
+    {
+        return $this->belongsToMany(Job::class);
     }
 }

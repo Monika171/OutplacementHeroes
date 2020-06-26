@@ -3,7 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Observers\JobObserver;
 use App\Industry;
+use App\Skill;
 use App\User;
 use Auth;
 
@@ -19,6 +21,12 @@ class Job extends Model
 
     public function getRouteKeyName(){
 		return 'slug';
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+        self::observe(new JobObserver);
     }
     
     public function company(){
@@ -41,5 +49,8 @@ class Job extends Model
     return \DB::table('favourites')->where('user_id',auth()->user()->id)->where('job_id',$this->id)->exists();
   } 
 
-
+  public function skills()
+  {
+      return $this->belongsToMany(Skill::class);
+  }
 }

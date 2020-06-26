@@ -310,6 +310,18 @@
                             @endif
                     </div>
 
+                    <div class="form-group required">
+                        <label for="skills" class="control-label">Skills</label>                
+                        <select class="form-control select2" multiple="multiple" placeholder="Select Skill" name="skills[]">
+                            @foreach($skills as $skill)
+                                <option value="{{$skill->id}}" {{ $job->skills->contains($skill->id) ? 'selected' : '' }}>{{$skill->skill}}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('skills'))
+                        <div class="error" style="color: red;">{{$errors->first('skills')}}</div>
+                        @endif
+                    </div>
+
 					
 					<div class="form-group required">            
                         <label for="lastdate" class="control-label">Last Date</label>                        
@@ -322,7 +334,7 @@
 
                     
 					
-					<div class="form-group required">
+					{{--<div class="form-group required">
                         <label for="status" class="control-label">Status</label>
                         <select class="form-control" name="status">
                             <option value="">Select</option>
@@ -332,8 +344,7 @@
                         @if($errors->has('status'))
                         <div class="error" style="color: red;">{{$errors->first('status')}}</div>
                         @endif
-                    </div>
-                    
+                    </div> --}}                   
 
                     <div class="form-group">
                         <button class="btn btn-dark" type="submit">Submit</button>
@@ -575,6 +586,15 @@
                 //console.log('LISTENING')
                 
             });
+
+            $('.select2').css('width','100%');
+           
+           $('.select2').select2({
+           //width: 'resolve', 
+           placeholder: "Please select Skills",
+           allowClear: true,
+
+           });
             
             $('.select1').select2({
                 placeholder: "SELECT",

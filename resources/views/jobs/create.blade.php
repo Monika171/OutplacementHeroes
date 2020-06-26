@@ -116,7 +116,7 @@
                         
                         
 
-                    <div class="form-group  required">
+                    <div class="form-group required">
                         <label for="position" class="control-label">Position</label>                        
                         <input class="form-control" value="{{old("position")}}" name="position" list="position">
                             <datalist id="position">
@@ -331,6 +331,19 @@
                             @endif
                     </div>
 
+                    <div class="form-group required">
+                        <label for="skills" class="control-label">Skills</label>
+                        <select class="form-control select2" multiple="multiple" placeholder="Select Skill" name="skills[]">
+                            <option></option>
+                            @foreach($skills as $skill)
+                              <option value="{{$skill->id}}">{{$skill->skill}}</option>
+                            @endforeach
+                          </select>
+                          @if($errors->has('skills'))
+                          <div class="error" style="color: red;">{{$errors->first('skills')}}</div>
+                          @endif                        
+                    </div>
+
 					
 					<div class="form-group required">            
                         <label for="lastdate" class="control-label">Last Date</label>                        
@@ -343,7 +356,7 @@
 
                     
 					
-					<div class="form-group required">
+					{{--<div class="form-group required">
                         <label for="status" class="control-label">Status</label>
                         <select class="form-control" name="status">
                             <option value="">Select</option>
@@ -353,8 +366,7 @@
                         @if($errors->has('status'))
                         <div class="error" style="color: red;">{{$errors->first('status')}}</div>
                         @endif
-                    </div>
-                    
+                    </div> --}}                   
 
                     <div class="form-group">
                         <button class="btn btn-dark" type="submit">Submit</button>
@@ -369,8 +381,8 @@
 
         
         <br>
-                    {{--
-                    <div class="card mb-0">
+                    
+                    {{--<div class="card mb-0">
                         <div class="card-header">
                             <a class="card-title">
                             <h5 class="d-inline-block h5 text-dark font-weight-bold mb-0">Skills <span style="color: red; font-weight: bold;"><small> [Top 5 key skills] </small></span></h5>
@@ -388,36 +400,6 @@
                         @endforeach
 
                         </div>
-
-                        <!-- Edit Skills Modal -->
-                        <div class="modal fade" id="editskills{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-                            <form action="/profile/skills/edit" method="post">@csrf
-                            <div class="modal-dialog modal-lg" role="document">
-                            <div class="modal-content">
-                                    <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Edit Skills</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    </div>
-                                    <div class="modal-body editskillsbody">
-                                    <select class="form-control selectedskills" multiple="multiple" placeholder="Select State" name="skills[]">
-                                        <option></option>
-                                        @foreach($skills as $skill)
-                                        <option value="{{$skill->id}}">{{$skill->skill}}</option>
-                                        @endforeach
-                                    </select>
-                        
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </div>
-                            </div>
-                            </form>	
-                            </div>
 
                         <!-- Add Skills Modal -->
                         <div id="addskills{{$user->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -452,11 +434,11 @@
                             </div>
                             </form>	
                             </div>
-                    </div>
+                    </div>--}}
                     
 
                      
-                   --}}
+                   
     
 </div>
 </div>
@@ -538,6 +520,17 @@
                 
                 //console.log('LISTENING')                
             });
+
+            $('.select2').css('width','100%');
+           
+            $('.select2').select2({
+            //width: 'resolve', 
+            placeholder: "Please select Skills",
+            allowClear: true,
+
+            });
+
+            
 
             $('.select1').select2({
                 placeholder: "SELECT",

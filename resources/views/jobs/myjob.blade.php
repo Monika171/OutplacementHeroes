@@ -88,7 +88,7 @@
                             <th scope="col">POSITION<br><small>(& Vacancy)</small></th>
                             <th scope="col">LOCATION</th>                            
                             <th scope="col">LAST DATE</th>
-                            <th scope="col"><small>Click to change</small><br>STATUS</th>
+                            {{--<th scope="col"><small>Click to change</small><br>STATUS</th>--}}
                             <th scope="col">TOTAL<br>APPLICATIONS</th>                          
                             <th scope="col">EDIT/<br>DELETE</th>
                             
@@ -120,14 +120,14 @@
 
                             <td>{{ date('F d, Y', strtotime($job->last_date)) }}</td>
 
-                            <td><h6>
+                            {{--<td><h6>
                               <br>
                               @if($job->status=='0')
                               <a href="{{route('job.toggle',[$job->id])}}" class="badge badge-secondary"> Draft</a>
                                @else
                               <a href="{{route('job.toggle',[$job->id])}}" class="badge badge-success"> Live</a>
                               @endif</h6>
-                            </td>
+                            </td>--}}
 
                             <td>
                               {{count($job->users)}}

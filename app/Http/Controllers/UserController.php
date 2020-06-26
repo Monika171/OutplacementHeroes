@@ -94,6 +94,7 @@ class UserController extends Controller
                                 'currently_working_here' => 'required_without_all:fresher,end_date',
                                 'salary_in_thousands'=>'numeric|digits_between:4,5|nullable',
                                 'notice_period'=>'required',
+                                'skills'=>'required',
                                           
                                         
                                   //'phone_number'=>'required|numeric|digits_between:10,10',
@@ -112,6 +113,7 @@ class UserController extends Controller
                                 }
 
                                 $user_id = auth()->user()->id;
+                                $user = User::findOrFail($user_id);
 
                                 $country = Country::where('id',request('country'))->first();
                                 $state = State::where('id',request('state'))->first();
@@ -140,6 +142,10 @@ class UserController extends Controller
                               'notice_period'=>request('notice_period'),
                               
                           ]);
+
+                         
+
+                          $user->skills()->sync($request->input('skills', []));
                       
                           return redirect()->back()->with('message','Profile Sucessfully Updated!');
          

@@ -224,7 +224,22 @@ p {
               <strong><p class="mb-4">
                 @if($show==0)<i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i>@endif
                 {{ date('F d, Y', strtotime($job->last_date)) }}</p></strong> 
-              <hr>       
+              <hr>   
+              
+              @if(count($job->skills)>0)
+                        <div class="mb-3 p-2 bg-white">                                                                                                          
+                                  <h3 class="h5 text-black">
+                                    <i class="fa fa-star" aria-hidden="true" style="color: rgb(107, 107, 150); font-size: 20px;"></i>&nbsp;Skills:
+                                  </h3> 
+                                  <div class="card">
+                                    <div class="card-body p-2">
+                                      @foreach($job->skills as $skill)
+                                      <button type="button" class="btn btn-sm btn-info mt-1">{{$skill->skill}}</button>
+                                      @endforeach              
+                                    </div>
+                                  </div>
+                        </div>
+                        @endif
             
               <h3 class="h5 text-black">Job Location:</h3>              
               <p class="mb-4">{{$job->address_line1}}&nbsp;{{$job->address_line2}}&nbsp;<br>

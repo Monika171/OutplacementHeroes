@@ -581,6 +581,24 @@
                             @endif
                         </div>
 
+                                
+                        <div class="text-center bg-light">
+                            <p style="color:red"><strong>*Please Share Your Skills as Jobs will be Recommended Based on your Skills.</strong><br>               
+                            </p>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="skills" class="control-label h6">Skills</label>                
+                            <select class="form-control select2" multiple="multiple" placeholder="Select Skill" name="skills[]">
+                                @foreach($skills as $skill)
+                                    <option value="{{$skill->id}}" {{ Auth::user()->skills->contains($skill->id) ? 'selected' : '' }}>{{$skill->skill}}</option>
+                                @endforeach
+                            </select>
+                            @if($errors->has('skills'))
+                            <div class="error" style="color: red;">{{$errors->first('skills')}}</div>
+                            @endif
+                        </div>
+
 
                     <div class="form-group">
                         <button class="btn btn-info" type="submit">Edit & Update</button>
@@ -592,7 +610,8 @@
         </div>
         <br>
 
-        <div>
+
+        {{--<div>
             <span class="h6" style="color:rgb(209, 39, 39)">
            <strong> *Please Share Your Skills as Jobs will be Recommended Based on your Skills.</strong>
         </span>
@@ -680,7 +699,7 @@
                    </div>
                    </form>	
                    </div>
-        </div>
+        </div>--}}
 
         
         <div class="mt-5">
@@ -847,16 +866,13 @@
             $("#todisplay").fadeIn('slow');
       });
 
-        $('.select2').css('width','100%');
-        $('.selectedskills').css('width','100%');
+        $('.select2').css('width','100%');       
         $('.select2').select2({
           //width: 'resolve', 
           placeholder: "Please select Skills",
           allowClear: true,
 
-        });
-
-        $('.selectedskills').select2().val({{ json_encode($user->skills()->allRelatedIds()) }}).trigger('change');
+        });      
 
         //$("#select-Des").css('width','100%');
         $('.select1').select2({
