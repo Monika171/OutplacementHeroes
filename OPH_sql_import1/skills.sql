@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2020 at 05:38 PM
+-- Generation Time: Jun 26, 2020 at 04:56 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `skills`
 --
 
-DROP TABLE IF EXISTS `skills`;
 CREATE TABLE `skills` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `skill` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,

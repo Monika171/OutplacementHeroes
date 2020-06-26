@@ -259,8 +259,7 @@ p {
             <div class="p-4 mb-3 bg-white">
               <!--<h3 class="h5 text-black mb-3">More Info</h3>-->
             <p>
-              @if(Auth::check()&&Auth::user()->user_type=='seeker')
-            
+              @if(Auth::check()&&Auth::user()->user_type=='seeker')            
 
                   @if(!$job->checkApplication())
                   

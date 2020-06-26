@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2020 at 11:58 PM
+-- Generation Time: Jun 26, 2020 at 04:56 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `designations`
 --
 
-DROP TABLE IF EXISTS `designations`;
 CREATE TABLE `designations` (
   `id` int(11) NOT NULL,
   `designation` varchar(50) NOT NULL,
@@ -148,7 +147,9 @@ INSERT INTO `designations` (`id`, `designation`, `created_at`, `updated_at`) VAL
 (105, 'Manager Sales', '0000-00-00', '0000-00-00'),
 (106, 'Media Sales Manager', '0000-00-00', '0000-00-00'),
 (107, 'Open Source Developer', '0000-00-00', '0000-00-00'),
-(108, 'Wordpress Developer', '0000-00-00', '0000-00-00');
+(108, 'Wordpress Developer', '0000-00-00', '0000-00-00'),
+(111, 'Graphic Designer', '0000-00-00', '0000-00-00'),
+(112, 'Teacher', '0000-00-00', '0000-00-00');
 
 --
 -- Indexes for dumped tables
@@ -168,7 +169,7 @@ ALTER TABLE `designations`
 -- AUTO_INCREMENT for table `designations`
 --
 ALTER TABLE `designations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

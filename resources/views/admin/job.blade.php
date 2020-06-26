@@ -109,13 +109,14 @@
                       <div class="modal-dialog" role="document">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Delete Job Post</h5>
+                            <h5 class="modal-title text-danger" id="exampleModalLabel">
+                              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;Delete Job Post</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <div class="modal-body">
-                            This job posting & all associated job-seeker applications will be <strong>permanently removed</strong> from records.
+                          <div class="modal-body text-dark text-center">
+                            This job posting for "{{$job->position}}" & all associated job-seeker applications will be <strong>PERMANENTLY REMOVED</strong> from records.
                             <br><strong>Are you sure?</strong>
                           </div>
                           <div class="modal-footer">

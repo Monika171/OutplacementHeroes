@@ -331,6 +331,11 @@
                             @endif
                     </div>
 
+                    <div class="text-center bg-light">
+                        <p style="color:red"><strong>*Jobs will be Recommended to Job Seekers Based on Following Skills Only.</strong><br>               
+                        </p>
+                    </div>
+
                     <div class="form-group required">
                         <label for="skills" class="control-label">Skills</label>
                         <select class="form-control select2" multiple="multiple" placeholder="Select Skill" name="skills[]">

@@ -66,7 +66,7 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-md-12 my-0">
+          {{--<div class="col-md-12 my-0">
             @if(Auth::check()&&Auth::user()->id==$company->user_id)
             <div class="holder">
               <div class="news">                
@@ -77,7 +77,7 @@
               </div>
             </div>
               @endif
-          </div>
+          </div>--}}
           
           <div class="col-md-12 mb-5 ftco-animate">
             @if(empty($company->cover_photo))

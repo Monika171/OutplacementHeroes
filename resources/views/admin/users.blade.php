@@ -141,9 +141,35 @@
               </td>                      
 
               <td>
-                <a class="text-danger mx-0" href="#" data-toggle="modal" data-target="#adminDelUser{{$user->id}}">
+                <a class="text-danger mx-0" href="#" data-toggle="modal" data-target="#adminDelSeeker{{$user->id}}">
                 <strong><i class="far fa-trash-alt"></i></strong><br>Delete
-                </a>                
+                </a> 
+                
+                  <!-- Modal -->
+                  <div class="modal fade" id="adminDelSeeker{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title text-danger" id="exampleModalLabel">
+                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;Delete Job Seeker?</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body text-center text-dark">
+                          This user "{{$user->name}}" & all associated records will be <strong>PERMANENTLY deleted.</strong>
+                          <br><strong>Are you sure?</strong>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <form action="{{route('u.destroy',[$user->id])}}" method="POST">@csrf
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Modal end-->
               </td>
             
             </tr> 
@@ -180,9 +206,35 @@
               </td>                      
 
               <td>
-                <a class="text-danger mx-0" href="#" data-toggle="modal" data-target="#adminDelUser{{$user->id}}">
+                <a class="text-danger mx-0" href="#" data-toggle="modal" data-target="#adminDelVolun{{$user->id}}">
                 <strong><i class="far fa-trash-alt"></i></strong><br>Delete
-                </a>                
+                </a>
+                
+                  <!-- Modal -->
+                  <div class="modal fade" id="adminDelVolun{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title text-danger" id="exampleModalLabel">
+                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;Delete Mentor?</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body text-center text-dark">
+                          This user "{{$user->name}}" & all associated records will be <strong>PERMANENTLY deleted.</strong>
+                          <br><strong>Are you sure?</strong>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <form action="{{route('u.destroy',[$user->id])}}" method="POST">@csrf
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Modal end-->
               </td>
             
             </tr> 
@@ -219,9 +271,35 @@
               </td>                      
 
               <td>
-                <a class="text-danger mx-0" href="#" data-toggle="modal" data-target="#adminDelUser{{$user->id}}">
+                <a class="text-danger mx-0" href="#" data-toggle="modal" data-target="#adminDelJVolun{{$user->id}}">
                 <strong><i class="far fa-trash-alt"></i></strong><br>Delete
-                </a>                
+                </a> 
+                
+                  <!-- Modal -->
+                  <div class="modal fade" id="adminDelJVolun{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title text-danger" id="exampleModalLabel">
+                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;Delete Mentor(Job-Support)?</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body text-center text-dark">
+                          This user "{{$user->name}}" & all associated records will be <strong>PERMANENTLY deleted.</strong>
+                          <br><strong>Are you sure?</strong>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <form action="{{route('u.destroy',[$user->id])}}" method="POST">@csrf
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Modal end-->
               </td>
             
             </tr> 
@@ -263,9 +341,35 @@
               </td>                      
 
               <td>
-                <a class="text-danger mx-0" href="#" data-toggle="modal" data-target="#adminDelUser{{$user->id}}">
+                <a class="text-danger mx-0" href="#" data-toggle="modal" data-target="#adminDelEmp{{$user->id}}">
                 <strong><i class="far fa-trash-alt"></i></strong><br>Delete
-                </a>                
+                </a> 
+                
+                  <!-- Modal -->
+                  <div class="modal fade" id="adminDelEmp{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title text-danger" id="exampleModalLabel">
+                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;Delete Hiring Employer?</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body text-center text-dark">
+                          This company "{{$user->company->cname}}" & all associated records will be <strong>PERMANENTLY deleted.</strong>
+                          <br><strong>Are you sure?</strong>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <form action="{{route('u.destroy',[$user->id])}}" method="POST">@csrf
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Modal end-->
               </td>
             
             </tr> 
@@ -306,9 +410,35 @@
               </td>                      
 
               <td>
-                <a class="text-danger mx-0" href="#" data-toggle="modal" data-target="#adminDelUser{{$user->id}}">
+                <a class="text-danger mx-0" href="#" data-toggle="modal" data-target="#adminDelSemp{{$user->id}}">
                 <strong><i class="far fa-trash-alt"></i></strong><br>Delete
-                </a>                
+                </a> 
+                
+                  <!-- Modal -->
+                  <div class="modal fade" id="adminDelSemp{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title text-danger" id="exampleModalLabel">
+                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;Delete Separating Employer?</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body text-center text-dark">
+                          This company "{{$user->secompany->cname}}" & all associated records will be <strong>PERMANENTLY deleted.</strong>
+                          <br><strong>Are you sure?</strong>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <form action="{{route('u.destroy',[$user->id])}}" method="POST">@csrf
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Modal end-->
               </td>
             
             </tr> 
@@ -350,39 +480,42 @@
               </td>                      
 
               <td>
-                <a class="text-danger mx-0" href="#" data-toggle="modal" data-target="#adminDelUser{{$user->id}}">
+                <a class="text-danger mx-0" href="#" data-toggle="modal" data-target="#adminDelCon{{$user->id}}">
                 <strong><i class="far fa-trash-alt"></i></strong><br>Delete
-                </a>                
+                </a>
+                
+                  <!-- Modal -->
+                  <div class="modal fade" id="adminDelCon{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title text-danger" id="exampleModalLabel">
+                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;Delete Consultant?</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body text-center text-dark">
+                          This consultant "{{$user->consultant->cname}}" & all associated records will be <strong>PERMANENTLY deleted.</strong>
+                          <br><strong>Are you sure?</strong>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <form action="{{route('u.destroy',[$user->id])}}" method="POST">@csrf
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Modal end-->
               </td>
             
             </tr> 
           @endforeach	
 
           @endif
-                              <!-- Modal -->
-                              <div class="modal fade" id="adminDelUser{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="exampleModalLabel">Delete Job Post</h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body text-center">
-                                      This user & all associated records will be <strong>PERMANENTLY deleted.</strong>
-                                      <br><strong>Are you sure?</strong>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                      <form action="{{route('u.destroy',[$user->id])}}" method="POST">@csrf
-                                        <button type="submit" class="btn btn-danger">Delete User</button>
-                                      </form>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- Modal end-->
+                            
           </tbody>
         </table>
     </div>

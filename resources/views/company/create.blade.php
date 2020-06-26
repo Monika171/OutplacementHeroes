@@ -32,12 +32,11 @@
           </div>
     </div>
 </div>
-<br>
-<br>
+<section class="ftco-section bg-light">
 <div class="container">
     <div class="row"style="margin-top:-5%;">
 
-        <div class="col-md-12 my-0">
+        {{--<div class="col-md-12 my-0">
             @if(Auth::check()&&Auth::user()->id==$company->user_id)
             <div class="holder">
               <div class="news">                
@@ -48,7 +47,7 @@
               </div>
             </div>
               @endif
-          </div>
+          </div>--}}
 
         <div class="col-md-3  pr-4">
             @if(empty(Auth::user()->company->logo))
@@ -420,6 +419,7 @@
 
 <br>
 <br>
+</section>
 @endsection
 
 @section('jsplugins')

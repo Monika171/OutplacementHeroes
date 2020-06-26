@@ -4,7 +4,7 @@
 
 ## IMPORTANT!!!
 
-1) After cloning, modify .env file with your own database, email values (or mailtrap values). Because a user can't proceed without email verification.  
+1) After cloning(steps in point (5)), modify .env file with your own database, email values (or mailtrap values). Because a user can't proceed without email verification.  
 
 Also enter admin values, eg:
     
@@ -47,6 +47,33 @@ C:\xampp\mysql\bin>mysql -u [username] -p [databaseName] < cities.sql
 
 [B] 'skills.sql' file may not get imported directly. In that case, please copy the INSERT QUERY from the file and use SQL(INSERT) at phpmyadmin to achieve the same.  
   
+
+4) If Old values of any collaborator persists(which is unusual), please run:  
+[A]: php artisan cache:clear  
+composer dump-autoload -o  
+
+[B] If Still Not Solved, then run:  
+php artisan clear-compiled  
+php artisan cache:clear  
+php artisan route:clear  
+php artisan view:clear  
+php artisan config:clear  
+
+5) Make sure the project is cloned properly:    
+a) git clone url    
+b) composer install  
+(or "composer update", if former is already done. Not required, if project runs already)   
+c) copy .env.example .env   
+(Fill up your values in .env)  
+d)create database and user. Fillup details in .env file including email and admin credentials and  
+e) php artisan migrate  
+("php artisan migrate:fresh" if using git pull or
+Only when not taking/importing .sql files from 'OPH_sql_import1')  
+f) php artisan db:seed --force  
+(Only when not taking/importing .sql files from 'OPH_sql_import1') 
+g) php artisan storage:link   
+h) php artisan key:generate    
+i) php artisan serve    
   
 ## Initial tasks:  
 -HIRING EMPLOYERS, JOBSEEKERS, ADMIN (sending notification carrying JD link, if latter is eligible etc).  

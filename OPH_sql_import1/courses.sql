@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2020 at 10:25 AM
+-- Generation Time: Jun 26, 2020 at 04:55 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -28,7 +28,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `courses`
 --
 
-DROP TABLE IF EXISTS `courses`;
 CREATE TABLE `courses` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `course` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
