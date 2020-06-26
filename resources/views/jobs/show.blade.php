@@ -221,8 +221,7 @@ p {
 
         <div class="text-center">
               <h3 class="h5 text-black" style="font-weight: bold;">Last date to apply:</h3>              
-              <strong><p class="mb-4">
-                @if($show==0)<i class="fa fa-exclamation-triangle text-danger" aria-hidden="true"></i>@endif
+              <strong><p class="mb-4">                
                 {{ date('F d, Y', strtotime($job->last_date)) }}</p></strong> 
               <hr>   
               
@@ -259,7 +258,7 @@ p {
             
             <div class="p-4 mb-3 bg-white">
               <!--<h3 class="h5 text-black mb-3">More Info</h3>-->
-            @if($show)               <p>
+            <p>
               @if(Auth::check()&&Auth::user()->user_type=='seeker')
             
 
@@ -276,13 +275,7 @@ p {
 
               @endif
 
-            @else
-
-            <div class="text-center px-1 pb-1 pt-2 bg-light">
-              <h5 class="text-danger"><strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> &nbsp;Job Expired.</strong></h5>
-            </div>
-
-           @endif
+            
 
             @if(Auth::check()&&Auth::user()->id==$job->user_id)
             

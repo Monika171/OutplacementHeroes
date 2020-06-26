@@ -225,15 +225,8 @@ class JobController extends Controller
 
 
     public function show($id,Job $job){
-         $now = date('d-m-Y');
-        if($job->last_date > $now ){
-            $show=1;
-        }
-        else{
-            $show=0;
-        }
-
-        return view('jobs.show',compact('job','show'));
+         
+        return view('jobs.show',compact('job'));
     }
 
     public function myjob(){

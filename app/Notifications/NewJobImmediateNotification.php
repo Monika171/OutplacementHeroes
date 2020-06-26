@@ -43,8 +43,8 @@ class NewJobImmediateNotification extends Notification
         ->subject('New job has been posted')
         ->line('A new job listing has been posted: '.$this->job->title)
         ->line('Skills: '.$this->job->skills->implode('skill', ', '))
-        ->line('Description: '.$this->job->description)        
-        ->action('View job', route('jobs.show',[$this->job->id,$this->job->slug]))
+        ->line('Description: '.$this->job->description)  
+        ->action('View job', route('jobs.show',[$this->job->id,$this->job->slug]))     
         ->line('Thank you for using our application!');
     }
     
