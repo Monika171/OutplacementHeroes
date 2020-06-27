@@ -76,18 +76,18 @@ h) php artisan key:generate
 i) php artisan serve    
   
 ## Team & Tasks:  
--HIRING EMPLOYERS, JOBSEEKERS, ADMIN (sending notification carrying JD link, if latter is eligible etc).<br>  
-~~[AssignedTo: <a href="https://github.com/Monika171">Monika</a>]<br> 
+-HIRING EMPLOYERS, JOBSEEKERS, ADMIN (sending notification carrying JD link, if latter is eligible etc).<br>
+~~[AssignedTo: <a href="https://github.com/Monika171">Monika</a>]<br>
 <br>
--VOLUNTEER(S), CHAT INTERFACE:<br> 
-~~[AssignedTo: <a href="https://github.com/Priti-Gowala">Priti</a>]<br> 
+-VOLUNTEER(S), CHAT INTERFACE:<br>
+~~[AssignedTo: <a href="https://github.com/Priti-Gowala">Priti</a>]<br>
 <br>
--SEPARATING EMPLOYERS, CONSULTANTS:<br> 
-~~[AssignedTo: <a href="https://github.com/pavangv28">Pavan</a>]<br> 
+-SEPARATING EMPLOYERS, CONSULTANTS:<br>
+~~[AssignedTo: <a href="https://github.com/pavangv28">Pavan</a>]<br>
 <br>
--HOME+LOGIN+REGISTRATION PAGE DESIGN:<br>  
-~~[AssignedTo: <a href="https://github.com/AkankshaBoora">Akanksha</a>]<br> 
+-HOME+LOGIN+REGISTRATION PAGE DESIGN:<br>
+~~[AssignedTo: <a href="https://github.com/AkankshaBoora">Akanksha</a>]<br>
 <br>
--DATA-COLLECTION(Industry, Designation, Skills, Education):<br> 
-~~[by Pavan,Priti,<a href="https://github.com/Harshita248">Harshita</a>]<br> 
+-DATA-COLLECTION(Industry, Designation, Skills, Education):<br>
+~~[by Pavan,Priti,<a href="https://github.com/Harshita248">Harshita</a>]<br>
 <br>
