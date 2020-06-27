@@ -88,12 +88,17 @@
                     <li class="nav-item"><a href="{{route('user.dashboard')}}" class="nav-link">Dashboard</a></li>
                     <li class="nav-item"><a href="{{route('user.saved')}}" class="nav-link">
                         <i class="fa fa-tag" aria-hidden="true"></i>Saved-Jobs</a></li>
+                    <li class="nav-item"><a href="{{route('my.messages')}}" class="nav-link">Inbox</a></li>
 
             @elseif(Auth::user()->user_type=='volunteer')
             <li class="nav-item"><a href="{{route('vseeker.index')}}" class="nav-link">Dashboard</a></li>
+            <li class="nav-item"><a href="{{route('my.messages')}}" class="nav-link">
+                <i class="fa fa-comments" aria-hidden="true"></i>&nbsp;Inbox</a></li>
 
             @elseif(Auth::user()->user_type=='jvolunteer')
             <li class="nav-item"><a href="{{route('jvseeker.index')}}" class="nav-link">Dashboard</a></li>
+            <li class="nav-item"><a href="{{route('my.messages')}}" class="nav-link">
+                <i class="fa fa-comments" aria-hidden="true"></i>&nbsp;Inbox</a></li>
 
             @elseif(Auth::user()->user_type=='admin')  
             <li class="nav-item"><a href="/dashboard" class="nav-link">Dashboard</a></li>

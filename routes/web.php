@@ -28,6 +28,9 @@ Route::get('/','OutplacementherosController@index');
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/mymessages', 'HomeController@inbox')->name('my.messages');
+Route::get('/message/{id}', 'HomeController@getMessage')->name('message');
+Route::post('message', 'HomeController@sendMessage');
 
 
 
@@ -72,6 +75,7 @@ Route::post('dynamic-field1/insert', 'DynamicFieldController1@insert')->name('dy
 Route::get('/email',function(){
     return new WelcomeMail();
 });
+
 
 //HIRING EMPLOYER from a COMPANY
 Route::get('/company/{id}/{company}','CompanyController@index')->name('company.index');
