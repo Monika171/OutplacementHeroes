@@ -79,7 +79,7 @@ i) php artisan serve
 -HIRING EMPLOYERS, JOBSEEKERS, ADMIN (sending notification carrying JD link, if latter is eligible etc).<br>
 ~~[AssignedTo: <a href="https://github.com/Monika171">Monika</a>]<br>
 <br>
--VOLUNTEER(S), CHAT INTERFACE:<br>
+-VOLUNTEERS:<br>
 ~~[AssignedTo: <a href="https://github.com/Priti-Gowala">Priti</a>]<br>
 <br>
 -SEPARATING EMPLOYERS, CONSULTANTS:<br>
