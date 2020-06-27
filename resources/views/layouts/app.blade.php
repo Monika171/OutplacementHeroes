@@ -17,9 +17,69 @@
     <script defer src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>
-        $( function() {
-          $( "#datepicker" ).datepicker();
-        } );
+     $( function() {
+      $( '.datepicker' ).datepicker({
+      dateFormat: 'dd-mm-yy',
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "-70:+0"
+      
+    });
+
+
+    $('.datepicker-Y').datepicker( {
+    dateFormat: "yy",
+    yearRange: "c-100:c",
+    changeMonth: false,
+    changeYear: true,
+    showButtonPanel: false,
+    closeText:'Select',
+    currentText: 'This year',
+    onClose: function(dateText, inst) {
+      var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+      $(this).val($.datepicker.formatDate('yy', new Date(year, 1, 1)));
+    },
+    onChangeMonthYear : function () {
+      $(this).datepicker( "hide" );
+    }
+  }).focus(function () {
+    $(".ui-datepicker-month").hide();
+    $(".ui-datepicker-calendar").hide();
+    $(".ui-datepicker-current").hide();
+    $(".ui-datepicker-prev").hide();
+    $(".ui-datepicker-next").hide();
+    $("#ui-datepicker-div").position({
+      my: "left top",
+      at: "left bottom",
+      of: $(this)
+    });
+  }).attr("readonly", false);
+
+
+  $('.datepicker-YM').datepicker( {
+    yearRange: "c-100:c",
+    changeMonth: true,
+    changeYear: true,
+    showButtonPanel: true,
+    closeText:'Select',
+    currentText: 'This year',
+    onClose: function(dateText, inst) {
+      var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+      var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+      $(this).val($.datepicker.formatDate('MM yy (M y) (mm/y)', new Date(year, month, 1)));
+    }
+  }).focus(function () {
+    $(".ui-datepicker-calendar").hide();
+    $(".ui-datepicker-current").hide();
+    $("#ui-datepicker-div").position({
+      my: "left top",
+      at: "left bottom",
+      of: $(this)
+    });
+  }).attr("readonly", false);
+
+    });
+
     </script>
 
 
@@ -119,10 +179,14 @@
                             @if(Auth::user()->user_type=='employer')
                 
                             <li class="nav-item"><a href="{{route('my.job')}}" class="nav-link">Dashboard</a></li>
+                            <li class="nav-item"><a href="{{route('seeker.index')}}" class="nav-link">
+                                <i class="fa fa-users" aria-hidden="true"></i> Job-Seekers</a></li>
                             <li class="nav-item"><a href="{{route('job.create')}}" class="nav-link">Post a job</a></li>
                 
                             @elseif(Auth::user()->user_type=='seeker')
-                                    <li class="nav-item"><a href="{{route('user.dashboard')}}" class="nav-link">Dashboard</a></li>
+                            <li class="nav-item"><a href="{{route('user.dashboard')}}" class="nav-link">Dashboard</a></li>
+                            <li class="nav-item"><a href="{{route('user.saved')}}" class="nav-link">
+                                <i class="fa fa-tag" aria-hidden="true"></i>Saved-Jobs</a></li>
                 
                             @elseif(Auth::user()->user_type=='volunteer')
                             <li class="nav-item"><a href="{{route('vseeker.index')}}" class="nav-link">Dashboard</a></li>
@@ -174,10 +238,6 @@
                                     >
                                         {{ __('My Company') }}
                                     </a>
-            
-                                    <a class="dropdown-item" href="{{route('applicant')}}">
-                                        {{ __('All Applicants') }}
-                                    </a> 
             
                                 @elseif(Auth::user()->user_type=='semployer')
                                     <a class="dropdown-item" href="{{route('secompany.index',[Auth::user()->secompany->id,Auth::user()->secompany->slug])}}"
