@@ -182,19 +182,25 @@ class JvolunteerController extends Controller
                             ->orWhere('state',$state)
                             ->orWhere('experience_years','=',$experience_years)
                             ->get();
+                            if($seekersProfile->isNotEmpty()){
                             array_push($data,$seekersProfile);
-    
+                            }
+
                             $seekersWork = Work::where('industry',$industry)                   
                             ->orWhere('designation',$recent_designation)                   
                             ->get();
+                            if($seekersWork->isNotEmpty()){
                             array_push($data,$seekersWork);
+                            }
     
                             $seekersEducation = Education::where('qualification',$qualification) 
                             ->orWhere(function ($query) use ($course, $specialization){
                                 $query->where('course',$course)
                                       ->where('specialization',$specialization);
                             })->get();
+                            if($seekersEducation->isNotEmpty()){
                             array_push($data,$seekersEducation);
+                            }
     
                             $collection = collect($data);
                             $unique =  $collection->unique("user_id");
@@ -210,20 +216,27 @@ class JvolunteerController extends Controller
                             ->orWhere('city',$city)
                             ->orWhere('state',$state)
                             ->orWhere('experience_years','>=',$experience_years)
-                            ->get();                 
+                            ->get(); 
+
+                            if($seekersProfile->isNotEmpty()){               
                             array_push($data,$seekersProfile);
-    
+                            }
+
                             $seekersWork = Work::where('industry',$industry)                   
                             ->orWhere('designation',$recent_designation)                   
                             ->get();
+                            if($seekersWork->isNotEmpty()){
                             array_push($data,$seekersWork);
+                            }
     
                             $seekersEducation = Education::where('qualification',$qualification) 
                             ->orWhere(function ($query) use ($course, $specialization){
                                 $query->where('course',$course)
                                       ->where('specialization',$specialization);
                             })->get();
+                            if($seekersEducation->isNotEmpty()){
                             array_push($data,$seekersEducation);
+                            }
     
                             $collection = collect($data);
                             $unique =  $collection->unique("user_id");

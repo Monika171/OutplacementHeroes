@@ -311,7 +311,7 @@
                     </div>
 
                     <div class="text-center bg-light">
-                        <p style="color:red"><strong>*Jobs will be Recommended to Job Seekers Based on Following Skills Only.</strong><br>               
+                        <p style="color:red"><strong>*Jobs will be Recommended to Job Seekers Based on Following Skills.</strong><br>               
                         </p>
                     </div>
 

@@ -57,29 +57,37 @@ class SeekerController extends Controller
                     $data = [];
 
                     if($experience_years==0){
-                                $seekersProfile = Profile::where('industry',$industry)                   
+                        $seekersProfile = Profile::where('industry',$industry)                   
                         ->orWhere('recent_designation',$recent_designation)
                         ->orWhere('city',$city)
                         ->orWhere('state',$state)
                         ->orWhere('experience_years','=',$experience_years)
                         ->get();
+
+                        if($seekersProfile->isNotEmpty()){
                         array_push($data,$seekersProfile);
+                        }
 
                         $seekersWork = Work::where('industry',$industry)                   
                         ->orWhere('designation',$recent_designation)                   
                         ->get();
+                        
+                        if($seekersWork->isNotEmpty()){
                         array_push($data,$seekersWork);
+                        }
 
                         $seekersEducation = Education::where('qualification',$qualification) 
                         ->orWhere(function ($query) use ($course, $specialization){
                             $query->where('course',$course)
                                   ->where('specialization',$specialization);
-                        })->get();
+                        })->get();                       
                         
+                        if($seekersEducation->isNotEmpty()){
                         array_push($data,$seekersEducation);
-
+                        }
+                        
                         $collection = collect($data);
-                        $unique =  $collection->unique("user_id");
+                        $unique =  $collection->unique('user_id');                                              
                         $myArray = $unique->values()->first();                             
                         $seekers = $this->paginate($myArray);
                         //return $unique->values()->all();
@@ -92,13 +100,21 @@ class SeekerController extends Controller
                         ->orWhere('city',$city)
                         ->orWhere('state',$state)
                         ->orWhere('experience_years','>=',$experience_years)
-                        ->get();                 
+                        ->get(); 
+                        
+                        
+                        if($seekersProfile->isNotEmpty()){                
                         array_push($data,$seekersProfile);
+                        }
 
                         $seekersWork = Work::where('industry',$industry)                   
                         ->orWhere('designation',$recent_designation)                   
                         ->get();
+
+                        
+                        if($seekersWork->isNotEmpty()){
                         array_push($data,$seekersWork);
+                        }
 
                         $seekersEducation = Education::where('qualification',$qualification) 
                         ->orWhere(function ($query) use ($course, $specialization){
@@ -106,15 +122,19 @@ class SeekerController extends Controller
                                   ->where('specialization',$specialization);
                         })->get();
 
+                       
+
 
                         /*$seekersEducation = Education::where('qualification',$qualification)                   
                         ->orWhere('course',$course)
                         ->orWhere('specialization',$specialization)                 
                         ->get();*/
+                        if($seekersEducation->isNotEmpty()){
                         array_push($data,$seekersEducation);
+                        }
 
                         $collection = collect($data);
-                        $unique =  $collection->unique("user_id");
+                        $unique =  $collection->unique("user_id");                        
                         $myArray = $unique->values()->first()->sortByDesc('experience_years');                              
                         $seekers = $this->paginate($myArray);
 

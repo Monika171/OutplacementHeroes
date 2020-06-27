@@ -583,7 +583,7 @@
 
                                 
                         <div class="text-center bg-light">
-                            <p style="color:red"><strong>*Please Share Your Skills as Jobs will be Recommended Based on your Skills.</strong><br>               
+                            <p style="color:red"><strong>*Please Share Your Top 5 Key Skills as Jobs will be Recommended Based on your Skills.</strong><br>               
                             </p>
                         </div>
 

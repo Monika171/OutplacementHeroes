@@ -233,7 +233,7 @@ class JobController extends Controller
         $user_id = auth()->user()->id;
         $company = Company::where('user_id',$user_id)->first();
         //$jobs = Job::where('user_id',$user_id)->get();
-        $jobs = Job::where('user_id',$user_id)->latest()->paginate(10);
+        $jobs = Job::where('user_id',$user_id)->latest()->paginate(15);
         return view('jobs.myjob',compact('jobs','company'));
     }
 
