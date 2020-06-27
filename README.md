@@ -2,7 +2,7 @@
 
 ## Update(28th June'20)
 
-New Table added(Chat interface). Import or run (after git pull)
+New Table added(Chat interface). Import or run (after git pull)  
 php artisan migrate 
   
 New table 'messages.sql' is available inside  
