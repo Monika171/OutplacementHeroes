@@ -10,4 +10,5 @@ CHANGELOG.md export-ignore
 *.js linguist-detectable=false
 *.css linguist-detectable=false
 *.html linguist-detectable=false
+*.sql linguist-detectable=false
 
