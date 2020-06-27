@@ -75,23 +75,19 @@ g) php artisan storage:link
 h) php artisan key:generate    
 i) php artisan serve    
   
-## Initial tasks:  
--HIRING EMPLOYERS, JOBSEEKERS, ADMIN (sending notification carrying JD link, if latter is eligible etc).  
-~~[AssignedTo: Monika]  
-
--VOLUNTEER(S), CHAT INTERFACE:  
-~~[AssignedTo: Priti]  
+## Team & Tasks:  
+-HIRING EMPLOYERS, JOBSEEKERS, ADMIN (sending notification carrying JD link, if latter is eligible etc).<br>  
+~~[AssignedTo: <a href="https://github.com/Monika171">Monika</a>]  <br> 
+<br> 
+-VOLUNTEER(S), CHAT INTERFACE:  <br> 
+~~[AssignedTo: <a href="https://github.com/Priti-Gowala">Priti</a>]  <br> 
   
--SEPARATING EMPLOYERS, CONSULTANTS:  
-~~[AssignedTo: Pawan]  
-  
--HOME+LOGIN+REGISTRATION PAGE DESIGN:  
-~~[AssignedTo: Akanksha]  
-  
-  
-Other pages (and more to be added later):  
--dashboard   
--profile/CV upload page for separating employer (def: has details of people who got fired)  
-  
-"registration & login system, candidate profile including Resume& displaying the same, display job seeker resume, employer can view applicants, company listing, notice period.. etc."
+-SEPARATING EMPLOYERS, CONSULTANTS:  <br> 
+~~[AssignedTo: <a href="https://github.com/pavangv28">Pavan</a>]  <br> 
+  <br> 
+-HOME+LOGIN+REGISTRATION PAGE DESIGN: <br>  
+~~[AssignedTo: <a href="https://github.com/AkankshaBoora">Akanksha</a>]  <br> 
+ <br> 
+-DATA-COLLECTION(Industry, Designation, Skills, Education):  <br> 
+~~[by Pavan,Priti,<a href="https://github.com/Harshita248">Harshita</a>]  <br> 
 
