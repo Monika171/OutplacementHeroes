@@ -10,7 +10,7 @@ OPH_sql_import1 > NEW_SQL_TABLE(chat)
 
 ## IMPORTANT!!!
 
-1) After cloning(steps in point (5)), modify .env file with your own database, email values (or mailtrap values). Because a user can't proceed without email verification.  
+1) After cloning(steps in point (5)), modify .env file with your own database, email (or mailtrap values), admin, pusher values. Because a user can't proceed without email verification.  
 
 --Also enter admin values, eg:
     
@@ -67,12 +67,12 @@ C:\xampp\mysql\bin>mysql -u [username] -p [databaseName] < cities.sql
   
 4) Make sure the project is cloned properly (confirm):    
 a) git clone url    
-b) Inside project folder(using cd):  
+b) Inside your project folder, open terminal and run:  
 composer install  
-(or "composer update", if former is already done. Not required, if project runs already)   
+(or "composer update", in case of 'git pull'. Not always required, if project runs fine.)   
 c) copy .env.example .env   
-(Fill up your values in .env)  
-d)create database and user. Fillup details in .env file including email, admin, pusher credentials. 
+(Fill up your values in .env or new values in case of git pull(if any))  
+d)create database and user. Fillup details in .env file including email, admin, pusher credentials.  
 e) php artisan migrate  
 ("php artisan migrate:fresh" if using git pull or
 Only when not taking/importing .sql files from 'OPH_sql_import1')  
@@ -96,7 +96,7 @@ php artisan key:generate
 
       
 ## Team & Tasks:  
--HIRING EMPLOYERS, JOBSEEKERS, ADMIN (sending notification carrying JD link, if latter is eligible etc).<br>
+-HIRING EMPLOYERS, JOBSEEKERS, ADMIN<br>
 ~~[AssignedTo: <a href="https://github.com/Monika171">Monika</a>]<br>
 <br>
 -VOLUNTEERS:<br>
