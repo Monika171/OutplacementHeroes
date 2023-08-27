@@ -1,113 +1,175 @@
 <p align="center"><img src="https://github.com/Monika171/OutplacementHeroes/blob/master/public/profile_pic/oph.jpeg" width="400"></p>
 
-## Update(28th June'20)
+OutplacementHeros was a community of Recruiting Professionals, Consultants & Volunteers who collaborated to help laid off employees during COVID-19 global pandemic.
 
-New Table added(Chat interface). Import or run (after git pull)  
-php artisan migrate 
-  
-New table 'messages.sql' is available inside  
-OPH_sql_import1 > NEW_SQL_TABLE(chat)
+## Getting Started
 
-## IMPORTANT!!!
+<h3>Clone the repository.</h3>
 
-1) After cloning(steps in point (5)), modify .env file with your own database, email (or mailtrap values), admin, pusher values. Because a user can't proceed without email verification.  
+### >> Prerequisites
 
---Also enter admin values, eg:
-    
-ADMIN_NAME="Some Admin Name"  
-ADMIN_EMAIL=adminexample@site.com  
-ADMIN_PASSWORD=AdminPassword  
+-   PHP version 7.2.34
+-   \*MySQL version 8.0.33
+-   Composer version 2.3.8
 
--- email values, eg:  
-  
-MAIL_MAILER=smtp  
-MAIL_HOST=smtp.gmail.com  
-MAIL_PORT=587  
-MAIL_USERNAME=site_email@site.com  
-MAIL_PASSWORD=YourEmailPassword  
-MAIL_ENCRYPTION=tls  
-MAIL_FROM_ADDRESS=site_email@site.com  
-MAIL_FROM_NAME=OPH 
+\*This app uses MySQL. To use something different, open `config/Database.php` and change the default driver.
 
--- pusher values, eg:  
-  
-PUSHER_APP_ID=--your unique value--  
-PUSHER_APP_KEY=---your unique value------  
-PUSHER_APP_SECRET=---your unique value------  
-  
-[OR login to https://pusher.com/ and create all new app.
-Put pusher credentials to .env file <br>
-Also replace PUSHER_APP_KEY in home.blade.php inside < script> eg:  
-  
- var pusher = new Pusher('-----unique value-------', {  
-         cluster: 'ap2'  
-         });  
-    
-    
-2) All database tables are imported as 'oph.sql' and is available inside:
-OPH_sql_import1 > ALL_PRESENT_TABLES_EXPORT > oph.sql  
-  
-3) Import 'countries.sql', 'states.sql', 'cities.sql', 'courses.sql', 'designations.sql', 'industries.sql', 'skills.sql', 'specializations.sql' at your database.  
-(If required, delete the previous existing tables with same name which got created after 'php artisan migrate' in first step!
-Well sql query does the same but just in case..)  
-  
-(ALL These .sql files are available here inside 'OPH_sql_import1')  
-     
-NOTE:   
------------------
-[A] 'cities.sql' is comparatively a big file. May not get imported easily without doing some extra one or two steps.. i.e:  
-1) At  
-xampp control panel-> (mysql)config -> my.ini -> (open and set)  
-myisam_sort_buffer_size = 100M  
-2)
-copy cities.sql to "C:\xampp\mysql\bin", then in terminal-  
-C:\xampp\mysql\bin>mysql -u [username] -p [databaseName] < cities.sql  
+To use MySQL, install and setup a database and then add your database credentials(database, username and password) to the `.env.example` file.
 
-[B] 'skills.sql' file may not get imported directly. In that case, please copy the INSERT QUERY from the file and use SQL(INSERT) at phpmyadmin to achieve the same.  
-  
-4) Make sure the project is cloned properly (confirm):    
-a) git clone url    
-b) Inside your project folder, open terminal and run:  
-composer install  
-(or "composer update", in case of 'git pull'. Not always required, if project runs fine.)   
-c) copy .env.example .env   
-(Fill up your values in .env or new values in case of git pull(if any))  
-d)create database and user. Fillup details in .env file including email, admin, pusher credentials.  
-e) php artisan migrate  
-("php artisan migrate:fresh" if using git pull or
-Only when not taking/importing .sql files from 'OPH_sql_import1')  
-f) php artisan db:seed --force    
-(Only when not taking/importing .sql files from 'OPH_sql_import1')   
-g) php artisan storage:link     
-h) php artisan key:generate    
-i) php artisan serve 
-  
-    
-5) If Old values of any collaborator persists(which is unusual), please run (if SSH access available):  
-   
-php artisan clear-compiled    
-php artisan cache:clear    
-php artisan route:clear   
-php artisan view:clear  
-php artisan config:clear  
-composer update  
-php artisan storage:link  
-php artisan key:generate  
+### >> Installing Dependencies
 
-      
-## Team & Tasks:  
--HIRING EMPLOYERS, JOBSEEKERS, ADMIN<br>
-~~[AssignedTo: <a href="https://github.com/Monika171">Monika</a>]<br>
-<br>
--VOLUNTEERS:<br>
-~~[AssignedTo: <a href="https://github.com/Priti-Gowala">Priti</a>]<br>
-<br>
--SEPARATING EMPLOYERS, CONSULTANTS:<br>
-~~[AssignedTo: <a href="https://github.com/pavangv28">Pavan</a>]<br>
-<br>
--HOME+LOGIN+REGISTRATION PAGE DESIGN:<br>
-~~[AssignedTo: <a href="https://github.com/AkankshaBoora">Akanksha</a>]<br>
-<br>
--DATA-COLLECTION(Industry, Designation, Skills, Education):<br>
-~~[by Pavan,Priti,<a href="https://github.com/Harshita248">Harshita</a>]<br>
-<br>
+Install Laravel's dependencies using Composer:
+
+```
+composer install
+```
+
+-   In case there is error:
+
+    -   Delete `composer.lock` file. (if exists)
+    -   Delete `vendor` directory. (if exists)
+    -   Clear Cache:  
+        Run the following commands to clear various Laravel caches:
+
+        ```
+        php artisan config:clear
+        php artisan cache:clear
+        php artisan route:clear
+        php artisan view:clear
+        composer clear-cache
+        ```
+
+    -   Check Composer Autoload:
+
+        ```
+        composer dump-autoload
+        ```
+
+    -   Run `composer install` again.
+
+### >> `.env` configuration file
+
+```
+cp .env.example .env
+```
+
+### >> Generating application key:
+
+```
+php artisan key:generate
+```
+
+### >> Configuring The Environment:
+
+Open the `.env` file in a text editor and configure the database settings, application URL, email (or mailtrap values), admin account values, pusher values and any other necessary environment variables for example:
+
+-   email values, eg:
+
+        MAIL_MAILER=smtp
+        MAIL_HOST=smtp.gmail.com
+        MAIL_PORT=587
+        MAIL_USERNAME=site_email@site.com
+        MAIL_PASSWORD=YourEmailPassword
+        MAIL_ENCRYPTION=tls
+        MAIL_FROM_ADDRESS=site_email@site.com
+        MAIL_FROM_NAME=OPH
+
+-   pusher values, eg:
+
+        PUSHER_APP_ID=YourPusherAppID
+        PUSHER_APP_KEY=YourPusherAppKey
+        PUSHER_APP_SECRET=YourPusherAppSecret
+
+    OR login to https://pusher.com/ to create all new app and get the above values. Instructions to integrate pusher will be available there, but here is the outline to verify:
+
+    1. Put pusher credentials in `.env` file.
+    2. Also replace pusher app key in `home.blade.php` inside `<script>` eg:
+        ```
+        var pusher = new Pusher('YourPusherAppKey', {
+        cluster: 'EnterClusterValue'
+        });
+        ```
+
+-   admin values, eg:
+
+        ADMIN_NAME="Some Admin Name"
+        ADMIN_EMAIL=admin@site.com
+        ADMIN_PASSWORD=AdminPassword
+
+### >> Migrations
+
+<b><u>Two Options</u></b>:
+
+-   <u>Option 1:</u>  
+    All database tables can be imported:  
+    `OPH_sql_import1/ALL_PRESENT_TABLES_EXPORT/oph.sql`
+
+-   <u>Option 2:</u>  
+    Using artisan for Database Migrations:
+
+    1. To create all the necessary tables and columns, run the following:
+        ```
+        php artisan migrate
+        ```
+    2. Import `'countries.sql'`, `'states.sql'`, `'cities.sql'`, `'courses.sql'`, `'designations.sql'`, `'industries.sql'`, `'skills.sql'`, `'specializations.sql'`, `'messages.sql'` values to the database.  
+       (If required, delete the previously existing respective tables)
+        - ALL these .sql files are directly available here inside `'OPH_sql_import1'`
+
+### >> Seeding The Database
+
+To add admin data, run:
+
+```
+php artisan db:seed --force
+```
+
+### >> Creating symlink
+
+Create symlink from `public/storage` directory to `storage/app/public` directory which will make files stored in the `storage/app/public` directory accessible from the web by creating a virtual link in the public directory of this project.
+
+```
+php artisan storage:link
+```
+
+### >> Running The Development Server:
+
+In the Terminal, navigate to the project directory if not already there.  
+Start the Laravel development server:
+
+```
+php artisan serve
+```
+
+### >> Accessing The Laravel App:
+
+-   Open a web browser.
+-   Visit the URL displayed in the Terminal after starting the development server.  
+    By default, it's usually `http://127.0.0.1:8000`.
+
+## App Info
+
+### Built With
+
+-   [Laravel Framework 7.30.6](https://laravel.com/docs/7.x/releases)
+
+### Version
+
+1.0.0
+
+### Meet the Team:
+
+-   HIRING EMPLOYERS, JOBSEEKERS, ADMIN<br>
+    ~[<a href="https://github.com/Monika171">Monika</a>]<br>
+    <br>
+-   VOLUNTEERS:<br>
+    ~[<a href="https://github.com/Priti-Gowala">Priti</a>]<br>
+    <br>
+-   SEPARATING EMPLOYERS, CONSULTANTS:<br>
+    ~[<a href="https://github.com/pavangv28">Pavan</a>]<br>
+    <br>
+-   HOME+LOGIN+REGISTRATION PAGE DESIGN:<br>
+    ~[<a href="https://github.com/AkankshaBoora">Akanksha</a>]<br>
+    <br>
+-   DATA-COLLECTION(Industry, Designation, Skills, Education):<br>
+    ~[by Pavan,Priti,<a href="https://github.com/Harshita248">Harshita</a>]<br>
+    <br>
