@@ -26,7 +26,10 @@ use Auth;
 class JvolunteerController extends Controller
 {
     public function __construct(){
-        $this->middleware(['jvolunteer','verified']);
+        $this->middleware(['jvolunteer']);
+
+        //uncomment for mandatory verification
+        // $this->middleware(['jvolunteer','verified']);
         }  
 
 
@@ -240,8 +243,12 @@ class JvolunteerController extends Controller
     
                             $collection = collect($data);
                             $unique =  $collection->unique("user_id");
-                            $myArray = $unique->values()->first()->sortByDesc('experience_years');                              
-                            $seekers = $this->paginate($myArray);
+                            if (count($unique) > 0) {
+                              $myArray = $unique->values()->first()->sortByDesc('experience_years');                              
+                              $seekers = $this->paginate($myArray);
+                          } else {
+                              $seekers = [];
+                          } 
     
                             //return $unique->values()->all();
                             return view('jvolunteer.dashboard', compact('seekers','industrylist','designationlist','citylist','statelist','courselist','specializationlist'));

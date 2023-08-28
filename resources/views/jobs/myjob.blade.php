@@ -169,7 +169,7 @@
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                      Are you sure?
+                                      <p class="text-dark">Are you sure?</p>
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

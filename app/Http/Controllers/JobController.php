@@ -23,7 +23,12 @@ class JobController extends Controller
 
     public function __construct(){
                 
-        $this->middleware(['employer','verified'],['except'=>array('index','show','apply','allJobs')]);
+        $this->middleware(['employer'],['except'=>array('index','show','apply','allJobs')]);
+
+        //uncomment for mandatory verification
+        // $this->middleware(['employer','verified'],['except'=>array('index','show','apply','allJobs')]);
+
+
        // $this->middleware(['employer','verified'],['except'=>array('index','show','apply','allJobs','searchJobs','category')]);
     }    
   
@@ -69,7 +74,7 @@ class JobController extends Controller
         $state = State::where('id',request('state'))->first();
         $city = City::where('id',request('city'))->first();
 
-        //dd($request->all());
+        
 
         $job = Job::create([
             'user_id' => $user_id,

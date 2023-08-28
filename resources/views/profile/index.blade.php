@@ -737,8 +737,6 @@
         var coun_id = @json($coun_id);
         var s_id = @json($s_id);
         var c_id = @json($c_id);
-
-
                 if(coun_id){
                     $.ajax({
                         
@@ -746,8 +744,6 @@
                         type: 'GET',
                         dataType: 'json',
                         success: function(data){
-                            console.log(data);
-                            
                             $('select[name="state"]').empty();
                             $.each(data, function(key, value){
 
@@ -766,7 +762,6 @@
 
             
                 if(s_id){
-                    //console.log(country_id);
                     $.ajax({
                         
                         url: '/getCities/'+s_id,
@@ -788,9 +783,7 @@
                         
                     });
 
-                }            
-            
-            //console.log(coun_id);
+                }
 
             $('select[name="country"]').on('change', function(){
  
@@ -852,15 +845,11 @@
                 else{
                     
                     $('select[name="city"]').empty();
-                }
-                
-                //console.log('LISTENING')
-                
+                }                
             });
             
             $("input[name='fresher']").on("click",function(){
-            //console.log('clicked');
-          if ($(this).hasClass("checkdisplay") && this.checked) // or $(this).is(":checked")
+          if ($(this).hasClass("checkdisplay") && this.checked)
             $("#todisplay").fadeOut('slow');
         else
             $("#todisplay").fadeIn('slow');
@@ -868,10 +857,8 @@
 
         $('.select2').css('width','100%');       
         $('.select2').select2({
-          //width: 'resolve', 
           placeholder: "Please select Skills",
           allowClear: true,
-
         });      
 
         //$("#select-Des").css('width','100%');
@@ -888,98 +875,3 @@
     });
     </script>
 @endsection
-
-                    {{--   
-                        
-                            <input name="days" list="days">
-                                <datalist id="days">
-                                <option value="Sunday">
-                                <option value="Monday">
-                                <option value="Tuesday">
-                                <option value="Wednesday">
-                                <option value="Thursday">
-                                <option value="Friday">
-                                <option value="Saturday"> 
-                                </datalist>
-
-                                <input list="job_dept">
-
-                                <datalist id="job_dept">
-                                <option value="Internet Explorer">
-                                <option value="Firefox">
-                                <option value="Chrome">
-                                <option value="Opera">
-                                <option value="Safari">
-                                </datalist>
-
-                                <input list="cars" value="BMW" class="form-control" name="caBrands" style="width:300px;">
-                                    <datalist id="cars">
-                                    <option value="BMW">
-                                    <option value="Toyota">
-                                    <option value="Mitsubishi">
-                                --}}
-
-                                
-
-                    {{--<div class="form-group">
-                        <label for="">Experience Details</label>
-                        <textarea name="experience" class="form-control"> {{Auth::user()->profile->experience}} </textarea>
-                        @if($errors->has('experience'))
-                            <div class="error" style="color: red;">{{$errors->first('experience')}}</div>
-                        @endif
-                    </div>--}}
-                   
-
-                    {{--<div class="form-group">
-                        <label for="job_dept">Previous Job Department</label>
-                        <input class="form-control" value="{{Auth::user()->profile->job_dept}}" name="job_dept" list="job_dept">
-                            <datalist id="job_dept">
-                                
-                    <div class="form-group">
-                    <label for="type">Type:</label>
-                    <select class="form-control" name="type">
-                        <option value="fulltime"{{$job->type=='fulltime'?'selected':''}}>fulltime</option>
-                        <option value="partime"{{$job->type=='partime'?'selected':''}}>partime</option>
-                        <option value="casual"{{$job->type=='casual'?'selected':''}}>casual</option>
-                    </select>
-                    </div>
-                    
-                                            <div class="form-group">
-                            <label for="salary_in_thousands">in Thousand(s):</label>
-                            <select class="form-control" name="salary">
-                                <option value="5000-10000">5000-10000</option>
-                                <option value="10001-15000">10001-15000</option>
-                                <option value="15001-20000">15001-20000</option>
-                                <option value="20001-30000">20001-30000</option>
-                                <option value="30001-40000">30001-40000</option>
-                                <option value="40001-50000">40001-50000</option>
-                                <option value="50001-60000">50001-60000</option>
-                                <option value="60001-70000">60001-70000</option>
-                                <option value="70001-80000">70001-80000</option>
-                                <option value="80001-90000">80001-90000</option>
-                                <option value="90001-100000">90001-100000</option>
-                               <option value="100000 plus">100000 plus</option>
-                            </select>
-                        </div>--}}
-                   
-                    {{--@for ($i = 0; $i < 10; $i++)
-                    The current value is {{ $i }}
-                    @endfor--}}
-
-                    
-
-                    {{--<div class="form-group">
-                        <label for="">Pillbox</label>
-                        <select class="js-example-basic-single" name="state">
-                            <option value="AL">Alabama</option>
-                            <option value="WY">Wyom</option>
-                            <option value="WY">W</option>
-                            <option value="WY">Wyoming</option>
-                          </select>                                      
-                    </div>--}}
-
-                    {{--<select class="form-control" name="type">
-                        <option value="fulltime"{{$job->type=='fulltime'?'selected':''}}>fulltime</option>
-                        <option value="partime"{{$job->type=='partime'?'selected':''}}>partime</option>
-                        <option value="casual"{{$job->type=='casual'?'selected':''}}>casual</option>
-                    </select>--}}

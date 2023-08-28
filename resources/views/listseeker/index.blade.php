@@ -232,18 +232,6 @@
 			</div>
           
           @endforeach
-          @else
-          
-          <div class="col-md-12 text-center ftco-animate">
-            <!--<span class="subheading">Registered Candidates</span>-->
-            <h6 class="mt-5 mb-0">No Record found. More Job Seekers Will Register Soon..</h6>
-            <p class="mt-0 mb-5">Thank You. Have a Nice Day!</p>
-          </div>
-          @endif
-        </div>
-		  <!-- end -->
- 
-                
           <div class="row mt-5">
             <div class="col text-center">
                 <div class="pagination center">                                         
@@ -251,7 +239,15 @@
                 </div>
             </div>
           </div>
-                  
+          @else         
+          <div class="col-md-12 text-center ftco-animate">
+            <!--<span class="subheading">Registered Candidates</span>-->
+            <h6 class="mt-5 mb-0">No Record found. More Job Seekers Will Register Soon..</h6>
+            <p class="mt-0 mb-5">Thank You. Have a Nice Day!</p>
+          </div>
+          @endif
+        </div>
+		  <!-- end -->                  
 			</div>
 		</section>
 		

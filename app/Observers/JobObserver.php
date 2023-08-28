@@ -67,27 +67,19 @@ class JobObserver
                  }
 
                 $collection = collect($data);
-               
                 $unique =  $collection->unique('user_id'); 
-                                                           
-                $seekers = $unique->values()->first();             
-                $user_collect = $seekers->pluck('user_id');
+                $seekers = $unique->values()->first() ;
+                if($seekers){
+                    $user_collect = $seekers->pluck('user_id');
                 $user_id = $user_collect->all();
-
-                //dd($user_id);             
-
-                //$myArray = $unique->values()->first();
-                //return $unique->values()->all();                
+                
+                $users = User::where('notifications_frequency', 'immediately')
+                ->whereHas('skills', function ($query) use ($skills) {
+                    $query->whereIn('skill_id', $skills);
+                })->orWhereIn('id', $user_id)
+                ->get();
+                Notification::send($users, new NewJobImmediateNotification($job));
+                }
             }
-        
-
-        $users = User::where('notifications_frequency', 'immediately')
-            ->whereHas('skills', function ($query) use ($skills) {
-                $query->whereIn('skill_id', $skills);
-            })->orWhereIn('id', $user_id)
-            ->get();
-
-           //dd($users);
-        Notification::send($users, new NewJobImmediateNotification($job));
     }
 }

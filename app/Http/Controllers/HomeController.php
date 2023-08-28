@@ -24,8 +24,10 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
-        $this->middleware(['auth', 'verified']);
+        $this->middleware('auth');
+
+        //uncomment for mandatory verification
+        // $this->middleware(['auth', 'verified']);
     }
 
     /**
@@ -132,10 +134,6 @@ class HomeController extends Controller
 
         return view('home', ['users' => $users]);
             }
-
-
-
-
     }
 
     public function getMessage($user_id)
@@ -170,7 +168,7 @@ class HomeController extends Controller
 
         // pusher
         $options = array(
-            'cluster' => 'ap2',
+            'cluster' => 'ap3',
             'useTLS' => true
         );
 

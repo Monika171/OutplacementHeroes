@@ -37,9 +37,9 @@ class SemployerRegisterController extends Controller
             ]);
 
         $user->roles()->attach($employerRole->id);
-        //$user->roles()->attach($employerRole);
-        //$user->attachRole($employerRole);
-        $user->sendEmailVerificationNotification();
+
+        //uncomment for mandatory verification
+        // $user->sendEmailVerificationNotification();
 
        
         //return redirect()->back()->with('message','A verification link is sent to your email. Please verify.');

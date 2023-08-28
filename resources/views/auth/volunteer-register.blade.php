@@ -231,8 +231,8 @@ Mentor Signup
       </div>
 	  
 	
-      <p class="text-dark text-center my-0" style="font-size: 14px;">
- 	*Verification link will be sent to your email.
+      <p class="text-danger text-center my-0" style="font-size: 14px;">
+        *Test Site! No Verification link will be emailed this time.
 	</p>
 	
 	</form>

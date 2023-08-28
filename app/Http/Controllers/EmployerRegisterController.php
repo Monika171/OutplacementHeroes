@@ -36,12 +36,11 @@ class EmployerRegisterController extends Controller
             ]);
 
         $user->roles()->attach($employerRole->id);
-        //$user->roles()->attach($employerRole);
-        //$user->attachRole($employerRole);
-        $user->sendEmailVerificationNotification();
+
+        // $user->sendEmailVerificationNotification();
 
        
-        return redirect()->back()->with('message','A verification link is sent to your email. Please follow the link to verify it');
+        return redirect()->back()->with('message','Test Account Successfully Created. Please Login to proceed.');
         // return redirect()->back()->with('message','A verification link is sent to your email. Please follow the link to verify it');
 
        //return redirect()->to('login')->with('message','A verification link is sent to your email. Please follow the link to verify it');

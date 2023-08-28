@@ -16,7 +16,7 @@ class LocationController extends Controller
 {
     public function getStates($id)
 	{
-		$states = State::where('country_id',$id)->pluck('name','id',);
+		$states = State::where('country_id',$id)->pluck('name','id');
 		
 		//$states = State::where('country_id',$id)->pluck('name','id')->orderBy('name','asc')->get();
 		return json_encode($states);

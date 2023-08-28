@@ -184,7 +184,7 @@ Employer Signup
                     <div class="col-md-12">Password</div>
 
                     <div class="col-md-12">
-                        <input id="password" type="password" placeholder="password" class="txt form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" value="{{ old('password') }}" required autofocus>
+                        <input id="password" type="password" class="txt form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" value="{{ old('password') }}" required autofocus>
 
                         @if ($errors->has('password'))
                             <span class="invalid-feedback" role="alert">
@@ -211,8 +211,8 @@ Employer Signup
       </div>
     
   
-  <p class="text-dark text-center my-0" style="font-size: 14px;">
-  *Verification link will be sent to your email.
+  <p class="text-danger text-center my-0" style="font-size: 14px;">
+    *Test Site! No Verification link will be emailed this time.
   </p>
   
   </form>

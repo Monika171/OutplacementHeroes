@@ -38,15 +38,10 @@ class ConsultantRegisterController extends Controller
             ]);
 
         $user->roles()->attach($employerRole->id);
-        //$user->roles()->attach($employerRole);
-        //$user->attachRole($employerRole);
-        $user->sendEmailVerificationNotification();
 
-       
-        //return redirect()->back()->with('message','A verification link is sent to your email. Please verify.');
-        // return redirect()->back()->with('message','A verification link is sent to your email. Please  the link to verify it');
-        return redirect()->back()->with('message','A verification link is sent to your email. Click the link to verify.');
-       //return redirect()->to('login')->with('message','A verification link is sent to your email. Please follow the link to verify it');
+        // $user->sendEmailVerificationNotification();
+   
+        return redirect()->back()->with('message','Test Account Successfully Created. Please Login to proceed.');
        
     }
 }

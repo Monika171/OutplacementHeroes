@@ -214,7 +214,7 @@
   <br><br>
 @endsection
 @section('jsplugins')
-<script src="https://js.pusher.com/6.0/pusher.min.js"></script>
+<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <script>
@@ -229,11 +229,11 @@
         });
 
         // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
+        // Pusher.logToConsole = true;
 
-        var pusher = new Pusher('32dfe93f00a3d5a1e6ca', {
-        cluster: 'ap2'
-        });
+        var pusher = new Pusher('0ec1d482125e13aa9134', {
+      cluster: 'ap3'
+    });
 
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function (data) {
@@ -265,7 +265,7 @@
             receiver_id = $(this).attr('id');
             $.ajax({
                 type: "get",
-                url: "message/" + receiver_id, // need to create this route
+                url: "message/" + receiver_id,
                 data: "",
                 cache: false,
                 success: function (data) {

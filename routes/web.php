@@ -13,19 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-//dummy example (ignore)
-Route::view('demo','demo');
-
 Route::get('/','OutplacementherosController@index');
-//Route::view('/','welcome');
 
+Auth::routes();
 
-//Auth::routes();
-Auth::routes(['verify' => true]);
+//uncomment for mandatory verification
+// Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/mymessages', 'HomeController@inbox')->name('my.messages');
@@ -43,7 +36,7 @@ Route::get('/jobs/my-job/{id}/edit','JobController@edit')->name('job.edit');//ch
 Route::post('/jobs/my-job/{id}/edit','JobController@update')->name('job.update');
 Route::post('/jobs/my-job/{id}/delete','JobController@destroy')->name('job.destroy');
 Route::get('/jobs/my-job/applications','JobController@applicant')->name('applicant');//list all applicants of company
-Route::get('/jobs/my-job/{id}/{job}','JobController@showApplicants')->name('jobs.applicant');//list applicants of A job//checked
+Route::get('/jobs/my-job/{id}/{job}','JobController@showApplicants')->name('jobs.applicant');//list applicants of A job
 Route::get('/jobs/alljobs','JobController@allJobs')->name('alljobs'); //experimental, but works!!! for job-search support volunteer?
 Route::get('/jobs/{id}/{job}','JobController@show')->name('jobs.show'); //Apply at this JD link
 Route::post('/applications/{id}','JobController@apply')->name('apply'); 
@@ -138,7 +131,7 @@ Route::get('/getCities/{id}', 'LocationController@getCities');
 Route::post('/profile/skills/store', 'SkillController@storeSkill');
 Route::post('/profile/skills/edit', 'SkillController@editSkill');
 
-//admin (Can Only post something now! Will add more)
+//admin
 Route::get('/dashboard','DashboardController@index')->middleware('admin');
 Route::get('/dashboard/create','DashboardController@create')->middleware('admin');
 Route::post('/dashboard/create','DashboardController@store')->name('post.store')->middleware('admin');

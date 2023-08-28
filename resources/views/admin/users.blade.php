@@ -12,14 +12,14 @@
                 All Job Seekers
                 @elseif($user_type=='employer')
                 All Hiring Employers
-                @elseif($user_type=='semployer')
-                All Separating Employers
+                {{-- @elseif($user_type=='semployer')
+                All Separating Employers --}}
                 @elseif($user_type=='consultant')
                 All Consultants
                 @elseif($user_type=='volunteer')
                 All Mentors
-                @elseif($user_type=='jvolunteer')
-                All Mentors<br><small>(Job Search Support)</small>
+                {{-- @elseif($user_type=='jvolunteer')
+                All Mentors<br><small>(Job Search Support)</small> --}}
                 @endif
               </u>                
                 
@@ -59,10 +59,10 @@
                   <select class="form-control" name="user_type">
                       <option value="">-select-</option>
                       <option value="employer">Hiring Employers</option>
-                      <option value="semployer">Separating Employers</option>
+                      {{-- <option value="semployer">Separating Employers</option> --}}
                       <option value="consultant">Consultants</option>
                       <option value="volunteer">Mentors</option>
-                      <option value="jvolunteer">Mentors(Job-support)</option>
+                      {{-- <option value="jvolunteer">Mentors(Job-support)</option> --}}
                       <option value="seeker">Job Seekers</option>
                   </select>
                 </div>

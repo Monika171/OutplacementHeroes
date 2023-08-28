@@ -22,7 +22,10 @@ class ConsultantController extends Controller
 {
 
     public function __construct(){
-        $this->middleware(['consultant','verified'],['except'=>array('index','company')]);
+        $this->middleware(['consultant'],['except'=>array('index','company')]);
+
+        //uncomment for mandatory verification
+        // $this->middleware(['consultant','verified'],['except'=>array('index','company')]);
     }
 
 

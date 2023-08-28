@@ -134,11 +134,13 @@ class SeekerController extends Controller
                         }
 
                         $collection = collect($data);
-                        $unique =  $collection->unique("user_id");                        
-                        $myArray = $unique->values()->first()->sortByDesc('experience_years');                              
-                        $seekers = $this->paginate($myArray);
-
-                        //return $unique->values()->all();
+                        $unique =  $collection->unique("user_id");
+                        if (count($unique) > 0) {
+                            $myArray = $unique->values()->first()->sortByDesc('experience_years');                              
+                            $seekers = $this->paginate($myArray);
+                        } else {
+                            $seekers = [];
+                        }               
                         return view('listseeker.index', compact('seekers','industrylist','designationlist','citylist','statelist','courselist','specializationlist'));
                
                     }

@@ -13,5 +13,5 @@
 </div>
 
 <div class="input-text mb-5">
-    <input type="text" name="message" class="submit">
+    <input type="text" name="message" placeholder="Press Enter/Return to Send Message" class="submit">
 </div>

@@ -161,7 +161,7 @@
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate">
                     <!--<span class="subheading">Registered Candidates</span>-->
-                    <h2 class="mb-4"><span>No</span> &nbsp; applications<span>  &nbsp; yet..</span> </h2>
+                    <h4 class="mb-4 text-white"><span>No</span> &nbsp; applications<span>  &nbsp; yet..</span> </h4>
                 </div>
             </div>
             @endif

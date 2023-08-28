@@ -86,6 +86,7 @@
 
             @elseif(Auth::user()->user_type=='seeker')
                     <li class="nav-item"><a href="{{route('user.dashboard')}}" class="nav-link">Dashboard</a></li>
+                    <li class="nav-item"><a href="{{route('alljobs')}}" class="nav-link">Find Jobs</a></li>
                     <li class="nav-item"><a href="{{route('user.saved')}}" class="nav-link">
                         <i class="fa fa-tag" aria-hidden="true"></i>Saved-Jobs</a></li>
                     <li class="nav-item"><a href="{{route('my.messages')}}" class="nav-link">Inbox</a></li>

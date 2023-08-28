@@ -60,10 +60,12 @@ class DynamicFieldController extends Controller
        );
        $insert_data[] = $data; 
       }
-      for($count = 0; $count < count($fname); $count++)
-      {
-          Mail:: to($email[$count])->send(new WelcomeMail($fname[$count],$company->cname));
-      }
+
+    // uncomment to send email
+    //   for($count = 0; $count < count($fname); $count++)
+    //   {
+    //       Mail:: to($email[$count])->send(new WelcomeMail($fname[$count],$company->cname));
+    //   }
 
       DynamicField::insert($insert_data);
 

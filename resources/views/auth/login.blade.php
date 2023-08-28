@@ -302,6 +302,12 @@ Login
             @endif
           </p>
         </form>
+        <div class="text-center">
+          <p class="text-info">If you would like try this site as admin:<br/>
+            <span class="text-secondary">Email: admin@example.com</span><br/>
+            <span class="text-secondary">Password: password</span>
+          </p>
+        </div>
       </section>
     </div>
     </main>

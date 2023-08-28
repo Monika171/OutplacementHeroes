@@ -2,7 +2,8 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+//uncomment for mandatory verification
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Profile;
@@ -17,7 +18,9 @@ use App\Work;
 use App\semployers;
 use App\consultant;
 
-class User extends Authenticatable implements MustVerifyEmail
+//uncomment for mandatory verification
+// class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use Notifiable;
 

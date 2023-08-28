@@ -5,7 +5,7 @@
   <title>OutplacementHeros</title>
   <link rel="shortcut icon" type="image/png" href="{{ asset('HomeImages/Favicon.png') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://kit.fontawesome.com/8276d53c5b.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
@@ -29,7 +29,7 @@
     /*Navigation bar CSS*/
     .nav
     {
-      background: #038cfc;
+      background: linear-gradient(to bottom, #003399 0%, #666699 100%) ;
       width: 100%;
       height: 600px;
       position: relative;
@@ -721,7 +721,7 @@
       bottom: -15px;
       height: 2px;
       width: 70px;
-      background: #038cfc;
+      /* background: #038cfc; */
     }
     .footer-widget ul li 
     {
@@ -751,14 +751,14 @@
       position: absolute;
       right: 0;
       background: #038cfc;
-      padding: 13px 20px;
+      padding: 10px 20px;
       border: 1px solid #2E2E2E;
       top: 0;
     }
     .subscribe-form button i 
     {
       color: #fff;
-      font-size: 22px;
+      font-size: 15px;
       transform: rotate(-6deg);
     }
     .copyright-area
@@ -800,10 +800,10 @@
     </div>
     <div class="nav-links">
       <a class="active" href="/">Home</a>
-      <a href="About.html">About</a>
-      <!-- <a href=" http://careers.changeleaders.in/">Currently hiring</a> -->
-      <a href="Outplacement.html">Volunteer Speaks</a>
-      <a href="Contact.html">Contact</a>
+      {{-- <a href="About.html">About</a> --}}
+      {{-- <a href=" http://careers.changeleaders.in/">Currently hiring</a> --}}
+      {{-- <a href="Outplacement.html">Volunteer Speaks</a> --}}
+      {{-- <a href="Contact.html">Contact</a> --}}
 
       @if(Auth::check()&&Auth::user()->user_type=='employer')
 
@@ -876,17 +876,9 @@
       
   @endif
 
-
-
-
-
-
-
-
-
     </div>
     <div class="con"><h1>OutplacementHeros</h1></div>
-    <div class="con1"><h2>Insuring All Future Layouts</h2></div>
+    <div class="con1"><h2>Insuring All Future Layouts<br><span class="text-danger text-small">&#91; Demo Website Only&#93;</span></h2></div>
     <div class="container">
       <div class="row">
         @if(!Auth::check())
@@ -903,27 +895,8 @@
         @endif
 
       </div>
-
-
-
-      {{--@if(!Auth::check())
-
-          <button type="button" class="btn btn-primary text-white py-3 px-4 rounded" data-toggle="modal" data-target="#exampleModal">
-        Login
-        </button>
-        @else
- <a  href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-      </a>
- <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-
-        @endif
---}}
     </div>
-    <section>
+    {{-- <section>
       <div class="wave">
         <div class="wave wave1"></div>
         <div class="wave wave2"></div>
@@ -931,7 +904,7 @@
         <div class="wave wave4"></div>
         <div class="welcome-heading"><h3>O</h3></div>
       </div>
-    </section>
+    </section> --}}
   </div>
   <!--Our approach section-->
   <h1 class="ribbon">
@@ -946,6 +919,17 @@
     <strong class="ribbon-content">CHOOSE YOUR ROLE</strong>
   </h1>
   <div class="flexbox">
+    <div class="flexcard flexcardBlue">
+      <div class="flexcardNumber flexcardNumberBlue"></div>
+      <div class="flex flexcardTitle" style="margin-top: 5%;">Job Seekers<br></div>
+      <div class="flex flexcardTitle" style="margin-left: -10%;">Looking<br></div>
+      <div class="flex flexcardTitle" style="margin-left: -22%;">For<br></div>
+      <div class="flex flexcardTitle" style="margin-left: -18%;">Jobs</div>
+      <div class="flex flexcardText"></div>
+      <div class="row">
+        <a href="/register" class="btn btn-lg blue">Register</a>
+      </div>
+    </div>
     <div class="flexcard flexcardBlue">
       <div class="flexcardNumber flexcardNumberBlue"></div>
       <div class="flex flexcardTitle" style="margin-top: 5%;">Recruitment<br></div>
@@ -979,7 +963,7 @@
         <a href="{{ route('employer.register') }}" class="btn btn-lg blue">Register</a>
       </div>
     </div>
-    <div class="flexcard flexcardBlue">
+    {{-- <div class="flexcard flexcardBlue">
       <div class="flexcardNumber flexcardNumberBlue"></div>
       <div class="flex flexcardTitle" style="margin-top: 5%; margin-left: -8%">Separating<br></div>
       <div class="flex flexcardTitle" style="margin-left: -8%">Employers<br></div>
@@ -989,8 +973,8 @@
       <div class="row">
         <a href="{{ route('semployer.register') }}" class="btn btn-lg blue">Register</a>
       </div>
-    </div>
-  </div> 
+    </div> --}}
+  </div>  
 
   @endif
 
@@ -1005,7 +989,7 @@
     </video>
   </center>
   <!--Our team section-->
-  <h1 class="ribbon" style="margin-top: -5%;margin-bottom: 10%;">
+  {{-- <h1 class="ribbon" style="margin-top: -5%;margin-bottom: 10%;">
     <strong class="ribbon-content">OUR TEAM</strong>
   </h1>
   <div class="container">
@@ -1053,7 +1037,7 @@
           </div>
         </div>
     </div>
-  </div>
+  </div> --}}
   <!--Footer Section-->
   <footer class="footer-section">
     <div class="container">
@@ -1074,7 +1058,7 @@
           </div>
           <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
             <div class="footer-widget">
-              <div class="footer-widget-heading">
+              <div class="footer--heading">
                 <h3>Contact Us</h3>
               </div>
               <ul>
@@ -1089,13 +1073,14 @@
                 <h3>Subscribe</h3>
               </div>
               <div class="footer-text mb-25">
-                <p style="font-size: 15px;">Don’t miss to subscribe to our new feeds, kindly fill your email ID below.</p>
+                <p style="font-size: 15px;">Don't miss to subscribe to our new feeds, kindly fill your email ID below.</p>
               </div>
               <div class="subscribe-form">
-                <form action="https://changeleaders.us18.list-manage.com/subscribe/post?u=e1b860c00f51449ba306e2cba&amp;id=2cc10d102f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                {{-- <form action="https://changeleaders.us18.list-manage.com/subscribe/post?u=e1b860c00f51449ba306e2cba&amp;id=2cc10d102f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate> --}}
+                  <form action="/" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                   <div id="mc_embed_signup_scroll">
                     <input type="text" placeholder="Email ID" id="mce-EMAIL" required>
-                    <div id=" id="mc-embedded-subscribe">
+                    <div id="mc-embedded-subscribe">
                       <button><i class="fab fa-telegram-plane" value="Subscribe" type="submit"></i></button>
                     </div>
                   </div>
@@ -1124,7 +1109,7 @@
     </div>
   </footer>
   <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
-  <script type='text/javascript'>
+  {{-- <script type='text/javascript'>
     (function($) {
       window.fnames = new Array(); 
       window.ftypes = new Array();
@@ -1153,6 +1138,6 @@
     s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
-  </script>
+  </script> --}}
 </body>
 </html>

@@ -27,7 +27,10 @@ use Auth;
 class VolunteerController extends Controller
 {
   public function __construct(){
-    $this->middleware(['volunteer','verified']);
+    $this->middleware(['volunteer']);
+
+    //uncomment for mandatory verification
+    // $this->middleware(['volunteer','verified']);
     }  
 
 
@@ -244,8 +247,12 @@ class VolunteerController extends Controller
 
                         $collection = collect($data);
                         $unique =  $collection->unique("user_id");
-                        $myArray = $unique->values()->first()->sortByDesc('experience_years');                              
-                        $seekers = $this->paginate($myArray);
+                        if (count($unique) > 0) {
+                          $myArray = $unique->values()->first()->sortByDesc('experience_years');                              
+                          $seekers = $this->paginate($myArray);
+                      } else {
+                          $seekers = [];
+                      } 
 
                         //return $unique->values()->all();
                         return view('volunteer.dashboard', compact('seekers','industrylist','designationlist','citylist','statelist','courselist','specializationlist'));

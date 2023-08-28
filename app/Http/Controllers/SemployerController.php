@@ -24,7 +24,10 @@ class SemployerController extends Controller
 {
 
     public function __construct(){
-        $this->middleware(['semployer','verified'],['except'=>array('index','company')]);
+        $this->middleware(['semployer'],['except'=>array('index','company')]);
+
+        //uncomment for mandatory verification
+        // $this->middleware(['semployer','verified'],['except'=>array('index','company')]);
     }
 
 
