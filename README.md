@@ -2,6 +2,8 @@
 
 OutplacementHeros was a community of Recruiting Professionals, Consultants & Volunteers who collaborated to help laid off employees during COVID-19 global pandemic.
 
+Demo Link: [https://better-jobs-9.000webhostapp.com/](https://better-jobs-9.000webhostapp.com/)
+
 ## Getting Started
 
 <h3>Clone the repository.</h3>
@@ -39,13 +41,12 @@ composer install
         composer clear-cache
         ```
 
+    -   Run `composer install` again.
     -   Check Composer Autoload:
 
         ```
         composer dump-autoload
         ```
-
-    -   Run `composer install` again.
 
 ### >> `.env` configuration file
 
