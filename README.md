@@ -16,7 +16,7 @@ OutplacementHeros was a community of Recruiting Professionals, Consultants & Vol
 
 To use MySQL, install and setup a database and then add your database credentials(database, username and password) to the `.env.example` file.
 
-### >> Installing Dependencies
+### >> Installing Composer Dependencies
 
 Install Laravel's dependencies using Composer:
 
@@ -129,6 +129,12 @@ Create symlink from `public/storage` directory to `storage/app/public` directory
 
 ```
 php artisan storage:link
+```
+
+### >> Installing JavaScript Dependencies and building frontend assets
+
+```
+npm install && npm run dev
 ```
 
 ### >> Running The Development Server:
